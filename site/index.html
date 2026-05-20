@@ -39,6 +39,11 @@ one-shot accepts: 3 / 4
 group-gate accepts: 1 / 4
 false discovery rate: 0.667
 
+$ scitriage evidence-board
+candidates: 24
+family-landmark seed saving: 71.4%
+research-direction recall: 100%
+
 $ scitriage claim-gate depth7
 status: allowed
 delta / margin: 12.44
@@ -60,12 +65,12 @@ reason: below noise scale</code></pre>
             <span>false discovery rate among one-shot accepts</span>
           </div>
           <div>
-            <strong>depth7</strong>
-            <span>best compute-aware depth candidate</span>
+            <strong>71.4%</strong>
+            <span>extra seed runs saved for research-direction triage</span>
           </div>
           <div>
-            <strong>batch_small</strong>
-            <span>accepted non-depth candidate</span>
+            <strong>100%</strong>
+            <span>supported research directions preserved</span>
           </div>
         </div>
       </section>
@@ -82,7 +87,7 @@ reason: below noise scale</code></pre>
           </article>
           <article>
             <h3>Should we continue?</h3>
-            <p>Compare the one-shot delta to measured seed noise before spending more GPU time on a candidate.</p>
+            <p>Compare the one-shot delta to measured seed noise and promote only the strongest landmarks in each research direction.</p>
           </article>
           <article>
             <h3>Can we claim it?</h3>

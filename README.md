@@ -47,16 +47,22 @@ Under this real quick-probe setting:
 
 | Finding | Result |
 |---|---:|
+| observed candidate variants | `24` |
 | baseline seed std | `0.004211` val_bpb |
 | one-shot candidates accepted | `3 / 4` |
 | candidates accepted after seed-group gate | `1 / 4` |
 | false discovery rate among one-shot accepts | `0.667` |
 | best depth candidate | `depth7` |
 | accepted non-depth candidate | `batch_small` |
+| family-landmark seed saving | `71.4%` fewer extra seed runs |
 
 The important point is not just that `depth7` wins. The important point is that two plausible one-shot “discoveries” disappear once we compare against measured seed noise.
 
+The larger evidence board is stronger: across 24 observed candidates, a family-landmark SciTriage policy keeps 100% of the supported research directions while using only 4 extra seed runs instead of 14 for verifying every one-shot positive.
+
 Full results: [`analysis/autoresearch_probe_v1/PAPER_RESULTS.md`](analysis/autoresearch_probe_v1/PAPER_RESULTS.md)
+
+Evidence board: [`analysis/autoresearch_probe_v1/evidence_board_v1/EVIDENCE_BOARD.md`](analysis/autoresearch_probe_v1/evidence_board_v1/EVIDENCE_BOARD.md)
 
 ## Install
 
