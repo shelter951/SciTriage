@@ -154,6 +154,8 @@ class CoreBehaviorTests(unittest.TestCase):
             self.assertEqual(board["policy_eval"]["scitriage_high_priority_only"]["true_accepts"], 1)
             self.assertEqual(board["policy_eval"]["scitriage_high_priority_only"]["false_accepts"], 0)
             self.assertGreater(board["policy_eval"]["cost_savings_vs_verify_all_positives"], 0)
+            self.assertEqual(board["policy_eval"]["scitriage_family_landmarks"]["true_family_accepts"], 1)
+            self.assertEqual(board["policy_eval"]["scitriage_family_landmarks"]["family_recall"], 1.0)
 
 
 if __name__ == "__main__":

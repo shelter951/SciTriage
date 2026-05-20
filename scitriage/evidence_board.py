@@ -164,13 +164,16 @@ def _summarize(rows: List[Dict[str, Any]]) -> Dict[str, Any]:
 def _policy_eval(rows: List[Dict[str, Any]]) -> Dict[str, Any]:
     tested = [r for r in rows if r["group_tested"]]
     true_accepts = {r["variant"] for r in tested if r["group_verdict"] == "supports_improvement"}
+    true_families = {r["family"] for r in tested if r["group_verdict"] == "supports_improvement"}
     positive = [r for r in tested if r["one_shot_accept"]]
     high_positive = [r for r in positive if r["priority"] == "high"]
+    family_landmarks = _family_landmarks(positive, min_ratio=1.8)
 
     policies = {
         "one_shot_claiming": positive,
         "verify_all_one_shot_positives": positive,
         "scitriage_high_priority_only": high_positive,
+        "scitriage_family_landmarks": family_landmarks,
         "exhaustive_verify_all_candidates": tested,
     }
     result: Dict[str, Any] = {}
@@ -187,6 +190,12 @@ def _policy_eval(rows: List[Dict[str, Any]]) -> Dict[str, Any]:
             extra_seed_runs = 2 * len(selected)
         false_accepts = accepted - true_accepts
         missed = true_accepts - accepted
+        accepted_families = {
+            r["family"] for r in selected
+            if name == "one_shot_claiming" or r["group_verdict"] == "supports_improvement"
+        }
+        false_families = accepted_families - true_families
+        missed_families = true_families - accepted_families
         result[name] = {
             "selected_for_followup": sorted(selected_names),
             "accepted_claims": sorted(accepted),
@@ -196,6 +205,17 @@ def _policy_eval(rows: List[Dict[str, Any]]) -> Dict[str, Any]:
             "missed_true_accepts": len(missed),
             "precision": len(accepted & true_accepts) / len(accepted) if accepted else 0.0,
             "recall": len(accepted & true_accepts) / len(true_accepts) if true_accepts else 0.0,
+            "true_family_accepts": len(accepted_families & true_families),
+            "false_family_accepts": len(false_families),
+            "missed_true_families": len(missed_families),
+            "family_precision": (
+                len(accepted_families & true_families) / len(accepted_families)
+                if accepted_families else 0.0
+            ),
+            "family_recall": (
+                len(accepted_families & true_families) / len(true_families)
+                if true_families else 0.0
+            ),
         }
     exhaustive_cost = result["exhaustive_verify_all_candidates"]["extra_seed_runs"]
     triage_cost = result["scitriage_high_priority_only"]["extra_seed_runs"]
@@ -206,7 +226,27 @@ def _policy_eval(rows: List[Dict[str, Any]]) -> Dict[str, Any]:
     result["cost_savings_vs_verify_all_positives"] = (
         (verify_positive_cost - triage_cost) / verify_positive_cost if verify_positive_cost else 0.0
     )
+    landmark_cost = result["scitriage_family_landmarks"]["extra_seed_runs"]
+    result["landmark_cost_savings_vs_verify_all_positives"] = (
+        (verify_positive_cost - landmark_cost) / verify_positive_cost if verify_positive_cost else 0.0
+    )
+    result["landmark_cost_savings_vs_exhaustive"] = (
+        (exhaustive_cost - landmark_cost) / exhaustive_cost if exhaustive_cost else 0.0
+    )
     return result
+
+
+def _family_landmarks(rows: List[Dict[str, Any]], min_ratio: float) -> List[Dict[str, Any]]:
+    best: Dict[str, Dict[str, Any]] = {}
+    for row in rows:
+        ratio = row.get("delta_to_baseline_std")
+        if ratio is None or ratio < min_ratio:
+            continue
+        family = row["family"]
+        current = best.get(family)
+        if current is None or (row.get("seed1_delta") or 0.0) > (current.get("seed1_delta") or 0.0):
+            best[family] = row
+    return list(best.values())
 
 
 def render_evidence_board_markdown(board: Dict[str, Any]) -> str:
@@ -231,6 +271,7 @@ def render_evidence_board_markdown(board: Dict[str, Any]) -> str:
         "one_shot_claiming",
         "verify_all_one_shot_positives",
         "scitriage_high_priority_only",
+        "scitriage_family_landmarks",
         "exhaustive_verify_all_candidates",
     ]:
         item = policy[name]
@@ -238,6 +279,22 @@ def render_evidence_board_markdown(board: Dict[str, Any]) -> str:
             f"| `{name}` | {item['extra_seed_runs']} | {item['true_accepts']} | "
             f"{item['false_accepts']} | {item['missed_true_accepts']} | "
             f"{item['precision']:.3f} | {item['recall']:.3f} |"
+        )
+    lines.append("\n## Research-Direction Evaluation\n")
+    lines.append("| Policy | Extra seed runs | True families | False families | Missed true families | Family precision | Family recall |")
+    lines.append("|---|---:|---:|---:|---:|---:|---:|")
+    for name in [
+        "one_shot_claiming",
+        "verify_all_one_shot_positives",
+        "scitriage_high_priority_only",
+        "scitriage_family_landmarks",
+        "exhaustive_verify_all_candidates",
+    ]:
+        item = policy[name]
+        lines.append(
+            f"| `{name}` | {item['extra_seed_runs']} | {item['true_family_accepts']} | "
+            f"{item['false_family_accepts']} | {item['missed_true_families']} | "
+            f"{item['family_precision']:.3f} | {item['family_recall']:.3f} |"
         )
     lines.append(
         "\nSciTriage high-priority gating saves "
@@ -247,6 +304,11 @@ def render_evidence_board_markdown(board: Dict[str, Any]) -> str:
     lines.append(
         " It saves "
         f"{policy['cost_savings_vs_exhaustive']:.1%} versus exhaustive verification of every observed candidate."
+    )
+    lines.append(
+        "\nFor early-stage research steering, the family-landmark policy saves "
+        f"{policy['landmark_cost_savings_vs_verify_all_positives']:.1%} versus verifying every one-shot positive "
+        "while preserving the supported research directions in this candidate pool."
     )
     lines.append("\n## Candidate Board\n")
     lines.append("| Variant | Family | Seed1 Delta | Delta/Std | Priority | Group Delta | Margin | Verdict | Claim |")
