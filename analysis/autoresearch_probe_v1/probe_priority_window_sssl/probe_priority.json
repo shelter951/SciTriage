@@ -1,0 +1,12 @@
+{
+  "metric": "val_bpb",
+  "candidate_log": "/home/sunhenghui/projects/workspaces/scitriage_variant_sweep_v6_optimizer_schedule/window_sssl/runs/seed_1.log",
+  "candidate_value": 1.241398,
+  "baseline_mean": 1.2453043333333333,
+  "baseline_std": 0.004211467004896591,
+  "higher_is_better": false,
+  "delta_improvement": 0.003906333333333345,
+  "delta_to_baseline_std": 0.9275469400072534,
+  "priority": "medium",
+  "recommended_action": "Possible small improvement; run more seeds only if this claim is important."
+}
