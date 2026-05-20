@@ -28,6 +28,7 @@ from .candidate_manifest import (
     summarize_candidate_manifests,
     render_candidate_summary_markdown,
 )
+from .evidence_board import build_evidence_board, render_evidence_board_markdown
 
 
 def cmd_assess(args: argparse.Namespace) -> int:
@@ -367,6 +368,24 @@ def cmd_write_autoresearch_hook(args: argparse.Namespace) -> int:
     return 0
 
 
+def cmd_evidence_board(args: argparse.Namespace) -> int:
+    board = build_evidence_board(
+        sweeps=args.sweep,
+        group_compares=args.group_compare,
+        baseline_summary=args.baseline_summary,
+    )
+    if args.out:
+        out = Path(args.out)
+        out.mkdir(parents=True, exist_ok=True)
+        (out / "evidence_board.json").write_text(json.dumps(board, indent=2, ensure_ascii=False))
+        (out / "EVIDENCE_BOARD.md").write_text(render_evidence_board_markdown(board))
+        print(out / "evidence_board.json")
+        print(out / "EVIDENCE_BOARD.md")
+    else:
+        print(json.dumps(board, indent=2, ensure_ascii=False))
+    return 0
+
+
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(prog="scitriage")
     sub = parser.add_subparsers(dest="command", required=True)
@@ -498,6 +517,13 @@ def build_parser() -> argparse.ArgumentParser:
     hook = sub.add_parser("write-autoresearch-hook", help="Write a post-run SciTriage hook for AutoResearch workspaces")
     hook.add_argument("--out", required=True)
     hook.set_defaults(func=cmd_write_autoresearch_hook)
+
+    board = sub.add_parser("evidence-board", help="Build a candidate-level evidence board from sweeps and seed-group comparisons")
+    board.add_argument("--sweep", action="append", default=[], help="One-shot sweep JSON. May be repeated.")
+    board.add_argument("--group-compare", action="append", default=[], help="Seed-group comparison JSON. May be repeated.")
+    board.add_argument("--baseline-summary")
+    board.add_argument("--out")
+    board.set_defaults(func=cmd_evidence_board)
     return parser
 
 
