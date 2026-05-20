@@ -122,6 +122,7 @@ class CoreBehaviorTests(unittest.TestCase):
             self.assertTrue(path.exists())
             self.assertIn("post-run SciTriage hook", result["purpose"])
             self.assertIn("assess_autoresearch_run", path.read_text())
+            self.assertIn("--scitriage-root", path.read_text())
 
 
 if __name__ == "__main__":

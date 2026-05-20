@@ -70,6 +70,19 @@ python tools/scitriage_after_run.py \
   --out runs/scitriage_candidate_seed1
 ```
 
+If SciTriage is not installed as a package yet, point the hook at a source checkout:
+
+```bash
+python tools/scitriage_after_run.py \
+  --scitriage-root /path/to/SciTriage \
+  --repo . \
+  --run-log runs/candidate_seed1.log \
+  --baseline-val-bpb 1.245304 \
+  --baseline-std 0.004211 \
+  --claim "The candidate improves val_bpb." \
+  --out runs/scitriage_candidate_seed1
+```
+
 ## What SciTriage Emits
 
 Each integration produces JSON artifacts that another agent can read:

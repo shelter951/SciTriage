@@ -140,6 +140,12 @@ Generate a hook script for Karpathy-style AutoResearch workspaces:
 scitriage write-autoresearch-hook --out tools/scitriage_after_run.py
 ```
 
+If you are using SciTriage from a source checkout instead of an installed package, call the hook with:
+
+```bash
+python tools/scitriage_after_run.py --scitriage-root /path/to/SciTriage ...
+```
+
 More integration examples: [`docs/INTEGRATIONS.md`](docs/INTEGRATIONS.md)
 
 ## Outputs

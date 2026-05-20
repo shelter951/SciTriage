@@ -11,15 +11,8 @@ from __future__ import annotations
 
 import argparse
 import json
+import sys
 from pathlib import Path
-
-from scitriage.plugin import (
-    assess_autoresearch_run,
-    prioritize_candidate,
-    resource_fit,
-    seed_group_gate,
-    write_bundle,
-)
 
 
 def main() -> int:
@@ -36,7 +29,22 @@ def main() -> int:
     parser.add_argument("--claim", action="append", default=[])
     parser.add_argument("--proposal", default="")
     parser.add_argument("--diff-ref")
+    parser.add_argument(
+        "--scitriage-root",
+        help="Optional SciTriage source checkout. Not needed when scitriage is installed.",
+    )
     args = parser.parse_args()
+
+    if args.scitriage_root:
+        sys.path.insert(0, str(Path(args.scitriage_root).expanduser().resolve()))
+
+    from scitriage.plugin import (
+        assess_autoresearch_run,
+        prioritize_candidate,
+        resource_fit,
+        seed_group_gate,
+        write_bundle,
+    )
 
     out = Path(args.out)
     out.mkdir(parents=True, exist_ok=True)
