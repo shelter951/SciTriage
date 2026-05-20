@@ -5,6 +5,8 @@ from pathlib import Path
 
 from scitriage.aggregate import compare_seed_groups
 from scitriage.claim_gate import gate_claim
+from scitriage.hooks import write_autoresearch_hook
+from scitriage.plugin import assess_trace, seed_group_gate
 from scitriage.probe_priority import prioritize_probe
 from scitriage.rules import diagnose
 from scitriage.schema import MetricObservation, ResearchTrace
@@ -74,6 +76,52 @@ class CoreBehaviorTests(unittest.TestCase):
             log.write_text("val_bpb: 1.101\n")
             result = prioritize_probe(log, baseline, "val_bpb")
             self.assertEqual(result["priority"], "low")
+
+    def test_plugin_assess_trace_returns_bundle(self):
+        bundle = assess_trace({
+            "trace_id": "plugin_case",
+            "question": "Improve validation metric.",
+            "proposal": "Tune training.",
+            "claims": ["The candidate improves validation loss."],
+            "changed_files": ["train.py"],
+            "logs": "val_loss: 0.9",
+            "metrics": [{
+                "name": "val_loss",
+                "candidate": 0.9,
+                "baseline": 1.0,
+                "higher_is_better": False,
+                "seeds": 1,
+            }],
+            "experiment": {"budget_minutes": 5},
+        })
+        self.assertIn("report", bundle)
+        self.assertIn("probe_plan", bundle)
+        self.assertEqual(bundle["report"]["status"], "needs_probe")
+
+    def test_plugin_seed_group_gate_allows_clear_win(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            baseline = []
+            candidate = []
+            for idx, value in enumerate([1.20, 1.21, 1.19], 1):
+                path = root / f"b{idx}.log"
+                path.write_text(f"val_bpb: {value}\n")
+                baseline.append(path)
+            for idx, value in enumerate([1.10, 1.11, 1.09], 1):
+                path = root / f"c{idx}.log"
+                path.write_text(f"val_bpb: {value}\n")
+                candidate.append(path)
+            bundle = seed_group_gate(baseline, candidate, "val_bpb", "The candidate improves val_bpb.")
+            self.assertEqual(bundle["comparison"]["verdict"], "supports_improvement")
+            self.assertEqual(bundle["claim_gate"]["status"], "allowed")
+
+    def test_hook_writer_creates_executable_script(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "scitriage_after_run.py"
+            result = write_autoresearch_hook(path)
+            self.assertTrue(path.exists())
+            self.assertIn("post-run SciTriage hook", result["purpose"])
+            self.assertIn("assess_autoresearch_run", path.read_text())
 
 
 if __name__ == "__main__":

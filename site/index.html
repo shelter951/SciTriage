@@ -9,10 +9,11 @@
   <body>
     <header class="topbar">
       <a class="brand" href="#top" aria-label="SciTriage home">
-        <img src="../assets/logo.svg" alt="SciTriage">
+        <img src="./logo.svg" alt="SciTriage">
       </a>
       <nav>
         <a href="#results">Results</a>
+        <a href="#why">Why</a>
         <a href="#workflow">Workflow</a>
         <a href="#install">Install</a>
       </nav>
@@ -22,11 +23,11 @@
       <section class="hero">
         <div class="hero-copy">
           <p class="eyebrow">Open-source evidence gates for AutoResearch</p>
-          <h1>SciTriage keeps agentic research from turning noise into claims.</h1>
-          <p class="lead">Attach SciTriage to an AutoResearch harness, estimate seed noise, prioritize diagnostic probes, and allow only claims that survive evidence checks.</p>
+          <h1>Find out whether the idea failed, the run failed, or the claim is too early.</h1>
+          <p class="lead">SciTriage is a plugin-style diagnostic layer for AutoResearch projects. It reads logs, patches, claims, and seed results, then tells the agent what to fix or verify next.</p>
           <div class="actions">
-            <a class="button primary" href="#install">Start triaging</a>
-            <a class="button secondary" href="#results">See Karpathy probe results</a>
+            <a class="button primary" href="#install">Try the commands</a>
+            <a class="button secondary" href="https://github.com/shelter951/SciTriage">View on GitHub</a>
           </div>
         </div>
         <div class="console" aria-label="SciTriage result preview">
@@ -69,23 +70,44 @@ reason: below noise scale</code></pre>
         </div>
       </section>
 
+      <section id="why" class="why">
+        <div class="section-head">
+          <h2>What question does it answer?</h2>
+          <p>AutoResearch agents already know how to propose and run. SciTriage focuses on the uncomfortable part after the run.</p>
+        </div>
+        <div class="questions">
+          <article>
+            <h3>Why did it fail?</h3>
+            <p>Separate idea failure from implementation bugs, evaluator drift, unsupported claims, noisy metrics, and resource mismatch.</p>
+          </article>
+          <article>
+            <h3>Should we continue?</h3>
+            <p>Compare the one-shot delta to measured seed noise before spending more GPU time on a candidate.</p>
+          </article>
+          <article>
+            <h3>Can we claim it?</h3>
+            <p>Allow claims only when seed-group evidence clears the uncertainty margin; otherwise write down the missing evidence.</p>
+          </article>
+        </div>
+      </section>
+
       <section id="workflow" class="workflow">
-        <h2>From trace to evidence</h2>
+        <h2>From harness to evidence</h2>
         <div class="steps">
           <article>
             <span>01</span>
-            <h3>Diagnose</h3>
-            <p>Detect resource mismatch, noisy results, evaluator drift, confounded patches, and unsupported claims.</p>
+            <h3>Read artifacts</h3>
+            <p>Use the harness logs, changed files, candidate claims, and seed groups. No custom research agent required.</p>
           </article>
           <article>
             <span>02</span>
-            <h3>Probe</h3>
-            <p>Choose the cheapest next check: seed-group comparison, frozen evaluator, ablation, or claim reconstruction.</p>
+            <h3>Choose a probe</h3>
+            <p>Recommend the cheapest useful check: resource fit, more seeds, frozen evaluator, ablation, or claim rewrite.</p>
           </article>
           <article>
             <span>03</span>
-            <h3>Gate</h3>
-            <p>Allow robust claims, rewrite inconclusive claims, and avoid follow-up probes whose expected value is low.</p>
+            <h3>Gate the claim</h3>
+            <p>Return machine-readable JSON so an AutoResearch loop can continue, pause, or rewrite the research record.</p>
           </article>
         </div>
       </section>
@@ -97,6 +119,8 @@ reason: below noise scale</code></pre>
   --candidate-logs candidate/runs/seed_*.log \
   --metric val_bpb \
   --out runs/candidate_vs_baseline.json</code></pre>
+        <pre><code>python3 -m scitriage.cli write-autoresearch-hook \
+  --out tools/scitriage_after_run.py</code></pre>
       </section>
     </main>
   </body>

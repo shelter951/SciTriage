@@ -1,28 +1,37 @@
 # SciTriage
 
-SciTriage is a harness-agnostic diagnostic and evidence-gating plugin for AutoResearch agents.
+**Evidence gates for AutoResearch agents.**
 
-AutoResearch systems can generate candidate discoveries faster than they can generate reliable evidence. SciTriage sits beside an existing harness, reads traces/logs/claims, and decides what evidence is still missing before a claim should be written into the research record.
+AutoResearch agents are getting good at producing ideas, patches, and experiment logs. The hard part is knowing what happened next:
 
-It does not reuse AutoResearchGuard. It uses a clean interface:
+- Did the idea fail, or did the run fail?
+- Is the result bigger than seed noise?
+- Is the current claim safe to write down?
+- Is the next experiment worth the GPU time?
 
-- ingest a structured AutoResearch trace,
-- assign failure/risk labels,
-- identify evidence debt,
-- recommend the cheapest next diagnostic probe,
-- compare seed groups against measured noise,
-- allow or block claims,
-- emit machine-readable and human-readable reports.
-
-## Karpathy Autoresearch Result
-
-Current primary integration target:
+SciTriage is a small diagnostic layer for that moment. It does not replace Karpathy autoresearch, ARIS, Claude Code, Codex, or your own research loop. It sits beside them, reads their artifacts, and returns a clear next action.
 
 ```text
-Karpathy autoresearch
+AutoResearch harness  ->  logs, claims, patches  ->  SciTriage  ->  pass / block / probe
 ```
 
-On our 4x RTX 4090 server, the original default run reaches training but OOMs on a single 4090. SciTriage treats this as a resource-contract mismatch and materializes a 4090 quick-probe contract:
+## What It Does
+
+SciTriage answers three practical questions.
+
+| Question | SciTriage output |
+|---|---|
+| Why did this idea fail? | implementation bug, evaluator drift, noisy result, resource mismatch, unsupported claim, or likely invalid idea |
+| Should we keep spending compute? | probe priority based on one-shot delta versus measured seed noise |
+| Can the agent claim this result? | claim gate from seed-group evidence and uncertainty margin |
+
+The goal is simple: let AutoResearch systems move fast without turning noisy one-run wins into research claims.
+
+## Current Result
+
+We use [Karpathy autoresearch](https://github.com/karpathy/autoresearch) as the first real harness because it is compact, widely known, and has a clean metric: `val_bpb`.
+
+On a 4x RTX 4090 server, the default run is too large for a single 4090. SciTriage classifies that as a **resource-contract mismatch**, not as an idea failure, and creates a 4090-friendly quick-probe contract:
 
 ```text
 MAX_SEQ_LEN=1024
@@ -34,54 +43,55 @@ TOTAL_BATCH_SIZE=2**16
 WINDOW_PATTERN="L"
 ```
 
-Under this real Karpathy quick-probe setting:
+Under this real quick-probe setting:
 
-- baseline depth4 noise: mean `1.245304`, std `0.004211`,
-- one-shot candidate selection accepts 3/4 initial candidates,
-- seed-group evidence accepts only 1/4,
-- one-shot false discovery rate among accepted candidates: `0.667`,
-- depth scaling finds a robust compute-aware optimum at `depth7`,
-- a non-depth batch-size candidate, `batch_small`, is also accepted,
-- combining `depth7 + batch_small` is deprioritized because its delta is far below the depth7 noise scale.
+| Finding | Result |
+|---|---:|
+| baseline seed std | `0.004211` val_bpb |
+| one-shot candidates accepted | `3 / 4` |
+| candidates accepted after seed-group gate | `1 / 4` |
+| false discovery rate among one-shot accepts | `0.667` |
+| best depth candidate | `depth7` |
+| accepted non-depth candidate | `batch_small` |
 
-Paper-style results are in:
+The important point is not just that `depth7` wins. The important point is that two plausible one-shot “discoveries” disappear once we compare against measured seed noise.
 
-```text
-analysis/autoresearch_probe_v1/PAPER_RESULTS.md
-```
+Full results: [`analysis/autoresearch_probe_v1/PAPER_RESULTS.md`](analysis/autoresearch_probe_v1/PAPER_RESULTS.md)
 
-## Useful Commands
+## Install
 
 ```bash
-cd ~/projects/scitriage
+git clone https://github.com/shelter951/SciTriage.git
+cd SciTriage
+python -m pip install -e .
 ```
+
+Run the tests:
+
+```bash
+python -m unittest discover -s tests -v
+```
+
+## Quick Start
 
 Assess a generic trace:
 
 ```bash
-python3 -m scitriage.cli assess examples/confounded_noisy_trace.json --out runs/confounded_noisy
+scitriage assess examples/confounded_noisy_trace.json --out runs/confounded_noisy
 ```
 
-Diagnose a failed Karpathy autoresearch run:
+Check whether a failed run is really a resource problem:
 
 ```bash
-python3 -m scitriage.cli resource-fit \
+scitriage resource-fit \
   --run-log /path/to/run.log \
   --out runs/resource_fit
 ```
 
-Create a 4090-friendly autoresearch probe copy:
+Compare a candidate against baseline seed noise:
 
 ```bash
-python3 -m scitriage.cli materialize-autoresearch-probe \
-  --source-repo /path/to/autoresearch \
-  --target-dir /path/to/autoresearch_probe_4090
-```
-
-Compare candidate and baseline seed groups:
-
-```bash
-python3 -m scitriage.cli compare-seed-groups \
+scitriage compare-seed-groups \
   --baseline-logs baseline/runs/seed_*.log \
   --candidate-logs candidate/runs/seed_*.log \
   --metric val_bpb \
@@ -91,25 +101,66 @@ python3 -m scitriage.cli compare-seed-groups \
 Gate a claim:
 
 ```bash
-python3 -m scitriage.cli claim-gate \
+scitriage claim-gate \
   --group-compare runs/candidate_vs_baseline.json \
-  --claim "This candidate improves val_bpb under the probe contract." \
+  --claim "The candidate improves val_bpb under the 4090 probe contract." \
   --out runs/claim_gate
 ```
 
-Prioritize a follow-up probe:
+Decide whether a one-shot candidate deserves more seeds:
 
 ```bash
-python3 -m scitriage.cli prioritize-probe \
+scitriage prioritize-probe \
   --candidate-log candidate/runs/seed_1.log \
   --baseline-summary runs/baseline_seed_summary.json \
   --metric val_bpb \
   --out runs/probe_priority
 ```
 
-## Regression Checks
+## Use It As A Plugin
+
+SciTriage can be used as a command-line sidecar, a Python API, or a generated post-run hook.
+
+```python
+from scitriage.plugin import seed_group_gate
+
+result = seed_group_gate(
+    baseline_logs=["baseline/seed1.log", "baseline/seed2.log", "baseline/seed3.log"],
+    candidate_logs=["candidate/seed1.log", "candidate/seed2.log", "candidate/seed3.log"],
+    metric="val_bpb",
+    claim="The candidate improves val_bpb.",
+)
+
+print(result["claim_gate"]["status"])
+```
+
+Generate a hook script for Karpathy-style AutoResearch workspaces:
 
 ```bash
-python3 -m scitriage.cli eval-benchmark benchmarks/failure_injected/cases --out runs/benchmark_latest
-python3 -m scitriage.cli toy-policy-sweep --n-per-type 20 --out runs/toy_policy_sweep_latest
+scitriage write-autoresearch-hook --out tools/scitriage_after_run.py
 ```
+
+More integration examples: [`docs/INTEGRATIONS.md`](docs/INTEGRATIONS.md)
+
+## Outputs
+
+SciTriage writes artifacts that another agent can read:
+
+- `triage_report.json`: what went wrong and which claims are blocked.
+- `probe_plan.json`: the cheapest useful next check.
+- `claim_gate.json`: whether a claim is allowed by current evidence.
+- `probe_priority.json`: whether a candidate deserves more seeds.
+- `scitriage_bundle.json`: a compact bundle for external harnesses.
+
+## Why This Exists
+
+AutoResearch loops often optimize for momentum: propose, patch, run, summarize, repeat. That is powerful, but it creates a new failure mode: the agent can create more “discoveries” than the experiment budget can verify.
+
+SciTriage adds a research hygiene layer:
+
+- separate implementation failure from idea failure,
+- separate resource mismatch from scientific weakness,
+- separate one-shot improvement from robust improvement,
+- separate what the logs support from what the agent wants to claim.
+
+That is the story we want this project to make concrete.

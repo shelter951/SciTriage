@@ -21,6 +21,7 @@ from .autoresearch_probe import materialize_autoresearch_probe, render_probe_man
 from .discovery_audit import audit_discoveries, render_discovery_audit_markdown
 from .claim_gate import gate_claim, render_claim_gate_markdown
 from .probe_priority import prioritize_probe, render_probe_priority_markdown
+from .hooks import write_autoresearch_hook
 from .candidate_manifest import (
     build_candidate_manifest,
     write_candidate_manifest,
@@ -360,6 +361,12 @@ def cmd_summarize_candidate_manifests(args: argparse.Namespace) -> int:
     return 0
 
 
+def cmd_write_autoresearch_hook(args: argparse.Namespace) -> int:
+    result = write_autoresearch_hook(args.out)
+    print(json.dumps(result, indent=2, ensure_ascii=False))
+    return 0
+
+
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(prog="scitriage")
     sub = parser.add_subparsers(dest="command", required=True)
@@ -487,6 +494,10 @@ def build_parser() -> argparse.ArgumentParser:
     manifest_summary.add_argument("manifests", nargs="+")
     manifest_summary.add_argument("--out")
     manifest_summary.set_defaults(func=cmd_summarize_candidate_manifests)
+
+    hook = sub.add_parser("write-autoresearch-hook", help="Write a post-run SciTriage hook for AutoResearch workspaces")
+    hook.add_argument("--out", required=True)
+    hook.set_defaults(func=cmd_write_autoresearch_hook)
     return parser
 
 

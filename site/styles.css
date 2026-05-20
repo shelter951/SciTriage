@@ -159,7 +159,7 @@ code {
   line-height: 1.7;
 }
 
-.band, .workflow, .install {
+.band, .why, .workflow, .install {
   padding: 72px 24px;
 }
 
@@ -206,19 +206,20 @@ h2 {
   margin-bottom: 8px;
 }
 
-.metrics span, .steps p {
+.metrics span, .steps p, .questions p {
   color: var(--muted);
   line-height: 1.55;
 }
 
-.steps {
+.questions, .steps {
+  max-width: 1180px;
+  margin: 30px auto 0;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 18px;
-  margin-top: 30px;
 }
 
-.steps article {
+.questions article, .steps article {
   background: white;
   border: 1px solid var(--line);
   border-radius: 8px;
@@ -253,7 +254,7 @@ h2 {
     font-size: 44px;
   }
 
-  .metrics, .steps {
+  .metrics, .questions, .steps {
     grid-template-columns: 1fr;
   }
 }

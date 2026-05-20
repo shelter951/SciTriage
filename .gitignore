@@ -24,4 +24,8 @@ analysis/*
 .env.*
 *.key
 *.pem
+secrets/
+private/
+PRIVATE*
+*_PRIVATE.md
 
