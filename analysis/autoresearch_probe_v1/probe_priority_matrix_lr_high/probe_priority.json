@@ -1,0 +1,12 @@
+{
+  "metric": "val_bpb",
+  "candidate_log": "/home/sunhenghui/projects/workspaces/scitriage_variant_sweep_v1/matrix_lr_high/runs/seed_1.log",
+  "candidate_value": 1.23968,
+  "baseline_mean": 1.2453043333333333,
+  "baseline_std": 0.004211467004896591,
+  "higher_is_better": false,
+  "delta_improvement": 0.005624333333333453,
+  "delta_to_baseline_std": 1.335480802008932,
+  "priority": "medium",
+  "recommended_action": "Possible small improvement; run more seeds only if this claim is important."
+}

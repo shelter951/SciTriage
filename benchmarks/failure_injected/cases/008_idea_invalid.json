@@ -1,0 +1,37 @@
+{
+  "trace_id": "008_idea_invalid",
+  "question": "Improve validation loss for a small language model while preserving the official evaluation protocol.",
+  "proposal": "Replace the optimizer with an unstable schedule.",
+  "claims": [
+    "The candidate was tested against baseline."
+  ],
+  "changed_files": [
+    "train.py"
+  ],
+  "protected_files": [
+    "prepare.py",
+    "eval.py"
+  ],
+  "logs": "completed val_loss=2.50 baseline=2.40",
+  "metrics": [
+    {
+      "name": "val_loss",
+      "candidate": 2.5,
+      "baseline": 2.4,
+      "higher_is_better": false,
+      "baseline_std": 0.01,
+      "seeds": 3
+    }
+  ],
+  "experiment": {
+    "budget_minutes": 30,
+    "max_steps": 3000
+  },
+  "expected": {
+    "risk_labels": [
+      "IDEA_INVALID"
+    ],
+    "status": "needs_probe",
+    "probe_type": "human_review"
+  }
+}

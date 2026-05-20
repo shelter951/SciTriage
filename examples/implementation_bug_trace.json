@@ -1,0 +1,13 @@
+{
+  "trace_id": "demo_implementation_bug_001",
+  "question": "Improve optimizer stability for a small model training run.",
+  "proposal": "Add a custom normalized loss and optimizer schedule.",
+  "claims": ["The normalized loss improves stability."],
+  "changed_files": ["train.py", "loss.py"],
+  "protected_files": ["eval.py", "metrics.py"],
+  "diff_summary": "Added custom loss normalization and optimizer schedule.",
+  "logs": "Traceback (most recent call last): RuntimeError: shape mismatch in loss normalization",
+  "metrics": [],
+  "experiment": {"budget_minutes": 2, "max_steps": 10},
+  "history": []
+}

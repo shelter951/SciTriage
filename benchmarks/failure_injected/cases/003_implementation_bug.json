@@ -1,0 +1,31 @@
+{
+  "trace_id": "003_implementation_bug",
+  "question": "Improve validation loss for a small language model while preserving the official evaluation protocol.",
+  "proposal": "Add custom normalized loss.",
+  "claims": [
+    "The normalized loss improves validation loss."
+  ],
+  "changed_files": [
+    "train.py",
+    "loss.py"
+  ],
+  "protected_files": [
+    "prepare.py",
+    "eval.py"
+  ],
+  "logs": "Traceback RuntimeError: shape mismatch in loss normalization",
+  "metrics": [],
+  "experiment": {
+    "budget_minutes": 2,
+    "max_steps": 10
+  },
+  "expected": {
+    "risk_labels": [
+      "IMPLEMENTATION_BUG",
+      "UNDERPOWERED_EXPERIMENT",
+      "UNSUPPORTED_CLAIM"
+    ],
+    "status": "blocked",
+    "probe_type": "implementation_invariant"
+  }
+}

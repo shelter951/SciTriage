@@ -1,0 +1,77 @@
+{
+  "num_candidates": 4,
+  "families": {
+    "batch_schedule": 1,
+    "interaction": 1,
+    "depth_scaling": 1,
+    "optimizer_lr": 1
+  },
+  "candidates": [
+    {
+      "variant_id": "batch_small",
+      "family": "batch_schedule",
+      "workspace": "/home/sunhenghui/projects/workspaces/scitriage_variant_sweep_v4_schedule_batch/batch_small",
+      "base_variant": "depth4_baseline",
+      "patch_intent": "Reduce TOTAL_BATCH_SIZE from 2**16 to 2**15.",
+      "claim": "Reducing total batch size to 2**15 improves val_bpb under the 4090 quick-probe autoresearch contract.",
+      "changed_files": [
+        "train.py"
+      ],
+      "seed_logs": [
+        "/home/sunhenghui/projects/workspaces/scitriage_variant_sweep_v4_schedule_batch/batch_small/runs/seed_1.log",
+        "/home/sunhenghui/projects/workspaces/scitriage_variant_sweep_v4_schedule_batch/batch_small/runs/seed_2.log",
+        "/home/sunhenghui/projects/workspaces/scitriage_variant_sweep_v4_schedule_batch/batch_small/runs/seed_3.log"
+      ],
+      "notes": ""
+    },
+    {
+      "variant_id": "depth7_batch_small",
+      "family": "interaction",
+      "workspace": "/home/sunhenghui/projects/workspaces/scitriage_variant_sweep_v5_combine/depth7_batch_small",
+      "base_variant": "depth7",
+      "patch_intent": "Apply smaller total batch size to the accepted depth7 candidate.",
+      "claim": "Combining depth7 with smaller total batch size further improves val_bpb.",
+      "changed_files": [
+        "train.py"
+      ],
+      "seed_logs": [
+        "/home/sunhenghui/projects/workspaces/scitriage_variant_sweep_v5_combine/depth7_batch_small/runs/seed_1.log"
+      ],
+      "notes": ""
+    },
+    {
+      "variant_id": "depth7",
+      "family": "depth_scaling",
+      "workspace": "/home/sunhenghui/projects/workspaces/scitriage_variant_sweep_v2/depth7",
+      "base_variant": "depth4_baseline",
+      "patch_intent": "Increase DEPTH from 4 to 7 under the same 4090 quick-probe contract.",
+      "claim": "Increasing depth to 7 improves val_bpb under the 4090 quick-probe autoresearch contract.",
+      "changed_files": [
+        "train.py"
+      ],
+      "seed_logs": [
+        "/home/sunhenghui/projects/workspaces/scitriage_variant_sweep_v2/depth7/runs/seed_1.log",
+        "/home/sunhenghui/projects/workspaces/scitriage_variant_sweep_v2/depth7/runs/seed_2.log",
+        "/home/sunhenghui/projects/workspaces/scitriage_variant_sweep_v2/depth7/runs/seed_3.log"
+      ],
+      "notes": ""
+    },
+    {
+      "variant_id": "matrix_lr_high",
+      "family": "optimizer_lr",
+      "workspace": "/home/sunhenghui/projects/workspaces/scitriage_variant_sweep_v1/matrix_lr_high",
+      "base_variant": "depth4_baseline",
+      "patch_intent": "Increase MATRIX_LR from 0.04 to 0.06.",
+      "claim": "Increasing MATRIX_LR to 0.06 significantly improves val_bpb under the 4090 quick-probe autoresearch contract.",
+      "changed_files": [
+        "train.py"
+      ],
+      "seed_logs": [
+        "/home/sunhenghui/projects/workspaces/scitriage_variant_sweep_v1/matrix_lr_high/runs/seed_1.log",
+        "/home/sunhenghui/projects/workspaces/scitriage_variant_sweep_v1/matrix_lr_high/runs/seed_2.log",
+        "/home/sunhenghui/projects/workspaces/scitriage_variant_sweep_v1/matrix_lr_high/runs/seed_3.log"
+      ],
+      "notes": ""
+    }
+  ]
+}

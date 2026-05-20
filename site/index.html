@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>SciTriage</title>
+    <link rel="stylesheet" href="./styles.css">
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="#top" aria-label="SciTriage home">
+        <img src="../assets/logo.svg" alt="SciTriage">
+      </a>
+      <nav>
+        <a href="#results">Results</a>
+        <a href="#workflow">Workflow</a>
+        <a href="#install">Install</a>
+      </nav>
+    </header>
+
+    <main id="top">
+      <section class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow">Open-source evidence gates for AutoResearch</p>
+          <h1>SciTriage keeps agentic research from turning noise into claims.</h1>
+          <p class="lead">Attach SciTriage to an AutoResearch harness, estimate seed noise, prioritize diagnostic probes, and allow only claims that survive evidence checks.</p>
+          <div class="actions">
+            <a class="button primary" href="#install">Start triaging</a>
+            <a class="button secondary" href="#results">See Karpathy probe results</a>
+          </div>
+        </div>
+        <div class="console" aria-label="SciTriage result preview">
+          <div class="console-head">
+            <span></span><span></span><span></span>
+          </div>
+          <pre><code>$ scitriage audit-discoveries
+one-shot accepts: 3 / 4
+group-gate accepts: 1 / 4
+false discovery rate: 0.667
+
+$ scitriage claim-gate depth7
+status: allowed
+delta / margin: 12.44
+
+$ scitriage prioritize-probe depth7_batch_small
+priority: low
+reason: below noise scale</code></pre>
+        </div>
+      </section>
+
+      <section id="results" class="band">
+        <div class="section-head">
+          <h2>Karpathy autoresearch, real logs</h2>
+          <p>Under a 4090 quick-probe contract, SciTriage separates robust discoveries from one-shot noise.</p>
+        </div>
+        <div class="metrics">
+          <div>
+            <strong>0.667</strong>
+            <span>false discovery rate among one-shot accepts</span>
+          </div>
+          <div>
+            <strong>depth7</strong>
+            <span>best compute-aware depth candidate</span>
+          </div>
+          <div>
+            <strong>batch_small</strong>
+            <span>accepted non-depth candidate</span>
+          </div>
+        </div>
+      </section>
+
+      <section id="workflow" class="workflow">
+        <h2>From trace to evidence</h2>
+        <div class="steps">
+          <article>
+            <span>01</span>
+            <h3>Diagnose</h3>
+            <p>Detect resource mismatch, noisy results, evaluator drift, confounded patches, and unsupported claims.</p>
+          </article>
+          <article>
+            <span>02</span>
+            <h3>Probe</h3>
+            <p>Choose the cheapest next check: seed-group comparison, frozen evaluator, ablation, or claim reconstruction.</p>
+          </article>
+          <article>
+            <span>03</span>
+            <h3>Gate</h3>
+            <p>Allow robust claims, rewrite inconclusive claims, and avoid follow-up probes whose expected value is low.</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="install" class="install">
+        <h2>Use it beside your harness</h2>
+        <pre><code>python3 -m scitriage.cli compare-seed-groups \
+  --baseline-logs baseline/runs/seed_*.log \
+  --candidate-logs candidate/runs/seed_*.log \
+  --metric val_bpb \
+  --out runs/candidate_vs_baseline.json</code></pre>
+      </section>
+    </main>
+  </body>
+</html>
+

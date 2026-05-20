@@ -1,0 +1,16 @@
+{
+  "trace_id": "demo_confounded_noisy_001",
+  "question": "Improve small language model validation loss without changing the evaluation protocol.",
+  "proposal": "Change dropout, learning rate schedule, and data sampling to improve generalization.",
+  "claims": [
+    "Dropout improves generalization robustly across seeds.",
+    "The new method outperforms the baseline on validation loss."
+  ],
+  "changed_files": ["model.py", "train.py", "data_loader.py"],
+  "protected_files": ["eval.py", "metrics.py"],
+  "diff_summary": "Modified dropout, warmup/decay schedule, and data sampling temperature.",
+  "logs": "Run completed. final_val_loss=2.394 baseline_val_loss=2.401",
+  "metrics": [{"name": "val_loss", "candidate": 2.394, "baseline": 2.401, "higher_is_better": false, "baseline_std": 0.012, "seeds": 1}],
+  "experiment": {"budget_minutes": 5, "max_steps": 500},
+  "history": []
+}

@@ -1,0 +1,40 @@
+{
+  "trace_id": "004_confounded_patch",
+  "question": "Improve validation loss for a small language model while preserving the official evaluation protocol.",
+  "proposal": "Change dropout, data sampling, and optimizer momentum.",
+  "claims": [
+    "The improvement is caused by dropout."
+  ],
+  "changed_files": [
+    "model.py",
+    "data_loader.py",
+    "optimizer.py"
+  ],
+  "protected_files": [
+    "prepare.py",
+    "eval.py"
+  ],
+  "logs": "completed val_loss=2.30 baseline=2.40",
+  "metrics": [
+    {
+      "name": "val_loss",
+      "candidate": 2.3,
+      "baseline": 2.4,
+      "higher_is_better": false,
+      "baseline_std": 0.01,
+      "seeds": 3
+    }
+  ],
+  "experiment": {
+    "budget_minutes": 30,
+    "max_steps": 3000
+  },
+  "expected": {
+    "risk_labels": [
+      "CONFOUNDED_PATCH",
+      "UNSUPPORTED_CLAIM"
+    ],
+    "status": "needs_probe",
+    "probe_type": "minimal_ablation"
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "trace_id": "010_cost_claim",
+  "question": "Improve validation loss for a small language model while preserving the official evaluation protocol.",
+  "proposal": "Use a larger model and claim efficiency.",
+  "claims": [
+    "The method is faster and more efficient than the baseline."
+  ],
+  "changed_files": [
+    "train.py"
+  ],
+  "protected_files": [
+    "prepare.py",
+    "eval.py"
+  ],
+  "logs": "completed val_loss=2.30 baseline=2.40",
+  "metrics": [
+    {
+      "name": "val_loss",
+      "candidate": 2.3,
+      "baseline": 2.4,
+      "higher_is_better": false,
+      "seeds": 3
+    }
+  ],
+  "experiment": {
+    "budget_minutes": 30,
+    "max_steps": 3000
+  },
+  "expected": {
+    "risk_labels": [
+      "UNSUPPORTED_CLAIM"
+    ],
+    "status": "needs_probe",
+    "probe_type": "claim_reconstruction"
+  }
+}

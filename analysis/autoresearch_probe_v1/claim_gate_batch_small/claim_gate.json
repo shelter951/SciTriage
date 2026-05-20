@@ -1,0 +1,11 @@
+{
+  "claim": "Reducing total batch size to 2**15 improves val_bpb under the 4090 quick-probe autoresearch contract.",
+  "status": "allowed",
+  "safe_claim": "Reducing total batch size to 2**15 improves val_bpb under the 4090 quick-probe autoresearch contract.",
+  "reason": "The candidate improvement exceeds the group-comparison uncertainty margin.",
+  "group_verdict": "supports_improvement",
+  "delta_improvement": 0.009168333333333223,
+  "z_margin": 0.006091420735223388,
+  "delta_to_margin_ratio": 1.5051223239789882,
+  "min_margin_ratio": 1.0
+}

@@ -1,0 +1,61 @@
+{
+  "num_variants": 4,
+  "one_shot_accepts": 3,
+  "group_accepts": 1,
+  "one_shot_false_discoveries_vs_group_gate": 2,
+  "false_discovery_rate_among_one_shot_accepts": 0.6666666666666666,
+  "rows": [
+    {
+      "variant": "depth5",
+      "seed1_delta": 0.04780399999999996,
+      "baseline_mean": 1.2453043333333333,
+      "baseline_std": 0.004211467004896591,
+      "candidate_mean": 1.201118,
+      "candidate_std": 0.002506672495560536,
+      "delta": 0.04418633333333344,
+      "margin95": 0.0055460105570920544,
+      "group_verdict": "supports_improvement",
+      "one_shot_accept": true,
+      "group_accept": true
+    },
+    {
+      "variant": "matrix_lr_high",
+      "seed1_delta": 0.006960000000000077,
+      "baseline_mean": 1.2453043333333333,
+      "baseline_std": 0.004211467004896591,
+      "candidate_mean": 1.2395639999999999,
+      "candidate_std": 0.0038783013034058194,
+      "delta": 0.005740333333333458,
+      "margin95": 0.006478650002393193,
+      "group_verdict": "inconclusive_within_noise",
+      "one_shot_accept": true,
+      "group_accept": false
+    },
+    {
+      "variant": "matrix_lr_low",
+      "seed1_delta": -0.004993999999999943,
+      "baseline_mean": 1.2453043333333333,
+      "baseline_std": 0.004211467004896591,
+      "candidate_mean": 1.2488396666666668,
+      "candidate_std": 0.0025381517553789068,
+      "delta": -0.003535333333333446,
+      "margin95": 0.005564314080215784,
+      "group_verdict": "does_not_support_improvement",
+      "one_shot_accept": false,
+      "group_accept": false
+    },
+    {
+      "variant": "weight_decay_low",
+      "seed1_delta": 0.003722000000000003,
+      "baseline_mean": 1.2453043333333333,
+      "baseline_std": 0.004211467004896591,
+      "candidate_mean": 1.2408403333333333,
+      "candidate_std": 0.0027726367113874127,
+      "delta": 0.0044640000000000235,
+      "margin95": 0.0057058075101853786,
+      "group_verdict": "inconclusive_within_noise",
+      "one_shot_accept": true,
+      "group_accept": false
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "variant_id": "depth7",
+  "family": "depth_scaling",
+  "workspace": "/home/sunhenghui/projects/workspaces/scitriage_variant_sweep_v2/depth7",
+  "base_variant": "depth4_baseline",
+  "patch_intent": "Increase DEPTH from 4 to 7 under the same 4090 quick-probe contract.",
+  "claim": "Increasing depth to 7 improves val_bpb under the 4090 quick-probe autoresearch contract.",
+  "changed_files": [
+    "train.py"
+  ],
+  "seed_logs": [
+    "/home/sunhenghui/projects/workspaces/scitriage_variant_sweep_v2/depth7/runs/seed_1.log",
+    "/home/sunhenghui/projects/workspaces/scitriage_variant_sweep_v2/depth7/runs/seed_2.log",
+    "/home/sunhenghui/projects/workspaces/scitriage_variant_sweep_v2/depth7/runs/seed_3.log"
+  ],
+  "notes": ""
+}

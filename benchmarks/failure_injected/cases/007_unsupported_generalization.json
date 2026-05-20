@@ -1,0 +1,36 @@
+{
+  "trace_id": "007_unsupported_generalization",
+  "question": "Improve validation loss for a small language model while preserving the official evaluation protocol.",
+  "proposal": "Tune optimizer for this training task.",
+  "claims": [
+    "The method generalizes across datasets and tasks."
+  ],
+  "changed_files": [
+    "train.py"
+  ],
+  "protected_files": [
+    "prepare.py",
+    "eval.py"
+  ],
+  "logs": "completed val_loss=2.20 baseline=2.40",
+  "metrics": [
+    {
+      "name": "val_loss",
+      "candidate": 2.2,
+      "baseline": 2.4,
+      "higher_is_better": false,
+      "seeds": 3
+    }
+  ],
+  "experiment": {
+    "budget_minutes": 30,
+    "max_steps": 3000
+  },
+  "expected": {
+    "risk_labels": [
+      "UNSUPPORTED_CLAIM"
+    ],
+    "status": "needs_probe",
+    "probe_type": "claim_reconstruction"
+  }
+}

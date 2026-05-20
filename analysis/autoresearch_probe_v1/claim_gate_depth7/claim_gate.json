@@ -1,0 +1,11 @@
+{
+  "claim": "Increasing depth to 7 improves val_bpb under the 4090 quick-probe autoresearch contract.",
+  "status": "allowed",
+  "safe_claim": "Increasing depth to 7 improves val_bpb under the 4090 quick-probe autoresearch contract.",
+  "reason": "The candidate improvement exceeds the group-comparison uncertainty margin.",
+  "group_verdict": "supports_improvement",
+  "delta_improvement": 0.0671276666666667,
+  "z_margin": 0.005394903313148556,
+  "delta_to_margin_ratio": 12.442793275472043,
+  "min_margin_ratio": 1.0
+}

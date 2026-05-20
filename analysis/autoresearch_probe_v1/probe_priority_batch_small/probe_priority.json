@@ -1,0 +1,12 @@
+{
+  "metric": "val_bpb",
+  "candidate_log": "/home/sunhenghui/projects/workspaces/scitriage_variant_sweep_v4_schedule_batch/batch_small/runs/seed_1.log",
+  "candidate_value": 1.238157,
+  "baseline_mean": 1.2453043333333333,
+  "baseline_std": 0.004211467004896591,
+  "higher_is_better": false,
+  "delta_improvement": 0.007147333333333394,
+  "delta_to_baseline_std": 1.6971125085447254,
+  "priority": "high",
+  "recommended_action": "Delta is large enough relative to observed noise to justify a seed-group probe."
+}

@@ -1,0 +1,12 @@
+{
+  "metric": "val_bpb",
+  "candidate_log": "/home/sunhenghui/projects/workspaces/scitriage_variant_sweep_v5_combine/depth7_batch_small/runs/seed_1.log",
+  "candidate_value": 1.178042,
+  "baseline_mean": 1.1781766666666666,
+  "baseline_std": 0.002234355015062122,
+  "higher_is_better": false,
+  "delta_improvement": 0.0001346666666666163,
+  "delta_to_baseline_std": 0.06027093535217462,
+  "priority": "low",
+  "recommended_action": "Positive delta is far below observed seed noise; defer multi-seed rerun."
+}

@@ -1,0 +1,17 @@
+{
+  "variant_id": "batch_small",
+  "family": "batch_schedule",
+  "workspace": "/home/sunhenghui/projects/workspaces/scitriage_variant_sweep_v4_schedule_batch/batch_small",
+  "base_variant": "depth4_baseline",
+  "patch_intent": "Reduce TOTAL_BATCH_SIZE from 2**16 to 2**15.",
+  "claim": "Reducing total batch size to 2**15 improves val_bpb under the 4090 quick-probe autoresearch contract.",
+  "changed_files": [
+    "train.py"
+  ],
+  "seed_logs": [
+    "/home/sunhenghui/projects/workspaces/scitriage_variant_sweep_v4_schedule_batch/batch_small/runs/seed_1.log",
+    "/home/sunhenghui/projects/workspaces/scitriage_variant_sweep_v4_schedule_batch/batch_small/runs/seed_2.log",
+    "/home/sunhenghui/projects/workspaces/scitriage_variant_sweep_v4_schedule_batch/batch_small/runs/seed_3.log"
+  ],
+  "notes": ""
+}

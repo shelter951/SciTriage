@@ -1,0 +1,12 @@
+{
+  "metric": "val_bpb",
+  "candidate_log": "/home/sunhenghui/projects/workspaces/scitriage_variant_sweep_v3/depth7_matrix_lr_high/runs/seed_1.log",
+  "candidate_value": 1.180015,
+  "baseline_mean": 1.1781766666666666,
+  "baseline_std": 0.002234355015062122,
+  "higher_is_better": false,
+  "delta_improvement": -0.0018383333333333862,
+  "delta_to_baseline_std": -0.8227579417509329,
+  "priority": "low",
+  "recommended_action": "Do not spend multi-seed budget unless the candidate has another scientific reason."
+}

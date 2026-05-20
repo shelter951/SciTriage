@@ -1,0 +1,15 @@
+{
+  "variant_id": "depth7_batch_small",
+  "family": "interaction",
+  "workspace": "/home/sunhenghui/projects/workspaces/scitriage_variant_sweep_v5_combine/depth7_batch_small",
+  "base_variant": "depth7",
+  "patch_intent": "Apply smaller total batch size to the accepted depth7 candidate.",
+  "claim": "Combining depth7 with smaller total batch size further improves val_bpb.",
+  "changed_files": [
+    "train.py"
+  ],
+  "seed_logs": [
+    "/home/sunhenghui/projects/workspaces/scitriage_variant_sweep_v5_combine/depth7_batch_small/runs/seed_1.log"
+  ],
+  "notes": ""
+}

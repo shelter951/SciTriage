@@ -1,0 +1,17 @@
+{
+  "variant_id": "matrix_lr_high",
+  "family": "optimizer_lr",
+  "workspace": "/home/sunhenghui/projects/workspaces/scitriage_variant_sweep_v1/matrix_lr_high",
+  "base_variant": "depth4_baseline",
+  "patch_intent": "Increase MATRIX_LR from 0.04 to 0.06.",
+  "claim": "Increasing MATRIX_LR to 0.06 significantly improves val_bpb under the 4090 quick-probe autoresearch contract.",
+  "changed_files": [
+    "train.py"
+  ],
+  "seed_logs": [
+    "/home/sunhenghui/projects/workspaces/scitriage_variant_sweep_v1/matrix_lr_high/runs/seed_1.log",
+    "/home/sunhenghui/projects/workspaces/scitriage_variant_sweep_v1/matrix_lr_high/runs/seed_2.log",
+    "/home/sunhenghui/projects/workspaces/scitriage_variant_sweep_v1/matrix_lr_high/runs/seed_3.log"
+  ],
+  "notes": ""
+}

@@ -1,0 +1,27 @@
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.venv/
+venv/
+dist/
+build/
+*.egg-info/
+
+# Heavy or machine-local experiment outputs.
+runs/
+workspaces/
+*.log
+
+# Keep curated paper artifacts, ignore ad-hoc analyses by default.
+analysis/*
+!analysis/autoresearch_probe_v1/
+!analysis/autoresearch_probe_v1/**
+
+# Local secrets and environment files.
+.env
+.env.*
+*.key
+*.pem
+
