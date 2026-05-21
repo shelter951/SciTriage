@@ -1,0 +1,60 @@
+{
+  "baseline_seed_std": 0.004211467004896591,
+  "candidate_count": 24,
+  "one_shot_accepts": 15,
+  "group_tested": 8,
+  "policies": [
+    {
+      "policy": "one_shot_claiming",
+      "extra_seed_runs": 0,
+      "true_accepts": 5,
+      "false_accepts": 2,
+      "precision": 0.7142857142857143,
+      "recall": 1.0,
+      "family_precision": 0.5,
+      "family_recall": 1.0
+    },
+    {
+      "policy": "verify_all_one_shot_positives",
+      "extra_seed_runs": 14,
+      "true_accepts": 5,
+      "false_accepts": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "family_precision": 1.0,
+      "family_recall": 1.0
+    },
+    {
+      "policy": "scitriage_high_priority_only",
+      "extra_seed_runs": 12,
+      "true_accepts": 5,
+      "false_accepts": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "family_precision": 1.0,
+      "family_recall": 1.0
+    },
+    {
+      "policy": "scitriage_family_landmarks",
+      "extra_seed_runs": 4,
+      "true_accepts": 2,
+      "false_accepts": 0,
+      "precision": 1.0,
+      "recall": 0.4,
+      "family_precision": 1.0,
+      "family_recall": 1.0
+    },
+    {
+      "policy": "exhaustive_verify_all_candidates",
+      "extra_seed_runs": 16,
+      "true_accepts": 5,
+      "false_accepts": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "family_precision": 1.0,
+      "family_recall": 1.0
+    }
+  ],
+  "cost_savings_vs_verify_all_positives": 0.14285714285714285,
+  "landmark_cost_savings_vs_verify_all_positives": 0.7142857142857143
+}

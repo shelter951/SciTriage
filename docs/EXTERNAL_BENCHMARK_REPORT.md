@@ -30,6 +30,21 @@ Aggregate artifact:
 analysis/external_audit_summary_v1/EXTERNAL_AUDIT_SUMMARY.md
 ```
 
+Same-agent policy result:
+
+| Policy | Invalid Accept Rate | Mean Valid-Score Retention |
+|---|---:|---:|
+| `official_score_only` | 0.750 | 0.250 |
+| `static_artifact_rule` | 0.750 | 0.250 |
+| `judge_only_proxy` | 0.750 | 0.250 |
+| `scitriage_full` | 0.000 | 1.000 |
+
+Policy artifact:
+
+```text
+analysis/same_agent_policy_eval_v1/SAME_AGENT_POLICY_EVAL.md
+```
+
 ## MLAgentBench Vectorization
 
 External task:

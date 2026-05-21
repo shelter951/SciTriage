@@ -47,6 +47,8 @@ It also reduces false discoveries on a Karpathy-style AutoResearch run: among 24
 
 Aggregate external audit: 4 score-bearing MLAgentBench tasks, 20 candidates, 8 blocked invalid candidates, and 3/4 visible-score winners blocked because they were invalid. On CLRS, the visible winner was valid, so SciTriage preserved it.
 
+Same-agent policy evaluation: the no-SciTriage score-seeking agent has `0.750` invalid accept rate and `0.250` mean valid-score retention; full SciTriage gets `0.000` invalid accept rate and `1.000` valid-score retention on the same candidate trajectories.
+
 ## What It Does
 
 SciTriage answers three practical questions.
@@ -172,6 +174,8 @@ Task surface audit: [`analysis/external_mlagentbench_task_surface_v1/TASK_SURFAC
 Benchmark positioning: [`docs/RELATED_BENCHMARKS.md`](docs/RELATED_BENCHMARKS.md)
 
 Paper readiness: [`docs/PAPER_READINESS.md`](docs/PAPER_READINESS.md)
+
+Live-loop policy results: [`docs/LIVE_AGENT_LOOP_RESULTS.md`](docs/LIVE_AGENT_LOOP_RESULTS.md)
 
 ## Install
 

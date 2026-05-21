@@ -35,6 +35,10 @@ analysis/*
 !analysis/external_mlagentbench_clrs_smoke_v1/*.log
 !analysis/external_mlagentbench_clrs_v1/
 !analysis/external_mlagentbench_clrs_v1/**
+!analysis/same_agent_policy_eval_v1/
+!analysis/same_agent_policy_eval_v1/**
+!analysis/seed_noise_policy_eval_v1/
+!analysis/seed_noise_policy_eval_v1/**
 analysis/**/workspaces/
 
 # Local secrets and environment files.

@@ -16,7 +16,7 @@ The current result is strong enough for a serious paper direction because it has
 It is not yet enough for AAAI/ICLR/NeurIPS main-conference strength because it still needs:
 
 - broader task coverage;
-- live agent-loop comparisons, not only curated candidate audits;
+- fully autonomous LLM loops that generate candidates from scratch, not only same-agent policy evaluation over candidate trajectories;
 - stronger baselines against simpler static checks;
 - a systematic false-positive/false-negative analysis;
 - automatic invariant generation or at least a reusable invariant template library.
@@ -57,6 +57,8 @@ SciTriage broadly improves autonomous research agents across many natural tasks.
 ```
 
 That broader claim needs live agent-loop experiments.
+
+We now have an intermediate same-agent policy evaluation: the same score-seeking policy sees the same candidate trajectories with and without SciTriage evidence. This closes part of the gap, but does not replace fully autonomous LLM loops.
 
 ## What A Top-Conference Version Needs
 
@@ -111,4 +113,19 @@ The project now has:
 - an aggregate audit summary over the four complete audits;
 - a public README that presents the problem and results for non-specialist readers.
 
-The highest-leverage next experiment is now a live same-agent comparison: run the same AutoResearch agent with and without SciTriage on the candidate-audit tasks and measure invalid accept rate, final valid score, and extra cost.
+The highest-leverage next experiment is now a fully autonomous same-LLM comparison: run the same LLM agent with and without SciTriage while it creates candidates from scratch, then measure invalid accept rate, final valid score, and extra cost.
+
+Current same-agent policy result:
+
+| Policy | Invalid Accept Rate | Mean Valid-Score Retention |
+|---|---:|---:|
+| `official_score_only` | 0.750 | 0.250 |
+| `static_artifact_rule` | 0.750 | 0.250 |
+| `judge_only_proxy` | 0.750 | 0.250 |
+| `scitriage_full` | 0.000 | 1.000 |
+
+See:
+
+```text
+docs/LIVE_AGENT_LOOP_RESULTS.md
+```
