@@ -13,6 +13,7 @@ from scitriage.adapters.filesystem import trace_from_filesystem
 from scitriage.probe_priority import prioritize_probe
 from scitriage.rules import diagnose
 from scitriage.schema import MetricObservation, ResearchTrace
+from scitriage.semantic_gate import select_with_semantic_gate
 
 
 class CoreBehaviorTests(unittest.TestCase):
@@ -21,6 +22,15 @@ class CoreBehaviorTests(unittest.TestCase):
         self.assertAlmostEqual(parse_metric('"accuracy": "87.5%"', "accuracy"), 0.875)
         self.assertEqual(parse_metric('{"submission_score": 12.5}', "submission_score"), 12.5)
         self.assertEqual(parse_metric("Time taken for execution: 3.38 s", "time_taken"), 3.38)
+
+    def test_semantic_gate_blocks_visible_winner(self):
+        result = select_with_semantic_gate([
+            {"variant": "invalid_fast", "official_score": 0.1, "semantic_invariant_passed": False},
+            {"variant": "valid_slow", "official_score": 0.2, "semantic_invariant_passed": True},
+        ])
+        self.assertTrue(result["visible_winner_blocked"])
+        self.assertEqual(result["visible_score_only"]["selected"], "invalid_fast")
+        self.assertEqual(result["scitriage_gated"]["selected"], "valid_slow")
 
     def test_noisy_one_shot_blocks_claim(self):
         trace = ResearchTrace(

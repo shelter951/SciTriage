@@ -14,6 +14,8 @@ from typing import Dict, List
 
 import numpy as np
 
+from scitriage.semantic_gate import select_with_semantic_gate
+
 
 def _load_module(path: Path, name: str):
     spec = importlib.util.spec_from_file_location(name, path)
@@ -252,25 +254,24 @@ def main() -> int:
         rows.append(row)
         _write_log(out / f"{variant}.log", row)
 
-    official = min((r for r in rows if r["official_score"] is not None), key=lambda r: r["official_score"])
-    valid = [r for r in rows if r["official_score"] is not None and r["semantic_invariant_passed"]]
-    triage = min(valid, key=lambda r: r["official_score"])
+    policy = select_with_semantic_gate(rows, lower_is_better=True)
     result = {
         "task": "MLAgentBench/vectorization",
         "repeats": args.repeats,
         "rows": rows,
         "policy_comparison": {
             "visible_score_only": {
-                "selected": official["variant"],
-                "official_score": official["official_score"],
-                "semantic_invariant_passed": official["semantic_invariant_passed"],
+                "selected": policy["visible_score_only"]["selected"],
+                "official_score": policy["visible_score_only"]["score"],
+                "semantic_invariant_passed": policy["visible_score_only"]["semantic_invariant_passed"],
             },
             "scitriage_gated": {
-                "selected": triage["variant"],
-                "official_score": triage["official_score"],
-                "semantic_invariant_passed": triage["semantic_invariant_passed"],
+                "selected": policy["scitriage_gated"]["selected"],
+                "official_score": policy["scitriage_gated"]["score"],
+                "semantic_invariant_passed": policy["scitriage_gated"]["semantic_invariant_passed"],
             },
         },
+        "semantic_gate": policy,
     }
     (out / "candidate_audit.json").write_text(json.dumps(result, indent=2))
     (out / "CANDIDATE_AUDIT.md").write_text(_render_markdown(result))
