@@ -22,6 +22,11 @@ analysis/*
 !analysis/external_mlagentbench_vectorization_v1/**
 !analysis/external_mlagentbench_vectorization_v3/
 !analysis/external_mlagentbench_vectorization_v3/**
+!analysis/external_mlagentbench_cifar10_v1/
+!analysis/external_mlagentbench_cifar10_v1/**
+!analysis/external_mlagentbench_task_surface_v1/
+!analysis/external_mlagentbench_task_surface_v1/**
+analysis/**/workspaces/
 
 # Local secrets and environment files.
 .env
@@ -32,4 +37,3 @@ secrets/
 private/
 PRIVATE*
 *_PRIVATE.md
-

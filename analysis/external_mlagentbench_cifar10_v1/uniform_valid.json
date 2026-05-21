@@ -1,0 +1,104 @@
+{
+  "variant": "uniform_valid",
+  "runs": [
+    {
+      "returncode": 0,
+      "stdout": "",
+      "stderr": "",
+      "submission_exists": true,
+      "official_score": 0.1,
+      "schema_check": {
+        "passed": true,
+        "shape": [
+          10000,
+          10
+        ],
+        "columns": [
+          "0",
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6",
+          "7",
+          "8",
+          "9"
+        ],
+        "min_row_sum": 0.9999999999999999,
+        "max_row_sum": 0.9999999999999999
+      }
+    },
+    {
+      "returncode": 0,
+      "stdout": "",
+      "stderr": "",
+      "submission_exists": true,
+      "official_score": 0.1,
+      "schema_check": {
+        "passed": true,
+        "shape": [
+          10000,
+          10
+        ],
+        "columns": [
+          "0",
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6",
+          "7",
+          "8",
+          "9"
+        ],
+        "min_row_sum": 0.9999999999999999,
+        "max_row_sum": 0.9999999999999999
+      }
+    },
+    {
+      "returncode": 0,
+      "stdout": "",
+      "stderr": "",
+      "submission_exists": true,
+      "official_score": 0.1,
+      "schema_check": {
+        "passed": true,
+        "shape": [
+          10000,
+          10
+        ],
+        "columns": [
+          "0",
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6",
+          "7",
+          "8",
+          "9"
+        ],
+        "min_row_sum": 0.9999999999999999,
+        "max_row_sum": 0.9999999999999999
+      }
+    }
+  ],
+  "official_score": 0.1,
+  "official_score_std": 0.0,
+  "official_score_min": 0.1,
+  "official_score_max": 0.1,
+  "returncode": 0,
+  "stdout": "\n\n",
+  "stderr": "\n\n",
+  "schema_passed": true,
+  "test_label_gate_passed": true,
+  "test_label_gate": {
+    "passed": true,
+    "test_label_leaks": [],
+    "test_dataset_vars": []
+  },
+  "validity_gate_passed": true
+}

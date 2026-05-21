@@ -49,6 +49,11 @@ official best: zero_fast_invalid
 triage best: im2col_einsum
 speedup vs baseline: 235x
 
+$ scitriage validity-gate MLAgentBench/cifar10
+official best: test_label_oracle_invalid
+triage action: blocked test-label leak
+official acc blocked: 1.0000
+
 $ scitriage claim-gate depth7
 status: allowed
 delta / margin: 12.44
@@ -66,8 +71,8 @@ reason: below noise scale</code></pre>
         </div>
         <div class="metrics">
           <div>
-            <strong>235x</strong>
-            <span>faster valid MLAgentBench vectorization candidate</span>
+            <strong>2</strong>
+            <span>external MLAgentBench failure modes blocked</span>
           </div>
           <div>
             <strong>71.4%</strong>
@@ -75,7 +80,7 @@ reason: below noise scale</code></pre>
           </div>
           <div>
             <strong>blocked</strong>
-            <span>runtime-only winner that broke semantic equivalence</span>
+            <span>runtime shortcut and perfect-score label oracle</span>
           </div>
         </div>
       </section>

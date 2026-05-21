@@ -1,4 +1,5 @@
 import json
+import importlib.util
 import tempfile
 import unittest
 from pathlib import Path
@@ -16,6 +17,14 @@ from scitriage.schema import MetricObservation, ResearchTrace
 from scitriage.semantic_gate import select_with_semantic_gate
 
 
+def _load_script_function(script_name, function_name):
+    script = Path(__file__).resolve().parents[1] / "scripts" / script_name
+    spec = importlib.util.spec_from_file_location(script.stem, script)
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return getattr(module, function_name)
+
+
 class CoreBehaviorTests(unittest.TestCase):
     def test_parse_metric_handles_benchmark_log_formats(self):
         self.assertEqual(parse_metric("score = -1.25e-03", "score"), -1.25e-03)
@@ -31,6 +40,26 @@ class CoreBehaviorTests(unittest.TestCase):
         self.assertTrue(result["visible_winner_blocked"])
         self.assertEqual(result["visible_score_only"]["selected"], "invalid_fast")
         self.assertEqual(result["scitriage_gated"]["selected"], "valid_slow")
+
+    def test_cifar10_audit_detects_test_label_leak(self):
+        audit_test_label_leak = _load_script_function(
+            "run_mlagentbench_cifar10_candidates.py",
+            "audit_test_label_leak",
+        )
+        leak = audit_test_label_leak("""
+from torchvision import datasets
+test_dataset = datasets.CIFAR10(root="./data", train=False, download=True)
+for idx, (_, label) in enumerate(test_dataset):
+    rows[idx, label] = 1.0
+""")
+        clean = audit_test_label_leak("""
+from torchvision import datasets
+train_dataset = datasets.CIFAR10(root="./data", train=True, download=True)
+for idx, (_, label) in enumerate(train_dataset):
+    counts[label] += 1.0
+""")
+        self.assertFalse(leak["passed"])
+        self.assertTrue(clean["passed"])
 
     def test_noisy_one_shot_blocks_claim(self):
         trace = ResearchTrace(

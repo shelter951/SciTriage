@@ -1,0 +1,273 @@
+{
+  "rows": [
+    {
+      "task": "CLRS",
+      "has_eval": true,
+      "has_prepare": false,
+      "has_env_train": true,
+      "read_only_files": [],
+      "read_only_count": 0,
+      "eval_uses_labels": false,
+      "agent_visible_test_labels": false,
+      "needs_kaggle": false,
+      "needs_external_download": false,
+      "blockers": [],
+      "recommended_use": "candidate audit"
+    },
+    {
+      "task": "amp-parkinsons-disease-progression-prediction",
+      "has_eval": true,
+      "has_prepare": true,
+      "has_env_train": true,
+      "read_only_files": [
+        "example_test_files/*",
+        "./supplemental_clinical_data.csv",
+        "./train_clinical_data.csv",
+        "./train_peptide.csv",
+        "./train_protein.csv"
+      ],
+      "read_only_count": 5,
+      "eval_uses_labels": true,
+      "agent_visible_test_labels": false,
+      "needs_kaggle": true,
+      "needs_external_download": true,
+      "blockers": [
+        "kaggle_data"
+      ],
+      "recommended_use": "defer until data prepared"
+    },
+    {
+      "task": "babylm",
+      "has_eval": true,
+      "has_prepare": true,
+      "has_env_train": true,
+      "read_only_files": [
+        "babylm_data/*",
+        "__MACOSX/*"
+      ],
+      "read_only_count": 2,
+      "eval_uses_labels": true,
+      "agent_visible_test_labels": false,
+      "needs_kaggle": false,
+      "needs_external_download": true,
+      "blockers": [
+        "external_download"
+      ],
+      "recommended_use": "defer until data prepared"
+    },
+    {
+      "task": "bibtex-generation",
+      "has_eval": false,
+      "has_prepare": false,
+      "has_env_train": false,
+      "read_only_files": [],
+      "read_only_count": 0,
+      "eval_uses_labels": false,
+      "agent_visible_test_labels": false,
+      "needs_kaggle": false,
+      "needs_external_download": false,
+      "blockers": [
+        "no_official_eval"
+      ],
+      "recommended_use": "integration/log audit only"
+    },
+    {
+      "task": "cifar10",
+      "has_eval": true,
+      "has_prepare": true,
+      "has_env_train": true,
+      "read_only_files": [
+        "data/*"
+      ],
+      "read_only_count": 1,
+      "eval_uses_labels": true,
+      "agent_visible_test_labels": true,
+      "needs_kaggle": false,
+      "needs_external_download": true,
+      "blockers": [
+        "external_download",
+        "agent_visible_test_label_surface"
+      ],
+      "recommended_use": "validity-gate audit"
+    },
+    {
+      "task": "fathomnet",
+      "has_eval": true,
+      "has_prepare": true,
+      "has_env_train": true,
+      "read_only_files": [
+        "images/*",
+        "multilabel_classification/*",
+        "object_detection/*",
+        "./category_key.csv"
+      ],
+      "read_only_count": 4,
+      "eval_uses_labels": true,
+      "agent_visible_test_labels": false,
+      "needs_kaggle": true,
+      "needs_external_download": true,
+      "blockers": [
+        "kaggle_data"
+      ],
+      "recommended_use": "defer until data prepared"
+    },
+    {
+      "task": "feedback",
+      "has_eval": true,
+      "has_prepare": true,
+      "has_env_train": true,
+      "read_only_files": [
+        "./train.csv",
+        "./test.csv"
+      ],
+      "read_only_count": 2,
+      "eval_uses_labels": true,
+      "agent_visible_test_labels": false,
+      "needs_kaggle": true,
+      "needs_external_download": true,
+      "blockers": [
+        "kaggle_data"
+      ],
+      "recommended_use": "defer until data prepared"
+    },
+    {
+      "task": "house-price",
+      "has_eval": true,
+      "has_prepare": true,
+      "has_env_train": true,
+      "read_only_files": [
+        "./train.csv",
+        "./test.csv"
+      ],
+      "read_only_count": 2,
+      "eval_uses_labels": true,
+      "agent_visible_test_labels": false,
+      "needs_kaggle": true,
+      "needs_external_download": true,
+      "blockers": [
+        "kaggle_data"
+      ],
+      "recommended_use": "defer until data prepared"
+    },
+    {
+      "task": "identify-contrails",
+      "has_eval": true,
+      "has_prepare": true,
+      "has_env_train": true,
+      "read_only_files": [
+        "test/*",
+        "_test/*",
+        "test_answer/*",
+        "train/*",
+        "./train_metadata.json",
+        "./validations_metadata.json"
+      ],
+      "read_only_count": 6,
+      "eval_uses_labels": true,
+      "agent_visible_test_labels": false,
+      "needs_kaggle": true,
+      "needs_external_download": true,
+      "blockers": [
+        "kaggle_data"
+      ],
+      "recommended_use": "defer until data prepared"
+    },
+    {
+      "task": "imdb",
+      "has_eval": true,
+      "has_prepare": false,
+      "has_env_train": true,
+      "read_only_files": [],
+      "read_only_count": 0,
+      "eval_uses_labels": true,
+      "agent_visible_test_labels": false,
+      "needs_kaggle": false,
+      "needs_external_download": false,
+      "blockers": [],
+      "recommended_use": "candidate audit"
+    },
+    {
+      "task": "literature-review-tool",
+      "has_eval": false,
+      "has_prepare": false,
+      "has_env_train": false,
+      "read_only_files": [],
+      "read_only_count": 0,
+      "eval_uses_labels": false,
+      "agent_visible_test_labels": false,
+      "needs_kaggle": false,
+      "needs_external_download": false,
+      "blockers": [
+        "no_official_eval"
+      ],
+      "recommended_use": "integration/log audit only"
+    },
+    {
+      "task": "llama-inference",
+      "has_eval": false,
+      "has_prepare": false,
+      "has_env_train": false,
+      "read_only_files": [],
+      "read_only_count": 0,
+      "eval_uses_labels": false,
+      "agent_visible_test_labels": false,
+      "needs_kaggle": false,
+      "needs_external_download": false,
+      "blockers": [
+        "no_official_eval"
+      ],
+      "recommended_use": "integration/log audit only"
+    },
+    {
+      "task": "ogbn-arxiv",
+      "has_eval": true,
+      "has_prepare": true,
+      "has_env_train": true,
+      "read_only_files": [
+        "networks/*"
+      ],
+      "read_only_count": 1,
+      "eval_uses_labels": true,
+      "agent_visible_test_labels": false,
+      "needs_kaggle": false,
+      "needs_external_download": true,
+      "blockers": [
+        "external_download"
+      ],
+      "recommended_use": "defer until data prepared"
+    },
+    {
+      "task": "spaceship-titanic",
+      "has_eval": true,
+      "has_prepare": true,
+      "has_env_train": true,
+      "read_only_files": [
+        "./train.csv",
+        "./test.csv"
+      ],
+      "read_only_count": 2,
+      "eval_uses_labels": true,
+      "agent_visible_test_labels": false,
+      "needs_kaggle": true,
+      "needs_external_download": true,
+      "blockers": [
+        "kaggle_data"
+      ],
+      "recommended_use": "defer until data prepared"
+    },
+    {
+      "task": "vectorization",
+      "has_eval": true,
+      "has_prepare": false,
+      "has_env_train": true,
+      "read_only_files": [],
+      "read_only_count": 0,
+      "eval_uses_labels": false,
+      "agent_visible_test_labels": false,
+      "needs_kaggle": false,
+      "needs_external_download": false,
+      "blockers": [],
+      "recommended_use": "candidate audit"
+    }
+  ]
+}

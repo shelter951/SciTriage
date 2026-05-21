@@ -56,7 +56,7 @@ Under this real quick-probe setting:
 | accepted non-depth candidate | `batch_small` |
 | family-landmark seed saving | `71.4%` fewer extra seed runs |
 
-The important point is not just that `depth7` wins. The important point is that two plausible one-shot “discoveries” disappear once we compare against measured seed noise.
+The important point is not just that `depth7` wins. The important point is that two plausible one-shot "discoveries" disappear once we compare against measured seed noise.
 
 The larger evidence board is stronger: across 24 observed candidates, a family-landmark SciTriage policy keeps 100% of the supported research directions while using only 4 extra seed runs instead of 14 for verifying every one-shot positive.
 
@@ -64,9 +64,18 @@ Full results: [`analysis/autoresearch_probe_v1/PAPER_RESULTS.md`](analysis/autor
 
 Evidence board: [`analysis/autoresearch_probe_v1/evidence_board_v1/EVIDENCE_BOARD.md`](analysis/autoresearch_probe_v1/evidence_board_v1/EVIDENCE_BOARD.md)
 
-## External Benchmark Smoke Result
+## External Benchmark Results
 
-We also started external validation on [MLAgentBench](https://github.com/snap-stanford/MLAgentBench), beginning with its `vectorization` task.
+We also validate SciTriage on [MLAgentBench](https://github.com/snap-stanford/MLAgentBench), using the benchmark's own task folders and official eval scripts.
+
+The current external result covers two different failure modes:
+
+| MLAgentBench task | Visible-score-only winner | SciTriage-gated winner | What SciTriage blocks |
+|---|---|---|---|
+| `vectorization` | `zero_fast_invalid` at `0.005249s` | `im2col_einsum` at `0.014736s` | invalid runtime shortcut |
+| `cifar10` | `test_label_oracle_invalid` at `1.0000` acc | `random_valid` at `0.1042` acc | test-label leakage |
+
+### Vectorization
 
 This task has a useful failure mode: the official score is runtime, so an invalid shortcut can look excellent if it skips the real computation. SciTriage adds a semantic invariant check against the original convolution output.
 
@@ -80,6 +89,25 @@ This task has a useful failure mode: the official score is runtime, so an invali
 The official runtime-only winner is invalid. SciTriage blocks it and selects the fastest semantically valid candidate, which is still about `235x` faster than the baseline. This result uses 7 repeated runs per candidate.
 
 External audit: [`analysis/external_mlagentbench_vectorization_v3/CANDIDATE_AUDIT.md`](analysis/external_mlagentbench_vectorization_v3/CANDIDATE_AUDIT.md)
+
+### CIFAR-10
+
+This task exposes a different issue: the starter environment can access CIFAR-10 test labels. A candidate can therefore write a perfect one-hot submission without learning.
+
+| Candidate | Official accuracy | Test-label leak gate | Triage status |
+|---|---:|---|---|
+| `test_label_oracle_invalid` | `1.0000` | fails | blocked |
+| `random_valid` | `0.1042` | passes | allowed |
+| `uniform_valid` | `0.1000` | passes | allowed |
+| `train_prior_valid` | `0.1000` | passes | allowed |
+
+The official accuracy winner is a label oracle. SciTriage blocks it and records the result as benchmark leakage, not scientific progress.
+
+CIFAR audit: [`analysis/external_mlagentbench_cifar10_v1/CANDIDATE_AUDIT.md`](analysis/external_mlagentbench_cifar10_v1/CANDIDATE_AUDIT.md)
+
+Task surface audit: [`analysis/external_mlagentbench_task_surface_v1/TASK_SURFACE_AUDIT.md`](analysis/external_mlagentbench_task_surface_v1/TASK_SURFACE_AUDIT.md)
+
+Benchmark positioning: [`docs/RELATED_BENCHMARKS.md`](docs/RELATED_BENCHMARKS.md)
 
 ## Install
 
