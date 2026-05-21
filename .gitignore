@@ -20,6 +20,8 @@ analysis/*
 !analysis/autoresearch_probe_v1/**
 !analysis/external_mlagentbench_vectorization_v1/
 !analysis/external_mlagentbench_vectorization_v1/**
+!analysis/external_mlagentbench_vectorization_v3/
+!analysis/external_mlagentbench_vectorization_v3/**
 
 # Local secrets and environment files.
 .env

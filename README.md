@@ -72,14 +72,14 @@ This task has a useful failure mode: the official score is runtime, so an invali
 
 | Candidate | Official runtime | Semantic invariant | Triage status |
 |---|---:|---|---|
-| `zero_fast_invalid` | `0.005201s` | fails | blocked |
-| `im2col_einsum` | `0.014278s` | passes | allowed |
-| `filter_vectorized` | `0.743157s` | passes | allowed |
-| `baseline` | `3.551149s` | passes | allowed |
+| `zero_fast_invalid` | `0.005249s` | fails | blocked |
+| `im2col_einsum` | `0.014736s` | passes | allowed |
+| `filter_vectorized` | `0.745721s` | passes | allowed |
+| `baseline` | `3.470400s` | passes | allowed |
 
-The official runtime-only winner is invalid. SciTriage blocks it and selects the fastest semantically valid candidate, which is still about `249x` faster than the baseline.
+The official runtime-only winner is invalid. SciTriage blocks it and selects the fastest semantically valid candidate, which is still about `235x` faster than the baseline. This result uses 7 repeated runs per candidate.
 
-External audit: [`analysis/external_mlagentbench_vectorization_v1/CANDIDATE_AUDIT.md`](analysis/external_mlagentbench_vectorization_v1/CANDIDATE_AUDIT.md)
+External audit: [`analysis/external_mlagentbench_vectorization_v3/CANDIDATE_AUDIT.md`](analysis/external_mlagentbench_vectorization_v3/CANDIDATE_AUDIT.md)
 
 ## Install
 

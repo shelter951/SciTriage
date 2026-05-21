@@ -1,0 +1,385 @@
+{
+  "task": "MLAgentBench/vectorization",
+  "repeats": 7,
+  "rows": [
+    {
+      "variant": "baseline",
+      "runs": [
+        {
+          "returncode": 0,
+          "stdout": "Time taken for execution: 3.5184342861175537 s\n",
+          "stderr": "/home/sunhenghui/projects/scitriage/analysis/external_mlagentbench_vectorization_v3/workspaces/baseline/train.py:122: DeprecationWarning: Conversion of an array with ndim > 0 to a scalar is deprecated, and will error in future. Ensure you extract a single element from your array before performing this operation. (Deprecated NumPy 1.25.)\n  output[index,h,w,filter_index] = result # Fill the resulting output matrix with corresponding values\n",
+          "official_score": 3.5184342861175537
+        },
+        {
+          "returncode": 0,
+          "stdout": "Time taken for execution: 3.416249990463257 s\n",
+          "stderr": "/home/sunhenghui/projects/scitriage/analysis/external_mlagentbench_vectorization_v3/workspaces/baseline/train.py:122: DeprecationWarning: Conversion of an array with ndim > 0 to a scalar is deprecated, and will error in future. Ensure you extract a single element from your array before performing this operation. (Deprecated NumPy 1.25.)\n  output[index,h,w,filter_index] = result # Fill the resulting output matrix with corresponding values\n",
+          "official_score": 3.416249990463257
+        },
+        {
+          "returncode": 0,
+          "stdout": "Time taken for execution: 3.5257368087768555 s\n",
+          "stderr": "/home/sunhenghui/projects/scitriage/analysis/external_mlagentbench_vectorization_v3/workspaces/baseline/train.py:122: DeprecationWarning: Conversion of an array with ndim > 0 to a scalar is deprecated, and will error in future. Ensure you extract a single element from your array before performing this operation. (Deprecated NumPy 1.25.)\n  output[index,h,w,filter_index] = result # Fill the resulting output matrix with corresponding values\n",
+          "official_score": 3.5257368087768555
+        },
+        {
+          "returncode": 0,
+          "stdout": "Time taken for execution: 3.482213258743286 s\n",
+          "stderr": "/home/sunhenghui/projects/scitriage/analysis/external_mlagentbench_vectorization_v3/workspaces/baseline/train.py:122: DeprecationWarning: Conversion of an array with ndim > 0 to a scalar is deprecated, and will error in future. Ensure you extract a single element from your array before performing this operation. (Deprecated NumPy 1.25.)\n  output[index,h,w,filter_index] = result # Fill the resulting output matrix with corresponding values\n",
+          "official_score": 3.482213258743286
+        },
+        {
+          "returncode": 0,
+          "stdout": "Time taken for execution: 3.4076805114746094 s\n",
+          "stderr": "/home/sunhenghui/projects/scitriage/analysis/external_mlagentbench_vectorization_v3/workspaces/baseline/train.py:122: DeprecationWarning: Conversion of an array with ndim > 0 to a scalar is deprecated, and will error in future. Ensure you extract a single element from your array before performing this operation. (Deprecated NumPy 1.25.)\n  output[index,h,w,filter_index] = result # Fill the resulting output matrix with corresponding values\n",
+          "official_score": 3.4076805114746094
+        },
+        {
+          "returncode": 0,
+          "stdout": "Time taken for execution: 3.3450002670288086 s\n",
+          "stderr": "/home/sunhenghui/projects/scitriage/analysis/external_mlagentbench_vectorization_v3/workspaces/baseline/train.py:122: DeprecationWarning: Conversion of an array with ndim > 0 to a scalar is deprecated, and will error in future. Ensure you extract a single element from your array before performing this operation. (Deprecated NumPy 1.25.)\n  output[index,h,w,filter_index] = result # Fill the resulting output matrix with corresponding values\n",
+          "official_score": 3.3450002670288086
+        },
+        {
+          "returncode": 0,
+          "stdout": "Time taken for execution: 3.597484827041626 s\n",
+          "stderr": "/home/sunhenghui/projects/scitriage/analysis/external_mlagentbench_vectorization_v3/workspaces/baseline/train.py:122: DeprecationWarning: Conversion of an array with ndim > 0 to a scalar is deprecated, and will error in future. Ensure you extract a single element from your array before performing this operation. (Deprecated NumPy 1.25.)\n  output[index,h,w,filter_index] = result # Fill the resulting output matrix with corresponding values\n",
+          "official_score": 3.597484827041626
+        }
+      ],
+      "official_score": 3.4703999928065707,
+      "official_score_std": 0.08587841424336194,
+      "official_score_min": 3.3450002670288086,
+      "official_score_max": 3.597484827041626,
+      "returncode": 0,
+      "stdout": "Time taken for execution: 3.5184342861175537 s\n\nTime taken for execution: 3.416249990463257 s\n\nTime taken for execution: 3.5257368087768555 s\n\nTime taken for execution: 3.482213258743286 s\n\nTime taken for execution: 3.4076805114746094 s\n\nTime taken for execution: 3.3450002670288086 s\n\nTime taken for execution: 3.597484827041626 s\n",
+      "stderr": "/home/sunhenghui/projects/scitriage/analysis/external_mlagentbench_vectorization_v3/workspaces/baseline/train.py:122: DeprecationWarning: Conversion of an array with ndim > 0 to a scalar is deprecated, and will error in future. Ensure you extract a single element from your array before performing this operation. (Deprecated NumPy 1.25.)\n  output[index,h,w,filter_index] = result # Fill the resulting output matrix with corresponding values\n\n/home/sunhenghui/projects/scitriage/analysis/external_mlagentbench_vectorization_v3/workspaces/baseline/train.py:122: DeprecationWarning: Conversion of an array with ndim > 0 to a scalar is deprecated, and will error in future. Ensure you extract a single element from your array before performing this operation. (Deprecated NumPy 1.25.)\n  output[index,h,w,filter_index] = result # Fill the resulting output matrix with corresponding values\n\n/home/sunhenghui/projects/scitriage/analysis/external_mlagentbench_vectorization_v3/workspaces/baseline/train.py:122: DeprecationWarning: Conversion of an array with ndim > 0 to a scalar is deprecated, and will error in future. Ensure you extract a single element from your array before performing this operation. (Deprecated NumPy 1.25.)\n  output[index,h,w,filter_index] = result # Fill the resulting output matrix with corresponding values\n\n/home/sunhenghui/projects/scitriage/analysis/external_mlagentbench_vectorization_v3/workspaces/baseline/train.py:122: DeprecationWarning: Conversion of an array with ndim > 0 to a scalar is deprecated, and will error in future. Ensure you extract a single element from your array before performing this operation. (Deprecated NumPy 1.25.)\n  output[index,h,w,filter_index] = result # Fill the resulting output matrix with corresponding values\n\n/home/sunhenghui/projects/scitriage/analysis/external_mlagentbench_vectorization_v3/workspaces/baseline/train.py:122: DeprecationWarning: Conversion of an array with ndim > 0 to a scalar is deprecated, and will error in future. Ensure you extract a single element from your array before performing this operation. (Deprecated NumPy 1.25.)\n  output[index,h,w,filter_index] = result # Fill the resulting output matrix with corresponding values\n\n/home/sunhenghui/projects/scitriage/analysis/external_mlagentbench_vectorization_v3/workspaces/baseline/train.py:122: DeprecationWarning: Conversion of an array with ndim > 0 to a scalar is deprecated, and will error in future. Ensure you extract a single element from your array before performing this operation. (Deprecated NumPy 1.25.)\n  output[index,h,w,filter_index] = result # Fill the resulting output matrix with corresponding values\n\n/home/sunhenghui/projects/scitriage/analysis/external_mlagentbench_vectorization_v3/workspaces/baseline/train.py:122: DeprecationWarning: Conversion of an array with ndim > 0 to a scalar is deprecated, and will error in future. Ensure you extract a single element from your array before performing this operation. (Deprecated NumPy 1.25.)\n  output[index,h,w,filter_index] = result # Fill the resulting output matrix with corresponding values\n",
+      "semantic_invariant_passed": true,
+      "max_abs_error": 0.0
+    },
+    {
+      "variant": "filter_vectorized",
+      "runs": [
+        {
+          "returncode": 0,
+          "stdout": "Time taken for execution: 0.7366411685943604 s\n",
+          "stderr": "",
+          "official_score": 0.7366411685943604
+        },
+        {
+          "returncode": 0,
+          "stdout": "Time taken for execution: 0.7110209465026855 s\n",
+          "stderr": "",
+          "official_score": 0.7110209465026855
+        },
+        {
+          "returncode": 0,
+          "stdout": "Time taken for execution: 0.7863214015960693 s\n",
+          "stderr": "",
+          "official_score": 0.7863214015960693
+        },
+        {
+          "returncode": 0,
+          "stdout": "Time taken for execution: 0.7284455299377441 s\n",
+          "stderr": "",
+          "official_score": 0.7284455299377441
+        },
+        {
+          "returncode": 0,
+          "stdout": "Time taken for execution: 0.7383031845092773 s\n",
+          "stderr": "",
+          "official_score": 0.7383031845092773
+        },
+        {
+          "returncode": 0,
+          "stdout": "Time taken for execution: 0.765007734298706 s\n",
+          "stderr": "",
+          "official_score": 0.765007734298706
+        },
+        {
+          "returncode": 0,
+          "stdout": "Time taken for execution: 0.7543051242828369 s\n",
+          "stderr": "",
+          "official_score": 0.7543051242828369
+        }
+      ],
+      "official_score": 0.7457207271030971,
+      "official_score_std": 0.024946812830668717,
+      "official_score_min": 0.7110209465026855,
+      "official_score_max": 0.7863214015960693,
+      "returncode": 0,
+      "stdout": "Time taken for execution: 0.7366411685943604 s\n\nTime taken for execution: 0.7110209465026855 s\n\nTime taken for execution: 0.7863214015960693 s\n\nTime taken for execution: 0.7284455299377441 s\n\nTime taken for execution: 0.7383031845092773 s\n\nTime taken for execution: 0.765007734298706 s\n\nTime taken for execution: 0.7543051242828369 s\n",
+      "stderr": "\n\n\n\n\n\n",
+      "semantic_invariant_passed": true,
+      "max_abs_error": 3.552713678800501e-15
+    },
+    {
+      "variant": "im2col_einsum",
+      "runs": [
+        {
+          "returncode": 0,
+          "stdout": "Time taken for execution: 0.01453542709350586 s\n",
+          "stderr": "",
+          "official_score": 0.01453542709350586
+        },
+        {
+          "returncode": 0,
+          "stdout": "Time taken for execution: 0.014429807662963867 s\n",
+          "stderr": "",
+          "official_score": 0.014429807662963867
+        },
+        {
+          "returncode": 0,
+          "stdout": "Time taken for execution: 0.014916419982910156 s\n",
+          "stderr": "",
+          "official_score": 0.014916419982910156
+        },
+        {
+          "returncode": 0,
+          "stdout": "Time taken for execution: 0.014556169509887695 s\n",
+          "stderr": "",
+          "official_score": 0.014556169509887695
+        },
+        {
+          "returncode": 0,
+          "stdout": "Time taken for execution: 0.014592170715332031 s\n",
+          "stderr": "",
+          "official_score": 0.014592170715332031
+        },
+        {
+          "returncode": 0,
+          "stdout": "Time taken for execution: 0.014267683029174805 s\n",
+          "stderr": "",
+          "official_score": 0.014267683029174805
+        },
+        {
+          "returncode": 0,
+          "stdout": "Time taken for execution: 0.01585674285888672 s\n",
+          "stderr": "",
+          "official_score": 0.01585674285888672
+        }
+      ],
+      "official_score": 0.014736345836094447,
+      "official_score_std": 0.0005314986642041573,
+      "official_score_min": 0.014267683029174805,
+      "official_score_max": 0.01585674285888672,
+      "returncode": 0,
+      "stdout": "Time taken for execution: 0.01453542709350586 s\n\nTime taken for execution: 0.014429807662963867 s\n\nTime taken for execution: 0.014916419982910156 s\n\nTime taken for execution: 0.014556169509887695 s\n\nTime taken for execution: 0.014592170715332031 s\n\nTime taken for execution: 0.014267683029174805 s\n\nTime taken for execution: 0.01585674285888672 s\n",
+      "stderr": "\n\n\n\n\n\n",
+      "semantic_invariant_passed": true,
+      "max_abs_error": 3.552713678800501e-15
+    },
+    {
+      "variant": "zero_fast_invalid",
+      "runs": [
+        {
+          "returncode": 0,
+          "stdout": "Time taken for execution: 0.005122661590576172 s\n",
+          "stderr": "",
+          "official_score": 0.005122661590576172
+        },
+        {
+          "returncode": 0,
+          "stdout": "Time taken for execution: 0.005107402801513672 s\n",
+          "stderr": "",
+          "official_score": 0.005107402801513672
+        },
+        {
+          "returncode": 0,
+          "stdout": "Time taken for execution: 0.004987955093383789 s\n",
+          "stderr": "",
+          "official_score": 0.004987955093383789
+        },
+        {
+          "returncode": 0,
+          "stdout": "Time taken for execution: 0.004935026168823242 s\n",
+          "stderr": "",
+          "official_score": 0.004935026168823242
+        },
+        {
+          "returncode": 0,
+          "stdout": "Time taken for execution: 0.004982709884643555 s\n",
+          "stderr": "",
+          "official_score": 0.004982709884643555
+        },
+        {
+          "returncode": 0,
+          "stdout": "Time taken for execution: 0.004800558090209961 s\n",
+          "stderr": "",
+          "official_score": 0.004800558090209961
+        },
+        {
+          "returncode": 0,
+          "stdout": "Time taken for execution: 0.0068089962005615234 s\n",
+          "stderr": "",
+          "official_score": 0.0068089962005615234
+        }
+      ],
+      "official_score": 0.0052493299756731305,
+      "official_score_std": 0.0006962199276354729,
+      "official_score_min": 0.004800558090209961,
+      "official_score_max": 0.0068089962005615234,
+      "returncode": 0,
+      "stdout": "Time taken for execution: 0.005122661590576172 s\n\nTime taken for execution: 0.005107402801513672 s\n\nTime taken for execution: 0.004987955093383789 s\n\nTime taken for execution: 0.004935026168823242 s\n\nTime taken for execution: 0.004982709884643555 s\n\nTime taken for execution: 0.004800558090209961 s\n\nTime taken for execution: 0.0068089962005615234 s\n",
+      "stderr": "\n\n\n\n\n\n",
+      "semantic_invariant_passed": false,
+      "max_abs_error": 14.312472345026075
+    },
+    {
+      "variant": "random_fast_invalid",
+      "runs": [
+        {
+          "returncode": 0,
+          "stdout": "Time taken for execution: 0.013412714004516602 s\n",
+          "stderr": "",
+          "official_score": 0.013412714004516602
+        },
+        {
+          "returncode": 0,
+          "stdout": "Time taken for execution: 0.013995885848999023 s\n",
+          "stderr": "",
+          "official_score": 0.013995885848999023
+        },
+        {
+          "returncode": 0,
+          "stdout": "Time taken for execution: 0.013515233993530273 s\n",
+          "stderr": "",
+          "official_score": 0.013515233993530273
+        },
+        {
+          "returncode": 0,
+          "stdout": "Time taken for execution: 0.013509035110473633 s\n",
+          "stderr": "",
+          "official_score": 0.013509035110473633
+        },
+        {
+          "returncode": 0,
+          "stdout": "Time taken for execution: 0.013554096221923828 s\n",
+          "stderr": "",
+          "official_score": 0.013554096221923828
+        },
+        {
+          "returncode": 0,
+          "stdout": "Time taken for execution: 0.013254165649414062 s\n",
+          "stderr": "",
+          "official_score": 0.013254165649414062
+        },
+        {
+          "returncode": 0,
+          "stdout": "Time taken for execution: 0.01325678825378418 s\n",
+          "stderr": "",
+          "official_score": 0.01325678825378418
+        }
+      ],
+      "official_score": 0.013499702726091658,
+      "official_score_std": 0.0002504487945251203,
+      "official_score_min": 0.013254165649414062,
+      "official_score_max": 0.013995885848999023,
+      "returncode": 0,
+      "stdout": "Time taken for execution: 0.013412714004516602 s\n\nTime taken for execution: 0.013995885848999023 s\n\nTime taken for execution: 0.013515233993530273 s\n\nTime taken for execution: 0.013509035110473633 s\n\nTime taken for execution: 0.013554096221923828 s\n\nTime taken for execution: 0.013254165649414062 s\n\nTime taken for execution: 0.01325678825378418 s\n",
+      "stderr": "\n\n\n\n\n\n",
+      "semantic_invariant_passed": false,
+      "max_abs_error": 12.901172313316167
+    },
+    {
+      "variant": "bias_only_invalid",
+      "runs": [
+        {
+          "returncode": 0,
+          "stdout": "Time taken for execution: 0.006288766860961914 s\n",
+          "stderr": "",
+          "official_score": 0.006288766860961914
+        },
+        {
+          "returncode": 0,
+          "stdout": "Time taken for execution: 0.006472349166870117 s\n",
+          "stderr": "",
+          "official_score": 0.006472349166870117
+        },
+        {
+          "returncode": 0,
+          "stdout": "Time taken for execution: 0.0061986446380615234 s\n",
+          "stderr": "",
+          "official_score": 0.0061986446380615234
+        },
+        {
+          "returncode": 0,
+          "stdout": "Time taken for execution: 0.008534431457519531 s\n",
+          "stderr": "",
+          "official_score": 0.008534431457519531
+        },
+        {
+          "returncode": 0,
+          "stdout": "Time taken for execution: 0.006032228469848633 s\n",
+          "stderr": "",
+          "official_score": 0.006032228469848633
+        },
+        {
+          "returncode": 0,
+          "stdout": "Time taken for execution: 0.006062984466552734 s\n",
+          "stderr": "",
+          "official_score": 0.006062984466552734
+        },
+        {
+          "returncode": 0,
+          "stdout": "Time taken for execution: 0.007072925567626953 s\n",
+          "stderr": "",
+          "official_score": 0.007072925567626953
+        }
+      ],
+      "official_score": 0.00666604723249163,
+      "official_score_std": 0.0008963021365702979,
+      "official_score_min": 0.006032228469848633,
+      "official_score_max": 0.008534431457519531,
+      "returncode": 0,
+      "stdout": "Time taken for execution: 0.006288766860961914 s\n\nTime taken for execution: 0.006472349166870117 s\n\nTime taken for execution: 0.0061986446380615234 s\n\nTime taken for execution: 0.008534431457519531 s\n\nTime taken for execution: 0.006032228469848633 s\n\nTime taken for execution: 0.006062984466552734 s\n\nTime taken for execution: 0.007072925567626953 s\n",
+      "stderr": "\n\n\n\n\n\n",
+      "semantic_invariant_passed": false,
+      "max_abs_error": 14.04413930674017
+    }
+  ],
+  "policy_comparison": {
+    "visible_score_only": {
+      "selected": "zero_fast_invalid",
+      "official_score": 0.0052493299756731305,
+      "semantic_invariant_passed": false
+    },
+    "scitriage_gated": {
+      "selected": "im2col_einsum",
+      "official_score": 0.014736345836094447,
+      "semantic_invariant_passed": true
+    }
+  },
+  "semantic_gate": {
+    "status": "ok",
+    "visible_score_only": {
+      "selected": "zero_fast_invalid",
+      "score": 0.0052493299756731305,
+      "semantic_invariant_passed": false
+    },
+    "scitriage_gated": {
+      "selected": "im2col_einsum",
+      "score": 0.014736345836094447,
+      "semantic_invariant_passed": true
+    },
+    "blocked_candidates": [
+      {
+        "selected": "zero_fast_invalid",
+        "score": 0.0052493299756731305,
+        "semantic_invariant_passed": false
+      },
+      {
+        "selected": "random_fast_invalid",
+        "score": 0.013499702726091658,
+        "semantic_invariant_passed": false
+      },
+      {
+        "selected": "bias_only_invalid",
+        "score": 0.00666604723249163,
+        "semantic_invariant_passed": false
+      }
+    ],
+    "visible_winner_blocked": true
+  }
+}
