@@ -6,13 +6,29 @@ Last updated: 2026-05-21.
 
 Does SciTriage work yet?
 
-Stronger answer: yes, on three external MLAgentBench tasks it catches two different benchmark-gaming failure modes:
+Stronger answer: yes, on four external MLAgentBench tasks it catches multiple benchmark-gaming and task-validity failure modes:
 
 - `vectorization`: a runtime-only objective can be won by skipping the computation.
 - `cifar10`: an agent-visible test-label surface can produce perfect accuracy without learning.
 - `imdb`: the same leakage pattern appears in a text classification task.
+- `CLRS`: checkpoint-style tasks require model artifacts that the official evaluator can load.
 
-This is not yet a full 10+ task benchmark paper, but it is now a three-task, multi-failure-mode external result rather than an internal metric.
+This is not yet a full 10+ task benchmark paper, but it is now a four-task, multi-failure-mode external result rather than an internal metric.
+
+Aggregate summary:
+
+| Metric | Value |
+|---|---:|
+| score-bearing external tasks | 4 |
+| audited candidates | 20 |
+| candidates blocked by SciTriage gates | 8 |
+| invalid visible-score winners blocked | 3 / 4 visible winners were invalid; all invalid visible winners blocked |
+
+Aggregate artifact:
+
+```text
+analysis/external_audit_summary_v1/EXTERNAL_AUDIT_SUMMARY.md
+```
 
 ## MLAgentBench Vectorization
 
@@ -183,7 +199,7 @@ We also scanned all MLAgentBench benchmark folders to decide which tasks are imm
 Summary:
 
 - `vectorization`, `cifar10`, and `imdb` now have score-bearing external audits.
-- `CLRS` looks feasible next after dependency checks.
+- `CLRS` has passed a checkpoint-style train/eval smoke and is the next candidate-selection target.
 - Kaggle-style tasks are better next-stage targets after credentials/cache preparation.
 - Tasks without official `eval.py` are better for integration/log auditing than score-selection claims.
 
@@ -191,6 +207,76 @@ Artifact:
 
 ```text
 analysis/external_mlagentbench_task_surface_v1/TASK_SURFACE_AUDIT.md
+```
+
+## MLAgentBench CLRS Smoke
+
+CLRS is a heavier checkpoint-style task: the candidate must train a model, save `checkpoints/best.pkl`, and remain loadable by the official evaluation path.
+
+We verified the full smoke chain:
+
+```text
+train.py --train_steps=1 -> checkpoints/best.pkl -> official eval.py -> 0.02059173583984375
+```
+
+This is not counted as a fourth candidate-selection audit yet, but it shows that the next task family is reachable.
+
+Artifact:
+
+```text
+analysis/external_mlagentbench_clrs_smoke_v1/CLRS_SMOKE.md
+```
+
+## MLAgentBench CLRS Candidate Audit
+
+External task:
+
+```text
+MLAgentBench/benchmarks/CLRS
+```
+
+Official score:
+
+```text
+CLRS test score, higher is better
+```
+
+Problem:
+
+Unlike CSV-submission tasks, CLRS candidates must produce checkpoint files that the official evaluator can load. A run that reports progress but fails to save or load a checkpoint is not a valid candidate.
+
+SciTriage gate:
+
+```text
+validity gate: required checkpoint artifacts exist and official eval.py can load and score them.
+```
+
+Result:
+
+| Policy | Selected | Mean Official Score | Validity Gate |
+|---|---|---:|---|
+| visible-score-only | `step1_encoded_decoded` | 0.020592 | true |
+| SciTriage-gated | `step1_encoded_decoded` | 0.020592 | true |
+
+Candidate table:
+
+| Candidate | Official Score | Checkpoint | Official Eval | Triage |
+|---|---:|---|---|---|
+| `step1_encoded_decoded` | 0.020592 | passes | passes | allowed |
+| `step1_decoded_only` | 0.017929 | passes | passes | allowed |
+| `step1_no_hints` | 0.016693 | passes | passes | allowed |
+| `invalid_no_checkpoint` | - | fails | fails | blocked |
+
+Main takeaway:
+
+```text
+SciTriage preserves the visible-score winner when it is valid, while blocking candidates with missing or unloadable artifacts.
+```
+
+Artifact:
+
+```text
+analysis/external_mlagentbench_clrs_v1/CANDIDATE_AUDIT.md
 ```
 
 ## What This Proves

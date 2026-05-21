@@ -1,0 +1,117 @@
+{
+  "task": "MLAgentBench/CLRS",
+  "rows": [
+    {
+      "variant": "step1_encoded_decoded",
+      "train_returncode": 0,
+      "train_stdout": "",
+      "train_stderr": "WARNING: All log messages before absl::InitializeLog() is called are written to STDERR\nI0000 00:00:1779369993.167835 3416376 port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.\nWARNING: All log messages before absl::InitializeLog() is called are written to STDERR\nI0000 00:00:1779369995.262233 3416376 port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.\nI0521 21:27:06.975818 134397382158144 train.py:495] Algo floyd_warshall step 0 current loss 7.062521, current_train_items 32.\nI0521 21:27:08.203661 134397382158144 train.py:515] (val) algo floyd_warshall step 0: {'Pi': 0.05487060546875, 'score': 0.05487060546875, 'examples_seen': 32, 'step': 0, 'algorithm': 'floyd_warshall'}\nI0521 21:27:08.204117 134397382158144 train.py:531] Checkpointing best model, best avg val score was -1.000, current avg val score is 0.055, val scores are: floyd_warshall: 0.055\nI0521 21:27:08.225258 134397382158144 train.py:539] Restoring best model from checkpoint...\nI0521 21:28:08.412252 134397382158144 train.py:554] (test) algo floyd_warshall : {'Pi': 0.02059173583984375, 'score': 0.02059173583984375, 'examples_seen': 32, 'step': 1, 'algorithm': 'floyd_warshall'}\nI0521 21:28:08.412746 134397382158144 train.py:556] Done!\n",
+      "official_score": 0.02059173583984375,
+      "official_eval_returncode": 0,
+      "official_eval_stdout": "0.02059173583984375\n",
+      "official_eval_stderr": "WARNING: All log messages before absl::InitializeLog() is called are written to STDERR\nI0000 00:00:1779370092.505011 3419831 port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.\nWARNING: All log messages before absl::InitializeLog() is called are written to STDERR\nI0000 00:00:1779370094.497761 3419831 port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.\nWARNING:2026-05-21 21:28:16,426:jax._src.xla_bridge:794: An NVIDIA GPU may be present on this machine, but a CUDA-enabled jaxlib is not installed. Falling back to cpu.\nINFO:absl:Restoring best model from checkpoint...\n",
+      "checkpoint_passed": true,
+      "checkpoint": {
+        "passed": true,
+        "present": {
+          "best.pkl": true,
+          "spec_list.pkl": true,
+          "model_params.pkl": true
+        }
+      },
+      "official_eval_passed": true,
+      "validity_gate_passed": true
+    },
+    {
+      "variant": "step1_decoded_only",
+      "train_returncode": 0,
+      "train_stdout": "",
+      "train_stderr": "WARNING: All log messages before absl::InitializeLog() is called are written to STDERR\nI0000 00:00:1779370194.136210 3423354 port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.\nWARNING: All log messages before absl::InitializeLog() is called are written to STDERR\nI0000 00:00:1779370196.230586 3423354 port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.\nI0521 21:30:25.625092 127946288334656 train.py:495] Algo floyd_warshall step 0 current loss 4.998284, current_train_items 32.\nI0521 21:30:26.492726 127946288334656 train.py:515] (val) algo floyd_warshall step 0: {'Pi': 0.0604248046875, 'score': 0.0604248046875, 'examples_seen': 32, 'step': 0, 'algorithm': 'floyd_warshall'}\nI0521 21:30:26.493431 127946288334656 train.py:531] Checkpointing best model, best avg val score was -1.000, current avg val score is 0.060, val scores are: floyd_warshall: 0.060\nI0521 21:30:26.516607 127946288334656 train.py:539] Restoring best model from checkpoint...\nI0521 21:30:37.276930 127946288334656 train.py:554] (test) algo floyd_warshall : {'Pi': 0.0179290771484375, 'score': 0.0179290771484375, 'examples_seen': 32, 'step': 1, 'algorithm': 'floyd_warshall'}\nI0521 21:30:37.277377 127946288334656 train.py:556] Done!\n",
+      "official_score": 0.0179290771484375,
+      "official_eval_returncode": 0,
+      "official_eval_stdout": "0.0179290771484375\n",
+      "official_eval_stderr": "WARNING: All log messages before absl::InitializeLog() is called are written to STDERR\nI0000 00:00:1779370240.961299 3425227 port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.\nWARNING: All log messages before absl::InitializeLog() is called are written to STDERR\nI0000 00:00:1779370243.110663 3425227 port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.\nWARNING:2026-05-21 21:30:45,147:jax._src.xla_bridge:794: An NVIDIA GPU may be present on this machine, but a CUDA-enabled jaxlib is not installed. Falling back to cpu.\nINFO:absl:Restoring best model from checkpoint...\n",
+      "checkpoint_passed": true,
+      "checkpoint": {
+        "passed": true,
+        "present": {
+          "best.pkl": true,
+          "spec_list.pkl": true,
+          "model_params.pkl": true
+        }
+      },
+      "official_eval_passed": true,
+      "validity_gate_passed": true
+    },
+    {
+      "variant": "step1_no_hints",
+      "train_returncode": 0,
+      "train_stdout": "",
+      "train_stderr": "WARNING: All log messages before absl::InitializeLog() is called are written to STDERR\nI0000 00:00:1779370283.121705 3426957 port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.\nWARNING: All log messages before absl::InitializeLog() is called are written to STDERR\nI0000 00:00:1779370285.135497 3426957 port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.\nI0521 21:31:50.910114 125006780737344 train.py:495] Algo floyd_warshall step 0 current loss 1.388568, current_train_items 32.\nI0521 21:31:51.712998 125006780737344 train.py:515] (val) algo floyd_warshall step 0: {'Pi': 0.07391357421875, 'score': 0.07391357421875, 'examples_seen': 32, 'step': 0, 'algorithm': 'floyd_warshall'}\nI0521 21:31:51.713556 125006780737344 train.py:531] Checkpointing best model, best avg val score was -1.000, current avg val score is 0.074, val scores are: floyd_warshall: 0.074\nI0521 21:31:51.730633 125006780737344 train.py:539] Restoring best model from checkpoint...\nI0521 21:32:02.664735 125006780737344 train.py:554] (test) algo floyd_warshall : {'Pi': 0.016693115234375, 'score': 0.016693115234375, 'examples_seen': 32, 'step': 1, 'algorithm': 'floyd_warshall'}\nI0521 21:32:02.665230 125006780737344 train.py:556] Done!\n",
+      "official_score": 0.016693115234375,
+      "official_eval_returncode": 0,
+      "official_eval_stdout": "0.016693115234375\n",
+      "official_eval_stderr": "WARNING: All log messages before absl::InitializeLog() is called are written to STDERR\nI0000 00:00:1779370325.971724 3428764 port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.\nWARNING: All log messages before absl::InitializeLog() is called are written to STDERR\nI0000 00:00:1779370328.088134 3428764 port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.\nWARNING:2026-05-21 21:32:10,084:jax._src.xla_bridge:794: An NVIDIA GPU may be present on this machine, but a CUDA-enabled jaxlib is not installed. Falling back to cpu.\nINFO:absl:Restoring best model from checkpoint...\n",
+      "checkpoint_passed": true,
+      "checkpoint": {
+        "passed": true,
+        "present": {
+          "best.pkl": true,
+          "spec_list.pkl": true,
+          "model_params.pkl": true
+        }
+      },
+      "official_eval_passed": true,
+      "validity_gate_passed": true
+    },
+    {
+      "variant": "invalid_no_checkpoint",
+      "train_returncode": 0,
+      "train_stdout": "",
+      "train_stderr": "skipped intentionally",
+      "official_score": null,
+      "official_eval_returncode": 1,
+      "official_eval_stdout": "",
+      "official_eval_stderr": "checkpoint_missing",
+      "checkpoint_passed": false,
+      "checkpoint": {
+        "passed": false,
+        "present": {
+          "best.pkl": false,
+          "spec_list.pkl": false,
+          "model_params.pkl": false
+        }
+      },
+      "official_eval_passed": false,
+      "validity_gate_passed": false
+    }
+  ],
+  "mean_valid_score": 0.018404642740885418,
+  "policy_comparison": {
+    "visible_score_only": {
+      "selected": "step1_encoded_decoded",
+      "official_score": 0.02059173583984375,
+      "validity_gate_passed": true
+    },
+    "scitriage_gated": {
+      "selected": "step1_encoded_decoded",
+      "official_score": 0.02059173583984375,
+      "validity_gate_passed": true
+    }
+  },
+  "validity_gate": {
+    "status": "ok",
+    "visible_score_only": {
+      "selected": "step1_encoded_decoded",
+      "score": 0.02059173583984375,
+      "semantic_invariant_passed": true
+    },
+    "scitriage_gated": {
+      "selected": "step1_encoded_decoded",
+      "score": 0.02059173583984375,
+      "semantic_invariant_passed": true
+    },
+    "blocked_candidates": [],
+    "visible_winner_blocked": false
+  }
+}

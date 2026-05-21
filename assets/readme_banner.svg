@@ -63,6 +63,6 @@
 
   <g transform="translate(85 432)">
     <text x="0" y="0" fill="#bfdbfe" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="18" font-weight="620">MLAgentBench results:</text>
-    <text x="188" y="0" fill="#ffffff" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="18">3 external audits: invalid runtime shortcut, CIFAR label oracle, IMDB label oracle</text>
+    <text x="188" y="0" fill="#ffffff" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="18">4 external audits: runtime shortcuts, label oracles, checkpoint loadability</text>
   </g>
 </svg>

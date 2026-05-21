@@ -1,0 +1,21 @@
+{
+  "variant": "invalid_no_checkpoint",
+  "train_returncode": 0,
+  "train_stdout": "",
+  "train_stderr": "skipped intentionally",
+  "official_score": null,
+  "official_eval_returncode": 1,
+  "official_eval_stdout": "",
+  "official_eval_stderr": "checkpoint_missing",
+  "checkpoint_passed": false,
+  "checkpoint": {
+    "passed": false,
+    "present": {
+      "best.pkl": false,
+      "spec_list.pkl": false,
+      "model_params.pkl": false
+    }
+  },
+  "official_eval_passed": false,
+  "validity_gate_passed": false
+}

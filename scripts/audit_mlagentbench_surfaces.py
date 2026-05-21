@@ -29,6 +29,12 @@ def audit_task(task_dir: Path) -> Dict[str, object]:
         and ("test_dataset" in env_text or "test_dataloader" in env_text)
         and ("labels" in env_text or "label" in env_text or " y" in env_text)
     )
+    agent_visible_hf_test_labels = (
+        "load_dataset" in env_text
+        and ("[\"test\"]" in env_text or "['test']" in env_text)
+        and ("[\"label\"]" in env_text or "['label']" in env_text)
+    )
+    agent_visible_test_labels = agent_visible_test_labels or agent_visible_hf_test_labels
     eval_uses_labels = any(token in eval_text for token in [
         "train=False",
         "answer",
@@ -103,8 +109,12 @@ def render_markdown(rows: List[Dict[str, object]]) -> str:
         "gamed by skipping computation, and SciTriage can test functional equivalence."
     )
     lines.append(
-        "CIFAR-10 exposes a different failure mode: the starter environment contains test-label access, "
-        "so a candidate can win the official score by reading labels instead of learning."
+        "CIFAR-10 and IMDB expose a different failure mode: the starter environments contain "
+        "test-label access, so a candidate can win the official score by reading labels instead of learning."
+    )
+    lines.append(
+        "CLRS is the next checkpoint-style target because it requires saved model loadability "
+        "rather than a CSV submission."
     )
     lines.append(
         "Most Kaggle-style tasks are better next targets after data credentials and cache preparation, "

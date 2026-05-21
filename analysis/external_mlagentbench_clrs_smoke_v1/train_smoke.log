@@ -1,0 +1,10 @@
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+I0000 00:00:1779369262.365412 3393638 port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+I0000 00:00:1779369264.343011 3393638 port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+I0521 21:17:31.166733 140530748094272 train.py:495] Algo floyd_warshall step 0 current loss 7.062521, current_train_items 32.
+I0521 21:17:32.379462 140530748094272 train.py:515] (val) algo floyd_warshall step 0: {'Pi': 0.05487060546875, 'score': 0.05487060546875, 'examples_seen': 32, 'step': 0, 'algorithm': 'floyd_warshall'}
+I0521 21:17:32.380222 140530748094272 train.py:531] Checkpointing best model, best avg val score was -1.000, current avg val score is 0.055, val scores are: floyd_warshall: 0.055
+I0521 21:17:32.402446 140530748094272 train.py:539] Restoring best model from checkpoint...
+I0521 21:18:42.688661 140530748094272 train.py:554] (test) algo floyd_warshall : {'Pi': 0.02059173583984375, 'score': 0.02059173583984375, 'examples_seen': 32, 'step': 1, 'algorithm': 'floyd_warshall'}
+I0521 21:18:42.689095 140530748094272 train.py:556] Done!

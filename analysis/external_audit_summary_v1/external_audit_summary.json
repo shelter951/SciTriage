@@ -1,0 +1,58 @@
+{
+  "score_bearing_tasks": 4,
+  "total_candidates": 20,
+  "blocked_candidates": 8,
+  "visible_invalid_winners": 3,
+  "blocked_visible_winners": 3,
+  "visible_winner_block_rate": 0.75,
+  "rows": [
+    {
+      "task": "MLAgentBench/vectorization",
+      "artifact": "D:\\project\\4\\SciTriage_work\\analysis\\external_mlagentbench_vectorization_v3\\candidate_audit.json",
+      "visible_selected": "zero_fast_invalid",
+      "visible_score": 0.0052493299756731305,
+      "visible_valid": false,
+      "scitriage_selected": "im2col_einsum",
+      "scitriage_score": 0.014736345836094447,
+      "scitriage_valid": true,
+      "candidate_count": 6,
+      "blocked_candidate_count": 3
+    },
+    {
+      "task": "MLAgentBench/cifar10",
+      "artifact": "D:\\project\\4\\SciTriage_work\\analysis\\external_mlagentbench_cifar10_v1\\candidate_audit.json",
+      "visible_selected": "test_label_oracle_invalid",
+      "visible_score": 1.0,
+      "visible_valid": false,
+      "scitriage_selected": "random_valid",
+      "scitriage_score": 0.1042,
+      "scitriage_valid": true,
+      "candidate_count": 5,
+      "blocked_candidate_count": 2
+    },
+    {
+      "task": "MLAgentBench/imdb",
+      "artifact": "D:\\project\\4\\SciTriage_work\\analysis\\external_mlagentbench_imdb_v1\\candidate_audit.json",
+      "visible_selected": "test_label_oracle_invalid",
+      "visible_score": 1.0,
+      "visible_valid": false,
+      "scitriage_selected": "uniform_valid",
+      "scitriage_score": 0.5,
+      "scitriage_valid": true,
+      "candidate_count": 5,
+      "blocked_candidate_count": 2
+    },
+    {
+      "task": "MLAgentBench/CLRS",
+      "artifact": "D:\\project\\4\\SciTriage_work\\analysis\\external_mlagentbench_clrs_v1\\candidate_audit.json",
+      "visible_selected": "step1_encoded_decoded",
+      "visible_score": 0.02059173583984375,
+      "visible_valid": true,
+      "scitriage_selected": "step1_encoded_decoded",
+      "scitriage_score": 0.02059173583984375,
+      "scitriage_valid": true,
+      "candidate_count": 4,
+      "blocked_candidate_count": 1
+    }
+  ]
+}

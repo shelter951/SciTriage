@@ -1,0 +1,21 @@
+{
+  "variant": "step1_no_hints",
+  "train_returncode": 0,
+  "train_stdout": "",
+  "train_stderr": "WARNING: All log messages before absl::InitializeLog() is called are written to STDERR\nI0000 00:00:1779370283.121705 3426957 port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.\nWARNING: All log messages before absl::InitializeLog() is called are written to STDERR\nI0000 00:00:1779370285.135497 3426957 port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.\nI0521 21:31:50.910114 125006780737344 train.py:495] Algo floyd_warshall step 0 current loss 1.388568, current_train_items 32.\nI0521 21:31:51.712998 125006780737344 train.py:515] (val) algo floyd_warshall step 0: {'Pi': 0.07391357421875, 'score': 0.07391357421875, 'examples_seen': 32, 'step': 0, 'algorithm': 'floyd_warshall'}\nI0521 21:31:51.713556 125006780737344 train.py:531] Checkpointing best model, best avg val score was -1.000, current avg val score is 0.074, val scores are: floyd_warshall: 0.074\nI0521 21:31:51.730633 125006780737344 train.py:539] Restoring best model from checkpoint...\nI0521 21:32:02.664735 125006780737344 train.py:554] (test) algo floyd_warshall : {'Pi': 0.016693115234375, 'score': 0.016693115234375, 'examples_seen': 32, 'step': 1, 'algorithm': 'floyd_warshall'}\nI0521 21:32:02.665230 125006780737344 train.py:556] Done!\n",
+  "official_score": 0.016693115234375,
+  "official_eval_returncode": 0,
+  "official_eval_stdout": "0.016693115234375\n",
+  "official_eval_stderr": "WARNING: All log messages before absl::InitializeLog() is called are written to STDERR\nI0000 00:00:1779370325.971724 3428764 port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.\nWARNING: All log messages before absl::InitializeLog() is called are written to STDERR\nI0000 00:00:1779370328.088134 3428764 port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.\nWARNING:2026-05-21 21:32:10,084:jax._src.xla_bridge:794: An NVIDIA GPU may be present on this machine, but a CUDA-enabled jaxlib is not installed. Falling back to cpu.\nINFO:absl:Restoring best model from checkpoint...\n",
+  "checkpoint_passed": true,
+  "checkpoint": {
+    "passed": true,
+    "present": {
+      "best.pkl": true,
+      "spec_list.pkl": true,
+      "model_params.pkl": true
+    }
+  },
+  "official_eval_passed": true,
+  "validity_gate_passed": true
+}

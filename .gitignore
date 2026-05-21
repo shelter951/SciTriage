@@ -28,6 +28,13 @@ analysis/*
 !analysis/external_mlagentbench_task_surface_v1/**
 !analysis/external_mlagentbench_imdb_v1/
 !analysis/external_mlagentbench_imdb_v1/**
+!analysis/external_audit_summary_v1/
+!analysis/external_audit_summary_v1/**
+!analysis/external_mlagentbench_clrs_smoke_v1/
+!analysis/external_mlagentbench_clrs_smoke_v1/**
+!analysis/external_mlagentbench_clrs_smoke_v1/*.log
+!analysis/external_mlagentbench_clrs_v1/
+!analysis/external_mlagentbench_clrs_v1/**
 analysis/**/workspaces/
 
 # Local secrets and environment files.

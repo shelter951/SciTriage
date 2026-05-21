@@ -180,11 +180,13 @@
       "read_only_files": [],
       "read_only_count": 0,
       "eval_uses_labels": true,
-      "agent_visible_test_labels": false,
+      "agent_visible_test_labels": true,
       "needs_kaggle": false,
       "needs_external_download": false,
-      "blockers": [],
-      "recommended_use": "candidate audit"
+      "blockers": [
+        "agent_visible_test_label_surface"
+      ],
+      "recommended_use": "validity-gate audit"
     },
     {
       "task": "literature-review-tool",

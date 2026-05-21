@@ -13,7 +13,7 @@ This scan reads the external MLAgentBench task folders and records which tasks a
 | `feedback` | True | kaggle | False | defer until data prepared |
 | `house-price` | True | kaggle | False | defer until data prepared |
 | `identify-contrails` | True | kaggle | False | defer until data prepared |
-| `imdb` | True | none | False | candidate audit |
+| `imdb` | True | none | True | validity-gate audit |
 | `literature-review-tool` | False | none | False | integration/log audit only |
 | `llama-inference` | False | none | False | integration/log audit only |
 | `ogbn-arxiv` | True | download | False | defer until data prepared |
@@ -23,5 +23,6 @@ This scan reads the external MLAgentBench task folders and records which tasks a
 ## Interpretation
 
 Vectorization is the cleanest semantic-validity task: the official runtime objective can be gamed by skipping computation, and SciTriage can test functional equivalence.
-CIFAR-10 exposes a different failure mode: the starter environment contains test-label access, so a candidate can win the official score by reading labels instead of learning.
+CIFAR-10 and IMDB expose a different failure mode: the starter environments contain test-label access, so a candidate can win the official score by reading labels instead of learning.
+CLRS is the next checkpoint-style target because it requires saved model loadability rather than a CSV submission.
 Most Kaggle-style tasks are better next targets after data credentials and cache preparation, because they provide stronger hidden-score realism but require heavier setup.

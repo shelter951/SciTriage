@@ -41,8 +41,11 @@ SciTriage already catches high-scoring but invalid candidates on external MLAgen
 | `MLAgentBench/vectorization` | a `0.005249s` shortcut that skips the real convolution | blocks it, selects a valid `235x` faster implementation |
 | `MLAgentBench/cifar10` | a `1.0000` accuracy test-label oracle | blocks it as benchmark leakage |
 | `MLAgentBench/imdb` | a `1.0000` accuracy test-label oracle | blocks it as benchmark leakage |
+| `MLAgentBench/CLRS` | a valid checkpointed model | keeps the visible winner and blocks a missing-checkpoint candidate |
 
 It also reduces false discoveries on a Karpathy-style AutoResearch run: among 24 observed candidates, a family-landmark policy keeps 100% of supported research directions while using 71.4% fewer extra seed runs than verifying every one-shot positive.
+
+Aggregate external audit: 4 score-bearing MLAgentBench tasks, 20 candidates, 8 blocked invalid candidates, and 3/4 visible-score winners blocked because they were invalid. On CLRS, the visible winner was valid, so SciTriage preserved it.
 
 ## What It Does
 
@@ -97,13 +100,14 @@ Evidence board: [`analysis/autoresearch_probe_v1/evidence_board_v1/EVIDENCE_BOAR
 
 We also validate SciTriage on [MLAgentBench](https://github.com/snap-stanford/MLAgentBench), using the benchmark's own task folders and official eval scripts.
 
-The current external result covers three score-bearing MLAgentBench audits and two different failure modes:
+The current external result covers four score-bearing MLAgentBench audits and three different failure modes:
 
 | MLAgentBench task | Visible-score-only winner | SciTriage-gated winner | What SciTriage blocks |
 |---|---|---|---|
 | `vectorization` | `zero_fast_invalid` at `0.005249s` | `im2col_einsum` at `0.014736s` | invalid runtime shortcut |
 | `cifar10` | `test_label_oracle_invalid` at `1.0000` acc | `random_valid` at `0.1042` acc | test-label leakage |
 | `imdb` | `test_label_oracle_invalid` at `1.0000` acc | `uniform_valid` at `0.5000` acc | test-label leakage |
+| `CLRS` | `step1_encoded_decoded` at `0.020592` | `step1_encoded_decoded` at `0.020592` | missing checkpoint / unloadable result |
 
 ### Vectorization
 
@@ -148,9 +152,26 @@ The IMDB task repeats the leakage pattern on a text classification benchmark. A 
 
 IMDB audit: [`analysis/external_mlagentbench_imdb_v1/CANDIDATE_AUDIT.md`](analysis/external_mlagentbench_imdb_v1/CANDIDATE_AUDIT.md)
 
+### CLRS
+
+CLRS is a checkpoint-style task: a candidate must train a model, save `checkpoints/best.pkl`, and remain loadable by the official evaluator.
+
+| Candidate | Official score | Checkpoint | Triage status |
+|---|---:|---|---|
+| `step1_encoded_decoded` | `0.020592` | passes | allowed |
+| `step1_decoded_only` | `0.017929` | passes | allowed |
+| `step1_no_hints` | `0.016693` | passes | allowed |
+| `invalid_no_checkpoint` | `-` | fails | blocked |
+
+Here the visible-score winner is already valid, so SciTriage keeps it. That matters: the gate preserves valid progress instead of blindly rejecting candidates.
+
+CLRS audit: [`analysis/external_mlagentbench_clrs_v1/CANDIDATE_AUDIT.md`](analysis/external_mlagentbench_clrs_v1/CANDIDATE_AUDIT.md)
+
 Task surface audit: [`analysis/external_mlagentbench_task_surface_v1/TASK_SURFACE_AUDIT.md`](analysis/external_mlagentbench_task_surface_v1/TASK_SURFACE_AUDIT.md)
 
 Benchmark positioning: [`docs/RELATED_BENCHMARKS.md`](docs/RELATED_BENCHMARKS.md)
+
+Paper readiness: [`docs/PAPER_READINESS.md`](docs/PAPER_READINESS.md)
 
 ## Install
 

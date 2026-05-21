@@ -59,6 +59,11 @@ official best: test_label_oracle_invalid
 triage action: blocked test-label leak
 official acc blocked: 1.0000
 
+$ scitriage checkpoint-gate MLAgentBench/CLRS
+official best: step1_encoded_decoded
+triage action: preserved valid winner
+blocked: invalid_no_checkpoint
+
 $ scitriage claim-gate depth7
 status: allowed
 delta / margin: 12.44
@@ -76,7 +81,7 @@ reason: below noise scale</code></pre>
         </div>
         <div class="metrics">
           <div>
-            <strong>3</strong>
+            <strong>4</strong>
             <span>external MLAgentBench audits with blocked fake wins</span>
           </div>
           <div>
