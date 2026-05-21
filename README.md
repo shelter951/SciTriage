@@ -1,5 +1,7 @@
 # SciTriage
 
+[English](README.md) | [中文](README.zh-CN.md)
+
 ![SciTriage banner](assets/readme_banner.svg)
 
 **A validity gate for AutoResearch agents.**
