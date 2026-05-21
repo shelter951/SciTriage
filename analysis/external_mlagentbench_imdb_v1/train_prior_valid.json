@@ -1,0 +1,82 @@
+{
+  "variant": "train_prior_valid",
+  "runs": [
+    {
+      "returncode": 0,
+      "stdout": "",
+      "stderr": "",
+      "submission_exists": true,
+      "official_score": 0.5,
+      "schema_check": {
+        "passed": true,
+        "shape": [
+          25000,
+          2
+        ],
+        "columns": [
+          "0",
+          "1"
+        ],
+        "min_row_sum": 1.0,
+        "max_row_sum": 1.0
+      }
+    },
+    {
+      "returncode": 0,
+      "stdout": "",
+      "stderr": "Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.\n",
+      "submission_exists": true,
+      "official_score": 0.5,
+      "schema_check": {
+        "passed": true,
+        "shape": [
+          25000,
+          2
+        ],
+        "columns": [
+          "0",
+          "1"
+        ],
+        "min_row_sum": 1.0,
+        "max_row_sum": 1.0
+      }
+    },
+    {
+      "returncode": 0,
+      "stdout": "",
+      "stderr": "Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.\n",
+      "submission_exists": true,
+      "official_score": 0.5,
+      "schema_check": {
+        "passed": true,
+        "shape": [
+          25000,
+          2
+        ],
+        "columns": [
+          "0",
+          "1"
+        ],
+        "min_row_sum": 1.0,
+        "max_row_sum": 1.0
+      }
+    }
+  ],
+  "official_score": 0.5,
+  "official_score_std": 0.0,
+  "official_score_min": 0.5,
+  "official_score_max": 0.5,
+  "returncode": 0,
+  "stdout": "\n\n",
+  "stderr": "\nWarning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.\n\nWarning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.\n",
+  "schema_passed": true,
+  "test_label_gate_passed": true,
+  "test_label_gate": {
+    "passed": true,
+    "test_label_leaks": [],
+    "dataset_vars": [
+      "imdb"
+    ]
+  },
+  "validity_gate_passed": true
+}

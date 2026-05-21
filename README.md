@@ -1,19 +1,48 @@
 # SciTriage
 
-**Evidence gates for AutoResearch agents.**
+![SciTriage banner](assets/readme_banner.svg)
 
-AutoResearch agents are getting good at producing ideas, patches, and experiment logs. The hard part is knowing what happened next:
+**A validity gate for AutoResearch agents.**
 
-- Did the idea fail, or did the run fail?
-- Is the result bigger than seed noise?
-- Is the current claim safe to write down?
-- Is the next experiment worth the GPU time?
+AutoResearch agents can now generate ideas, edit code, launch experiments, and write confident summaries. That creates a new problem:
 
-SciTriage is a small diagnostic layer for that moment. It does not replace Karpathy autoresearch, ARIS, Claude Code, Codex, or your own research loop. It sits beside them, reads their artifacts, and returns a clear next action.
+> A result can look great in the visible score while being useless as research evidence.
+
+SciTriage is a plugin-style layer that sits beside Karpathy autoresearch, ARIS, Claude Code, Codex, or any other research loop. It reads the artifacts the agent already produces, then returns one of three decisions:
+
+| Decision | Meaning |
+|---|---|
+| `allow` | the claim is supported enough to keep |
+| `block` | the score is misleading, invalid, or unsupported |
+| `probe` | run the cheapest next check before claiming victory |
 
 ```text
-AutoResearch harness  ->  logs, claims, patches  ->  SciTriage  ->  pass / block / probe
+AutoResearch agent -> idea, patch, logs, scores -> SciTriage -> allow / block / probe
 ```
+
+## Why People Should Care
+
+AutoResearch does not only need smarter idea generators. It needs a way to stop false discoveries from entering the research record.
+
+SciTriage focuses on that moment after a run finishes:
+
+- Did the idea fail, or did the implementation fail?
+- Is the improvement larger than seed noise?
+- Did the candidate exploit the benchmark instead of solving the task?
+- Is the current claim safe to write down?
+- What is the cheapest useful experiment to run next?
+
+## Headline Results
+
+SciTriage already catches high-scoring but invalid candidates on external MLAgentBench tasks.
+
+| External task | What the visible score would pick | What SciTriage does |
+|---|---|---|
+| `MLAgentBench/vectorization` | a `0.005249s` shortcut that skips the real convolution | blocks it, selects a valid `235x` faster implementation |
+| `MLAgentBench/cifar10` | a `1.0000` accuracy test-label oracle | blocks it as benchmark leakage |
+| `MLAgentBench/imdb` | a `1.0000` accuracy test-label oracle | blocks it as benchmark leakage |
+
+It also reduces false discoveries on a Karpathy-style AutoResearch run: among 24 observed candidates, a family-landmark policy keeps 100% of supported research directions while using 71.4% fewer extra seed runs than verifying every one-shot positive.
 
 ## What It Does
 
@@ -68,12 +97,13 @@ Evidence board: [`analysis/autoresearch_probe_v1/evidence_board_v1/EVIDENCE_BOAR
 
 We also validate SciTriage on [MLAgentBench](https://github.com/snap-stanford/MLAgentBench), using the benchmark's own task folders and official eval scripts.
 
-The current external result covers two different failure modes:
+The current external result covers three score-bearing MLAgentBench audits and two different failure modes:
 
 | MLAgentBench task | Visible-score-only winner | SciTriage-gated winner | What SciTriage blocks |
 |---|---|---|---|
 | `vectorization` | `zero_fast_invalid` at `0.005249s` | `im2col_einsum` at `0.014736s` | invalid runtime shortcut |
 | `cifar10` | `test_label_oracle_invalid` at `1.0000` acc | `random_valid` at `0.1042` acc | test-label leakage |
+| `imdb` | `test_label_oracle_invalid` at `1.0000` acc | `uniform_valid` at `0.5000` acc | test-label leakage |
 
 ### Vectorization
 
@@ -104,6 +134,19 @@ This task exposes a different issue: the starter environment can access CIFAR-10
 The official accuracy winner is a label oracle. SciTriage blocks it and records the result as benchmark leakage, not scientific progress.
 
 CIFAR audit: [`analysis/external_mlagentbench_cifar10_v1/CANDIDATE_AUDIT.md`](analysis/external_mlagentbench_cifar10_v1/CANDIDATE_AUDIT.md)
+
+### IMDB
+
+The IMDB task repeats the leakage pattern on a text classification benchmark. A candidate can read `imdb["test"]` labels and write a perfect submission without learning sentiment classification.
+
+| Candidate | Official accuracy | Test-label leak gate | Triage status |
+|---|---:|---|---|
+| `test_label_oracle_invalid` | `1.0000` | fails | blocked |
+| `uniform_valid` | `0.5000` | passes | allowed |
+| `train_prior_valid` | `0.5000` | passes | allowed |
+| `random_valid` | `0.4988` | passes | allowed |
+
+IMDB audit: [`analysis/external_mlagentbench_imdb_v1/CANDIDATE_AUDIT.md`](analysis/external_mlagentbench_imdb_v1/CANDIDATE_AUDIT.md)
 
 Task surface audit: [`analysis/external_mlagentbench_task_surface_v1/TASK_SURFACE_AUDIT.md`](analysis/external_mlagentbench_task_surface_v1/TASK_SURFACE_AUDIT.md)
 
@@ -211,7 +254,7 @@ SciTriage writes artifacts that another agent can read:
 
 ## Why This Exists
 
-AutoResearch loops often optimize for momentum: propose, patch, run, summarize, repeat. That is powerful, but it creates a new failure mode: the agent can create more “discoveries” than the experiment budget can verify.
+AutoResearch loops often optimize for momentum: propose, patch, run, summarize, repeat. That is powerful, but it creates a new failure mode: the agent can create more "discoveries" than the experiment budget can verify.
 
 SciTriage adds a research hygiene layer:
 

@@ -26,6 +26,8 @@ analysis/*
 !analysis/external_mlagentbench_cifar10_v1/**
 !analysis/external_mlagentbench_task_surface_v1/
 !analysis/external_mlagentbench_task_surface_v1/**
+!analysis/external_mlagentbench_imdb_v1/
+!analysis/external_mlagentbench_imdb_v1/**
 analysis/**/workspaces/
 
 # Local secrets and environment files.

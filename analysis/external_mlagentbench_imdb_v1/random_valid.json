@@ -1,0 +1,80 @@
+{
+  "variant": "random_valid",
+  "runs": [
+    {
+      "returncode": 0,
+      "stdout": "",
+      "stderr": "",
+      "submission_exists": true,
+      "official_score": 0.49884,
+      "schema_check": {
+        "passed": true,
+        "shape": [
+          25000,
+          2
+        ],
+        "columns": [
+          "0",
+          "1"
+        ],
+        "min_row_sum": 0.9999999999999997,
+        "max_row_sum": 1.0000000000000002
+      }
+    },
+    {
+      "returncode": 0,
+      "stdout": "",
+      "stderr": "",
+      "submission_exists": true,
+      "official_score": 0.49884,
+      "schema_check": {
+        "passed": true,
+        "shape": [
+          25000,
+          2
+        ],
+        "columns": [
+          "0",
+          "1"
+        ],
+        "min_row_sum": 0.9999999999999997,
+        "max_row_sum": 1.0000000000000002
+      }
+    },
+    {
+      "returncode": 0,
+      "stdout": "",
+      "stderr": "",
+      "submission_exists": true,
+      "official_score": 0.49884,
+      "schema_check": {
+        "passed": true,
+        "shape": [
+          25000,
+          2
+        ],
+        "columns": [
+          "0",
+          "1"
+        ],
+        "min_row_sum": 0.9999999999999997,
+        "max_row_sum": 1.0000000000000002
+      }
+    }
+  ],
+  "official_score": 0.49884,
+  "official_score_std": 0.0,
+  "official_score_min": 0.49884,
+  "official_score_max": 0.49884,
+  "returncode": 0,
+  "stdout": "\n\n",
+  "stderr": "\n\n",
+  "schema_passed": true,
+  "test_label_gate_passed": true,
+  "test_label_gate": {
+    "passed": true,
+    "test_label_leaks": [],
+    "dataset_vars": []
+  },
+  "validity_gate_passed": true
+}

@@ -27,6 +27,7 @@ We support this with:
 - Karpathy-style seed-noise evidence on 24 observed candidates.
 - MLAgentBench `vectorization`: blocks invalid runtime shortcuts and selects a 235x faster valid implementation.
 - MLAgentBench `cifar10`: blocks a perfect-score test-label oracle.
+- MLAgentBench `imdb`: blocks the same perfect-score oracle pattern on text classification.
 - MLAgentBench task-surface audit over all benchmark folders to choose the next external tasks.
 
 ## Why Not Only Chase Higher Scores?
@@ -45,7 +46,7 @@ That keeps the project aligned with current agent benchmarks while making a dist
 Near-term:
 
 - MLAgentBench `CLRS`: candidate audit if dependencies are manageable.
-- MLAgentBench `imdb`: candidate audit if dataset access is stable.
+- More MLAgentBench Kaggle-style tasks once credentials and data caches are ready.
 - More vectorization-style tasks where semantic invariants can be generated automatically.
 
 Mid-term:

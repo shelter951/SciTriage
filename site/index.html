@@ -54,6 +54,11 @@ official best: test_label_oracle_invalid
 triage action: blocked test-label leak
 official acc blocked: 1.0000
 
+$ scitriage validity-gate MLAgentBench/imdb
+official best: test_label_oracle_invalid
+triage action: blocked test-label leak
+official acc blocked: 1.0000
+
 $ scitriage claim-gate depth7
 status: allowed
 delta / margin: 12.44
@@ -71,8 +76,8 @@ reason: below noise scale</code></pre>
         </div>
         <div class="metrics">
           <div>
-            <strong>2</strong>
-            <span>external MLAgentBench failure modes blocked</span>
+            <strong>3</strong>
+            <span>external MLAgentBench audits with blocked fake wins</span>
           </div>
           <div>
             <strong>71.4%</strong>

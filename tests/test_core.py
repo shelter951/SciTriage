@@ -61,6 +61,26 @@ for idx, (_, label) in enumerate(train_dataset):
         self.assertFalse(leak["passed"])
         self.assertTrue(clean["passed"])
 
+    def test_imdb_audit_detects_test_label_leak(self):
+        audit_test_label_leak = _load_script_function(
+            "run_mlagentbench_imdb_candidates.py",
+            "audit_test_label_leak",
+        )
+        leak = audit_test_label_leak("""
+from datasets import load_dataset
+imdb = load_dataset("imdb")
+for idx, row in enumerate(imdb["test"]):
+    rows[idx, row["label"]] = 1.0
+""")
+        clean = audit_test_label_leak("""
+from datasets import load_dataset
+imdb = load_dataset("imdb")
+for row in imdb["train"]:
+    counts[row["label"]] += 1.0
+""")
+        self.assertFalse(leak["passed"])
+        self.assertTrue(clean["passed"])
+
     def test_noisy_one_shot_blocks_claim(self):
         trace = ResearchTrace(
             trace_id="case",

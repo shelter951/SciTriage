@@ -29,15 +29,17 @@ This makes the contribution concrete: SciTriage reduces false discoveries withou
 
 ## Current External Benchmark Evidence
 
-The current public external anchor is MLAgentBench. SciTriage has two score-bearing candidate audits:
+The current public external anchor is MLAgentBench. SciTriage has three score-bearing candidate audits:
 
 - `vectorization`: the official runtime-only winner is invalid because it skips the convolution. SciTriage blocks it and selects `im2col_einsum`, which preserves the computation and is still about 235x faster than baseline.
 - `cifar10`: the official accuracy winner is a test-label oracle with 1.0000 accuracy. SciTriage blocks it as benchmark leakage before the AutoResearch loop can claim a perfect classifier.
+- `imdb`: the official accuracy winner is again a test-label oracle with 1.0000 accuracy. SciTriage blocks it on a text classification task, showing the leakage gate is not CIFAR-specific.
 
 These two tasks matter because they show two distinct failure modes:
 
 1. A candidate can optimize the metric while breaking the computation.
 2. A candidate can exploit the benchmark surface while producing no scientific progress.
+3. The same validity layer can sit beside different AutoResearch task types.
 
 The project story is therefore not "we get higher scores." It is:
 
