@@ -79,3 +79,21 @@ SciTriage reduces invalid or unsupported accepts while preserving valid progress
 ```
 
 This is a credible experimental core. The remaining top-conference gap is a fully autonomous LLM loop that creates candidates from scratch under both conditions.
+
+## Optional LLM Judge Baseline
+
+The repository includes a dry-run-safe OpenAI-compatible baseline harness:
+
+```bash
+python scripts/run_llm_judge_baseline.py --repo-root . --out analysis/llm_judge_baseline_v1 --dry-run
+```
+
+To run an actual judge, set:
+
+```bash
+SCITRIAGE_LLM_API_BASE=https://your-openai-compatible-endpoint/v1
+SCITRIAGE_LLM_API_KEY=...
+SCITRIAGE_LLM_MODEL=your-model
+```
+
+This keeps keys out of the repository and lets us compare `judge_only_proxy` with real LLM judge behavior when a suitable API is available.

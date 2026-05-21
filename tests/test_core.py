@@ -15,6 +15,9 @@ from scitriage.probe_priority import prioritize_probe
 from scitriage.rules import diagnose
 from scitriage.schema import MetricObservation, ResearchTrace
 from scitriage.semantic_gate import select_with_semantic_gate
+from scitriage.validity import audit_checkpoint_artifacts
+from scitriage.validity import audit_hf_test_label_leak
+from scitriage.validity import audit_torchvision_test_label_leak
 
 
 def _load_script_function(script_name, function_name):
@@ -80,6 +83,31 @@ for row in imdb["train"]:
 """)
         self.assertFalse(leak["passed"])
         self.assertTrue(clean["passed"])
+
+    def test_validity_module_detects_dataset_leaks_and_checkpoints(self):
+        cifar = audit_torchvision_test_label_leak("""
+from torchvision import datasets
+test_dataset = datasets.CIFAR10(root="./data", train=False, download=True)
+for idx, (_, label) in enumerate(test_dataset):
+    rows[idx, label] = 1.0
+""")
+        imdb = audit_hf_test_label_leak("""
+from datasets import load_dataset
+imdb = load_dataset("imdb")
+for idx, row in enumerate(imdb["test"]):
+    rows[idx, row["label"]] = 1.0
+""", dataset_name="imdb")
+        self.assertFalse(cifar["passed"])
+        self.assertFalse(imdb["passed"])
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            (root / "best.pkl").write_text("x")
+            (root / "spec_list.pkl").write_text("x")
+            missing = audit_checkpoint_artifacts(root)
+            (root / "model_params.pkl").write_text("x")
+            complete = audit_checkpoint_artifacts(root)
+            self.assertFalse(missing["passed"])
+            self.assertTrue(complete["passed"])
 
     def test_noisy_one_shot_blocks_claim(self):
         trace = ResearchTrace(

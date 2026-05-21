@@ -179,6 +179,15 @@ Paper readiness: [`docs/PAPER_READINESS.md`](docs/PAPER_READINESS.md)
 
 Live-loop policy results: [`docs/LIVE_AGENT_LOOP_RESULTS.md`](docs/LIVE_AGENT_LOOP_RESULTS.md)
 
+Optional LLM judge baseline:
+
+```bash
+SCITRIAGE_LLM_API_BASE=https://your-openai-compatible-endpoint/v1 \
+SCITRIAGE_LLM_API_KEY=... \
+SCITRIAGE_LLM_MODEL=your-model \
+python scripts/run_llm_judge_baseline.py --repo-root . --out analysis/llm_judge_baseline_v1
+```
+
 ## Install
 
 ```bash

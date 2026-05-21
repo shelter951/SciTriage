@@ -1,7 +1,6 @@
 from __future__ import annotations
 
 import argparse
-import ast
 import json
 import os
 import shutil
@@ -10,13 +9,14 @@ import sys
 from pathlib import Path
 from statistics import mean, stdev
 from textwrap import dedent
-from typing import Dict, Iterable, List
+from typing import Dict, List
 
 import numpy as np
 import pandas as pd
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from scitriage.semantic_gate import select_with_semantic_gate
+from scitriage.validity import audit_torchvision_test_label_leak
 
 
 CLASSES = list(range(10))
@@ -98,101 +98,8 @@ def _candidate_source(variant: str) -> str:
     raise ValueError(f"unknown variant {variant}")
 
 
-class _LoadNameFinder(ast.NodeVisitor):
-    def __init__(self) -> None:
-        self.names: set[str] = set()
-
-    def visit_Name(self, node: ast.Name) -> None:  # noqa: N802
-        if isinstance(node.ctx, ast.Load):
-            self.names.add(node.id)
-
-
-class _TestLabelLeakVisitor(ast.NodeVisitor):
-    def __init__(self) -> None:
-        self.test_dataset_vars: set[str] = set()
-        self.label_leaks: List[Dict[str, object]] = []
-
-    def visit_Assign(self, node: ast.Assign) -> None:  # noqa: N802
-        if _is_cifar10_test_call(node.value):
-            for target in node.targets:
-                if isinstance(target, ast.Name):
-                    self.test_dataset_vars.add(target.id)
-        self.generic_visit(node)
-
-    def visit_For(self, node: ast.For) -> None:  # noqa: N802
-        iter_name = _iter_dataset_name(node.iter)
-        if iter_name in self.test_dataset_vars:
-            label_names = _label_names_from_target(node.target)
-            used = _load_names(node.body)
-            leaked = sorted(label_names & used)
-            if leaked:
-                self.label_leaks.append({
-                    "line": node.lineno,
-                    "dataset": iter_name,
-                    "label_names": leaked,
-                })
-        self.generic_visit(node)
-
-
-def _is_cifar10_test_call(node: ast.AST) -> bool:
-    if not isinstance(node, ast.Call):
-        return False
-    func = node.func
-    is_cifar = (
-        isinstance(func, ast.Name) and func.id == "CIFAR10"
-    ) or (
-        isinstance(func, ast.Attribute) and func.attr == "CIFAR10"
-    )
-    if not is_cifar:
-        return False
-    for keyword in node.keywords:
-        if keyword.arg == "train" and isinstance(keyword.value, ast.Constant):
-            return keyword.value.value is False
-    return False
-
-
-def _iter_dataset_name(node: ast.AST) -> str | None:
-    if isinstance(node, ast.Name):
-        return node.id
-    if (
-        isinstance(node, ast.Call)
-        and isinstance(node.func, ast.Name)
-        and node.func.id == "enumerate"
-        and node.args
-        and isinstance(node.args[0], ast.Name)
-    ):
-        return node.args[0].id
-    return None
-
-
-def _label_names_from_target(target: ast.AST) -> set[str]:
-    if isinstance(target, ast.Tuple) and len(target.elts) >= 2 and isinstance(target.elts[1], ast.Tuple):
-        return _label_names_from_target(target.elts[1])
-    if isinstance(target, ast.Tuple) and len(target.elts) >= 2:
-        label = target.elts[1]
-        if isinstance(label, ast.Name):
-            return {label.id}
-        if isinstance(label, ast.Tuple):
-            return {elt.id for elt in label.elts if isinstance(elt, ast.Name)}
-    return set()
-
-
-def _load_names(nodes: Iterable[ast.AST]) -> set[str]:
-    finder = _LoadNameFinder()
-    for node in nodes:
-        finder.visit(node)
-    return finder.names
-
-
 def audit_test_label_leak(source: str) -> Dict[str, object]:
-    tree = ast.parse(source)
-    visitor = _TestLabelLeakVisitor()
-    visitor.visit(tree)
-    return {
-        "passed": len(visitor.label_leaks) == 0,
-        "test_label_leaks": visitor.label_leaks,
-        "test_dataset_vars": sorted(visitor.test_dataset_vars),
-    }
+    return audit_torchvision_test_label_leak(source, dataset_name="CIFAR10")
 
 
 def _run_candidate(python: str, work_dir: Path, timeout: int) -> Dict[str, object]:

@@ -1,7 +1,6 @@
 from __future__ import annotations
 
 import argparse
-import ast
 import json
 import os
 import shutil
@@ -10,13 +9,14 @@ import sys
 from pathlib import Path
 from statistics import mean, stdev
 from textwrap import dedent
-from typing import Dict, Iterable, List
+from typing import Dict, List
 
 import numpy as np
 import pandas as pd
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from scitriage.semantic_gate import select_with_semantic_gate
+from scitriage.validity import audit_hf_test_label_leak
 
 
 CLASSES = [0, 1]
@@ -93,119 +93,8 @@ def _candidate_source(variant: str) -> str:
     raise ValueError(f"unknown variant {variant}")
 
 
-class _LoadDatasetVisitor(ast.NodeVisitor):
-    def __init__(self) -> None:
-        self.dataset_vars: set[str] = set()
-        self.leaks: List[Dict[str, object]] = []
-
-    def visit_Assign(self, node: ast.Assign) -> None:  # noqa: N802
-        if _is_imdb_load_dataset(node.value):
-            for target in node.targets:
-                if isinstance(target, ast.Name):
-                    self.dataset_vars.add(target.id)
-        self.generic_visit(node)
-
-    def visit_For(self, node: ast.For) -> None:  # noqa: N802
-        split = _iter_dataset_split(node.iter)
-        if split and split["dataset"] in self.dataset_vars and split["split"] == "test":
-            loaded_names = _load_names(node.body)
-            row_names = _row_names_from_target(node.target)
-            leak = _body_reads_label(node.body, row_names)
-            if leak:
-                self.leaks.append({
-                    "line": node.lineno,
-                    "dataset": split["dataset"],
-                    "split": "test",
-                    "row_names": sorted(row_names),
-                    "loaded_names": sorted(loaded_names),
-                })
-        self.generic_visit(node)
-
-
-class _LoadNameFinder(ast.NodeVisitor):
-    def __init__(self) -> None:
-        self.names: set[str] = set()
-
-    def visit_Name(self, node: ast.Name) -> None:  # noqa: N802
-        if isinstance(node.ctx, ast.Load):
-            self.names.add(node.id)
-
-
-def _is_imdb_load_dataset(node: ast.AST) -> bool:
-    if not isinstance(node, ast.Call):
-        return False
-    func = node.func
-    is_load_dataset = (
-        isinstance(func, ast.Name) and func.id == "load_dataset"
-    ) or (
-        isinstance(func, ast.Attribute) and func.attr == "load_dataset"
-    )
-    if not is_load_dataset or not node.args:
-        return False
-    return isinstance(node.args[0], ast.Constant) and node.args[0].value == "imdb"
-
-
-def _iter_dataset_split(node: ast.AST) -> Dict[str, str] | None:
-    if (
-        isinstance(node, ast.Subscript)
-        and isinstance(node.value, ast.Name)
-        and _slice_value(node.slice) == "test"
-    ):
-        return {"dataset": node.value.id, "split": "test"}
-    if (
-        isinstance(node, ast.Call)
-        and isinstance(node.func, ast.Name)
-        and node.func.id == "enumerate"
-        and node.args
-    ):
-        return _iter_dataset_split(node.args[0])
-    return None
-
-
-def _slice_value(node: ast.AST) -> object:
-    if isinstance(node, ast.Constant):
-        return node.value
-    return None
-
-
-def _row_names_from_target(target: ast.AST) -> set[str]:
-    if isinstance(target, ast.Name):
-        return {target.id}
-    if isinstance(target, ast.Tuple):
-        names = [elt.id for elt in target.elts if isinstance(elt, ast.Name)]
-        return set(names[-1:])
-    return set()
-
-
-def _body_reads_label(nodes: Iterable[ast.AST], row_names: set[str]) -> bool:
-    for node in nodes:
-        for child in ast.walk(node):
-            if (
-                isinstance(child, ast.Subscript)
-                and isinstance(child.value, ast.Name)
-                and child.value.id in row_names
-                and _slice_value(child.slice) == "label"
-            ):
-                return True
-    return False
-
-
-def _load_names(nodes: Iterable[ast.AST]) -> set[str]:
-    finder = _LoadNameFinder()
-    for node in nodes:
-        finder.visit(node)
-    return finder.names
-
-
 def audit_test_label_leak(source: str) -> Dict[str, object]:
-    tree = ast.parse(source)
-    visitor = _LoadDatasetVisitor()
-    visitor.visit(tree)
-    return {
-        "passed": len(visitor.leaks) == 0,
-        "test_label_leaks": visitor.leaks,
-        "dataset_vars": sorted(visitor.dataset_vars),
-    }
+    return audit_hf_test_label_leak(source, dataset_name="imdb", test_split="test", label_key="label")
 
 
 def _run_candidate(python: str, work_dir: Path, timeout: int, env: Dict[str, str]) -> Dict[str, object]:
