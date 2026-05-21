@@ -18,6 +18,12 @@ METRIC_PATTERNS = {
     name: _metric_pattern(name)
     for name in ['val_bpb', 'val_loss', 'accuracy', 'score', 'submission_score']
 }
+METRIC_PATTERNS.update({
+    'time_taken': re.compile(rf'time\s+taken(?:\s+for\s+execution)?\s*[:=]\s*({NUMBER_RE})', re.IGNORECASE),
+    'execution_time': re.compile(rf'(?:execution_time|runtime|wall_time)\s*[:=]\s*({NUMBER_RE})', re.IGNORECASE),
+    'final_score': _metric_pattern('final_score'),
+    'total_time': _metric_pattern('total_time'),
+})
 
 
 def _to_float(raw: str) -> float:

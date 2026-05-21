@@ -20,6 +20,7 @@ class CoreBehaviorTests(unittest.TestCase):
         self.assertEqual(parse_metric("score = -1.25e-03", "score"), -1.25e-03)
         self.assertAlmostEqual(parse_metric('"accuracy": "87.5%"', "accuracy"), 0.875)
         self.assertEqual(parse_metric('{"submission_score": 12.5}', "submission_score"), 12.5)
+        self.assertEqual(parse_metric("Time taken for execution: 3.38 s", "time_taken"), 3.38)
 
     def test_noisy_one_shot_blocks_claim(self):
         trace = ResearchTrace(

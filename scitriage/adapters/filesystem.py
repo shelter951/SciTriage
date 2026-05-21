@@ -23,7 +23,7 @@ DEFAULT_PATTERNS = [
 CLAIM_CUE = re.compile(r'(^|\b)(we claim|we propose|we show|we demonstrate|this work|our method|conclusion|finding|claim|hypothesis)\b', re.I)
 METRIC_NAMES = [
     'val_loss', 'val_bpb', 'accuracy', 'success_rate', 'reward', 'score',
-    'f1', 'final_score', 'total_time', 'submission_score',
+    'f1', 'final_score', 'total_time', 'submission_score', 'time_taken', 'execution_time',
 ]
 
 
