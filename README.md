@@ -64,6 +64,23 @@ Full results: [`analysis/autoresearch_probe_v1/PAPER_RESULTS.md`](analysis/autor
 
 Evidence board: [`analysis/autoresearch_probe_v1/evidence_board_v1/EVIDENCE_BOARD.md`](analysis/autoresearch_probe_v1/evidence_board_v1/EVIDENCE_BOARD.md)
 
+## External Benchmark Smoke Result
+
+We also started external validation on [MLAgentBench](https://github.com/snap-stanford/MLAgentBench), beginning with its `vectorization` task.
+
+This task has a useful failure mode: the official score is runtime, so an invalid shortcut can look excellent if it skips the real computation. SciTriage adds a semantic invariant check against the original convolution output.
+
+| Candidate | Official runtime | Semantic invariant | Triage status |
+|---|---:|---|---|
+| `zero_fast_invalid` | `0.005201s` | fails | blocked |
+| `im2col_einsum` | `0.014278s` | passes | allowed |
+| `filter_vectorized` | `0.743157s` | passes | allowed |
+| `baseline` | `3.551149s` | passes | allowed |
+
+The official runtime-only winner is invalid. SciTriage blocks it and selects the fastest semantically valid candidate, which is still about `249x` faster than the baseline.
+
+External audit: [`analysis/external_mlagentbench_vectorization_v1/CANDIDATE_AUDIT.md`](analysis/external_mlagentbench_vectorization_v1/CANDIDATE_AUDIT.md)
+
 ## Install
 
 ```bash

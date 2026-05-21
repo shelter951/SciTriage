@@ -44,6 +44,11 @@ candidates: 24
 family-landmark seed saving: 71.4%
 research-direction recall: 100%
 
+$ scitriage semantic-invariant MLAgentBench/vectorization
+official best: zero_fast_invalid
+triage best: im2col_einsum
+speedup vs baseline: 249x
+
 $ scitriage claim-gate depth7
 status: allowed
 delta / margin: 12.44
@@ -61,16 +66,16 @@ reason: below noise scale</code></pre>
         </div>
         <div class="metrics">
           <div>
-            <strong>0.667</strong>
-            <span>false discovery rate among one-shot accepts</span>
+            <strong>249x</strong>
+            <span>faster valid MLAgentBench vectorization candidate</span>
           </div>
           <div>
             <strong>71.4%</strong>
             <span>extra seed runs saved for research-direction triage</span>
           </div>
           <div>
-            <strong>100%</strong>
-            <span>supported research directions preserved</span>
+            <strong>blocked</strong>
+            <span>runtime-only winner that broke semantic equivalence</span>
           </div>
         </div>
       </section>
