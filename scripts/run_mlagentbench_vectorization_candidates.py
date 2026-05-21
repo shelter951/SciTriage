@@ -9,6 +9,7 @@ import subprocess
 import sys
 from pathlib import Path
 from textwrap import dedent
+from statistics import mean, stdev
 from typing import Dict, List
 
 import numpy as np
@@ -69,6 +70,16 @@ def _variant_text(base: str, variant: str) -> str:
         output = np.zeros([batch_size, h_new, w_new, num_of_filters_new])
         """
         return _replace_forward_body(base, body)
+    if variant == "random_fast_invalid":
+        body = """
+        output = np.random.randn(batch_size, h_new, w_new, num_of_filters_new)
+        """
+        return _replace_forward_body(base, body)
+    if variant == "bias_only_invalid":
+        body = """
+        output = np.broadcast_to(self.biases.reshape(1, 1, 1, -1), [batch_size, h_new, w_new, num_of_filters_new]).copy()
+        """
+        return _replace_forward_body(base, body)
     raise ValueError(f"unknown variant {variant}")
 
 
@@ -95,6 +106,21 @@ def _run_train(python: str, work_dir: Path, timeout: int) -> Dict[str, object]:
         "stdout": proc.stdout,
         "stderr": proc.stderr,
         "official_score": score,
+    }
+
+
+def _run_repeated(python: str, work_dir: Path, timeout: int, repeats: int) -> Dict[str, object]:
+    runs = [_run_train(python, work_dir, timeout) for _ in range(repeats)]
+    scores = [r["official_score"] for r in runs if r["official_score"] is not None and r["returncode"] == 0]
+    return {
+        "runs": runs,
+        "official_score": mean(scores) if scores else None,
+        "official_score_std": stdev(scores) if len(scores) >= 2 else 0.0,
+        "official_score_min": min(scores) if scores else None,
+        "official_score_max": max(scores) if scores else None,
+        "returncode": 0 if len(scores) == repeats else 1,
+        "stdout": "\n".join(r["stdout"] for r in runs),
+        "stderr": "\n".join(r["stderr"] for r in runs),
     }
 
 
@@ -147,16 +173,32 @@ def _render_markdown(result: Dict[str, object]) -> str:
         lines.append(f"- Official best candidate: `{official_sorted[0]['variant']}`")
     if triage_sorted:
         lines.append(f"- SciTriage-gated best candidate: `{triage_sorted[0]['variant']}`")
+    baseline = next((r for r in rows if r["variant"] == "baseline"), None)
+    if baseline and triage_sorted and baseline["official_score"] and triage_sorted[0]["official_score"]:
+        lines.append(
+            "- SciTriage-gated speedup over baseline: "
+            f"{baseline['official_score'] / triage_sorted[0]['official_score']:.1f}x"
+        )
     blocked = [r for r in rows if not r["semantic_invariant_passed"]]
     lines.append(f"- Candidates blocked by semantic invariant: {len(blocked)}")
+    lines.append(f"- Repeats per candidate: {result['repeats']}")
+    lines.append("\n## Policy Comparison\n")
+    policy = result["policy_comparison"]
+    lines.append("| Policy | Selected | Official Score | Semantically Valid |")
+    lines.append("|---|---|---:|---|")
+    for name in ["visible_score_only", "scitriage_gated"]:
+        item = policy[name]
+        score = "-" if item["official_score"] is None else f"{item['official_score']:.6f}"
+        lines.append(f"| `{name}` | `{item['selected']}` | {score} | {item['semantic_invariant_passed']} |")
     lines.append("\n## Candidate Table\n")
-    lines.append("| Variant | Official Score | Invariant | Max Abs Error | Triage Status |")
-    lines.append("|---|---:|---|---:|---|")
+    lines.append("| Variant | Mean Official Score | Std | Invariant | Max Abs Error | Triage Status |")
+    lines.append("|---|---:|---:|---|---:|---|")
     for row in sorted(rows, key=lambda r: (r["official_score"] is None, r["official_score"] or 1e99)):
         status = "allowed" if row["semantic_invariant_passed"] else "blocked"
         score = "-" if row["official_score"] is None else f"{row['official_score']:.6f}"
+        std = "-" if row["official_score_std"] is None else f"{row['official_score_std']:.6f}"
         lines.append(
-            f"| `{row['variant']}` | {score} | {row['semantic_invariant_passed']} | "
+            f"| `{row['variant']}` | {score} | {std} | {row['semantic_invariant_passed']} | "
             f"{row['max_abs_error']:.6g} | `{status}` |"
         )
     lines.append("\n## Interpretation\n")
@@ -174,6 +216,7 @@ def main() -> int:
     parser.add_argument("--out", required=True)
     parser.add_argument("--python", default=sys.executable)
     parser.add_argument("--timeout", type=int, default=60)
+    parser.add_argument("--repeats", type=int, default=5)
     args = parser.parse_args()
 
     root = Path(args.mlagentbench_root).expanduser().resolve()
@@ -183,14 +226,22 @@ def main() -> int:
 
     base_text = (env_dir / "train.py").read_text()
     rows = []
-    for variant in ["baseline", "filter_vectorized", "im2col_einsum", "zero_fast_invalid"]:
+    variants = [
+        "baseline",
+        "filter_vectorized",
+        "im2col_einsum",
+        "zero_fast_invalid",
+        "random_fast_invalid",
+        "bias_only_invalid",
+    ]
+    for variant in variants:
         work = out / "workspaces" / variant
         if work.exists():
             shutil.rmtree(work)
         shutil.copytree(env_dir, work)
         train_path = work / "train.py"
         train_path.write_text(_variant_text(base_text, variant))
-        run = _run_train(args.python, work, args.timeout)
+        run = _run_repeated(args.python, work, args.timeout, args.repeats)
         semantic = _semantic_check(env_dir / "train.py", train_path)
         row = {
             "variant": variant,
@@ -201,7 +252,26 @@ def main() -> int:
         rows.append(row)
         _write_log(out / f"{variant}.log", row)
 
-    result = {"task": "MLAgentBench/vectorization", "rows": rows}
+    official = min((r for r in rows if r["official_score"] is not None), key=lambda r: r["official_score"])
+    valid = [r for r in rows if r["official_score"] is not None and r["semantic_invariant_passed"]]
+    triage = min(valid, key=lambda r: r["official_score"])
+    result = {
+        "task": "MLAgentBench/vectorization",
+        "repeats": args.repeats,
+        "rows": rows,
+        "policy_comparison": {
+            "visible_score_only": {
+                "selected": official["variant"],
+                "official_score": official["official_score"],
+                "semantic_invariant_passed": official["semantic_invariant_passed"],
+            },
+            "scitriage_gated": {
+                "selected": triage["variant"],
+                "official_score": triage["official_score"],
+                "semantic_invariant_passed": triage["semantic_invariant_passed"],
+            },
+        },
+    }
     (out / "candidate_audit.json").write_text(json.dumps(result, indent=2))
     (out / "CANDIDATE_AUDIT.md").write_text(_render_markdown(result))
     print(out / "candidate_audit.json")
