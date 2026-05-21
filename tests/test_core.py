@@ -4,16 +4,23 @@ import unittest
 from pathlib import Path
 
 from scitriage.aggregate import compare_seed_groups
+from scitriage.aggregate import parse_metric
 from scitriage.claim_gate import gate_claim
 from scitriage.hooks import write_autoresearch_hook
 from scitriage.plugin import assess_trace, seed_group_gate
 from scitriage.evidence_board import build_evidence_board
+from scitriage.adapters.filesystem import trace_from_filesystem
 from scitriage.probe_priority import prioritize_probe
 from scitriage.rules import diagnose
 from scitriage.schema import MetricObservation, ResearchTrace
 
 
 class CoreBehaviorTests(unittest.TestCase):
+    def test_parse_metric_handles_benchmark_log_formats(self):
+        self.assertEqual(parse_metric("score = -1.25e-03", "score"), -1.25e-03)
+        self.assertAlmostEqual(parse_metric('"accuracy": "87.5%"', "accuracy"), 0.875)
+        self.assertEqual(parse_metric('{"submission_score": 12.5}', "submission_score"), 12.5)
+
     def test_noisy_one_shot_blocks_claim(self):
         trace = ResearchTrace(
             trace_id="case",
@@ -115,6 +122,21 @@ class CoreBehaviorTests(unittest.TestCase):
             bundle = seed_group_gate(baseline, candidate, "val_bpb", "The candidate improves val_bpb.")
             self.assertEqual(bundle["comparison"]["verdict"], "supports_improvement")
             self.assertEqual(bundle["claim_gate"]["status"], "allowed")
+
+    def test_filesystem_adapter_reads_extensionless_benchmark_logs(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            (root / "log").write_text("score: 0.42\n")
+            agent_log = root / "agent_log"
+            agent_log.mkdir()
+            (agent_log / "main_log").write_text("Final Answer: improved model\n")
+            env_log = root / "env_log"
+            env_log.mkdir()
+            (env_log / "trace.json").write_text('{"steps": []}')
+            trace = trace_from_filesystem(root, trace_id="bench")
+            self.assertGreaterEqual(trace.experiment["num_files_scanned"], 2)
+            self.assertEqual(trace.metrics[0].name, "score")
+            self.assertEqual(trace.metrics[0].candidate, 0.42)
 
     def test_hook_writer_creates_executable_script(self):
         with tempfile.TemporaryDirectory() as tmp:

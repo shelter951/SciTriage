@@ -6,19 +6,33 @@ from pathlib import Path
 from typing import Dict, Iterable, List
 
 
+NUMBER_RE = r'[-+]?(?:\d+(?:\.\d*)?|\.\d+)(?:[eE][-+]?\d+)?%?'
+def _metric_pattern(metric: str) -> re.Pattern[str]:
+    return re.compile(
+        rf'(?:^|\b|["\']){re.escape(metric)}(?:["\'])?\s*[:=]\s*["\']?({NUMBER_RE})',
+        re.MULTILINE,
+    )
+
+
 METRIC_PATTERNS = {
-    'val_bpb': re.compile(r'^val_bpb:\s*([0-9.]+)', re.MULTILINE),
-    'val_loss': re.compile(r'(?:^|\b)val_loss[:=]\s*([0-9.]+)', re.MULTILINE),
-    'accuracy': re.compile(r'(?:^|\b)accuracy[:=]\s*([0-9.]+)', re.MULTILINE),
+    name: _metric_pattern(name)
+    for name in ['val_bpb', 'val_loss', 'accuracy', 'score', 'submission_score']
 }
+
+
+def _to_float(raw: str) -> float:
+    text = raw.strip()
+    if text.endswith('%'):
+        return float(text[:-1]) / 100.0
+    return float(text)
 
 
 def parse_metric(log_text: str, metric: str) -> float | None:
     pattern = METRIC_PATTERNS.get(metric)
     if pattern is None:
-        pattern = re.compile(rf'(?:^|\b){re.escape(metric)}[:=]\s*([0-9.]+)', re.MULTILINE)
+        pattern = _metric_pattern(metric)
     match = pattern.search(log_text)
-    return float(match.group(1)) if match else None
+    return _to_float(match.group(1)) if match else None
 
 
 def aggregate_logs(paths: Iterable[str | Path], metric: str, baseline: float | None = None, higher_is_better: bool = False) -> Dict[str, object]:

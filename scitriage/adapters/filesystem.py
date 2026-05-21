@@ -4,6 +4,7 @@ import re
 from pathlib import Path
 from typing import Iterable, List
 
+from ..aggregate import parse_metric
 from ..schema import MetricObservation, ResearchTrace
 
 DEFAULT_PATTERNS = [
@@ -20,7 +21,10 @@ DEFAULT_PATTERNS = [
 ]
 
 CLAIM_CUE = re.compile(r'(^|\b)(we claim|we propose|we show|we demonstrate|this work|our method|conclusion|finding|claim|hypothesis)\b', re.I)
-METRIC_RE = re.compile(r'(?P<name>val_loss|val_bpb|accuracy|success_rate|reward|score|f1)\s*[:=]\s*(?P<value>[0-9]+(?:\.[0-9]+)?)', re.I)
+METRIC_NAMES = [
+    'val_loss', 'val_bpb', 'accuracy', 'success_rate', 'reward', 'score',
+    'f1', 'final_score', 'total_time', 'submission_score',
+]
 
 
 def _read_if_exists(path: Path, limit_chars: int = 30000) -> str:
@@ -35,6 +39,12 @@ def _candidate_files(root: Path) -> List[Path]:
         files.extend(root.rglob(pattern))
     # Include root-level research notes for lightweight project folders.
     files.extend(sorted(root.glob('*.md'))[:30])
+    files.extend(sorted(root.glob('*.json'))[:30])
+    files.extend(sorted(root.glob('*.jsonl'))[:30])
+
+    # MLAgentBench and several agent harnesses use extensionless log names.
+    for name in ['log', 'main_log', 'error.txt', 'overall_time.txt', 'trace.json']:
+        files.extend(root.rglob(name))
 
     # Include high-signal markdown files in common ARIS directories.
     for sub in ['idea-stage', 'outputs', 'review-stage', 'experiments']:
@@ -89,9 +99,15 @@ def _extract_claims(text: str, max_claims: int = 12) -> List[str]:
 
 def _extract_metrics(text: str) -> List[MetricObservation]:
     metrics = []
-    for match in METRIC_RE.finditer(text):
-        name = match.group('name').lower()
-        value = float(match.group('value'))
+    seen = set()
+    for name in METRIC_NAMES:
+        value = parse_metric(text, name)
+        if value is None:
+            continue
+        key = (name, value)
+        if key in seen:
+            continue
+        seen.add(key)
         higher = name in {'accuracy', 'success_rate', 'reward', 'score', 'f1'}
         metrics.append(MetricObservation(name=name, candidate=value, baseline=None, higher_is_better=higher, seeds=1))
     return metrics[:8]
@@ -120,7 +136,12 @@ def trace_from_filesystem(root: str, trace_id: str | None = None) -> ResearchTra
         if not content:
             continue
         block = f'\n\n===== FILE: {rel} =====\n{content}'
-        if f.suffix.lower() in {'.log'} or any(part in str(rel).lower() for part in ['results', 'outputs', 'run_', 'metrics']):
+        rel_lower = str(rel).lower()
+        if (
+            f.suffix.lower() in {'.log'}
+            or f.name.lower() in {'log', 'main_log', 'error.txt', 'overall_time.txt'}
+            or any(part in rel_lower for part in ['results', 'outputs', 'run_', 'metrics', 'agent_log', 'env_log'])
+        ):
             log_sections.append(block)
         if f.suffix.lower() in {'.md', '.json', '.jsonl'}:
             doc_sections.append(block)
