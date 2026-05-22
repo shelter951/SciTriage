@@ -1,5 +1,9 @@
 # SciTriage
 
+<p align="center">
+  <img src="assets/scitriage_icon_cartoon.png" alt="SciTriage cartoon icon" width="132">
+</p>
+
 [English](README.md) | [中文](README.zh-CN.md)
 
 ![SciTriage banner](assets/readme_banner.svg)
@@ -173,6 +177,7 @@ CLRS 是 checkpoint-style 任务。候选必须训练模型、保存 `checkpoint
 - Benchmark positioning：[docs/RELATED_BENCHMARKS.md](docs/RELATED_BENCHMARKS.md)
 - Paper readiness：[docs/PAPER_READINESS.md](docs/PAPER_READINESS.md)
 - Live-loop policy results：[docs/LIVE_AGENT_LOOP_RESULTS.md](docs/LIVE_AGENT_LOOP_RESULTS.md)
+- Research next steps：[docs/RESEARCH_NEXT_STEPS.md](docs/RESEARCH_NEXT_STEPS.md)
 
 可选 LLM judge baseline：
 
