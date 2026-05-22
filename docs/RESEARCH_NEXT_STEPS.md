@@ -113,3 +113,18 @@ The next milestone should be:
 > 10 to 20 public benchmark tasks, same-agent with/without SciTriage, with a released failure corpus and reproducible scripts.
 
 That result would be understandable, useful to other AutoResearch projects, and much harder to dismiss as self-defined evaluation.
+
+## Current Advantage
+
+SciTriage's advantage is not a better idea generator or a small local model. Its advantage is where it sits in the research loop:
+
+- It is agent-agnostic: Karpathy-style loops, ARIS-like systems, Codex, Claude Code, and custom MLAgentBench runners can all call it after a run.
+- It checks evidence, not eloquence: a stronger closed model may write a more convincing summary, but SciTriage asks whether the patch, logs, artifacts, score, and resource contract support the claim.
+- It turns failures into reusable benchmark cases: every blocked candidate becomes a false-discovery example with a task, claim, visible score, gate decision, and cheapest next probe.
+- It is compute-realistic: on 4x4090, we avoid competing with frontier labs on model training and instead test validity, reproducibility, leakage, artifact lineage, and seed noise.
+
+The next official-executed targets are tracked in:
+
+```text
+analysis/official_audit_target_queue_v1/OFFICIAL_AUDIT_TARGET_QUEUE.md
+```

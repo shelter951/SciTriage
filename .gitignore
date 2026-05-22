@@ -41,6 +41,8 @@ analysis/*
 !analysis/seed_noise_policy_eval_v1/**
 !analysis/public_failure_corpus_eval_v1/
 !analysis/public_failure_corpus_eval_v1/**
+!analysis/official_audit_target_queue_v1/
+!analysis/official_audit_target_queue_v1/**
 analysis/**/workspaces/
 
 # Local secrets and environment files.

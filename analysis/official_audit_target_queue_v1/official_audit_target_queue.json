@@ -1,0 +1,513 @@
+{
+  "done_official_audits": [
+    "cifar10",
+    "clrs",
+    "imdb",
+    "vectorization"
+  ],
+  "recommended_next": [
+    {
+      "task": "babylm",
+      "status": "next",
+      "priority_score": 9.0,
+      "has_eval": true,
+      "needs_kaggle": false,
+      "needs_external_download": true,
+      "agent_visible_test_labels": false,
+      "data_presence": {
+        "checked": true,
+        "present_count": 1,
+        "expected_count": 2,
+        "missing": [
+          "__MACOSX/*"
+        ]
+      },
+      "target_failure_modes": [
+        "checkpoint_or_model_artifact",
+        "seed_noise",
+        "resource_fit"
+      ],
+      "why_this_target": "Language-model task with model artifact validity and perplexity; heavier but on-story for AutoResearch.",
+      "blockers": [
+        "external_download"
+      ]
+    },
+    {
+      "task": "ogbn-arxiv",
+      "status": "next",
+      "priority_score": 8.0,
+      "has_eval": true,
+      "needs_kaggle": false,
+      "needs_external_download": true,
+      "agent_visible_test_labels": false,
+      "data_presence": {
+        "checked": true,
+        "present_count": 0,
+        "expected_count": 1,
+        "missing": [
+          "networks/*"
+        ]
+      },
+      "target_failure_modes": [
+        "artifact_lineage",
+        "seed_noise",
+        "resource_fit"
+      ],
+      "why_this_target": "Non-Kaggle public graph task with official evaluator; heavier dependencies but strong externality.",
+      "blockers": [
+        "external_download"
+      ]
+    },
+    {
+      "task": "feedback",
+      "status": "next",
+      "priority_score": 6.2,
+      "has_eval": true,
+      "needs_kaggle": true,
+      "needs_external_download": true,
+      "agent_visible_test_labels": false,
+      "data_presence": {
+        "checked": true,
+        "present_count": 0,
+        "expected_count": 2,
+        "missing": [
+          "./train.csv",
+          "./test.csv"
+        ]
+      },
+      "target_failure_modes": [
+        "answer_leakage",
+        "schema_or_artifact",
+        "seed_noise"
+      ],
+      "why_this_target": "Text-regression CSV task; good for claim gating and evaluator leakage after data prep.",
+      "blockers": [
+        "kaggle_data"
+      ]
+    },
+    {
+      "task": "house-price",
+      "status": "next",
+      "priority_score": 6.2,
+      "has_eval": true,
+      "needs_kaggle": true,
+      "needs_external_download": true,
+      "agent_visible_test_labels": false,
+      "data_presence": {
+        "checked": true,
+        "present_count": 0,
+        "expected_count": 2,
+        "missing": [
+          "./train.csv",
+          "./test.csv"
+        ]
+      },
+      "target_failure_modes": [
+        "answer_leakage",
+        "schema_or_artifact",
+        "seed_noise"
+      ],
+      "why_this_target": "CSV regression task with cheap official MAE eval once Kaggle data is prepared.",
+      "blockers": [
+        "kaggle_data"
+      ]
+    },
+    {
+      "task": "spaceship-titanic",
+      "status": "next",
+      "priority_score": 6.2,
+      "has_eval": true,
+      "needs_kaggle": true,
+      "needs_external_download": true,
+      "agent_visible_test_labels": false,
+      "data_presence": {
+        "checked": true,
+        "present_count": 0,
+        "expected_count": 2,
+        "missing": [
+          "./train.csv",
+          "./test.csv"
+        ]
+      },
+      "target_failure_modes": [
+        "answer_leakage",
+        "schema_or_artifact",
+        "seed_noise"
+      ],
+      "why_this_target": "CSV classification task with cheap official accuracy eval once Kaggle data is prepared.",
+      "blockers": [
+        "kaggle_data"
+      ]
+    }
+  ],
+  "all_rows": [
+    {
+      "task": "babylm",
+      "status": "next",
+      "priority_score": 9.0,
+      "has_eval": true,
+      "needs_kaggle": false,
+      "needs_external_download": true,
+      "agent_visible_test_labels": false,
+      "data_presence": {
+        "checked": true,
+        "present_count": 1,
+        "expected_count": 2,
+        "missing": [
+          "__MACOSX/*"
+        ]
+      },
+      "target_failure_modes": [
+        "checkpoint_or_model_artifact",
+        "seed_noise",
+        "resource_fit"
+      ],
+      "why_this_target": "Language-model task with model artifact validity and perplexity; heavier but on-story for AutoResearch.",
+      "blockers": [
+        "external_download"
+      ]
+    },
+    {
+      "task": "ogbn-arxiv",
+      "status": "next",
+      "priority_score": 8.0,
+      "has_eval": true,
+      "needs_kaggle": false,
+      "needs_external_download": true,
+      "agent_visible_test_labels": false,
+      "data_presence": {
+        "checked": true,
+        "present_count": 0,
+        "expected_count": 1,
+        "missing": [
+          "networks/*"
+        ]
+      },
+      "target_failure_modes": [
+        "artifact_lineage",
+        "seed_noise",
+        "resource_fit"
+      ],
+      "why_this_target": "Non-Kaggle public graph task with official evaluator; heavier dependencies but strong externality.",
+      "blockers": [
+        "external_download"
+      ]
+    },
+    {
+      "task": "feedback",
+      "status": "next",
+      "priority_score": 6.2,
+      "has_eval": true,
+      "needs_kaggle": true,
+      "needs_external_download": true,
+      "agent_visible_test_labels": false,
+      "data_presence": {
+        "checked": true,
+        "present_count": 0,
+        "expected_count": 2,
+        "missing": [
+          "./train.csv",
+          "./test.csv"
+        ]
+      },
+      "target_failure_modes": [
+        "answer_leakage",
+        "schema_or_artifact",
+        "seed_noise"
+      ],
+      "why_this_target": "Text-regression CSV task; good for claim gating and evaluator leakage after data prep.",
+      "blockers": [
+        "kaggle_data"
+      ]
+    },
+    {
+      "task": "house-price",
+      "status": "next",
+      "priority_score": 6.2,
+      "has_eval": true,
+      "needs_kaggle": true,
+      "needs_external_download": true,
+      "agent_visible_test_labels": false,
+      "data_presence": {
+        "checked": true,
+        "present_count": 0,
+        "expected_count": 2,
+        "missing": [
+          "./train.csv",
+          "./test.csv"
+        ]
+      },
+      "target_failure_modes": [
+        "answer_leakage",
+        "schema_or_artifact",
+        "seed_noise"
+      ],
+      "why_this_target": "CSV regression task with cheap official MAE eval once Kaggle data is prepared.",
+      "blockers": [
+        "kaggle_data"
+      ]
+    },
+    {
+      "task": "spaceship-titanic",
+      "status": "next",
+      "priority_score": 6.2,
+      "has_eval": true,
+      "needs_kaggle": true,
+      "needs_external_download": true,
+      "agent_visible_test_labels": false,
+      "data_presence": {
+        "checked": true,
+        "present_count": 0,
+        "expected_count": 2,
+        "missing": [
+          "./train.csv",
+          "./test.csv"
+        ]
+      },
+      "target_failure_modes": [
+        "answer_leakage",
+        "schema_or_artifact",
+        "seed_noise"
+      ],
+      "why_this_target": "CSV classification task with cheap official accuracy eval once Kaggle data is prepared.",
+      "blockers": [
+        "kaggle_data"
+      ]
+    },
+    {
+      "task": "amp-parkinsons-disease-progression-prediction",
+      "status": "later",
+      "priority_score": 4.2,
+      "has_eval": true,
+      "needs_kaggle": true,
+      "needs_external_download": true,
+      "agent_visible_test_labels": false,
+      "data_presence": {
+        "checked": true,
+        "present_count": 0,
+        "expected_count": 5,
+        "missing": [
+          "example_test_files/*",
+          "./supplemental_clinical_data.csv",
+          "./train_clinical_data.csv",
+          "./train_peptide.csv",
+          "./train_protein.csv"
+        ]
+      },
+      "target_failure_modes": [
+        "answer_leakage",
+        "resource_fit",
+        "schema_or_artifact"
+      ],
+      "why_this_target": "Interesting tabular/time-series task, but Kaggle data and custom format make it slower to stabilize.",
+      "blockers": [
+        "kaggle_data"
+      ]
+    },
+    {
+      "task": "fathomnet",
+      "status": "later",
+      "priority_score": 4.2,
+      "has_eval": true,
+      "needs_kaggle": true,
+      "needs_external_download": true,
+      "agent_visible_test_labels": false,
+      "data_presence": {
+        "checked": true,
+        "present_count": 0,
+        "expected_count": 4,
+        "missing": [
+          "images/*",
+          "multilabel_classification/*",
+          "object_detection/*",
+          "./category_key.csv"
+        ]
+      },
+      "target_failure_modes": [
+        "resource_fit",
+        "schema_or_artifact"
+      ],
+      "why_this_target": "Vision/data-heavy task; useful later but not first priority on 4x4090 time budget.",
+      "blockers": [
+        "kaggle_data"
+      ]
+    },
+    {
+      "task": "identify-contrails",
+      "status": "later",
+      "priority_score": 4.2,
+      "has_eval": true,
+      "needs_kaggle": true,
+      "needs_external_download": true,
+      "agent_visible_test_labels": false,
+      "data_presence": {
+        "checked": true,
+        "present_count": 0,
+        "expected_count": 6,
+        "missing": [
+          "test/*",
+          "_test/*",
+          "test_answer/*",
+          "train/*",
+          "./train_metadata.json",
+          "./validations_metadata.json"
+        ]
+      },
+      "target_failure_modes": [
+        "answer_leakage",
+        "resource_fit",
+        "schema_or_artifact"
+      ],
+      "why_this_target": "Image-heavy task with large Kaggle data; good eventual stress test, expensive first target.",
+      "blockers": [
+        "kaggle_data"
+      ]
+    },
+    {
+      "task": "bibtex-generation",
+      "status": "integration",
+      "priority_score": -4.0,
+      "has_eval": false,
+      "needs_kaggle": false,
+      "needs_external_download": false,
+      "agent_visible_test_labels": false,
+      "data_presence": {
+        "checked": true,
+        "present_count": 0,
+        "expected_count": 0,
+        "missing": []
+      },
+      "target_failure_modes": [
+        "evidence_mismatch",
+        "citation_hallucination"
+      ],
+      "why_this_target": "No official eval in MLAgentBench; useful for integration/log audits, not score-bearing official audit.",
+      "blockers": [
+        "no_official_eval"
+      ]
+    },
+    {
+      "task": "literature-review-tool",
+      "status": "integration",
+      "priority_score": -4.0,
+      "has_eval": false,
+      "needs_kaggle": false,
+      "needs_external_download": false,
+      "agent_visible_test_labels": false,
+      "data_presence": {
+        "checked": true,
+        "present_count": 0,
+        "expected_count": 0,
+        "missing": []
+      },
+      "target_failure_modes": [
+        "evidence_mismatch",
+        "citation_hallucination"
+      ],
+      "why_this_target": "No official eval; relevant to AutoResearch narratives but needs a separate evidence benchmark.",
+      "blockers": [
+        "no_official_eval"
+      ]
+    },
+    {
+      "task": "llama-inference",
+      "status": "integration",
+      "priority_score": -4.0,
+      "has_eval": false,
+      "needs_kaggle": false,
+      "needs_external_download": false,
+      "agent_visible_test_labels": false,
+      "data_presence": {
+        "checked": true,
+        "present_count": 0,
+        "expected_count": 0,
+        "missing": []
+      },
+      "target_failure_modes": [
+        "semantic_shortcut",
+        "resource_fit"
+      ],
+      "why_this_target": "No official eval; useful for harness integration and runtime-contract checks.",
+      "blockers": [
+        "no_official_eval"
+      ]
+    },
+    {
+      "task": "CLRS",
+      "status": "done",
+      "priority_score": -100.0,
+      "has_eval": true,
+      "needs_kaggle": false,
+      "needs_external_download": false,
+      "agent_visible_test_labels": false,
+      "data_presence": {
+        "checked": true,
+        "present_count": 0,
+        "expected_count": 0,
+        "missing": []
+      },
+      "target_failure_modes": [],
+      "why_this_target": "Not yet manually prioritized.",
+      "blockers": []
+    },
+    {
+      "task": "cifar10",
+      "status": "done",
+      "priority_score": -100.0,
+      "has_eval": true,
+      "needs_kaggle": false,
+      "needs_external_download": true,
+      "agent_visible_test_labels": true,
+      "data_presence": {
+        "checked": true,
+        "present_count": 1,
+        "expected_count": 1,
+        "missing": []
+      },
+      "target_failure_modes": [],
+      "why_this_target": "Not yet manually prioritized.",
+      "blockers": [
+        "external_download",
+        "agent_visible_test_label_surface"
+      ]
+    },
+    {
+      "task": "imdb",
+      "status": "done",
+      "priority_score": -100.0,
+      "has_eval": true,
+      "needs_kaggle": false,
+      "needs_external_download": false,
+      "agent_visible_test_labels": true,
+      "data_presence": {
+        "checked": true,
+        "present_count": 0,
+        "expected_count": 0,
+        "missing": []
+      },
+      "target_failure_modes": [],
+      "why_this_target": "Not yet manually prioritized.",
+      "blockers": [
+        "agent_visible_test_label_surface"
+      ]
+    },
+    {
+      "task": "vectorization",
+      "status": "done",
+      "priority_score": -100.0,
+      "has_eval": true,
+      "needs_kaggle": false,
+      "needs_external_download": false,
+      "agent_visible_test_labels": false,
+      "data_presence": {
+        "checked": true,
+        "present_count": 0,
+        "expected_count": 0,
+        "missing": []
+      },
+      "target_failure_modes": [],
+      "why_this_target": "Not yet manually prioritized.",
+      "blockers": []
+    }
+  ]
+}

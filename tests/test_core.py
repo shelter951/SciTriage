@@ -291,6 +291,49 @@ for idx, row in enumerate(imdb["test"]):
         self.assertLess(full["invalid_accept_rate"], score_only["invalid_accept_rate"])
         self.assertLessEqual(full["mean_valid_score_retention"], 1.0)
 
+    def test_official_audit_target_queue_prioritizes_unfinished_eval_tasks(self):
+        plan = _load_script_function("plan_official_audit_targets.py", "plan")
+        surface = {
+            "rows": [
+                {
+                    "task": "vectorization",
+                    "has_eval": True,
+                    "has_env_train": True,
+                    "needs_kaggle": False,
+                    "needs_external_download": False,
+                    "agent_visible_test_labels": False,
+                    "read_only_files": [],
+                    "blockers": [],
+                },
+                {
+                    "task": "house-price",
+                    "has_eval": True,
+                    "has_env_train": True,
+                    "needs_kaggle": True,
+                    "needs_external_download": True,
+                    "agent_visible_test_labels": False,
+                    "read_only_files": ["./train.csv", "./test.csv"],
+                    "blockers": ["kaggle_data"],
+                },
+                {
+                    "task": "bibtex-generation",
+                    "has_eval": False,
+                    "has_env_train": False,
+                    "needs_kaggle": False,
+                    "needs_external_download": False,
+                    "agent_visible_test_labels": False,
+                    "read_only_files": [],
+                    "blockers": ["no_official_eval"],
+                },
+            ]
+        }
+        result = plan(surface)
+        self.assertEqual(result["recommended_next"][0]["task"], "house-price")
+        done = next(row for row in result["all_rows"] if row["task"] == "vectorization")
+        self.assertEqual(done["status"], "done")
+        integration = next(row for row in result["all_rows"] if row["task"] == "bibtex-generation")
+        self.assertEqual(integration["status"], "integration")
+
 
 if __name__ == "__main__":
     unittest.main()

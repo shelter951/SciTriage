@@ -182,6 +182,7 @@ CLRS 是 checkpoint-style 任务。候选必须训练模型、保存 `checkpoint
 - Research next steps：[docs/RESEARCH_NEXT_STEPS.md](docs/RESEARCH_NEXT_STEPS.md)
 - Public failure corpus：[benchmarks/false_discovery_corpus/INDEX.md](benchmarks/false_discovery_corpus/INDEX.md)
 - Public-surface same-agent evaluation：[analysis/public_failure_corpus_eval_v1/PUBLIC_FAILURE_CORPUS_EVAL.md](analysis/public_failure_corpus_eval_v1/PUBLIC_FAILURE_CORPUS_EVAL.md)
+- Official audit target queue：[analysis/official_audit_target_queue_v1/OFFICIAL_AUDIT_TARGET_QUEUE.md](analysis/official_audit_target_queue_v1/OFFICIAL_AUDIT_TARGET_QUEUE.md)
 
 可选 LLM judge baseline：
 
