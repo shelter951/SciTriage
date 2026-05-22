@@ -51,6 +51,9 @@ analysis/*
 !analysis/closed_loop_replay_eval_v1/**
 !analysis/live_vectorization_agent_loop_v1/
 !analysis/live_vectorization_agent_loop_v1/**
+analysis/live_vectorization_agent_loop_v1/*.agent_stdout.txt
+analysis/live_vectorization_agent_loop_v1/*.body.py
+analysis/live_vectorization_agent_loop_v1/workspaces/
 !analysis/experiment_campaign_full_v2/
 !analysis/experiment_campaign_full_v2/**
 analysis/experiment_campaign_full_v2/*.json
