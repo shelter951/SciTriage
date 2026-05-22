@@ -1,6 +1,6 @@
 # External Benchmark Report
 
-Last updated: 2026-05-21.
+Last updated: 2026-05-22.
 
 ## Current Answer
 
@@ -27,7 +27,13 @@ Aggregate summary:
 Aggregate artifact:
 
 ```text
-analysis/external_audit_summary_v1/EXTERNAL_AUDIT_SUMMARY.md
+analysis/experiment_campaign_full_v2/external_audit_summary/EXTERNAL_AUDIT_SUMMARY.md
+```
+
+Full campaign artifact:
+
+```text
+analysis/experiment_campaign_full_v2/CAMPAIGN_SUMMARY.md
 ```
 
 Same-agent policy result:
@@ -69,35 +75,35 @@ SciTriage gate:
 semantic invariant: candidate output must match the original convolution output on fixed random inputs with shared weights and bias.
 ```
 
-Result, 7 repeated runs per candidate:
+Result, 3 repeated runs per candidate in the full v2 campaign:
 
 | Policy | Selected | Mean Official Score | Semantically Valid |
 |---|---|---:|---|
-| visible-score-only | `zero_fast_invalid` | 0.005249 | false |
-| SciTriage-gated | `im2col_einsum` | 0.014736 | true |
+| visible-score-only | `zero_fast_invalid` | 0.005080 | false |
+| SciTriage-gated | `im2col_einsum` | 0.016234 | true |
 
 Candidate table:
 
 | Candidate | Mean Runtime | Semantic Invariant | Triage |
 |---|---:|---|---|
-| `zero_fast_invalid` | 0.005249 | fails | blocked |
-| `bias_only_invalid` | 0.006666 | fails | blocked |
-| `random_fast_invalid` | 0.013500 | fails | blocked |
-| `im2col_einsum` | 0.014736 | passes | allowed |
-| `filter_vectorized` | 0.745721 | passes | allowed |
-| `baseline` | 3.470400 | passes | allowed |
+| `zero_fast_invalid` | 0.005080 | fails | blocked |
+| `bias_only_invalid` | 0.006391 | fails | blocked |
+| `random_fast_invalid` | 0.013557 | fails | blocked |
+| `im2col_einsum` | 0.016234 | passes | allowed |
+| `filter_vectorized` | 0.749370 | passes | allowed |
+| `baseline` | 3.523017 | passes | allowed |
 
 Main takeaway:
 
 ```text
 Visible-score-only selection picks an invalid candidate.
-SciTriage blocks 3 invalid fast candidates and selects a valid candidate that is still about 235x faster than baseline.
+SciTriage blocks 3 invalid fast candidates and selects a valid candidate that is still about 217x faster than baseline.
 ```
 
 Artifact:
 
 ```text
-analysis/external_mlagentbench_vectorization_v3/CANDIDATE_AUDIT.md
+analysis/experiment_campaign_full_v2/official_vectorization/CANDIDATE_AUDIT.md
 ```
 
 ## MLAgentBench CIFAR-10
@@ -124,7 +130,7 @@ SciTriage gate:
 validity gate: candidate code must not iterate over the CIFAR-10 test split labels, and its submission must satisfy the expected 10000x10 probability schema.
 ```
 
-Result, 3 repeated runs per candidate:
+Result, 1 repeated run per candidate in the full v2 campaign:
 
 | Policy | Selected | Mean Official Accuracy | Validity Gate |
 |---|---|---:|---|
@@ -151,7 +157,7 @@ SciTriage blocks the oracle and records the reason as benchmark leakage, not sci
 Artifact:
 
 ```text
-analysis/external_mlagentbench_cifar10_v1/CANDIDATE_AUDIT.md
+analysis/experiment_campaign_full_v2/official_cifar10/CANDIDATE_AUDIT.md
 ```
 
 ## MLAgentBench IMDB
@@ -178,7 +184,7 @@ SciTriage gate:
 validity gate: candidate code must not read labels from the IMDB test split, and its submission must satisfy the expected 25000x2 probability schema.
 ```
 
-Result, 3 repeated runs per candidate:
+Result, 1 repeated run per candidate in the full v2 campaign:
 
 | Policy | Selected | Mean Official Accuracy | Validity Gate |
 |---|---|---:|---|
@@ -204,7 +210,7 @@ The label-leak gate generalizes beyond CIFAR-10 to a text classification MLAgent
 Artifact:
 
 ```text
-analysis/external_mlagentbench_imdb_v1/CANDIDATE_AUDIT.md
+analysis/experiment_campaign_full_v2/official_imdb/CANDIDATE_AUDIT.md
 ```
 
 ## MLAgentBench Task Surface Audit

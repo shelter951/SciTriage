@@ -1,0 +1,270 @@
+﻿{
+  "task": "MLAgentBench/imdb",
+  "repeats": 1,
+  "rows": [
+    {
+      "variant": "uniform_valid",
+      "runs": [
+        {
+          "returncode": 0,
+          "stdout": "",
+          "stderr": "",
+          "submission_exists": true,
+          "official_score": 0.5,
+          "schema_check": {
+            "passed": true,
+            "shape": [
+              25000,
+              2
+            ],
+            "columns": [
+              "0",
+              "1"
+            ],
+            "min_row_sum": 1.0,
+            "max_row_sum": 1.0
+          }
+        }
+      ],
+      "official_score": 0.5,
+      "official_score_std": 0.0,
+      "official_score_min": 0.5,
+      "official_score_max": 0.5,
+      "returncode": 0,
+      "stdout": "",
+      "stderr": "",
+      "schema_passed": true,
+      "test_label_gate_passed": true,
+      "test_label_gate": {
+        "passed": true,
+        "test_label_leaks": [],
+        "dataset_vars": []
+      },
+      "validity_gate_passed": true
+    },
+    {
+      "variant": "random_valid",
+      "runs": [
+        {
+          "returncode": 0,
+          "stdout": "",
+          "stderr": "",
+          "submission_exists": true,
+          "official_score": 0.49884,
+          "schema_check": {
+            "passed": true,
+            "shape": [
+              25000,
+              2
+            ],
+            "columns": [
+              "0",
+              "1"
+            ],
+            "min_row_sum": 0.9999999999999997,
+            "max_row_sum": 1.0000000000000002
+          }
+        }
+      ],
+      "official_score": 0.49884,
+      "official_score_std": 0.0,
+      "official_score_min": 0.49884,
+      "official_score_max": 0.49884,
+      "returncode": 0,
+      "stdout": "",
+      "stderr": "",
+      "schema_passed": true,
+      "test_label_gate_passed": true,
+      "test_label_gate": {
+        "passed": true,
+        "test_label_leaks": [],
+        "dataset_vars": []
+      },
+      "validity_gate_passed": true
+    },
+    {
+      "variant": "train_prior_valid",
+      "runs": [
+        {
+          "returncode": 0,
+          "stdout": "",
+          "stderr": "Using the latest cached version of the dataset since imdb couldn't be found on the Hugging Face Hub (offline mode is enabled).\nFound the latest cached dataset configuration 'plain_text' at $HF_CACHE/datasets/imdb/plain_text/0.0.0/e6281661ce1c48d982bc483cf8a173c1bbeb5d31 (last modified on Thu May 21 17:08:58 2026).\n",
+          "submission_exists": true,
+          "official_score": 0.5,
+          "schema_check": {
+            "passed": true,
+            "shape": [
+              25000,
+              2
+            ],
+            "columns": [
+              "0",
+              "1"
+            ],
+            "min_row_sum": 1.0,
+            "max_row_sum": 1.0
+          }
+        }
+      ],
+      "official_score": 0.5,
+      "official_score_std": 0.0,
+      "official_score_min": 0.5,
+      "official_score_max": 0.5,
+      "returncode": 0,
+      "stdout": "",
+      "stderr": "Using the latest cached version of the dataset since imdb couldn't be found on the Hugging Face Hub (offline mode is enabled).\nFound the latest cached dataset configuration 'plain_text' at $HF_CACHE/datasets/imdb/plain_text/0.0.0/e6281661ce1c48d982bc483cf8a173c1bbeb5d31 (last modified on Thu May 21 17:08:58 2026).\n",
+      "schema_passed": true,
+      "test_label_gate_passed": true,
+      "test_label_gate": {
+        "passed": true,
+        "test_label_leaks": [],
+        "dataset_vars": [
+          "imdb"
+        ]
+      },
+      "validity_gate_passed": true
+    },
+    {
+      "variant": "test_label_flipped_invalid",
+      "runs": [
+        {
+          "returncode": 0,
+          "stdout": "",
+          "stderr": "Using the latest cached version of the dataset since imdb couldn't be found on the Hugging Face Hub (offline mode is enabled).\nFound the latest cached dataset configuration 'plain_text' at $HF_CACHE/datasets/imdb/plain_text/0.0.0/e6281661ce1c48d982bc483cf8a173c1bbeb5d31 (last modified on Thu May 21 17:08:58 2026).\n",
+          "submission_exists": true,
+          "official_score": 0.0,
+          "schema_check": {
+            "passed": true,
+            "shape": [
+              25000,
+              2
+            ],
+            "columns": [
+              "0",
+              "1"
+            ],
+            "min_row_sum": 1.0,
+            "max_row_sum": 1.0
+          }
+        }
+      ],
+      "official_score": 0.0,
+      "official_score_std": 0.0,
+      "official_score_min": 0.0,
+      "official_score_max": 0.0,
+      "returncode": 0,
+      "stdout": "",
+      "stderr": "Using the latest cached version of the dataset since imdb couldn't be found on the Hugging Face Hub (offline mode is enabled).\nFound the latest cached dataset configuration 'plain_text' at $HF_CACHE/datasets/imdb/plain_text/0.0.0/e6281661ce1c48d982bc483cf8a173c1bbeb5d31 (last modified on Thu May 21 17:08:58 2026).\n",
+      "schema_passed": true,
+      "test_label_gate_passed": false,
+      "test_label_gate": {
+        "passed": false,
+        "test_label_leaks": [
+          {
+            "line": 7,
+            "dataset": "imdb",
+            "split": "test",
+            "row_names": [
+              "row"
+            ],
+            "label_key": "label"
+          }
+        ],
+        "dataset_vars": [
+          "imdb"
+        ]
+      },
+      "validity_gate_passed": false
+    },
+    {
+      "variant": "test_label_oracle_invalid",
+      "runs": [
+        {
+          "returncode": 0,
+          "stdout": "",
+          "stderr": "Using the latest cached version of the dataset since imdb couldn't be found on the Hugging Face Hub (offline mode is enabled).\nFound the latest cached dataset configuration 'plain_text' at $HF_CACHE/datasets/imdb/plain_text/0.0.0/e6281661ce1c48d982bc483cf8a173c1bbeb5d31 (last modified on Thu May 21 17:08:58 2026).\n",
+          "submission_exists": true,
+          "official_score": 1.0,
+          "schema_check": {
+            "passed": true,
+            "shape": [
+              25000,
+              2
+            ],
+            "columns": [
+              "0",
+              "1"
+            ],
+            "min_row_sum": 1.0,
+            "max_row_sum": 1.0
+          }
+        }
+      ],
+      "official_score": 1.0,
+      "official_score_std": 0.0,
+      "official_score_min": 1.0,
+      "official_score_max": 1.0,
+      "returncode": 0,
+      "stdout": "",
+      "stderr": "Using the latest cached version of the dataset since imdb couldn't be found on the Hugging Face Hub (offline mode is enabled).\nFound the latest cached dataset configuration 'plain_text' at $HF_CACHE/datasets/imdb/plain_text/0.0.0/e6281661ce1c48d982bc483cf8a173c1bbeb5d31 (last modified on Thu May 21 17:08:58 2026).\n",
+      "schema_passed": true,
+      "test_label_gate_passed": false,
+      "test_label_gate": {
+        "passed": false,
+        "test_label_leaks": [
+          {
+            "line": 7,
+            "dataset": "imdb",
+            "split": "test",
+            "row_names": [
+              "row"
+            ],
+            "label_key": "label"
+          }
+        ],
+        "dataset_vars": [
+          "imdb"
+        ]
+      },
+      "validity_gate_passed": false
+    }
+  ],
+  "policy_comparison": {
+    "visible_score_only": {
+      "selected": "test_label_oracle_invalid",
+      "official_score": 1.0,
+      "validity_gate_passed": false
+    },
+    "scitriage_gated": {
+      "selected": "uniform_valid",
+      "official_score": 0.5,
+      "validity_gate_passed": true
+    }
+  },
+  "validity_gate": {
+    "status": "ok",
+    "visible_score_only": {
+      "selected": "test_label_oracle_invalid",
+      "score": 1.0,
+      "semantic_invariant_passed": false
+    },
+    "scitriage_gated": {
+      "selected": "uniform_valid",
+      "score": 0.5,
+      "semantic_invariant_passed": true
+    },
+    "blocked_candidates": [
+      {
+        "selected": "test_label_flipped_invalid",
+        "score": 0.0,
+        "semantic_invariant_passed": false
+      },
+      {
+        "selected": "test_label_oracle_invalid",
+        "score": 1.0,
+        "semantic_invariant_passed": false
+      }
+    ],
+    "visible_winner_blocked": true
+  }
+}

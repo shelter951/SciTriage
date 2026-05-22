@@ -1,6 +1,6 @@
 # Paper Readiness Assessment
 
-Last updated: 2026-05-21.
+Last updated: 2026-05-22.
 
 ## Short Answer
 
@@ -20,6 +20,8 @@ It is not yet enough for AAAI/ICLR/NeurIPS main-conference strength because it s
 - stronger baselines against simpler static checks;
 - a systematic false-positive/false-negative analysis;
 - automatic invariant generation or at least a reusable invariant template library.
+
+The latest improvement is operational: `analysis/experiment_campaign_full_v2` now reruns the main evidence package end to end, including unit tests, the 40-seed public-surface stress suite, same-agent policy evaluation, and three official MLAgentBench audits (`vectorization`, `cifar10`, `imdb`). This makes the current evidence easier to reproduce, but it does not remove the need for larger live-loop experiments.
 
 ## Current Main Result
 
@@ -93,6 +95,16 @@ Ideal version:
 
 The project is paper-worthy but not finished-paper-ready.
 
+After the full v2 campaign, the honest assessment is:
+
+```text
+Strong workshop-free research direction: yes.
+Credible short-paper / systems-demo style story: yes.
+AAAI main-conference ready today: not yet.
+```
+
+The current evidence is strong enough to show that the score-validity gap is real and that SciTriage can close it on selected public benchmark surfaces. A top-conference version still needs the stronger claim that the same autonomous agent, under the same budget, makes better final research decisions when SciTriage is attached.
+
 Best near-term strategy:
 
 ```text
@@ -112,6 +124,7 @@ The project now has:
 - 1 checkpoint-style MLAgentBench task (`CLRS`);
 - an aggregate audit summary over the four complete audits;
 - a public README that presents the problem and results for non-specialist readers.
+- a full v2 campaign report that reruns the lightweight official audits and stress evaluations without interactive prompting.
 
 The highest-leverage next experiment is now a fully autonomous same-LLM comparison: run the same LLM agent with and without SciTriage while it creates candidates from scratch, then measure invalid accept rate, final valid score, and extra cost.
 
@@ -141,4 +154,5 @@ See:
 
 ```text
 docs/LIVE_AGENT_LOOP_RESULTS.md
+analysis/experiment_campaign_full_v2/CAMPAIGN_SUMMARY.md
 ```

@@ -103,8 +103,23 @@ SciTriage is promising but not yet a top-tier paper by itself. The current resul
 - it catches real invalid winners in external MLAgentBench-style audits
 - it improves same-agent policy selection in controlled evaluations
 - it has useful ablations and baselines
+- it now has a full v2 campaign that reruns the lightweight evidence package end to end
 
 To become top-tier solid, it needs larger external coverage and real closed-loop agent runs where SciTriage changes the final research behavior of the agent.
+
+The v2 campaign completed successfully on the server:
+
+| Evidence piece | Status |
+|---|---|
+| public failure corpus build | complete |
+| 40-seed public-surface stress suite | complete |
+| same-agent policy evaluation | complete |
+| official vectorization audit | complete |
+| official CIFAR-10 audit | complete |
+| official IMDB audit | complete |
+| unit tests | complete |
+
+This improves reproducibility and packaging. It does not yet solve the main scientific gap: we still need live agent loops where the candidates are generated naturally by the agent under equal budgets.
 
 ## Near-Term Milestone
 

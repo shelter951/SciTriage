@@ -1,0 +1,304 @@
+﻿{
+  "task": "MLAgentBench/cifar10",
+  "repeats": 1,
+  "rows": [
+    {
+      "variant": "uniform_valid",
+      "runs": [
+        {
+          "returncode": 0,
+          "stdout": "",
+          "stderr": "",
+          "submission_exists": true,
+          "official_score": 0.1,
+          "schema_check": {
+            "passed": true,
+            "shape": [
+              10000,
+              10
+            ],
+            "columns": [
+              "0",
+              "1",
+              "2",
+              "3",
+              "4",
+              "5",
+              "6",
+              "7",
+              "8",
+              "9"
+            ],
+            "min_row_sum": 0.9999999999999999,
+            "max_row_sum": 0.9999999999999999
+          }
+        }
+      ],
+      "official_score": 0.1,
+      "official_score_std": 0.0,
+      "official_score_min": 0.1,
+      "official_score_max": 0.1,
+      "returncode": 0,
+      "stdout": "",
+      "stderr": "",
+      "schema_passed": true,
+      "test_label_gate_passed": true,
+      "test_label_gate": {
+        "passed": true,
+        "test_label_leaks": [],
+        "test_dataset_vars": []
+      },
+      "validity_gate_passed": true
+    },
+    {
+      "variant": "random_valid",
+      "runs": [
+        {
+          "returncode": 0,
+          "stdout": "",
+          "stderr": "",
+          "submission_exists": true,
+          "official_score": 0.1042,
+          "schema_check": {
+            "passed": true,
+            "shape": [
+              10000,
+              10
+            ],
+            "columns": [
+              "0",
+              "1",
+              "2",
+              "3",
+              "4",
+              "5",
+              "6",
+              "7",
+              "8",
+              "9"
+            ],
+            "min_row_sum": 0.999999999999999,
+            "max_row_sum": 1.0000000000000002
+          }
+        }
+      ],
+      "official_score": 0.1042,
+      "official_score_std": 0.0,
+      "official_score_min": 0.1042,
+      "official_score_max": 0.1042,
+      "returncode": 0,
+      "stdout": "",
+      "stderr": "",
+      "schema_passed": true,
+      "test_label_gate_passed": true,
+      "test_label_gate": {
+        "passed": true,
+        "test_label_leaks": [],
+        "test_dataset_vars": []
+      },
+      "validity_gate_passed": true
+    },
+    {
+      "variant": "train_prior_valid",
+      "runs": [
+        {
+          "returncode": 0,
+          "stdout": "Files already downloaded and verified\n",
+          "stderr": "",
+          "submission_exists": true,
+          "official_score": 0.1,
+          "schema_check": {
+            "passed": true,
+            "shape": [
+              10000,
+              10
+            ],
+            "columns": [
+              "0",
+              "1",
+              "2",
+              "3",
+              "4",
+              "5",
+              "6",
+              "7",
+              "8",
+              "9"
+            ],
+            "min_row_sum": 0.9999999999999999,
+            "max_row_sum": 0.9999999999999999
+          }
+        }
+      ],
+      "official_score": 0.1,
+      "official_score_std": 0.0,
+      "official_score_min": 0.1,
+      "official_score_max": 0.1,
+      "returncode": 0,
+      "stdout": "Files already downloaded and verified\n",
+      "stderr": "",
+      "schema_passed": true,
+      "test_label_gate_passed": true,
+      "test_label_gate": {
+        "passed": true,
+        "test_label_leaks": [],
+        "test_dataset_vars": []
+      },
+      "validity_gate_passed": true
+    },
+    {
+      "variant": "test_label_shifted_invalid",
+      "runs": [
+        {
+          "returncode": 0,
+          "stdout": "Files already downloaded and verified\n",
+          "stderr": "",
+          "submission_exists": true,
+          "official_score": 0.0,
+          "schema_check": {
+            "passed": true,
+            "shape": [
+              10000,
+              10
+            ],
+            "columns": [
+              "0",
+              "1",
+              "2",
+              "3",
+              "4",
+              "5",
+              "6",
+              "7",
+              "8",
+              "9"
+            ],
+            "min_row_sum": 1.0,
+            "max_row_sum": 1.0
+          }
+        }
+      ],
+      "official_score": 0.0,
+      "official_score_std": 0.0,
+      "official_score_min": 0.0,
+      "official_score_max": 0.0,
+      "returncode": 0,
+      "stdout": "Files already downloaded and verified\n",
+      "stderr": "",
+      "schema_passed": true,
+      "test_label_gate_passed": false,
+      "test_label_gate": {
+        "passed": false,
+        "test_label_leaks": [
+          {
+            "line": 7,
+            "dataset": "test_dataset",
+            "label_names": [
+              "label"
+            ]
+          }
+        ],
+        "test_dataset_vars": [
+          "test_dataset"
+        ]
+      },
+      "validity_gate_passed": false
+    },
+    {
+      "variant": "test_label_oracle_invalid",
+      "runs": [
+        {
+          "returncode": 0,
+          "stdout": "Files already downloaded and verified\n",
+          "stderr": "",
+          "submission_exists": true,
+          "official_score": 1.0,
+          "schema_check": {
+            "passed": true,
+            "shape": [
+              10000,
+              10
+            ],
+            "columns": [
+              "0",
+              "1",
+              "2",
+              "3",
+              "4",
+              "5",
+              "6",
+              "7",
+              "8",
+              "9"
+            ],
+            "min_row_sum": 1.0,
+            "max_row_sum": 1.0
+          }
+        }
+      ],
+      "official_score": 1.0,
+      "official_score_std": 0.0,
+      "official_score_min": 1.0,
+      "official_score_max": 1.0,
+      "returncode": 0,
+      "stdout": "Files already downloaded and verified\n",
+      "stderr": "",
+      "schema_passed": true,
+      "test_label_gate_passed": false,
+      "test_label_gate": {
+        "passed": false,
+        "test_label_leaks": [
+          {
+            "line": 7,
+            "dataset": "test_dataset",
+            "label_names": [
+              "label"
+            ]
+          }
+        ],
+        "test_dataset_vars": [
+          "test_dataset"
+        ]
+      },
+      "validity_gate_passed": false
+    }
+  ],
+  "policy_comparison": {
+    "visible_score_only": {
+      "selected": "test_label_oracle_invalid",
+      "official_score": 1.0,
+      "validity_gate_passed": false
+    },
+    "scitriage_gated": {
+      "selected": "random_valid",
+      "official_score": 0.1042,
+      "validity_gate_passed": true
+    }
+  },
+  "validity_gate": {
+    "status": "ok",
+    "visible_score_only": {
+      "selected": "test_label_oracle_invalid",
+      "score": 1.0,
+      "semantic_invariant_passed": false
+    },
+    "scitriage_gated": {
+      "selected": "random_valid",
+      "score": 0.1042,
+      "semantic_invariant_passed": true
+    },
+    "blocked_candidates": [
+      {
+        "selected": "test_label_shifted_invalid",
+        "score": 0.0,
+        "semantic_invariant_passed": false
+      },
+      {
+        "selected": "test_label_oracle_invalid",
+        "score": 1.0,
+        "semantic_invariant_passed": false
+      }
+    ],
+    "visible_winner_blocked": true
+  }
+}

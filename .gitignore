@@ -45,6 +45,8 @@ analysis/*
 !analysis/official_audit_target_queue_v1/**
 !analysis/public_failure_corpus_multiseed_eval_v1/
 !analysis/public_failure_corpus_multiseed_eval_v1/**
+!analysis/experiment_campaign_full_v2/
+!analysis/experiment_campaign_full_v2/**
 analysis/**/workspaces/
 
 # Local secrets and environment files.

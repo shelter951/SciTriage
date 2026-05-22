@@ -44,7 +44,7 @@ SciTriage already catches high-scoring but invalid candidates on external MLAgen
 
 | External task | What the visible score would pick | What SciTriage does |
 |---|---|---|
-| `MLAgentBench/vectorization` | a `0.005249s` shortcut that skips the real convolution | blocks it, selects a valid `235x` faster implementation |
+| `MLAgentBench/vectorization` | a `0.005080s` shortcut that skips the real convolution | blocks it, selects a valid `217x` faster implementation |
 | `MLAgentBench/cifar10` | a `1.0000` accuracy test-label oracle | blocks it as benchmark leakage |
 | `MLAgentBench/imdb` | a `1.0000` accuracy test-label oracle | blocks it as benchmark leakage |
 | `MLAgentBench/CLRS` | a valid checkpointed model | keeps the visible winner and blocks a missing-checkpoint candidate |
@@ -58,6 +58,36 @@ Same-agent policy evaluation: the no-SciTriage score-seeking agent has `0.750` i
 We are now scaling beyond the four official-executed audits with a public false-discovery corpus built from all 15 MLAgentBench task surfaces. On 180 same-agent stress traces over 112 candidate records, score-only selection accepts invalid evidence in `0.744` of traces; full SciTriage reduces this to `0.000` while keeping `0.982` mean valid-score retention. This larger suite is clearly marked as a public-surface stress test, not as official benchmark execution.
 
 Across 40 deterministic trace seeds, this remains stable: score-only invalid accept rate is `0.770 +/- 0.008`, while full SciTriage stays at `0.000 +/- 0.000` and keeps `0.973 +/- 0.002` valid-score retention.
+
+## Reproducible Campaign
+
+The latest server campaign runs the core evidence package end to end:
+
+```bash
+python scripts/run_experiment_campaign.py \
+  --repo-root . \
+  --out analysis/experiment_campaign_full_v2 \
+  --mlagentbench-root /path/to/MLAgentBench \
+  --seeds 40 \
+  --traces-per-task 12 \
+  --max-candidates 5 \
+  --include-official
+```
+
+Completed steps:
+
+| Step family | Status |
+|---|---|
+| public failure corpus build | passed |
+| 40-seed public-surface stress evaluation | passed |
+| same-agent with/without SciTriage policy evaluation | passed |
+| external audit summary | passed |
+| unit tests | passed |
+| official MLAgentBench vectorization audit | passed |
+| official MLAgentBench CIFAR-10 audit | passed |
+| official MLAgentBench IMDB audit | passed |
+
+Campaign report: [`analysis/experiment_campaign_full_v2/CAMPAIGN_SUMMARY.md`](analysis/experiment_campaign_full_v2/CAMPAIGN_SUMMARY.md)
 
 ## What It Does
 
@@ -116,7 +146,7 @@ The current external result covers four score-bearing MLAgentBench audits and th
 
 | MLAgentBench task | Visible-score-only winner | SciTriage-gated winner | What SciTriage blocks |
 |---|---|---|---|
-| `vectorization` | `zero_fast_invalid` at `0.005249s` | `im2col_einsum` at `0.014736s` | invalid runtime shortcut |
+| `vectorization` | `zero_fast_invalid` at `0.005080s` | `im2col_einsum` at `0.016234s` | invalid runtime shortcut |
 | `cifar10` | `test_label_oracle_invalid` at `1.0000` acc | `random_valid` at `0.1042` acc | test-label leakage |
 | `imdb` | `test_label_oracle_invalid` at `1.0000` acc | `uniform_valid` at `0.5000` acc | test-label leakage |
 | `CLRS` | `step1_encoded_decoded` at `0.020592` | `step1_encoded_decoded` at `0.020592` | missing checkpoint / unloadable result |
@@ -127,14 +157,14 @@ This task has a useful failure mode: the official score is runtime, so an invali
 
 | Candidate | Official runtime | Semantic invariant | Triage status |
 |---|---:|---|---|
-| `zero_fast_invalid` | `0.005249s` | fails | blocked |
-| `im2col_einsum` | `0.014736s` | passes | allowed |
-| `filter_vectorized` | `0.745721s` | passes | allowed |
-| `baseline` | `3.470400s` | passes | allowed |
+| `zero_fast_invalid` | `0.005080s` | fails | blocked |
+| `im2col_einsum` | `0.016234s` | passes | allowed |
+| `filter_vectorized` | `0.749370s` | passes | allowed |
+| `baseline` | `3.523017s` | passes | allowed |
 
-The official runtime-only winner is invalid. SciTriage blocks it and selects the fastest semantically valid candidate, which is still about `235x` faster than the baseline. This result uses 7 repeated runs per candidate.
+The official runtime-only winner is invalid. SciTriage blocks it and selects the fastest semantically valid candidate, which is still about `217x` faster than the baseline.
 
-External audit: [`analysis/external_mlagentbench_vectorization_v3/CANDIDATE_AUDIT.md`](analysis/external_mlagentbench_vectorization_v3/CANDIDATE_AUDIT.md)
+External audit: [`analysis/experiment_campaign_full_v2/official_vectorization/CANDIDATE_AUDIT.md`](analysis/experiment_campaign_full_v2/official_vectorization/CANDIDATE_AUDIT.md)
 
 ### CIFAR-10
 
@@ -149,7 +179,7 @@ This task exposes a different issue: the starter environment can access CIFAR-10
 
 The official accuracy winner is a label oracle. SciTriage blocks it and records the result as benchmark leakage, not scientific progress.
 
-CIFAR audit: [`analysis/external_mlagentbench_cifar10_v1/CANDIDATE_AUDIT.md`](analysis/external_mlagentbench_cifar10_v1/CANDIDATE_AUDIT.md)
+CIFAR audit: [`analysis/experiment_campaign_full_v2/official_cifar10/CANDIDATE_AUDIT.md`](analysis/experiment_campaign_full_v2/official_cifar10/CANDIDATE_AUDIT.md)
 
 ### IMDB
 
@@ -162,7 +192,7 @@ The IMDB task repeats the leakage pattern on a text classification benchmark. A 
 | `train_prior_valid` | `0.5000` | passes | allowed |
 | `random_valid` | `0.4988` | passes | allowed |
 
-IMDB audit: [`analysis/external_mlagentbench_imdb_v1/CANDIDATE_AUDIT.md`](analysis/external_mlagentbench_imdb_v1/CANDIDATE_AUDIT.md)
+IMDB audit: [`analysis/experiment_campaign_full_v2/official_imdb/CANDIDATE_AUDIT.md`](analysis/experiment_campaign_full_v2/official_imdb/CANDIDATE_AUDIT.md)
 
 ### CLRS
 
@@ -194,6 +224,8 @@ Public failure corpus: [`benchmarks/false_discovery_corpus/INDEX.md`](benchmarks
 Public-surface same-agent evaluation: [`analysis/public_failure_corpus_eval_v1/PUBLIC_FAILURE_CORPUS_EVAL.md`](analysis/public_failure_corpus_eval_v1/PUBLIC_FAILURE_CORPUS_EVAL.md)
 
 Public-surface multi-seed evaluation: [`analysis/public_failure_corpus_multiseed_eval_v1/PUBLIC_FAILURE_CORPUS_MULTISEED_EVAL.md`](analysis/public_failure_corpus_multiseed_eval_v1/PUBLIC_FAILURE_CORPUS_MULTISEED_EVAL.md)
+
+Full campaign v2: [`analysis/experiment_campaign_full_v2/CAMPAIGN_SUMMARY.md`](analysis/experiment_campaign_full_v2/CAMPAIGN_SUMMARY.md)
 
 Official audit target queue: [`analysis/official_audit_target_queue_v1/OFFICIAL_AUDIT_TARGET_QUEUE.md`](analysis/official_audit_target_queue_v1/OFFICIAL_AUDIT_TARGET_QUEUE.md)
 

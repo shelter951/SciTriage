@@ -1,0 +1,4134 @@
+﻿{
+  "seeds": [
+    20260522,
+    20260523,
+    20260524,
+    20260525,
+    20260526,
+    20260527,
+    20260528,
+    20260529,
+    20260530,
+    20260531,
+    20260532,
+    20260533,
+    20260534,
+    20260535,
+    20260536,
+    20260537,
+    20260538,
+    20260539,
+    20260540,
+    20260541,
+    20260542,
+    20260543,
+    20260544,
+    20260545,
+    20260546,
+    20260547,
+    20260548,
+    20260549,
+    20260550,
+    20260551,
+    20260552,
+    20260553,
+    20260554,
+    20260555,
+    20260556,
+    20260557,
+    20260558,
+    20260559,
+    20260560,
+    20260561
+  ],
+  "num_seeds": 40,
+  "traces_per_task": 12,
+  "max_candidates_per_trace": 5,
+  "task_count": 15,
+  "candidate_count": 112,
+  "invalid_candidate_count": 67,
+  "aggregate": [
+    {
+      "policy": "official_score_only",
+      "invalid_accept_rate": {
+        "mean": 0.770278,
+        "std": 0.025769,
+        "ci95": 0.007986,
+        "min": 0.716667,
+        "max": 0.816667
+      },
+      "mean_valid_score_retention": {
+        "mean": 0.228456,
+        "std": 0.025639,
+        "ci95": 0.007946,
+        "min": 0.182196,
+        "max": 0.280806
+      },
+      "mean_cost_units": {
+        "mean": 5.389145,
+        "std": 0.048534,
+        "ci95": 0.015041,
+        "min": 5.267361,
+        "max": 5.48525
+      },
+      "cost_per_valid_claim": {
+        "mean": 23.748741,
+        "std": 2.671244,
+        "ci95": 0.827827,
+        "min": 18.959765,
+        "max": 29.219939
+      }
+    },
+    {
+      "policy": "static_artifact_rule",
+      "invalid_accept_rate": {
+        "mean": 0.752778,
+        "std": 0.02357,
+        "ci95": 0.007304,
+        "min": 0.705556,
+        "max": 0.8
+      },
+      "mean_valid_score_retention": {
+        "mean": 0.245333,
+        "std": 0.023433,
+        "ci95": 0.007262,
+        "min": 0.198644,
+        "max": 0.292906
+      },
+      "mean_cost_units": {
+        "mean": 6.289145,
+        "std": 0.048534,
+        "ci95": 0.015041,
+        "min": 6.167361,
+        "max": 6.38525
+      },
+      "cost_per_valid_claim": {
+        "mean": 25.666042,
+        "std": 2.459853,
+        "ci95": 0.762316,
+        "min": 21.311453,
+        "max": 31.44225
+      }
+    },
+    {
+      "policy": "judge_only_proxy",
+      "invalid_accept_rate": {
+        "mean": 0.752778,
+        "std": 0.02357,
+        "ci95": 0.007304,
+        "min": 0.705556,
+        "max": 0.8
+      },
+      "mean_valid_score_retention": {
+        "mean": 0.245333,
+        "std": 0.023433,
+        "ci95": 0.007262,
+        "min": 0.198644,
+        "max": 0.292906
+      },
+      "mean_cost_units": {
+        "mean": 6.289145,
+        "std": 0.048534,
+        "ci95": 0.015041,
+        "min": 6.167361,
+        "max": 6.38525
+      },
+      "cost_per_valid_claim": {
+        "mean": 25.666042,
+        "std": 2.459853,
+        "ci95": 0.762316,
+        "min": 21.311453,
+        "max": 31.44225
+      }
+    },
+    {
+      "policy": "scitriage_full",
+      "invalid_accept_rate": {
+        "mean": 0.0,
+        "std": 0.0,
+        "ci95": 0.0,
+        "min": 0.0,
+        "max": 0.0
+      },
+      "mean_valid_score_retention": {
+        "mean": 0.973152,
+        "std": 0.007036,
+        "ci95": 0.002181,
+        "min": 0.953581,
+        "max": 0.984159
+      },
+      "mean_cost_units": {
+        "mean": 6.289145,
+        "std": 0.048534,
+        "ci95": 0.015041,
+        "min": 6.167361,
+        "max": 6.38525
+      },
+      "cost_per_valid_claim": {
+        "mean": 6.348403,
+        "std": 0.053725,
+        "ci95": 0.016649,
+        "min": 6.236657,
+        "max": 6.464594
+      }
+    },
+    {
+      "policy": "ablate_no_semantic_gate",
+      "invalid_accept_rate": {
+        "mean": 0.254167,
+        "std": 0.007932,
+        "ci95": 0.002458,
+        "min": 0.238889,
+        "max": 0.266667
+      },
+      "mean_valid_score_retention": {
+        "mean": 0.724719,
+        "std": 0.010631,
+        "ci95": 0.003294,
+        "min": 0.700096,
+        "max": 0.745497
+      },
+      "mean_cost_units": {
+        "mean": 6.289145,
+        "std": 0.048534,
+        "ci95": 0.015041,
+        "min": 6.167361,
+        "max": 6.38525
+      },
+      "cost_per_valid_claim": {
+        "mean": 8.54024,
+        "std": 0.116627,
+        "ci95": 0.036143,
+        "min": 8.362578,
+        "max": 8.834844
+      }
+    },
+    {
+      "policy": "ablate_no_leakage_gate",
+      "invalid_accept_rate": {
+        "mean": 0.133333,
+        "std": 0.0,
+        "ci95": 0.0,
+        "min": 0.133333,
+        "max": 0.133333
+      },
+      "mean_valid_score_retention": {
+        "mean": 0.845415,
+        "std": 0.005989,
+        "ci95": 0.001856,
+        "min": 0.83107,
+        "max": 0.853132
+      },
+      "mean_cost_units": {
+        "mean": 6.289145,
+        "std": 0.048534,
+        "ci95": 0.015041,
+        "min": 6.167361,
+        "max": 6.38525
+      },
+      "cost_per_valid_claim": {
+        "mean": 7.306141,
+        "std": 0.067599,
+        "ci95": 0.020949,
+        "min": 7.186692,
+        "max": 7.438204
+      }
+    },
+    {
+      "policy": "ablate_no_checkpoint_gate",
+      "invalid_accept_rate": {
+        "mean": 0.104306,
+        "std": 0.021772,
+        "ci95": 0.006747,
+        "min": 0.038889,
+        "max": 0.155556
+      },
+      "mean_valid_score_retention": {
+        "mean": 0.883004,
+        "std": 0.021367,
+        "ci95": 0.006622,
+        "min": 0.83071,
+        "max": 0.947557
+      },
+      "mean_cost_units": {
+        "mean": 6.289145,
+        "std": 0.048534,
+        "ci95": 0.015041,
+        "min": 6.167361,
+        "max": 6.38525
+      },
+      "cost_per_valid_claim": {
+        "mean": 7.02549,
+        "std": 0.176095,
+        "ci95": 0.054573,
+        "min": 6.586295,
+        "max": 7.484329
+      }
+    },
+    {
+      "policy": "ablate_no_seed_noise_gate",
+      "invalid_accept_rate": {
+        "mean": 0.507222,
+        "std": 0.032326,
+        "ci95": 0.010018,
+        "min": 0.444444,
+        "max": 0.605556
+      },
+      "mean_valid_score_retention": {
+        "mean": 0.487288,
+        "std": 0.031954,
+        "ci95": 0.009903,
+        "min": 0.391244,
+        "max": 0.551289
+      },
+      "mean_cost_units": {
+        "mean": 6.289145,
+        "std": 0.048534,
+        "ci95": 0.015041,
+        "min": 6.167361,
+        "max": 6.38525
+      },
+      "cost_per_valid_claim": {
+        "mean": 12.818297,
+        "std": 0.880139,
+        "ci95": 0.272758,
+        "min": 11.29507,
+        "max": 15.933859
+      }
+    },
+    {
+      "policy": "ablate_no_schema_gate",
+      "invalid_accept_rate": {
+        "mean": 0.023611,
+        "std": 0.01095,
+        "ci95": 0.003393,
+        "min": 0.005556,
+        "max": 0.05
+      },
+      "mean_valid_score_retention": {
+        "mean": 0.95925,
+        "std": 0.011369,
+        "ci95": 0.003523,
+        "min": 0.932325,
+        "max": 0.978528
+      },
+      "mean_cost_units": {
+        "mean": 6.289145,
+        "std": 0.048534,
+        "ci95": 0.015041,
+        "min": 6.167361,
+        "max": 6.38525
+      },
+      "cost_per_valid_claim": {
+        "mean": 6.447349,
+        "std": 0.070523,
+        "ci95": 0.021855,
+        "min": 6.31673,
+        "max": 6.614058
+      }
+    }
+  ],
+  "seed_aggregates": [
+    {
+      "seed": 20260522,
+      "aggregate": [
+        {
+          "policy": "official_score_only",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 134,
+          "invalid_accept_rate": 0.744444,
+          "mean_valid_score_retention": 0.254392,
+          "mean_cost_units": 5.467756,
+          "cost_per_valid_claim": 21.395565
+        },
+        {
+          "policy": "static_artifact_rule",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 133,
+          "invalid_accept_rate": 0.738889,
+          "mean_valid_score_retention": 0.259854,
+          "mean_cost_units": 6.367756,
+          "cost_per_valid_claim": 24.387149
+        },
+        {
+          "policy": "judge_only_proxy",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 133,
+          "invalid_accept_rate": 0.738889,
+          "mean_valid_score_retention": 0.259854,
+          "mean_cost_units": 6.367756,
+          "cost_per_valid_claim": 24.387149
+        },
+        {
+          "policy": "scitriage_full",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 0,
+          "invalid_accept_rate": 0.0,
+          "mean_valid_score_retention": 0.982399,
+          "mean_cost_units": 6.367756,
+          "cost_per_valid_claim": 6.367756
+        },
+        {
+          "policy": "ablate_no_semantic_gate",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 46,
+          "invalid_accept_rate": 0.255556,
+          "mean_valid_score_retention": 0.732504,
+          "mean_cost_units": 6.367756,
+          "cost_per_valid_claim": 8.553701
+        },
+        {
+          "policy": "ablate_no_leakage_gate",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 24,
+          "invalid_accept_rate": 0.133333,
+          "mean_valid_score_retention": 0.851633,
+          "mean_cost_units": 6.367756,
+          "cost_per_valid_claim": 7.34741
+        },
+        {
+          "policy": "ablate_no_checkpoint_gate",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 16,
+          "invalid_accept_rate": 0.088889,
+          "mean_valid_score_retention": 0.899038,
+          "mean_cost_units": 6.367756,
+          "cost_per_valid_claim": 6.989
+        },
+        {
+          "policy": "ablate_no_seed_noise_gate",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 89,
+          "invalid_accept_rate": 0.494444,
+          "mean_valid_score_retention": 0.500372,
+          "mean_cost_units": 6.367756,
+          "cost_per_valid_claim": 12.59556
+        },
+        {
+          "policy": "ablate_no_schema_gate",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 2,
+          "invalid_accept_rate": 0.011111,
+          "mean_valid_score_retention": 0.972476,
+          "mean_cost_units": 6.367756,
+          "cost_per_valid_claim": 6.439303
+        }
+      ]
+    },
+    {
+      "seed": 20260523,
+      "aggregate": [
+        {
+          "policy": "official_score_only",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 141,
+          "invalid_accept_rate": 0.783333,
+          "mean_valid_score_retention": 0.215598,
+          "mean_cost_units": 5.382556,
+          "cost_per_valid_claim": 24.842564
+        },
+        {
+          "policy": "static_artifact_rule",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 138,
+          "invalid_accept_rate": 0.766667,
+          "mean_valid_score_retention": 0.231338,
+          "mean_cost_units": 6.282556,
+          "cost_per_valid_claim": 26.925238
+        },
+        {
+          "policy": "judge_only_proxy",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 138,
+          "invalid_accept_rate": 0.766667,
+          "mean_valid_score_retention": 0.231338,
+          "mean_cost_units": 6.282556,
+          "cost_per_valid_claim": 26.925238
+        },
+        {
+          "policy": "scitriage_full",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 0,
+          "invalid_accept_rate": 0.0,
+          "mean_valid_score_retention": 0.96174,
+          "mean_cost_units": 6.282556,
+          "cost_per_valid_claim": 6.425341
+        },
+        {
+          "policy": "ablate_no_semantic_gate",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 48,
+          "invalid_accept_rate": 0.266667,
+          "mean_valid_score_retention": 0.700096,
+          "mean_cost_units": 6.282556,
+          "cost_per_valid_claim": 8.834844
+        },
+        {
+          "policy": "ablate_no_leakage_gate",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 24,
+          "invalid_accept_rate": 0.133333,
+          "mean_valid_score_retention": 0.84177,
+          "mean_cost_units": 6.282556,
+          "cost_per_valid_claim": 7.343247
+        },
+        {
+          "policy": "ablate_no_checkpoint_gate",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 18,
+          "invalid_accept_rate": 0.1,
+          "mean_valid_score_retention": 0.888638,
+          "mean_cost_units": 6.282556,
+          "cost_per_valid_claim": 6.980617
+        },
+        {
+          "policy": "ablate_no_seed_noise_gate",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 92,
+          "invalid_accept_rate": 0.511111,
+          "mean_valid_score_retention": 0.483453,
+          "mean_cost_units": 6.282556,
+          "cost_per_valid_claim": 12.850682
+        },
+        {
+          "policy": "ablate_no_schema_gate",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 6,
+          "invalid_accept_rate": 0.033333,
+          "mean_valid_score_retention": 0.946996,
+          "mean_cost_units": 6.282556,
+          "cost_per_valid_claim": 6.536763
+        }
+      ]
+    },
+    {
+      "seed": 20260524,
+      "aggregate": [
+        {
+          "policy": "official_score_only",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 140,
+          "invalid_accept_rate": 0.777778,
+          "mean_valid_score_retention": 0.220494,
+          "mean_cost_units": 5.328467,
+          "cost_per_valid_claim": 23.9781
+        },
+        {
+          "policy": "static_artifact_rule",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 138,
+          "invalid_accept_rate": 0.766667,
+          "mean_valid_score_retention": 0.231399,
+          "mean_cost_units": 6.228467,
+          "cost_per_valid_claim": 26.693429
+        },
+        {
+          "policy": "judge_only_proxy",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 138,
+          "invalid_accept_rate": 0.766667,
+          "mean_valid_score_retention": 0.231399,
+          "mean_cost_units": 6.228467,
+          "cost_per_valid_claim": 26.693429
+        },
+        {
+          "policy": "scitriage_full",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 0,
+          "invalid_accept_rate": 0.0,
+          "mean_valid_score_retention": 0.96802,
+          "mean_cost_units": 6.228467,
+          "cost_per_valid_claim": 6.298449
+        },
+        {
+          "policy": "ablate_no_semantic_gate",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 48,
+          "invalid_accept_rate": 0.266667,
+          "mean_valid_score_retention": 0.708998,
+          "mean_cost_units": 6.228467,
+          "cost_per_valid_claim": 8.624031
+        },
+        {
+          "policy": "ablate_no_leakage_gate",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 24,
+          "invalid_accept_rate": 0.133333,
+          "mean_valid_score_retention": 0.848586,
+          "mean_cost_units": 6.228467,
+          "cost_per_valid_claim": 7.186692
+        },
+        {
+          "policy": "ablate_no_checkpoint_gate",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 18,
+          "invalid_accept_rate": 0.1,
+          "mean_valid_score_retention": 0.883712,
+          "mean_cost_units": 6.228467,
+          "cost_per_valid_claim": 6.920519
+        },
+        {
+          "policy": "ablate_no_seed_noise_gate",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 95,
+          "invalid_accept_rate": 0.527778,
+          "mean_valid_score_retention": 0.465323,
+          "mean_cost_units": 6.228467,
+          "cost_per_valid_claim": 13.189694
+        },
+        {
+          "policy": "ablate_no_schema_gate",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 4,
+          "invalid_accept_rate": 0.022222,
+          "mean_valid_score_retention": 0.958211,
+          "mean_cost_units": 6.228467,
+          "cost_per_valid_claim": 6.370023
+        }
+      ]
+    },
+    {
+      "seed": 20260525,
+      "aggregate": [
+        {
+          "policy": "official_score_only",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 146,
+          "invalid_accept_rate": 0.811111,
+          "mean_valid_score_retention": 0.187993,
+          "mean_cost_units": 5.38845,
+          "cost_per_valid_claim": 28.527088
+        },
+        {
+          "policy": "static_artifact_rule",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 144,
+          "invalid_accept_rate": 0.8,
+          "mean_valid_score_retention": 0.198644,
+          "mean_cost_units": 6.28845,
+          "cost_per_valid_claim": 31.44225
+        },
+        {
+          "policy": "judge_only_proxy",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 144,
+          "invalid_accept_rate": 0.8,
+          "mean_valid_score_retention": 0.198644,
+          "mean_cost_units": 6.28845,
+          "cost_per_valid_claim": 31.44225
+        },
+        {
+          "policy": "scitriage_full",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 0,
+          "invalid_accept_rate": 0.0,
+          "mean_valid_score_retention": 0.982116,
+          "mean_cost_units": 6.28845,
+          "cost_per_valid_claim": 6.28845
+        },
+        {
+          "policy": "ablate_no_semantic_gate",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 47,
+          "invalid_accept_rate": 0.261111,
+          "mean_valid_score_retention": 0.726242,
+          "mean_cost_units": 6.28845,
+          "cost_per_valid_claim": 8.510684
+        },
+        {
+          "policy": "ablate_no_leakage_gate",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 24,
+          "invalid_accept_rate": 0.133333,
+          "mean_valid_score_retention": 0.851721,
+          "mean_cost_units": 6.28845,
+          "cost_per_valid_claim": 7.255904
+        },
+        {
+          "policy": "ablate_no_checkpoint_gate",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 21,
+          "invalid_accept_rate": 0.116667,
+          "mean_valid_score_retention": 0.872551,
+          "mean_cost_units": 6.28845,
+          "cost_per_valid_claim": 7.119
+        },
+        {
+          "policy": "ablate_no_seed_noise_gate",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 97,
+          "invalid_accept_rate": 0.538889,
+          "mean_valid_score_retention": 0.456356,
+          "mean_cost_units": 6.28845,
+          "cost_per_valid_claim": 13.637602
+        },
+        {
+          "policy": "ablate_no_schema_gate",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 4,
+          "invalid_accept_rate": 0.022222,
+          "mean_valid_score_retention": 0.961925,
+          "mean_cost_units": 6.28845,
+          "cost_per_valid_claim": 6.431369
+        }
+      ]
+    },
+    {
+      "seed": 20260526,
+      "aggregate": [
+        {
+          "policy": "official_score_only",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 140,
+          "invalid_accept_rate": 0.777778,
+          "mean_valid_score_retention": 0.221316,
+          "mean_cost_units": 5.349322,
+          "cost_per_valid_claim": 24.07195
+        },
+        {
+          "policy": "static_artifact_rule",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 139,
+          "invalid_accept_rate": 0.772222,
+          "mean_valid_score_retention": 0.226611,
+          "mean_cost_units": 6.249322,
+          "cost_per_valid_claim": 27.436049
+        },
+        {
+          "policy": "judge_only_proxy",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 139,
+          "invalid_accept_rate": 0.772222,
+          "mean_valid_score_retention": 0.226611,
+          "mean_cost_units": 6.249322,
+          "cost_per_valid_claim": 27.436049
+        },
+        {
+          "policy": "scitriage_full",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 0,
+          "invalid_accept_rate": 0.0,
+          "mean_valid_score_retention": 0.970829,
+          "mean_cost_units": 6.249322,
+          "cost_per_valid_claim": 6.284235
+        },
+        {
+          "policy": "ablate_no_semantic_gate",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 47,
+          "invalid_accept_rate": 0.261111,
+          "mean_valid_score_retention": 0.720148,
+          "mean_cost_units": 6.249322,
+          "cost_per_valid_claim": 8.521803
+        },
+        {
+          "policy": "ablate_no_leakage_gate",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 24,
+          "invalid_accept_rate": 0.133333,
+          "mean_valid_score_retention": 0.839518,
+          "mean_cost_units": 6.249322,
+          "cost_per_valid_claim": 7.257277
+        },
+        {
+          "policy": "ablate_no_checkpoint_gate",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 18,
+          "invalid_accept_rate": 0.1,
+          "mean_valid_score_retention": 0.882168,
+          "mean_cost_units": 6.249322,
+          "cost_per_valid_claim": 6.943691
+        },
+        {
+          "policy": "ablate_no_seed_noise_gate",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 96,
+          "invalid_accept_rate": 0.533333,
+          "mean_valid_score_retention": 0.459074,
+          "mean_cost_units": 6.249322,
+          "cost_per_valid_claim": 13.391405
+        },
+        {
+          "policy": "ablate_no_schema_gate",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 2,
+          "invalid_accept_rate": 0.011111,
+          "mean_valid_score_retention": 0.96546,
+          "mean_cost_units": 6.249322,
+          "cost_per_valid_claim": 6.319539
+        }
+      ]
+    },
+    {
+      "seed": 20260527,
+      "aggregate": [
+        {
+          "policy": "official_score_only",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 144,
+          "invalid_accept_rate": 0.8,
+          "mean_valid_score_retention": 0.199229,
+          "mean_cost_units": 5.431078,
+          "cost_per_valid_claim": 27.155389
+        },
+        {
+          "policy": "static_artifact_rule",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 139,
+          "invalid_accept_rate": 0.772222,
+          "mean_valid_score_retention": 0.225963,
+          "mean_cost_units": 6.331078,
+          "cost_per_valid_claim": 27.794976
+        },
+        {
+          "policy": "judge_only_proxy",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 139,
+          "invalid_accept_rate": 0.772222,
+          "mean_valid_score_retention": 0.225963,
+          "mean_cost_units": 6.331078,
+          "cost_per_valid_claim": 27.794976
+        },
+        {
+          "policy": "scitriage_full",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 0,
+          "invalid_accept_rate": 0.0,
+          "mean_valid_score_retention": 0.984159,
+          "mean_cost_units": 6.331078,
+          "cost_per_valid_claim": 6.331078
+        },
+        {
+          "policy": "ablate_no_semantic_gate",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 46,
+          "invalid_accept_rate": 0.255556,
+          "mean_valid_score_retention": 0.733948,
+          "mean_cost_units": 6.331078,
+          "cost_per_valid_claim": 8.504433
+        },
+        {
+          "policy": "ablate_no_leakage_gate",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 24,
+          "invalid_accept_rate": 0.133333,
+          "mean_valid_score_retention": 0.852711,
+          "mean_cost_units": 6.331078,
+          "cost_per_valid_claim": 7.30509
+        },
+        {
+          "policy": "ablate_no_checkpoint_gate",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 18,
+          "invalid_accept_rate": 0.1,
+          "mean_valid_score_retention": 0.888441,
+          "mean_cost_units": 6.331078,
+          "cost_per_valid_claim": 7.034531
+        },
+        {
+          "policy": "ablate_no_seed_noise_gate",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 96,
+          "invalid_accept_rate": 0.533333,
+          "mean_valid_score_retention": 0.461572,
+          "mean_cost_units": 6.331078,
+          "cost_per_valid_claim": 13.566595
+        },
+        {
+          "policy": "ablate_no_schema_gate",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 2,
+          "invalid_accept_rate": 0.011111,
+          "mean_valid_score_retention": 0.974104,
+          "mean_cost_units": 6.331078,
+          "cost_per_valid_claim": 6.402213
+        }
+      ]
+    },
+    {
+      "seed": 20260528,
+      "aggregate": [
+        {
+          "policy": "official_score_only",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 139,
+          "invalid_accept_rate": 0.772222,
+          "mean_valid_score_retention": 0.227248,
+          "mean_cost_units": 5.420172,
+          "cost_per_valid_claim": 23.795878
+        },
+        {
+          "policy": "static_artifact_rule",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 138,
+          "invalid_accept_rate": 0.766667,
+          "mean_valid_score_retention": 0.23248,
+          "mean_cost_units": 6.320172,
+          "cost_per_valid_claim": 27.086452
+        },
+        {
+          "policy": "judge_only_proxy",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 138,
+          "invalid_accept_rate": 0.766667,
+          "mean_valid_score_retention": 0.23248,
+          "mean_cost_units": 6.320172,
+          "cost_per_valid_claim": 27.086452
+        },
+        {
+          "policy": "scitriage_full",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 0,
+          "invalid_accept_rate": 0.0,
+          "mean_valid_score_retention": 0.978323,
+          "mean_cost_units": 6.320172,
+          "cost_per_valid_claim": 6.35548
+        },
+        {
+          "policy": "ablate_no_semantic_gate",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 48,
+          "invalid_accept_rate": 0.266667,
+          "mean_valid_score_retention": 0.717737,
+          "mean_cost_units": 6.320172,
+          "cost_per_valid_claim": 8.684206
+        },
+        {
+          "policy": "ablate_no_leakage_gate",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 24,
+          "invalid_accept_rate": 0.133333,
+          "mean_valid_score_retention": 0.852327,
+          "mean_cost_units": 6.320172,
+          "cost_per_valid_claim": 7.292506
+        },
+        {
+          "policy": "ablate_no_checkpoint_gate",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 17,
+          "invalid_accept_rate": 0.094444,
+          "mean_valid_score_retention": 0.894541,
+          "mean_cost_units": 6.320172,
+          "cost_per_valid_claim": 6.979331
+        },
+        {
+          "policy": "ablate_no_seed_noise_gate",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 93,
+          "invalid_accept_rate": 0.516667,
+          "mean_valid_score_retention": 0.477873,
+          "mean_cost_units": 6.320172,
+          "cost_per_valid_claim": 13.076218
+        },
+        {
+          "policy": "ablate_no_schema_gate",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 2,
+          "invalid_accept_rate": 0.011111,
+          "mean_valid_score_retention": 0.973243,
+          "mean_cost_units": 6.320172,
+          "cost_per_valid_claim": 6.391185
+        }
+      ]
+    },
+    {
+      "seed": 20260529,
+      "aggregate": [
+        {
+          "policy": "official_score_only",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 142,
+          "invalid_accept_rate": 0.788889,
+          "mean_valid_score_retention": 0.209955,
+          "mean_cost_units": 5.373494,
+          "cost_per_valid_claim": 25.453395
+        },
+        {
+          "policy": "static_artifact_rule",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 139,
+          "invalid_accept_rate": 0.772222,
+          "mean_valid_score_retention": 0.226497,
+          "mean_cost_units": 6.273494,
+          "cost_per_valid_claim": 27.542171
+        },
+        {
+          "policy": "judge_only_proxy",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 139,
+          "invalid_accept_rate": 0.772222,
+          "mean_valid_score_retention": 0.226497,
+          "mean_cost_units": 6.273494,
+          "cost_per_valid_claim": 27.542171
+        },
+        {
+          "policy": "scitriage_full",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 0,
+          "invalid_accept_rate": 0.0,
+          "mean_valid_score_retention": 0.961345,
+          "mean_cost_units": 6.273494,
+          "cost_per_valid_claim": 6.416074
+        },
+        {
+          "policy": "ablate_no_semantic_gate",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 46,
+          "invalid_accept_rate": 0.255556,
+          "mean_valid_score_retention": 0.710714,
+          "mean_cost_units": 6.273494,
+          "cost_per_valid_claim": 8.686377
+        },
+        {
+          "policy": "ablate_no_leakage_gate",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 24,
+          "invalid_accept_rate": 0.133333,
+          "mean_valid_score_retention": 0.834539,
+          "mean_cost_units": 6.273494,
+          "cost_per_valid_claim": 7.380582
+        },
+        {
+          "policy": "ablate_no_checkpoint_gate",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 21,
+          "invalid_accept_rate": 0.116667,
+          "mean_valid_score_retention": 0.871595,
+          "mean_cost_units": 6.273494,
+          "cost_per_valid_claim": 7.102069
+        },
+        {
+          "policy": "ablate_no_seed_noise_gate",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 96,
+          "invalid_accept_rate": 0.533333,
+          "mean_valid_score_retention": 0.462336,
+          "mean_cost_units": 6.273494,
+          "cost_per_valid_claim": 13.443202
+        },
+        {
+          "policy": "ablate_no_schema_gate",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 6,
+          "invalid_accept_rate": 0.033333,
+          "mean_valid_score_retention": 0.950842,
+          "mean_cost_units": 6.273494,
+          "cost_per_valid_claim": 6.489822
+        }
+      ]
+    },
+    {
+      "seed": 20260530,
+      "aggregate": [
+        {
+          "policy": "official_score_only",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 146,
+          "invalid_accept_rate": 0.811111,
+          "mean_valid_score_retention": 0.188397,
+          "mean_cost_units": 5.385022,
+          "cost_per_valid_claim": 28.508941
+        },
+        {
+          "policy": "static_artifact_rule",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 143,
+          "invalid_accept_rate": 0.794444,
+          "mean_valid_score_retention": 0.204327,
+          "mean_cost_units": 6.285022,
+          "cost_per_valid_claim": 30.575784
+        },
+        {
+          "policy": "judge_only_proxy",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 143,
+          "invalid_accept_rate": 0.794444,
+          "mean_valid_score_retention": 0.204327,
+          "mean_cost_units": 6.285022,
+          "cost_per_valid_claim": 30.575784
+        },
+        {
+          "policy": "scitriage_full",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 0,
+          "invalid_accept_rate": 0.0,
+          "mean_valid_score_retention": 0.953581,
+          "mean_cost_units": 6.285022,
+          "cost_per_valid_claim": 6.464594
+        },
+        {
+          "policy": "ablate_no_semantic_gate",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 46,
+          "invalid_accept_rate": 0.255556,
+          "mean_valid_score_retention": 0.702871,
+          "mean_cost_units": 6.285022,
+          "cost_per_valid_claim": 8.769798
+        },
+        {
+          "policy": "ablate_no_leakage_gate",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 24,
+          "invalid_accept_rate": 0.133333,
+          "mean_valid_score_retention": 0.832935,
+          "mean_cost_units": 6.285022,
+          "cost_per_valid_claim": 7.394144
+        },
+        {
+          "policy": "ablate_no_checkpoint_gate",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 28,
+          "invalid_accept_rate": 0.155556,
+          "mean_valid_score_retention": 0.832409,
+          "mean_cost_units": 6.285022,
+          "cost_per_valid_claim": 7.442789
+        },
+        {
+          "policy": "ablate_no_seed_noise_gate",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 109,
+          "invalid_accept_rate": 0.605556,
+          "mean_valid_score_retention": 0.391244,
+          "mean_cost_units": 6.285022,
+          "cost_per_valid_claim": 15.933859
+        },
+        {
+          "policy": "ablate_no_schema_gate",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 5,
+          "invalid_accept_rate": 0.027778,
+          "mean_valid_score_retention": 0.948315,
+          "mean_cost_units": 6.285022,
+          "cost_per_valid_claim": 6.501747
+        }
+      ]
+    },
+    {
+      "seed": 20260531,
+      "aggregate": [
+        {
+          "policy": "official_score_only",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 146,
+          "invalid_accept_rate": 0.811111,
+          "mean_valid_score_retention": 0.187764,
+          "mean_cost_units": 5.328228,
+          "cost_per_valid_claim": 28.208265
+        },
+        {
+          "policy": "static_artifact_rule",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 136,
+          "invalid_accept_rate": 0.755556,
+          "mean_valid_score_retention": 0.240802,
+          "mean_cost_units": 6.228228,
+          "cost_per_valid_claim": 25.479114
+        },
+        {
+          "policy": "judge_only_proxy",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 136,
+          "invalid_accept_rate": 0.755556,
+          "mean_valid_score_retention": 0.240802,
+          "mean_cost_units": 6.228228,
+          "cost_per_valid_claim": 25.479114
+        },
+        {
+          "policy": "scitriage_full",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 0,
+          "invalid_accept_rate": 0.0,
+          "mean_valid_score_retention": 0.975028,
+          "mean_cost_units": 6.228228,
+          "cost_per_valid_claim": 6.263022
+        },
+        {
+          "policy": "ablate_no_semantic_gate",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 47,
+          "invalid_accept_rate": 0.261111,
+          "mean_valid_score_retention": 0.719323,
+          "mean_cost_units": 6.228228,
+          "cost_per_valid_claim": 8.493038
+        },
+        {
+          "policy": "ablate_no_leakage_gate",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 24,
+          "invalid_accept_rate": 0.133333,
+          "mean_valid_score_retention": 0.843404,
+          "mean_cost_units": 6.228228,
+          "cost_per_valid_claim": 7.232781
+        },
+        {
+          "policy": "ablate_no_checkpoint_gate",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 17,
+          "invalid_accept_rate": 0.094444,
+          "mean_valid_score_retention": 0.891058,
+          "mean_cost_units": 6.228228,
+          "cost_per_valid_claim": 6.877798
+        },
+        {
+          "policy": "ablate_no_seed_noise_gate",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 89,
+          "invalid_accept_rate": 0.494444,
+          "mean_valid_score_retention": 0.497014,
+          "mean_cost_units": 6.228228,
+          "cost_per_valid_claim": 12.319571
+        },
+        {
+          "policy": "ablate_no_schema_gate",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 6,
+          "invalid_accept_rate": 0.033333,
+          "mean_valid_score_retention": 0.948535,
+          "mean_cost_units": 6.228228,
+          "cost_per_valid_claim": 6.442994
+        }
+      ]
+    },
+    {
+      "seed": 20260532,
+      "aggregate": [
+        {
+          "policy": "official_score_only",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 136,
+          "invalid_accept_rate": 0.755556,
+          "mean_valid_score_retention": 0.242575,
+          "mean_cost_units": 5.355467,
+          "cost_per_valid_claim": 21.908727
+        },
+        {
+          "policy": "static_artifact_rule",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 131,
+          "invalid_accept_rate": 0.727778,
+          "mean_valid_score_retention": 0.269573,
+          "mean_cost_units": 6.255467,
+          "cost_per_valid_claim": 22.979265
+        },
+        {
+          "policy": "judge_only_proxy",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 131,
+          "invalid_accept_rate": 0.727778,
+          "mean_valid_score_retention": 0.269573,
+          "mean_cost_units": 6.255467,
+          "cost_per_valid_claim": 22.979265
+        },
+        {
+          "policy": "scitriage_full",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 0,
+          "invalid_accept_rate": 0.0,
+          "mean_valid_score_retention": 0.970398,
+          "mean_cost_units": 6.255467,
+          "cost_per_valid_claim": 6.325753
+        },
+        {
+          "policy": "ablate_no_semantic_gate",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 48,
+          "invalid_accept_rate": 0.266667,
+          "mean_valid_score_retention": 0.711339,
+          "mean_cost_units": 6.255467,
+          "cost_per_valid_claim": 8.661415
+        },
+        {
+          "policy": "ablate_no_leakage_gate",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 24,
+          "invalid_accept_rate": 0.133333,
+          "mean_valid_score_retention": 0.849391,
+          "mean_cost_units": 6.255467,
+          "cost_per_valid_claim": 7.217846
+        },
+        {
+          "policy": "ablate_no_checkpoint_gate",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 18,
+          "invalid_accept_rate": 0.1,
+          "mean_valid_score_retention": 0.885875,
+          "mean_cost_units": 6.255467,
+          "cost_per_valid_claim": 6.950519
+        },
+        {
+          "policy": "ablate_no_seed_noise_gate",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 83,
+          "invalid_accept_rate": 0.461111,
+          "mean_valid_score_retention": 0.532307,
+          "mean_cost_units": 6.255467,
+          "cost_per_valid_claim": 11.608082
+        },
+        {
+          "policy": "ablate_no_schema_gate",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 5,
+          "invalid_accept_rate": 0.027778,
+          "mean_valid_score_retention": 0.95051,
+          "mean_cost_units": 6.255467,
+          "cost_per_valid_claim": 6.471172
+        }
+      ]
+    },
+    {
+      "seed": 20260533,
+      "aggregate": [
+        {
+          "policy": "official_score_only",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 134,
+          "invalid_accept_rate": 0.744444,
+          "mean_valid_score_retention": 0.254495,
+          "mean_cost_units": 5.441667,
+          "cost_per_valid_claim": 21.293478
+        },
+        {
+          "policy": "static_artifact_rule",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 132,
+          "invalid_accept_rate": 0.733333,
+          "mean_valid_score_retention": 0.265271,
+          "mean_cost_units": 6.341667,
+          "cost_per_valid_claim": 23.78125
+        },
+        {
+          "policy": "judge_only_proxy",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 132,
+          "invalid_accept_rate": 0.733333,
+          "mean_valid_score_retention": 0.265271,
+          "mean_cost_units": 6.341667,
+          "cost_per_valid_claim": 23.78125
+        },
+        {
+          "policy": "scitriage_full",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 0,
+          "invalid_accept_rate": 0.0,
+          "mean_valid_score_retention": 0.977093,
+          "mean_cost_units": 6.341667,
+          "cost_per_valid_claim": 6.377095
+        },
+        {
+          "policy": "ablate_no_semantic_gate",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 45,
+          "invalid_accept_rate": 0.25,
+          "mean_valid_score_retention": 0.732949,
+          "mean_cost_units": 6.341667,
+          "cost_per_valid_claim": 8.518657
+        },
+        {
+          "policy": "ablate_no_leakage_gate",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 24,
+          "invalid_accept_rate": 0.133333,
+          "mean_valid_score_retention": 0.850749,
+          "mean_cost_units": 6.341667,
+          "cost_per_valid_claim": 7.317308
+        },
+        {
+          "policy": "ablate_no_checkpoint_gate",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 19,
+          "invalid_accept_rate": 0.105556,
+          "mean_valid_score_retention": 0.882177,
+          "mean_cost_units": 6.341667,
+          "cost_per_valid_claim": 7.090062
+        },
+        {
+          "policy": "ablate_no_seed_noise_gate",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 91,
+          "invalid_accept_rate": 0.505556,
+          "mean_valid_score_retention": 0.490827,
+          "mean_cost_units": 6.341667,
+          "cost_per_valid_claim": 12.825843
+        },
+        {
+          "policy": "ablate_no_schema_gate",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 2,
+          "invalid_accept_rate": 0.011111,
+          "mean_valid_score_retention": 0.972558,
+          "mean_cost_units": 6.341667,
+          "cost_per_valid_claim": 6.412921
+        }
+      ]
+    },
+    {
+      "seed": 20260534,
+      "aggregate": [
+        {
+          "policy": "official_score_only",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 142,
+          "invalid_accept_rate": 0.788889,
+          "mean_valid_score_retention": 0.209639,
+          "mean_cost_units": 5.464617,
+          "cost_per_valid_claim": 25.885026
+        },
+        {
+          "policy": "static_artifact_rule",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 138,
+          "invalid_accept_rate": 0.766667,
+          "mean_valid_score_retention": 0.230405,
+          "mean_cost_units": 6.364617,
+          "cost_per_valid_claim": 27.276929
+        },
+        {
+          "policy": "judge_only_proxy",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 138,
+          "invalid_accept_rate": 0.766667,
+          "mean_valid_score_retention": 0.230405,
+          "mean_cost_units": 6.364617,
+          "cost_per_valid_claim": 27.276929
+        },
+        {
+          "policy": "scitriage_full",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 0,
+          "invalid_accept_rate": 0.0,
+          "mean_valid_score_retention": 0.973843,
+          "mean_cost_units": 6.364617,
+          "cost_per_valid_claim": 6.400173
+        },
+        {
+          "policy": "ablate_no_semantic_gate",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 47,
+          "invalid_accept_rate": 0.261111,
+          "mean_valid_score_retention": 0.721414,
+          "mean_cost_units": 6.364617,
+          "cost_per_valid_claim": 8.679023
+        },
+        {
+          "policy": "ablate_no_leakage_gate",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 24,
+          "invalid_accept_rate": 0.133333,
+          "mean_valid_score_retention": 0.842418,
+          "mean_cost_units": 6.364617,
+          "cost_per_valid_claim": 7.391168
+        },
+        {
+          "policy": "ablate_no_checkpoint_gate",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 15,
+          "invalid_accept_rate": 0.083333,
+          "mean_valid_score_retention": 0.90077,
+          "mean_cost_units": 6.364617,
+          "cost_per_valid_claim": 6.943218
+        },
+        {
+          "policy": "ablate_no_seed_noise_gate",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 95,
+          "invalid_accept_rate": 0.527778,
+          "mean_valid_score_retention": 0.465343,
+          "mean_cost_units": 6.364617,
+          "cost_per_valid_claim": 13.478012
+        },
+        {
+          "policy": "ablate_no_schema_gate",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 3,
+          "invalid_accept_rate": 0.016667,
+          "mean_valid_score_retention": 0.964407,
+          "mean_cost_units": 6.364617,
+          "cost_per_valid_claim": 6.472492
+        }
+      ]
+    },
+    {
+      "seed": 20260535,
+      "aggregate": [
+        {
+          "policy": "official_score_only",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 130,
+          "invalid_accept_rate": 0.722222,
+          "mean_valid_score_retention": 0.276343,
+          "mean_cost_units": 5.430161,
+          "cost_per_valid_claim": 19.54858
+        },
+        {
+          "policy": "static_artifact_rule",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 128,
+          "invalid_accept_rate": 0.711111,
+          "mean_valid_score_retention": 0.286683,
+          "mean_cost_units": 6.330161,
+          "cost_per_valid_claim": 21.912096
+        },
+        {
+          "policy": "judge_only_proxy",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 128,
+          "invalid_accept_rate": 0.711111,
+          "mean_valid_score_retention": 0.286683,
+          "mean_cost_units": 6.330161,
+          "cost_per_valid_claim": 21.912096
+        },
+        {
+          "policy": "scitriage_full",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 0,
+          "invalid_accept_rate": 0.0,
+          "mean_valid_score_retention": 0.978624,
+          "mean_cost_units": 6.330161,
+          "cost_per_valid_claim": 6.365525
+        },
+        {
+          "policy": "ablate_no_semantic_gate",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 46,
+          "invalid_accept_rate": 0.255556,
+          "mean_valid_score_retention": 0.728178,
+          "mean_cost_units": 6.330161,
+          "cost_per_valid_claim": 8.567135
+        },
+        {
+          "policy": "ablate_no_leakage_gate",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 24,
+          "invalid_accept_rate": 0.133333,
+          "mean_valid_score_retention": 0.848129,
+          "mean_cost_units": 6.330161,
+          "cost_per_valid_claim": 7.351155
+        },
+        {
+          "policy": "ablate_no_checkpoint_gate",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 7,
+          "invalid_accept_rate": 0.038889,
+          "mean_valid_score_retention": 0.947557,
+          "mean_cost_units": 6.330161,
+          "cost_per_valid_claim": 6.586295
+        },
+        {
+          "policy": "ablate_no_seed_noise_gate",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 81,
+          "invalid_accept_rate": 0.45,
+          "mean_valid_score_retention": 0.544275,
+          "mean_cost_units": 6.330161,
+          "cost_per_valid_claim": 11.509384
+        },
+        {
+          "policy": "ablate_no_schema_gate",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 3,
+          "invalid_accept_rate": 0.016667,
+          "mean_valid_score_retention": 0.968116,
+          "mean_cost_units": 6.330161,
+          "cost_per_valid_claim": 6.437452
+        }
+      ]
+    },
+    {
+      "seed": 20260536,
+      "aggregate": [
+        {
+          "policy": "official_score_only",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 132,
+          "invalid_accept_rate": 0.733333,
+          "mean_valid_score_retention": 0.265684,
+          "mean_cost_units": 5.346189,
+          "cost_per_valid_claim": 20.048208
+        },
+        {
+          "policy": "static_artifact_rule",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 129,
+          "invalid_accept_rate": 0.716667,
+          "mean_valid_score_retention": 0.281484,
+          "mean_cost_units": 6.246189,
+          "cost_per_valid_claim": 22.045373
+        },
+        {
+          "policy": "judge_only_proxy",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 129,
+          "invalid_accept_rate": 0.716667,
+          "mean_valid_score_retention": 0.281484,
+          "mean_cost_units": 6.246189,
+          "cost_per_valid_claim": 22.045373
+        },
+        {
+          "policy": "scitriage_full",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 0,
+          "invalid_accept_rate": 0.0,
+          "mean_valid_score_retention": 0.974394,
+          "mean_cost_units": 6.246189,
+          "cost_per_valid_claim": 6.316371
+        },
+        {
+          "policy": "ablate_no_semantic_gate",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 45,
+          "invalid_accept_rate": 0.25,
+          "mean_valid_score_retention": 0.728206,
+          "mean_cost_units": 6.246189,
+          "cost_per_valid_claim": 8.453489
+        },
+        {
+          "policy": "ablate_no_leakage_gate",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 24,
+          "invalid_accept_rate": 0.133333,
+          "mean_valid_score_retention": 0.843726,
+          "mean_cost_units": 6.246189,
+          "cost_per_valid_claim": 7.30074
+        },
+        {
+          "policy": "ablate_no_checkpoint_gate",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 16,
+          "invalid_accept_rate": 0.088889,
+          "mean_valid_score_retention": 0.90092,
+          "mean_cost_units": 6.246189,
+          "cost_per_valid_claim": 6.855573
+        },
+        {
+          "policy": "ablate_no_seed_noise_gate",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 89,
+          "invalid_accept_rate": 0.494444,
+          "mean_valid_score_retention": 0.501457,
+          "mean_cost_units": 6.246189,
+          "cost_per_valid_claim": 12.355099
+        },
+        {
+          "policy": "ablate_no_schema_gate",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 4,
+          "invalid_accept_rate": 0.022222,
+          "mean_valid_score_retention": 0.964082,
+          "mean_cost_units": 6.246189,
+          "cost_per_valid_claim": 6.388148
+        }
+      ]
+    },
+    {
+      "seed": 20260537,
+      "aggregate": [
+        {
+          "policy": "official_score_only",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 139,
+          "invalid_accept_rate": 0.772222,
+          "mean_valid_score_retention": 0.226905,
+          "mean_cost_units": 5.339122,
+          "cost_per_valid_claim": 23.440049
+        },
+        {
+          "policy": "static_artifact_rule",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 133,
+          "invalid_accept_rate": 0.738889,
+          "mean_valid_score_retention": 0.259377,
+          "mean_cost_units": 6.239122,
+          "cost_per_valid_claim": 23.894511
+        },
+        {
+          "policy": "judge_only_proxy",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 133,
+          "invalid_accept_rate": 0.738889,
+          "mean_valid_score_retention": 0.259377,
+          "mean_cost_units": 6.239122,
+          "cost_per_valid_claim": 23.894511
+        },
+        {
+          "policy": "scitriage_full",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 0,
+          "invalid_accept_rate": 0.0,
+          "mean_valid_score_retention": 0.971511,
+          "mean_cost_units": 6.239122,
+          "cost_per_valid_claim": 6.309225
+        },
+        {
+          "policy": "ablate_no_semantic_gate",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 44,
+          "invalid_accept_rate": 0.244444,
+          "mean_valid_score_retention": 0.734053,
+          "mean_cost_units": 6.239122,
+          "cost_per_valid_claim": 8.38091
+        },
+        {
+          "policy": "ablate_no_leakage_gate",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 24,
+          "invalid_accept_rate": 0.133333,
+          "mean_valid_score_retention": 0.845665,
+          "mean_cost_units": 6.239122,
+          "cost_per_valid_claim": 7.245432
+        },
+        {
+          "policy": "ablate_no_checkpoint_gate",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 21,
+          "invalid_accept_rate": 0.116667,
+          "mean_valid_score_retention": 0.869933,
+          "mean_cost_units": 6.239122,
+          "cost_per_valid_claim": 7.063157
+        },
+        {
+          "policy": "ablate_no_seed_noise_gate",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 92,
+          "invalid_accept_rate": 0.511111,
+          "mean_valid_score_retention": 0.483961,
+          "mean_cost_units": 6.239122,
+          "cost_per_valid_claim": 12.761841
+        },
+        {
+          "policy": "ablate_no_schema_gate",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 5,
+          "invalid_accept_rate": 0.027778,
+          "mean_valid_score_retention": 0.955715,
+          "mean_cost_units": 6.239122,
+          "cost_per_valid_claim": 6.417383
+        }
+      ]
+    },
+    {
+      "seed": 20260538,
+      "aggregate": [
+        {
+          "policy": "official_score_only",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 137,
+          "invalid_accept_rate": 0.761111,
+          "mean_valid_score_retention": 0.237641,
+          "mean_cost_units": 5.354744,
+          "cost_per_valid_claim": 22.415209
+        },
+        {
+          "policy": "static_artifact_rule",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 135,
+          "invalid_accept_rate": 0.75,
+          "mean_valid_score_retention": 0.24844,
+          "mean_cost_units": 6.254744,
+          "cost_per_valid_claim": 25.018978
+        },
+        {
+          "policy": "judge_only_proxy",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 135,
+          "invalid_accept_rate": 0.75,
+          "mean_valid_score_retention": 0.24844,
+          "mean_cost_units": 6.254744,
+          "cost_per_valid_claim": 25.018978
+        },
+        {
+          "policy": "scitriage_full",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 0,
+          "invalid_accept_rate": 0.0,
+          "mean_valid_score_retention": 0.972139,
+          "mean_cost_units": 6.254744,
+          "cost_per_valid_claim": 6.325022
+        },
+        {
+          "policy": "ablate_no_semantic_gate",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 44,
+          "invalid_accept_rate": 0.244444,
+          "mean_valid_score_retention": 0.732531,
+          "mean_cost_units": 6.254744,
+          "cost_per_valid_claim": 8.401896
+        },
+        {
+          "policy": "ablate_no_leakage_gate",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 24,
+          "invalid_accept_rate": 0.133333,
+          "mean_valid_score_retention": 0.852313,
+          "mean_cost_units": 6.254744,
+          "cost_per_valid_claim": 7.217013
+        },
+        {
+          "policy": "ablate_no_checkpoint_gate",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 22,
+          "invalid_accept_rate": 0.122222,
+          "mean_valid_score_retention": 0.867537,
+          "mean_cost_units": 6.254744,
+          "cost_per_valid_claim": 7.125658
+        },
+        {
+          "policy": "ablate_no_seed_noise_gate",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 90,
+          "invalid_accept_rate": 0.5,
+          "mean_valid_score_retention": 0.495348,
+          "mean_cost_units": 6.254744,
+          "cost_per_valid_claim": 12.509489
+        },
+        {
+          "policy": "ablate_no_schema_gate",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 5,
+          "invalid_accept_rate": 0.027778,
+          "mean_valid_score_retention": 0.951447,
+          "mean_cost_units": 6.254744,
+          "cost_per_valid_claim": 6.470425
+        }
+      ]
+    },
+    {
+      "seed": 20260539,
+      "aggregate": [
+        {
+          "policy": "official_score_only",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 141,
+          "invalid_accept_rate": 0.783333,
+          "mean_valid_score_retention": 0.215782,
+          "mean_cost_units": 5.394622,
+          "cost_per_valid_claim": 24.898256
+        },
+        {
+          "policy": "static_artifact_rule",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 135,
+          "invalid_accept_rate": 0.75,
+          "mean_valid_score_retention": 0.248082,
+          "mean_cost_units": 6.294622,
+          "cost_per_valid_claim": 25.178489
+        },
+        {
+          "policy": "judge_only_proxy",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 135,
+          "invalid_accept_rate": 0.75,
+          "mean_valid_score_retention": 0.248082,
+          "mean_cost_units": 6.294622,
+          "cost_per_valid_claim": 25.178489
+        },
+        {
+          "policy": "scitriage_full",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 0,
+          "invalid_accept_rate": 0.0,
+          "mean_valid_score_retention": 0.967087,
+          "mean_cost_units": 6.294622,
+          "cost_per_valid_claim": 6.401311
+        },
+        {
+          "policy": "ablate_no_semantic_gate",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 43,
+          "invalid_accept_rate": 0.238889,
+          "mean_valid_score_retention": 0.734295,
+          "mean_cost_units": 6.294622,
+          "cost_per_valid_claim": 8.455463
+        },
+        {
+          "policy": "ablate_no_leakage_gate",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 24,
+          "invalid_accept_rate": 0.133333,
+          "mean_valid_score_retention": 0.842549,
+          "mean_cost_units": 6.294622,
+          "cost_per_valid_claim": 7.357351
+        },
+        {
+          "policy": "ablate_no_checkpoint_gate",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 25,
+          "invalid_accept_rate": 0.138889,
+          "mean_valid_score_retention": 0.850585,
+          "mean_cost_units": 6.294622,
+          "cost_per_valid_claim": 7.309884
+        },
+        {
+          "policy": "ablate_no_seed_noise_gate",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 92,
+          "invalid_accept_rate": 0.511111,
+          "mean_valid_score_retention": 0.482966,
+          "mean_cost_units": 6.294622,
+          "cost_per_valid_claim": 12.875364
+        },
+        {
+          "policy": "ablate_no_schema_gate",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 7,
+          "invalid_accept_rate": 0.038889,
+          "mean_valid_score_retention": 0.94629,
+          "mean_cost_units": 6.294622,
+          "cost_per_valid_claim": 6.549318
+        }
+      ]
+    },
+    {
+      "seed": 20260540,
+      "aggregate": [
+        {
+          "policy": "official_score_only",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 142,
+          "invalid_accept_rate": 0.788889,
+          "mean_valid_score_retention": 0.209771,
+          "mean_cost_units": 5.381906,
+          "cost_per_valid_claim": 25.493237
+        },
+        {
+          "policy": "static_artifact_rule",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 139,
+          "invalid_accept_rate": 0.772222,
+          "mean_valid_score_retention": 0.225553,
+          "mean_cost_units": 6.281906,
+          "cost_per_valid_claim": 27.579098
+        },
+        {
+          "policy": "judge_only_proxy",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 139,
+          "invalid_accept_rate": 0.772222,
+          "mean_valid_score_retention": 0.225553,
+          "mean_cost_units": 6.281906,
+          "cost_per_valid_claim": 27.579098
+        },
+        {
+          "policy": "scitriage_full",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 0,
+          "invalid_accept_rate": 0.0,
+          "mean_valid_score_retention": 0.978126,
+          "mean_cost_units": 6.281906,
+          "cost_per_valid_claim": 6.317
+        },
+        {
+          "policy": "ablate_no_semantic_gate",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 45,
+          "invalid_accept_rate": 0.25,
+          "mean_valid_score_retention": 0.733228,
+          "mean_cost_units": 6.281906,
+          "cost_per_valid_claim": 8.438381
+        },
+        {
+          "policy": "ablate_no_leakage_gate",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 24,
+          "invalid_accept_rate": 0.133333,
+          "mean_valid_score_retention": 0.846634,
+          "mean_cost_units": 6.281906,
+          "cost_per_valid_claim": 7.295116
+        },
+        {
+          "policy": "ablate_no_checkpoint_gate",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 16,
+          "invalid_accept_rate": 0.088889,
+          "mean_valid_score_retention": 0.898711,
+          "mean_cost_units": 6.281906,
+          "cost_per_valid_claim": 6.894774
+        },
+        {
+          "policy": "ablate_no_seed_noise_gate",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 93,
+          "invalid_accept_rate": 0.516667,
+          "mean_valid_score_retention": 0.478047,
+          "mean_cost_units": 6.281906,
+          "cost_per_valid_claim": 12.997046
+        },
+        {
+          "policy": "ablate_no_schema_gate",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 4,
+          "invalid_accept_rate": 0.022222,
+          "mean_valid_score_retention": 0.962849,
+          "mean_cost_units": 6.281906,
+          "cost_per_valid_claim": 6.424676
+        }
+      ]
+    },
+    {
+      "seed": 20260541,
+      "aggregate": [
+        {
+          "policy": "official_score_only",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 129,
+          "invalid_accept_rate": 0.716667,
+          "mean_valid_score_retention": 0.280806,
+          "mean_cost_units": 5.371933,
+          "cost_per_valid_claim": 18.959765
+        },
+        {
+          "policy": "static_artifact_rule",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 128,
+          "invalid_accept_rate": 0.711111,
+          "mean_valid_score_retention": 0.286357,
+          "mean_cost_units": 6.271933,
+          "cost_per_valid_claim": 21.710538
+        },
+        {
+          "policy": "judge_only_proxy",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 128,
+          "invalid_accept_rate": 0.711111,
+          "mean_valid_score_retention": 0.286357,
+          "mean_cost_units": 6.271933,
+          "cost_per_valid_claim": 21.710538
+        },
+        {
+          "policy": "scitriage_full",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 0,
+          "invalid_accept_rate": 0.0,
+          "mean_valid_score_retention": 0.977029,
+          "mean_cost_units": 6.271933,
+          "cost_per_valid_claim": 6.306972
+        },
+        {
+          "policy": "ablate_no_semantic_gate",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 44,
+          "invalid_accept_rate": 0.244444,
+          "mean_valid_score_retention": 0.739036,
+          "mean_cost_units": 6.271933,
+          "cost_per_valid_claim": 8.362578
+        },
+        {
+          "policy": "ablate_no_leakage_gate",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 24,
+          "invalid_accept_rate": 0.133333,
+          "mean_valid_score_retention": 0.845523,
+          "mean_cost_units": 6.271933,
+          "cost_per_valid_claim": 7.283535
+        },
+        {
+          "policy": "ablate_no_checkpoint_gate",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 17,
+          "invalid_accept_rate": 0.094444,
+          "mean_valid_score_retention": 0.89208,
+          "mean_cost_units": 6.271933,
+          "cost_per_valid_claim": 6.926061
+        },
+        {
+          "policy": "ablate_no_seed_noise_gate",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 86,
+          "invalid_accept_rate": 0.477778,
+          "mean_valid_score_retention": 0.51506,
+          "mean_cost_units": 6.271933,
+          "cost_per_valid_claim": 12.010085
+        },
+        {
+          "policy": "ablate_no_schema_gate",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 5,
+          "invalid_accept_rate": 0.027778,
+          "mean_valid_score_retention": 0.956735,
+          "mean_cost_units": 6.271933,
+          "cost_per_valid_claim": 6.451131
+        }
+      ]
+    },
+    {
+      "seed": 20260542,
+      "aggregate": [
+        {
+          "policy": "official_score_only",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 134,
+          "invalid_accept_rate": 0.744444,
+          "mean_valid_score_retention": 0.253971,
+          "mean_cost_units": 5.390589,
+          "cost_per_valid_claim": 21.093609
+        },
+        {
+          "policy": "static_artifact_rule",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 129,
+          "invalid_accept_rate": 0.716667,
+          "mean_valid_score_retention": 0.280396,
+          "mean_cost_units": 6.290589,
+          "cost_per_valid_claim": 22.202078
+        },
+        {
+          "policy": "judge_only_proxy",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 129,
+          "invalid_accept_rate": 0.716667,
+          "mean_valid_score_retention": 0.280396,
+          "mean_cost_units": 6.290589,
+          "cost_per_valid_claim": 22.202078
+        },
+        {
+          "policy": "scitriage_full",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 0,
+          "invalid_accept_rate": 0.0,
+          "mean_valid_score_retention": 0.983802,
+          "mean_cost_units": 6.290589,
+          "cost_per_valid_claim": 6.290589
+        },
+        {
+          "policy": "ablate_no_semantic_gate",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 46,
+          "invalid_accept_rate": 0.255556,
+          "mean_valid_score_retention": 0.733093,
+          "mean_cost_units": 6.290589,
+          "cost_per_valid_claim": 8.450045
+        },
+        {
+          "policy": "ablate_no_leakage_gate",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 24,
+          "invalid_accept_rate": 0.133333,
+          "mean_valid_score_retention": 0.852816,
+          "mean_cost_units": 6.290589,
+          "cost_per_valid_claim": 7.258372
+        },
+        {
+          "policy": "ablate_no_checkpoint_gate",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 18,
+          "invalid_accept_rate": 0.1,
+          "mean_valid_score_retention": 0.888673,
+          "mean_cost_units": 6.290589,
+          "cost_per_valid_claim": 6.989543
+        },
+        {
+          "policy": "ablate_no_seed_noise_gate",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 83,
+          "invalid_accept_rate": 0.461111,
+          "mean_valid_score_retention": 0.53236,
+          "mean_cost_units": 6.290589,
+          "cost_per_valid_claim": 11.673258
+        },
+        {
+          "policy": "ablate_no_schema_gate",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 5,
+          "invalid_accept_rate": 0.027778,
+          "mean_valid_score_retention": 0.958229,
+          "mean_cost_units": 6.290589,
+          "cost_per_valid_claim": 6.47032
+        }
+      ]
+    },
+    {
+      "seed": 20260543,
+      "aggregate": [
+        {
+          "policy": "official_score_only",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 140,
+          "invalid_accept_rate": 0.777778,
+          "mean_valid_score_retention": 0.221146,
+          "mean_cost_units": 5.47105,
+          "cost_per_valid_claim": 24.619725
+        },
+        {
+          "policy": "static_artifact_rule",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 137,
+          "invalid_accept_rate": 0.761111,
+          "mean_valid_score_retention": 0.237266,
+          "mean_cost_units": 6.37105,
+          "cost_per_valid_claim": 26.669512
+        },
+        {
+          "policy": "judge_only_proxy",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 137,
+          "invalid_accept_rate": 0.761111,
+          "mean_valid_score_retention": 0.237266,
+          "mean_cost_units": 6.37105,
+          "cost_per_valid_claim": 26.669512
+        },
+        {
+          "policy": "scitriage_full",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 0,
+          "invalid_accept_rate": 0.0,
+          "mean_valid_score_retention": 0.976218,
+          "mean_cost_units": 6.37105,
+          "cost_per_valid_claim": 6.406642
+        },
+        {
+          "policy": "ablate_no_semantic_gate",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 46,
+          "invalid_accept_rate": 0.255556,
+          "mean_valid_score_retention": 0.727192,
+          "mean_cost_units": 6.37105,
+          "cost_per_valid_claim": 8.622474
+        },
+        {
+          "policy": "ablate_no_leakage_gate",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 24,
+          "invalid_accept_rate": 0.133333,
+          "mean_valid_score_retention": 0.845243,
+          "mean_cost_units": 6.37105,
+          "cost_per_valid_claim": 7.398639
+        },
+        {
+          "policy": "ablate_no_checkpoint_gate",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 19,
+          "invalid_accept_rate": 0.105556,
+          "mean_valid_score_retention": 0.879936,
+          "mean_cost_units": 6.37105,
+          "cost_per_valid_claim": 7.122913
+        },
+        {
+          "policy": "ablate_no_seed_noise_gate",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 94,
+          "invalid_accept_rate": 0.522222,
+          "mean_valid_score_retention": 0.472917,
+          "mean_cost_units": 6.37105,
+          "cost_per_valid_claim": 13.334756
+        },
+        {
+          "policy": "ablate_no_schema_gate",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 5,
+          "invalid_accept_rate": 0.027778,
+          "mean_valid_score_retention": 0.955789,
+          "mean_cost_units": 6.37105,
+          "cost_per_valid_claim": 6.55308
+        }
+      ]
+    },
+    {
+      "seed": 20260544,
+      "aggregate": [
+        {
+          "policy": "official_score_only",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 138,
+          "invalid_accept_rate": 0.766667,
+          "mean_valid_score_retention": 0.232253,
+          "mean_cost_units": 5.425994,
+          "cost_per_valid_claim": 23.254262
+        },
+        {
+          "policy": "static_artifact_rule",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 138,
+          "invalid_accept_rate": 0.766667,
+          "mean_valid_score_retention": 0.232253,
+          "mean_cost_units": 6.325994,
+          "cost_per_valid_claim": 27.111405
+        },
+        {
+          "policy": "judge_only_proxy",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 138,
+          "invalid_accept_rate": 0.766667,
+          "mean_valid_score_retention": 0.232253,
+          "mean_cost_units": 6.325994,
+          "cost_per_valid_claim": 27.111405
+        },
+        {
+          "policy": "scitriage_full",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 0,
+          "invalid_accept_rate": 0.0,
+          "mean_valid_score_retention": 0.980156,
+          "mean_cost_units": 6.325994,
+          "cost_per_valid_claim": 6.361335
+        },
+        {
+          "policy": "ablate_no_semantic_gate",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 43,
+          "invalid_accept_rate": 0.238889,
+          "mean_valid_score_retention": 0.745497,
+          "mean_cost_units": 6.325994,
+          "cost_per_valid_claim": 8.37264
+        },
+        {
+          "policy": "ablate_no_leakage_gate",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 24,
+          "invalid_accept_rate": 0.133333,
+          "mean_valid_score_retention": 0.848689,
+          "mean_cost_units": 6.325994,
+          "cost_per_valid_claim": 7.346316
+        },
+        {
+          "policy": "ablate_no_checkpoint_gate",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 15,
+          "invalid_accept_rate": 0.083333,
+          "mean_valid_score_retention": 0.905529,
+          "mean_cost_units": 6.325994,
+          "cost_per_valid_claim": 6.901085
+        },
+        {
+          "policy": "ablate_no_seed_noise_gate",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 92,
+          "invalid_accept_rate": 0.511111,
+          "mean_valid_score_retention": 0.484642,
+          "mean_cost_units": 6.325994,
+          "cost_per_valid_claim": 12.939534
+        },
+        {
+          "policy": "ablate_no_schema_gate",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 2,
+          "invalid_accept_rate": 0.011111,
+          "mean_valid_score_retention": 0.975033,
+          "mean_cost_units": 6.325994,
+          "cost_per_valid_claim": 6.397073
+        }
+      ]
+    },
+    {
+      "seed": 20260545,
+      "aggregate": [
+        {
+          "policy": "official_score_only",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 135,
+          "invalid_accept_rate": 0.75,
+          "mean_valid_score_retention": 0.249021,
+          "mean_cost_units": 5.380744,
+          "cost_per_valid_claim": 21.522978
+        },
+        {
+          "policy": "static_artifact_rule",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 135,
+          "invalid_accept_rate": 0.75,
+          "mean_valid_score_retention": 0.249021,
+          "mean_cost_units": 6.280744,
+          "cost_per_valid_claim": 25.122978
+        },
+        {
+          "policy": "judge_only_proxy",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 135,
+          "invalid_accept_rate": 0.75,
+          "mean_valid_score_retention": 0.249021,
+          "mean_cost_units": 6.280744,
+          "cost_per_valid_claim": 25.122978
+        },
+        {
+          "policy": "scitriage_full",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 0,
+          "invalid_accept_rate": 0.0,
+          "mean_valid_score_retention": 0.96684,
+          "mean_cost_units": 6.280744,
+          "cost_per_valid_claim": 6.387198
+        },
+        {
+          "policy": "ablate_no_semantic_gate",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 45,
+          "invalid_accept_rate": 0.25,
+          "mean_valid_score_retention": 0.723722,
+          "mean_cost_units": 6.280744,
+          "cost_per_valid_claim": 8.564652
+        },
+        {
+          "policy": "ablate_no_leakage_gate",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 24,
+          "invalid_accept_rate": 0.133333,
+          "mean_valid_score_retention": 0.83602,
+          "mean_cost_units": 6.280744,
+          "cost_per_valid_claim": 7.389111
+        },
+        {
+          "policy": "ablate_no_checkpoint_gate",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 14,
+          "invalid_accept_rate": 0.077778,
+          "mean_valid_score_retention": 0.911207,
+          "mean_cost_units": 6.280744,
+          "cost_per_valid_claim": 6.810446
+        },
+        {
+          "policy": "ablate_no_seed_noise_gate",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 90,
+          "invalid_accept_rate": 0.5,
+          "mean_valid_score_retention": 0.494707,
+          "mean_cost_units": 6.280744,
+          "cost_per_valid_claim": 12.561489
+        },
+        {
+          "policy": "ablate_no_schema_gate",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 7,
+          "invalid_accept_rate": 0.038889,
+          "mean_valid_score_retention": 0.947074,
+          "mean_cost_units": 6.280744,
+          "cost_per_valid_claim": 6.534879
+        }
+      ]
+    },
+    {
+      "seed": 20260546,
+      "aggregate": [
+        {
+          "policy": "official_score_only",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 135,
+          "invalid_accept_rate": 0.75,
+          "mean_valid_score_retention": 0.247754,
+          "mean_cost_units": 5.357317,
+          "cost_per_valid_claim": 21.429267
+        },
+        {
+          "policy": "static_artifact_rule",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 132,
+          "invalid_accept_rate": 0.733333,
+          "mean_valid_score_retention": 0.264281,
+          "mean_cost_units": 6.257317,
+          "cost_per_valid_claim": 23.464937
+        },
+        {
+          "policy": "judge_only_proxy",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 132,
+          "invalid_accept_rate": 0.733333,
+          "mean_valid_score_retention": 0.264281,
+          "mean_cost_units": 6.257317,
+          "cost_per_valid_claim": 23.464937
+        },
+        {
+          "policy": "scitriage_full",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 0,
+          "invalid_accept_rate": 0.0,
+          "mean_valid_score_retention": 0.975847,
+          "mean_cost_units": 6.257317,
+          "cost_per_valid_claim": 6.292274
+        },
+        {
+          "policy": "ablate_no_semantic_gate",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 46,
+          "invalid_accept_rate": 0.255556,
+          "mean_valid_score_retention": 0.728127,
+          "mean_cost_units": 6.257317,
+          "cost_per_valid_claim": 8.468549
+        },
+        {
+          "policy": "ablate_no_leakage_gate",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 24,
+          "invalid_accept_rate": 0.133333,
+          "mean_valid_score_retention": 0.844359,
+          "mean_cost_units": 6.257317,
+          "cost_per_valid_claim": 7.266561
+        },
+        {
+          "policy": "ablate_no_checkpoint_gate",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 13,
+          "invalid_accept_rate": 0.072222,
+          "mean_valid_score_retention": 0.911279,
+          "mean_cost_units": 6.257317,
+          "cost_per_valid_claim": 6.744413
+        },
+        {
+          "policy": "ablate_no_seed_noise_gate",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 83,
+          "invalid_accept_rate": 0.461111,
+          "mean_valid_score_retention": 0.532272,
+          "mean_cost_units": 6.257317,
+          "cost_per_valid_claim": 11.611515
+        },
+        {
+          "policy": "ablate_no_schema_gate",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 4,
+          "invalid_accept_rate": 0.022222,
+          "mean_valid_score_retention": 0.960819,
+          "mean_cost_units": 6.257317,
+          "cost_per_valid_claim": 6.399528
+        }
+      ]
+    },
+    {
+      "seed": 20260547,
+      "aggregate": [
+        {
+          "policy": "official_score_only",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 145,
+          "invalid_accept_rate": 0.805556,
+          "mean_valid_score_retention": 0.193054,
+          "mean_cost_units": 5.295994,
+          "cost_per_valid_claim": 27.236543
+        },
+        {
+          "policy": "static_artifact_rule",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 142,
+          "invalid_accept_rate": 0.788889,
+          "mean_valid_score_retention": 0.209442,
+          "mean_cost_units": 6.195994,
+          "cost_per_valid_claim": 29.349447
+        },
+        {
+          "policy": "judge_only_proxy",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 142,
+          "invalid_accept_rate": 0.788889,
+          "mean_valid_score_retention": 0.209442,
+          "mean_cost_units": 6.195994,
+          "cost_per_valid_claim": 29.349447
+        },
+        {
+          "policy": "scitriage_full",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 0,
+          "invalid_accept_rate": 0.0,
+          "mean_valid_score_retention": 0.963072,
+          "mean_cost_units": 6.195994,
+          "cost_per_valid_claim": 6.301011
+        },
+        {
+          "policy": "ablate_no_semantic_gate",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 47,
+          "invalid_accept_rate": 0.261111,
+          "mean_valid_score_retention": 0.708076,
+          "mean_cost_units": 6.195994,
+          "cost_per_valid_claim": 8.579069
+        },
+        {
+          "policy": "ablate_no_leakage_gate",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 24,
+          "invalid_accept_rate": 0.133333,
+          "mean_valid_score_retention": 0.837989,
+          "mean_cost_units": 6.195994,
+          "cost_per_valid_claim": 7.242071
+        },
+        {
+          "policy": "ablate_no_checkpoint_gate",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 20,
+          "invalid_accept_rate": 0.111111,
+          "mean_valid_score_retention": 0.874701,
+          "mean_cost_units": 6.195994,
+          "cost_per_valid_claim": 6.970494
+        },
+        {
+          "policy": "ablate_no_seed_noise_gate",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 104,
+          "invalid_accept_rate": 0.577778,
+          "mean_valid_score_retention": 0.417211,
+          "mean_cost_units": 6.195994,
+          "cost_per_valid_claim": 14.674724
+        },
+        {
+          "policy": "ablate_no_schema_gate",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 9,
+          "invalid_accept_rate": 0.05,
+          "mean_valid_score_retention": 0.932325,
+          "mean_cost_units": 6.195994,
+          "cost_per_valid_claim": 6.522099
+        }
+      ]
+    },
+    {
+      "seed": 20260548,
+      "aggregate": [
+        {
+          "policy": "official_score_only",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 136,
+          "invalid_accept_rate": 0.755556,
+          "mean_valid_score_retention": 0.243546,
+          "mean_cost_units": 5.399022,
+          "cost_per_valid_claim": 22.086909
+        },
+        {
+          "policy": "static_artifact_rule",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 132,
+          "invalid_accept_rate": 0.733333,
+          "mean_valid_score_retention": 0.264846,
+          "mean_cost_units": 6.299022,
+          "cost_per_valid_claim": 23.621333
+        },
+        {
+          "policy": "judge_only_proxy",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 132,
+          "invalid_accept_rate": 0.733333,
+          "mean_valid_score_retention": 0.264846,
+          "mean_cost_units": 6.299022,
+          "cost_per_valid_claim": 23.621333
+        },
+        {
+          "policy": "scitriage_full",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 0,
+          "invalid_accept_rate": 0.0,
+          "mean_valid_score_retention": 0.973683,
+          "mean_cost_units": 6.299022,
+          "cost_per_valid_claim": 6.369798
+        },
+        {
+          "policy": "ablate_no_semantic_gate",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 44,
+          "invalid_accept_rate": 0.244444,
+          "mean_valid_score_retention": 0.734502,
+          "mean_cost_units": 6.299022,
+          "cost_per_valid_claim": 8.461373
+        },
+        {
+          "policy": "ablate_no_leakage_gate",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 24,
+          "invalid_accept_rate": 0.133333,
+          "mean_valid_score_retention": 0.842264,
+          "mean_cost_units": 6.299022,
+          "cost_per_valid_claim": 7.362494
+        },
+        {
+          "policy": "ablate_no_checkpoint_gate",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 21,
+          "invalid_accept_rate": 0.116667,
+          "mean_valid_score_retention": 0.873701,
+          "mean_cost_units": 6.299022,
+          "cost_per_valid_claim": 7.130969
+        },
+        {
+          "policy": "ablate_no_seed_noise_gate",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 83,
+          "invalid_accept_rate": 0.461111,
+          "mean_valid_score_retention": 0.533974,
+          "mean_cost_units": 6.299022,
+          "cost_per_valid_claim": 11.688907
+        },
+        {
+          "policy": "ablate_no_schema_gate",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 3,
+          "invalid_accept_rate": 0.016667,
+          "mean_valid_score_retention": 0.968473,
+          "mean_cost_units": 6.299022,
+          "cost_per_valid_claim": 6.405785
+        }
+      ]
+    },
+    {
+      "seed": 20260549,
+      "aggregate": [
+        {
+          "policy": "official_score_only",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 137,
+          "invalid_accept_rate": 0.761111,
+          "mean_valid_score_retention": 0.237627,
+          "mean_cost_units": 5.45115,
+          "cost_per_valid_claim": 22.818767
+        },
+        {
+          "policy": "static_artifact_rule",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 132,
+          "invalid_accept_rate": 0.733333,
+          "mean_valid_score_retention": 0.264866,
+          "mean_cost_units": 6.35115,
+          "cost_per_valid_claim": 23.816813
+        },
+        {
+          "policy": "judge_only_proxy",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 132,
+          "invalid_accept_rate": 0.733333,
+          "mean_valid_score_retention": 0.264866,
+          "mean_cost_units": 6.35115,
+          "cost_per_valid_claim": 23.816813
+        },
+        {
+          "policy": "scitriage_full",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 0,
+          "invalid_accept_rate": 0.0,
+          "mean_valid_score_retention": 0.97813,
+          "mean_cost_units": 6.35115,
+          "cost_per_valid_claim": 6.386631
+        },
+        {
+          "policy": "ablate_no_semantic_gate",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 45,
+          "invalid_accept_rate": 0.25,
+          "mean_valid_score_retention": 0.732957,
+          "mean_cost_units": 6.35115,
+          "cost_per_valid_claim": 8.531396
+        },
+        {
+          "policy": "ablate_no_leakage_gate",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 24,
+          "invalid_accept_rate": 0.133333,
+          "mean_valid_score_retention": 0.846788,
+          "mean_cost_units": 6.35115,
+          "cost_per_valid_claim": 7.375529
+        },
+        {
+          "policy": "ablate_no_checkpoint_gate",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 19,
+          "invalid_accept_rate": 0.105556,
+          "mean_valid_score_retention": 0.881842,
+          "mean_cost_units": 6.35115,
+          "cost_per_valid_claim": 7.100665
+        },
+        {
+          "policy": "ablate_no_seed_noise_gate",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 89,
+          "invalid_accept_rate": 0.494444,
+          "mean_valid_score_retention": 0.500338,
+          "mean_cost_units": 6.35115,
+          "cost_per_valid_claim": 12.562714
+        },
+        {
+          "policy": "ablate_no_schema_gate",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 3,
+          "invalid_accept_rate": 0.016667,
+          "mean_valid_score_retention": 0.968016,
+          "mean_cost_units": 6.35115,
+          "cost_per_valid_claim": 6.458797
+        }
+      ]
+    },
+    {
+      "seed": 20260550,
+      "aggregate": [
+        {
+          "policy": "official_score_only",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 143,
+          "invalid_accept_rate": 0.794444,
+          "mean_valid_score_retention": 0.203985,
+          "mean_cost_units": 5.421333,
+          "cost_per_valid_claim": 26.374054
+        },
+        {
+          "policy": "static_artifact_rule",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 140,
+          "invalid_accept_rate": 0.777778,
+          "mean_valid_score_retention": 0.219545,
+          "mean_cost_units": 6.321333,
+          "cost_per_valid_claim": 28.446
+        },
+        {
+          "policy": "judge_only_proxy",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 140,
+          "invalid_accept_rate": 0.777778,
+          "mean_valid_score_retention": 0.219545,
+          "mean_cost_units": 6.321333,
+          "cost_per_valid_claim": 28.446
+        },
+        {
+          "policy": "scitriage_full",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 0,
+          "invalid_accept_rate": 0.0,
+          "mean_valid_score_retention": 0.970988,
+          "mean_cost_units": 6.321333,
+          "cost_per_valid_claim": 6.39236
+        },
+        {
+          "policy": "ablate_no_semantic_gate",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 43,
+          "invalid_accept_rate": 0.238889,
+          "mean_valid_score_retention": 0.735471,
+          "mean_cost_units": 6.321333,
+          "cost_per_valid_claim": 8.428444
+        },
+        {
+          "policy": "ablate_no_leakage_gate",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 24,
+          "invalid_accept_rate": 0.133333,
+          "mean_valid_score_retention": 0.840199,
+          "mean_cost_units": 6.321333,
+          "cost_per_valid_claim": 7.388571
+        },
+        {
+          "policy": "ablate_no_checkpoint_gate",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 22,
+          "invalid_accept_rate": 0.122222,
+          "mean_valid_score_retention": 0.865519,
+          "mean_cost_units": 6.321333,
+          "cost_per_valid_claim": 7.201519
+        },
+        {
+          "policy": "ablate_no_seed_noise_gate",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 94,
+          "invalid_accept_rate": 0.522222,
+          "mean_valid_score_retention": 0.47157,
+          "mean_cost_units": 6.321333,
+          "cost_per_valid_claim": 13.230698
+        },
+        {
+          "policy": "ablate_no_schema_gate",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 7,
+          "invalid_accept_rate": 0.038889,
+          "mean_valid_score_retention": 0.94513,
+          "mean_cost_units": 6.321333,
+          "cost_per_valid_claim": 6.57711
+        }
+      ]
+    },
+    {
+      "seed": 20260551,
+      "aggregate": [
+        {
+          "policy": "official_score_only",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 137,
+          "invalid_accept_rate": 0.761111,
+          "mean_valid_score_retention": 0.236943,
+          "mean_cost_units": 5.404656,
+          "cost_per_valid_claim": 22.62414
+        },
+        {
+          "policy": "static_artifact_rule",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 134,
+          "invalid_accept_rate": 0.744444,
+          "mean_valid_score_retention": 0.252981,
+          "mean_cost_units": 6.304656,
+          "cost_per_valid_claim": 24.670391
+        },
+        {
+          "policy": "judge_only_proxy",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 134,
+          "invalid_accept_rate": 0.744444,
+          "mean_valid_score_retention": 0.252981,
+          "mean_cost_units": 6.304656,
+          "cost_per_valid_claim": 24.670391
+        },
+        {
+          "policy": "scitriage_full",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 0,
+          "invalid_accept_rate": 0.0,
+          "mean_valid_score_retention": 0.983258,
+          "mean_cost_units": 6.304656,
+          "cost_per_valid_claim": 6.304656
+        },
+        {
+          "policy": "ablate_no_semantic_gate",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 46,
+          "invalid_accept_rate": 0.255556,
+          "mean_valid_score_retention": 0.731892,
+          "mean_cost_units": 6.304656,
+          "cost_per_valid_claim": 8.46894
+        },
+        {
+          "policy": "ablate_no_leakage_gate",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 24,
+          "invalid_accept_rate": 0.133333,
+          "mean_valid_score_retention": 0.852323,
+          "mean_cost_units": 6.304656,
+          "cost_per_valid_claim": 7.274603
+        },
+        {
+          "policy": "ablate_no_checkpoint_gate",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 16,
+          "invalid_accept_rate": 0.088889,
+          "mean_valid_score_retention": 0.899684,
+          "mean_cost_units": 6.304656,
+          "cost_per_valid_claim": 6.919744
+        },
+        {
+          "policy": "ablate_no_seed_noise_gate",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 88,
+          "invalid_accept_rate": 0.488889,
+          "mean_valid_score_retention": 0.504639,
+          "mean_cost_units": 6.304656,
+          "cost_per_valid_claim": 12.335196
+        },
+        {
+          "policy": "ablate_no_schema_gate",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 1,
+          "invalid_accept_rate": 0.005556,
+          "mean_valid_score_retention": 0.978528,
+          "mean_cost_units": 6.304656,
+          "cost_per_valid_claim": 6.339877
+        }
+      ]
+    },
+    {
+      "seed": 20260552,
+      "aggregate": [
+        {
+          "policy": "official_score_only",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 133,
+          "invalid_accept_rate": 0.738889,
+          "mean_valid_score_retention": 0.259963,
+          "mean_cost_units": 5.350539,
+          "cost_per_valid_claim": 20.491426
+        },
+        {
+          "policy": "static_artifact_rule",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 132,
+          "invalid_accept_rate": 0.733333,
+          "mean_valid_score_retention": 0.264978,
+          "mean_cost_units": 6.250539,
+          "cost_per_valid_claim": 23.439521
+        },
+        {
+          "policy": "judge_only_proxy",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 132,
+          "invalid_accept_rate": 0.733333,
+          "mean_valid_score_retention": 0.264978,
+          "mean_cost_units": 6.250539,
+          "cost_per_valid_claim": 23.439521
+        },
+        {
+          "policy": "scitriage_full",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 0,
+          "invalid_accept_rate": 0.0,
+          "mean_valid_score_retention": 0.975257,
+          "mean_cost_units": 6.250539,
+          "cost_per_valid_claim": 6.285458
+        },
+        {
+          "policy": "ablate_no_semantic_gate",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 45,
+          "invalid_accept_rate": 0.25,
+          "mean_valid_score_retention": 0.731212,
+          "mean_cost_units": 6.250539,
+          "cost_per_valid_claim": 8.396246
+        },
+        {
+          "policy": "ablate_no_leakage_gate",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 24,
+          "invalid_accept_rate": 0.133333,
+          "mean_valid_score_retention": 0.849954,
+          "mean_cost_units": 6.250539,
+          "cost_per_valid_claim": 7.21216
+        },
+        {
+          "policy": "ablate_no_checkpoint_gate",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 19,
+          "invalid_accept_rate": 0.105556,
+          "mean_valid_score_retention": 0.881667,
+          "mean_cost_units": 6.250539,
+          "cost_per_valid_claim": 6.98818
+        },
+        {
+          "policy": "ablate_no_seed_noise_gate",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 86,
+          "invalid_accept_rate": 0.477778,
+          "mean_valid_score_retention": 0.515296,
+          "mean_cost_units": 6.250539,
+          "cost_per_valid_claim": 11.969117
+        },
+        {
+          "policy": "ablate_no_schema_gate",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 7,
+          "invalid_accept_rate": 0.038889,
+          "mean_valid_score_retention": 0.944137,
+          "mean_cost_units": 6.250539,
+          "cost_per_valid_claim": 6.503451
+        }
+      ]
+    },
+    {
+      "seed": 20260553,
+      "aggregate": [
+        {
+          "policy": "official_score_only",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 138,
+          "invalid_accept_rate": 0.766667,
+          "mean_valid_score_retention": 0.23273,
+          "mean_cost_units": 5.48525,
+          "cost_per_valid_claim": 23.508214
+        },
+        {
+          "policy": "static_artifact_rule",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 135,
+          "invalid_accept_rate": 0.75,
+          "mean_valid_score_retention": 0.248789,
+          "mean_cost_units": 6.38525,
+          "cost_per_valid_claim": 25.541
+        },
+        {
+          "policy": "judge_only_proxy",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 135,
+          "invalid_accept_rate": 0.75,
+          "mean_valid_score_retention": 0.248789,
+          "mean_cost_units": 6.38525,
+          "cost_per_valid_claim": 25.541
+        },
+        {
+          "policy": "scitriage_full",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 0,
+          "invalid_accept_rate": 0.0,
+          "mean_valid_score_retention": 0.977731,
+          "mean_cost_units": 6.38525,
+          "cost_per_valid_claim": 6.420922
+        },
+        {
+          "policy": "ablate_no_semantic_gate",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 45,
+          "invalid_accept_rate": 0.25,
+          "mean_valid_score_retention": 0.733016,
+          "mean_cost_units": 6.38525,
+          "cost_per_valid_claim": 8.577201
+        },
+        {
+          "policy": "ablate_no_leakage_gate",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 24,
+          "invalid_accept_rate": 0.133333,
+          "mean_valid_score_retention": 0.851483,
+          "mean_cost_units": 6.38525,
+          "cost_per_valid_claim": 7.367596
+        },
+        {
+          "policy": "ablate_no_checkpoint_gate",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 18,
+          "invalid_accept_rate": 0.1,
+          "mean_valid_score_retention": 0.888782,
+          "mean_cost_units": 6.38525,
+          "cost_per_valid_claim": 7.094722
+        },
+        {
+          "policy": "ablate_no_seed_noise_gate",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 90,
+          "invalid_accept_rate": 0.5,
+          "mean_valid_score_retention": 0.494363,
+          "mean_cost_units": 6.38525,
+          "cost_per_valid_claim": 12.7705
+        },
+        {
+          "policy": "ablate_no_schema_gate",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 3,
+          "invalid_accept_rate": 0.016667,
+          "mean_valid_score_retention": 0.96748,
+          "mean_cost_units": 6.38525,
+          "cost_per_valid_claim": 6.493475
+        }
+      ]
+    },
+    {
+      "seed": 20260554,
+      "aggregate": [
+        {
+          "policy": "official_score_only",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 143,
+          "invalid_accept_rate": 0.794444,
+          "mean_valid_score_retention": 0.203585,
+          "mean_cost_units": 5.45005,
+          "cost_per_valid_claim": 26.513757
+        },
+        {
+          "policy": "static_artifact_rule",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 138,
+          "invalid_accept_rate": 0.766667,
+          "mean_valid_score_retention": 0.230397,
+          "mean_cost_units": 6.35005,
+          "cost_per_valid_claim": 27.2145
+        },
+        {
+          "policy": "judge_only_proxy",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 138,
+          "invalid_accept_rate": 0.766667,
+          "mean_valid_score_retention": 0.230397,
+          "mean_cost_units": 6.35005,
+          "cost_per_valid_claim": 27.2145
+        },
+        {
+          "policy": "scitriage_full",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 0,
+          "invalid_accept_rate": 0.0,
+          "mean_valid_score_retention": 0.976937,
+          "mean_cost_units": 6.35005,
+          "cost_per_valid_claim": 6.385525
+        },
+        {
+          "policy": "ablate_no_semantic_gate",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 48,
+          "invalid_accept_rate": 0.266667,
+          "mean_valid_score_retention": 0.714673,
+          "mean_cost_units": 6.35005,
+          "cost_per_valid_claim": 8.72526
+        },
+        {
+          "policy": "ablate_no_leakage_gate",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 24,
+          "invalid_accept_rate": 0.133333,
+          "mean_valid_score_retention": 0.850576,
+          "mean_cost_units": 6.35005,
+          "cost_per_valid_claim": 7.326981
+        },
+        {
+          "policy": "ablate_no_checkpoint_gate",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 24,
+          "invalid_accept_rate": 0.133333,
+          "mean_valid_score_retention": 0.855526,
+          "mean_cost_units": 6.35005,
+          "cost_per_valid_claim": 7.326981
+        },
+        {
+          "policy": "ablate_no_seed_noise_gate",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 89,
+          "invalid_accept_rate": 0.494444,
+          "mean_valid_score_retention": 0.500091,
+          "mean_cost_units": 6.35005,
+          "cost_per_valid_claim": 12.560538
+        },
+        {
+          "policy": "ablate_no_schema_gate",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 3,
+          "invalid_accept_rate": 0.016667,
+          "mean_valid_score_retention": 0.961523,
+          "mean_cost_units": 6.35005,
+          "cost_per_valid_claim": 6.494369
+        }
+      ]
+    },
+    {
+      "seed": 20260555,
+      "aggregate": [
+        {
+          "policy": "official_score_only",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 142,
+          "invalid_accept_rate": 0.788889,
+          "mean_valid_score_retention": 0.210232,
+          "mean_cost_units": 5.399967,
+          "cost_per_valid_claim": 25.578789
+        },
+        {
+          "policy": "static_artifact_rule",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 140,
+          "invalid_accept_rate": 0.777778,
+          "mean_valid_score_retention": 0.220825,
+          "mean_cost_units": 6.299967,
+          "cost_per_valid_claim": 28.34985
+        },
+        {
+          "policy": "judge_only_proxy",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 140,
+          "invalid_accept_rate": 0.777778,
+          "mean_valid_score_retention": 0.220825,
+          "mean_cost_units": 6.299967,
+          "cost_per_valid_claim": 28.34985
+        },
+        {
+          "policy": "scitriage_full",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 0,
+          "invalid_accept_rate": 0.0,
+          "mean_valid_score_retention": 0.977765,
+          "mean_cost_units": 6.299967,
+          "cost_per_valid_claim": 6.335162
+        },
+        {
+          "policy": "ablate_no_semantic_gate",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 47,
+          "invalid_accept_rate": 0.261111,
+          "mean_valid_score_retention": 0.720749,
+          "mean_cost_units": 6.299967,
+          "cost_per_valid_claim": 8.590864
+        },
+        {
+          "policy": "ablate_no_leakage_gate",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 24,
+          "invalid_accept_rate": 0.133333,
+          "mean_valid_score_retention": 0.847247,
+          "mean_cost_units": 6.299967,
+          "cost_per_valid_claim": 7.31609
+        },
+        {
+          "policy": "ablate_no_checkpoint_gate",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 20,
+          "invalid_accept_rate": 0.111111,
+          "mean_valid_score_retention": 0.876394,
+          "mean_cost_units": 6.299967,
+          "cost_per_valid_claim": 7.087463
+        },
+        {
+          "policy": "ablate_no_seed_noise_gate",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 97,
+          "invalid_accept_rate": 0.538889,
+          "mean_valid_score_retention": 0.457352,
+          "mean_cost_units": 6.299967,
+          "cost_per_valid_claim": 13.662578
+        },
+        {
+          "policy": "ablate_no_schema_gate",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 1,
+          "invalid_accept_rate": 0.005556,
+          "mean_valid_score_retention": 0.977765,
+          "mean_cost_units": 6.299967,
+          "cost_per_valid_claim": 6.335162
+        }
+      ]
+    },
+    {
+      "seed": 20260556,
+      "aggregate": [
+        {
+          "policy": "official_score_only",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 140,
+          "invalid_accept_rate": 0.777778,
+          "mean_valid_score_retention": 0.220461,
+          "mean_cost_units": 5.38115,
+          "cost_per_valid_claim": 24.215175
+        },
+        {
+          "policy": "static_artifact_rule",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 137,
+          "invalid_accept_rate": 0.761111,
+          "mean_valid_score_retention": 0.236761,
+          "mean_cost_units": 6.28115,
+          "cost_per_valid_claim": 26.293186
+        },
+        {
+          "policy": "judge_only_proxy",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 137,
+          "invalid_accept_rate": 0.761111,
+          "mean_valid_score_retention": 0.236761,
+          "mean_cost_units": 6.28115,
+          "cost_per_valid_claim": 26.293186
+        },
+        {
+          "policy": "scitriage_full",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 0,
+          "invalid_accept_rate": 0.0,
+          "mean_valid_score_retention": 0.962281,
+          "mean_cost_units": 6.28115,
+          "cost_per_valid_claim": 6.423903
+        },
+        {
+          "policy": "ablate_no_semantic_gate",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 46,
+          "invalid_accept_rate": 0.255556,
+          "mean_valid_score_retention": 0.710649,
+          "mean_cost_units": 6.28115,
+          "cost_per_valid_claim": 8.696977
+        },
+        {
+          "policy": "ablate_no_leakage_gate",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 24,
+          "invalid_accept_rate": 0.133333,
+          "mean_valid_score_retention": 0.83107,
+          "mean_cost_units": 6.28115,
+          "cost_per_valid_claim": 7.438204
+        },
+        {
+          "policy": "ablate_no_checkpoint_gate",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 19,
+          "invalid_accept_rate": 0.105556,
+          "mean_valid_score_retention": 0.881486,
+          "mean_cost_units": 6.28115,
+          "cost_per_valid_claim": 7.022404
+        },
+        {
+          "policy": "ablate_no_seed_noise_gate",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 93,
+          "invalid_accept_rate": 0.516667,
+          "mean_valid_score_retention": 0.477967,
+          "mean_cost_units": 6.28115,
+          "cost_per_valid_claim": 12.995483
+        },
+        {
+          "policy": "ablate_no_schema_gate",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 4,
+          "invalid_accept_rate": 0.022222,
+          "mean_valid_score_retention": 0.962281,
+          "mean_cost_units": 6.28115,
+          "cost_per_valid_claim": 6.423903
+        }
+      ]
+    },
+    {
+      "seed": 20260557,
+      "aggregate": [
+        {
+          "policy": "official_score_only",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 130,
+          "invalid_accept_rate": 0.722222,
+          "mean_valid_score_retention": 0.276665,
+          "mean_cost_units": 5.375039,
+          "cost_per_valid_claim": 19.35014
+        },
+        {
+          "policy": "static_artifact_rule",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 127,
+          "invalid_accept_rate": 0.705556,
+          "mean_valid_score_retention": 0.292906,
+          "mean_cost_units": 6.275039,
+          "cost_per_valid_claim": 21.311453
+        },
+        {
+          "policy": "judge_only_proxy",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 127,
+          "invalid_accept_rate": 0.705556,
+          "mean_valid_score_retention": 0.292906,
+          "mean_cost_units": 6.275039,
+          "cost_per_valid_claim": 21.311453
+        },
+        {
+          "policy": "scitriage_full",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 0,
+          "invalid_accept_rate": 0.0,
+          "mean_valid_score_retention": 0.976438,
+          "mean_cost_units": 6.275039,
+          "cost_per_valid_claim": 6.310095
+        },
+        {
+          "policy": "ablate_no_semantic_gate",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 45,
+          "invalid_accept_rate": 0.25,
+          "mean_valid_score_retention": 0.731137,
+          "mean_cost_units": 6.275039,
+          "cost_per_valid_claim": 8.429157
+        },
+        {
+          "policy": "ablate_no_leakage_gate",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 24,
+          "invalid_accept_rate": 0.133333,
+          "mean_valid_score_retention": 0.844363,
+          "mean_cost_units": 6.275039,
+          "cost_per_valid_claim": 7.287142
+        },
+        {
+          "policy": "ablate_no_checkpoint_gate",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 23,
+          "invalid_accept_rate": 0.127778,
+          "mean_valid_score_retention": 0.86111,
+          "mean_cost_units": 6.275039,
+          "cost_per_valid_claim": 7.194312
+        },
+        {
+          "policy": "ablate_no_seed_noise_gate",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 80,
+          "invalid_accept_rate": 0.444444,
+          "mean_valid_score_retention": 0.551289,
+          "mean_cost_units": 6.275039,
+          "cost_per_valid_claim": 11.29507
+        },
+        {
+          "policy": "ablate_no_schema_gate",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 3,
+          "invalid_accept_rate": 0.016667,
+          "mean_valid_score_retention": 0.966295,
+          "mean_cost_units": 6.275039,
+          "cost_per_valid_claim": 6.381395
+        }
+      ]
+    },
+    {
+      "seed": 20260558,
+      "aggregate": [
+        {
+          "policy": "official_score_only",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 138,
+          "invalid_accept_rate": 0.766667,
+          "mean_valid_score_retention": 0.232384,
+          "mean_cost_units": 5.4201,
+          "cost_per_valid_claim": 23.229
+        },
+        {
+          "policy": "static_artifact_rule",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 135,
+          "invalid_accept_rate": 0.75,
+          "mean_valid_score_retention": 0.248495,
+          "mean_cost_units": 6.3201,
+          "cost_per_valid_claim": 25.2804
+        },
+        {
+          "policy": "judge_only_proxy",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 135,
+          "invalid_accept_rate": 0.75,
+          "mean_valid_score_retention": 0.248495,
+          "mean_cost_units": 6.3201,
+          "cost_per_valid_claim": 25.2804
+        },
+        {
+          "policy": "scitriage_full",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 0,
+          "invalid_accept_rate": 0.0,
+          "mean_valid_score_retention": 0.963479,
+          "mean_cost_units": 6.3201,
+          "cost_per_valid_claim": 6.42722
+        },
+        {
+          "policy": "ablate_no_semantic_gate",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 46,
+          "invalid_accept_rate": 0.255556,
+          "mean_valid_score_retention": 0.715002,
+          "mean_cost_units": 6.3201,
+          "cost_per_valid_claim": 8.684107
+        },
+        {
+          "policy": "ablate_no_leakage_gate",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 24,
+          "invalid_accept_rate": 0.133333,
+          "mean_valid_score_retention": 0.839053,
+          "mean_cost_units": 6.3201,
+          "cost_per_valid_claim": 7.38713
+        },
+        {
+          "policy": "ablate_no_checkpoint_gate",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 28,
+          "invalid_accept_rate": 0.155556,
+          "mean_valid_score_retention": 0.83071,
+          "mean_cost_units": 6.3201,
+          "cost_per_valid_claim": 7.484329
+        },
+        {
+          "policy": "ablate_no_seed_noise_gate",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 94,
+          "invalid_accept_rate": 0.522222,
+          "mean_valid_score_retention": 0.472986,
+          "mean_cost_units": 6.3201,
+          "cost_per_valid_claim": 13.228116
+        },
+        {
+          "policy": "ablate_no_schema_gate",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 8,
+          "invalid_accept_rate": 0.044444,
+          "mean_valid_score_retention": 0.938275,
+          "mean_cost_units": 6.3201,
+          "cost_per_valid_claim": 6.614058
+        }
+      ]
+    },
+    {
+      "seed": 20260559,
+      "aggregate": [
+        {
+          "policy": "official_score_only",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 138,
+          "invalid_accept_rate": 0.766667,
+          "mean_valid_score_retention": 0.231521,
+          "mean_cost_units": 5.267361,
+          "cost_per_valid_claim": 22.574405
+        },
+        {
+          "policy": "static_artifact_rule",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 134,
+          "invalid_accept_rate": 0.744444,
+          "mean_valid_score_retention": 0.253252,
+          "mean_cost_units": 6.167361,
+          "cost_per_valid_claim": 24.133152
+        },
+        {
+          "policy": "judge_only_proxy",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 134,
+          "invalid_accept_rate": 0.744444,
+          "mean_valid_score_retention": 0.253252,
+          "mean_cost_units": 6.167361,
+          "cost_per_valid_claim": 24.133152
+        },
+        {
+          "policy": "scitriage_full",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 0,
+          "invalid_accept_rate": 0.0,
+          "mean_valid_score_retention": 0.968357,
+          "mean_cost_units": 6.167361,
+          "cost_per_valid_claim": 6.236657
+        },
+        {
+          "policy": "ablate_no_semantic_gate",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 47,
+          "invalid_accept_rate": 0.261111,
+          "mean_valid_score_retention": 0.713984,
+          "mean_cost_units": 6.167361,
+          "cost_per_valid_claim": 8.474237
+        },
+        {
+          "policy": "ablate_no_leakage_gate",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 24,
+          "invalid_accept_rate": 0.133333,
+          "mean_valid_score_retention": 0.837772,
+          "mean_cost_units": 6.167361,
+          "cost_per_valid_claim": 7.208604
+        },
+        {
+          "policy": "ablate_no_checkpoint_gate",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 22,
+          "invalid_accept_rate": 0.122222,
+          "mean_valid_score_retention": 0.863129,
+          "mean_cost_units": 6.167361,
+          "cost_per_valid_claim": 7.026108
+        },
+        {
+          "policy": "ablate_no_seed_noise_gate",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 90,
+          "invalid_accept_rate": 0.5,
+          "mean_valid_score_retention": 0.493421,
+          "mean_cost_units": 6.167361,
+          "cost_per_valid_claim": 12.334722
+        },
+        {
+          "policy": "ablate_no_schema_gate",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 6,
+          "invalid_accept_rate": 0.033333,
+          "mean_valid_score_retention": 0.947215,
+          "mean_cost_units": 6.167361,
+          "cost_per_valid_claim": 6.380029
+        }
+      ]
+    },
+    {
+      "seed": 20260560,
+      "aggregate": [
+        {
+          "policy": "official_score_only",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 147,
+          "invalid_accept_rate": 0.816667,
+          "mean_valid_score_retention": 0.182196,
+          "mean_cost_units": 5.356989,
+          "cost_per_valid_claim": 29.219939
+        },
+        {
+          "policy": "static_artifact_rule",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 141,
+          "invalid_accept_rate": 0.783333,
+          "mean_valid_score_retention": 0.214933,
+          "mean_cost_units": 6.256989,
+          "cost_per_valid_claim": 28.87841
+        },
+        {
+          "policy": "judge_only_proxy",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 141,
+          "invalid_accept_rate": 0.783333,
+          "mean_valid_score_retention": 0.214933,
+          "mean_cost_units": 6.256989,
+          "cost_per_valid_claim": 28.87841
+        },
+        {
+          "policy": "scitriage_full",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 0,
+          "invalid_accept_rate": 0.0,
+          "mean_valid_score_retention": 0.968378,
+          "mean_cost_units": 6.256989,
+          "cost_per_valid_claim": 6.36304
+        },
+        {
+          "policy": "ablate_no_semantic_gate",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 44,
+          "invalid_accept_rate": 0.244444,
+          "mean_valid_score_retention": 0.728851,
+          "mean_cost_units": 6.256989,
+          "cost_per_valid_claim": 8.468105
+        },
+        {
+          "policy": "ablate_no_leakage_gate",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 24,
+          "invalid_accept_rate": 0.133333,
+          "mean_valid_score_retention": 0.853132,
+          "mean_cost_units": 6.256989,
+          "cost_per_valid_claim": 7.219603
+        },
+        {
+          "policy": "ablate_no_checkpoint_gate",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 19,
+          "invalid_accept_rate": 0.105556,
+          "mean_valid_score_retention": 0.882411,
+          "mean_cost_units": 6.256989,
+          "cost_per_valid_claim": 6.995391
+        },
+        {
+          "policy": "ablate_no_seed_noise_gate",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 98,
+          "invalid_accept_rate": 0.544444,
+          "mean_valid_score_retention": 0.450773,
+          "mean_cost_units": 6.256989,
+          "cost_per_valid_claim": 13.734854
+        },
+        {
+          "policy": "ablate_no_schema_gate",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 5,
+          "invalid_accept_rate": 0.027778,
+          "mean_valid_score_retention": 0.953118,
+          "mean_cost_units": 6.256989,
+          "cost_per_valid_claim": 6.472747
+        }
+      ]
+    },
+    {
+      "seed": 20260561,
+      "aggregate": [
+        {
+          "policy": "official_score_only",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 137,
+          "invalid_accept_rate": 0.761111,
+          "mean_valid_score_retention": 0.237189,
+          "mean_cost_units": 5.346544,
+          "cost_per_valid_claim": 22.380884
+        },
+        {
+          "policy": "static_artifact_rule",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 135,
+          "invalid_accept_rate": 0.75,
+          "mean_valid_score_retention": 0.247957,
+          "mean_cost_units": 6.246544,
+          "cost_per_valid_claim": 24.986178
+        },
+        {
+          "policy": "judge_only_proxy",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 135,
+          "invalid_accept_rate": 0.75,
+          "mean_valid_score_retention": 0.247957,
+          "mean_cost_units": 6.246544,
+          "cost_per_valid_claim": 24.986178
+        },
+        {
+          "policy": "scitriage_full",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 0,
+          "invalid_accept_rate": 0.0,
+          "mean_valid_score_retention": 0.969667,
+          "mean_cost_units": 6.246544,
+          "cost_per_valid_claim": 6.31673
+        },
+        {
+          "policy": "ablate_no_semantic_gate",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 46,
+          "invalid_accept_rate": 0.255556,
+          "mean_valid_score_retention": 0.721151,
+          "mean_cost_units": 6.246544,
+          "cost_per_valid_claim": 8.518015
+        },
+        {
+          "policy": "ablate_no_leakage_gate",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 24,
+          "invalid_accept_rate": 0.133333,
+          "mean_valid_score_retention": 0.849009,
+          "mean_cost_units": 6.246544,
+          "cost_per_valid_claim": 7.207551
+        },
+        {
+          "policy": "ablate_no_checkpoint_gate",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 14,
+          "invalid_accept_rate": 0.077778,
+          "mean_valid_score_retention": 0.906585,
+          "mean_cost_units": 6.246544,
+          "cost_per_valid_claim": 6.773361
+        },
+        {
+          "policy": "ablate_no_seed_noise_gate",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 91,
+          "invalid_accept_rate": 0.505556,
+          "mean_valid_score_retention": 0.489131,
+          "mean_cost_units": 6.246544,
+          "cost_per_valid_claim": 12.633461
+        },
+        {
+          "policy": "ablate_no_schema_gate",
+          "traces": 180,
+          "tasks": 15,
+          "invalid_accepts": 2,
+          "invalid_accept_rate": 0.011111,
+          "mean_valid_score_retention": 0.969667,
+          "mean_cost_units": 6.246544,
+          "cost_per_valid_claim": 6.31673
+        }
+      ]
+    }
+  ],
+  "seed_results": null
+}

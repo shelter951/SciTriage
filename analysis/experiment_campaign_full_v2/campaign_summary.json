@@ -1,0 +1,203 @@
+﻿{
+  "repo_root": "$REPO_ROOT",
+  "out": "$REPO_ROOT/analysis/experiment_campaign_full_v2",
+  "results": [
+    {
+      "cmd": [
+        "python",
+        "$REPO_ROOT/scripts/plan_official_audit_targets.py",
+        "--repo-root",
+        "$REPO_ROOT",
+        "--out",
+        "$REPO_ROOT/analysis/experiment_campaign_full_v2/official_audit_target_queue",
+        "--mlagentbench-root",
+        "$MLAGENTBENCH_ROOT"
+      ],
+      "returncode": 0,
+      "seconds": 0.064,
+      "stdout": "$REPO_ROOT/analysis/experiment_campaign_full_v2/official_audit_target_queue/official_audit_target_queue.json\n$REPO_ROOT/analysis/experiment_campaign_full_v2/official_audit_target_queue/OFFICIAL_AUDIT_TARGET_QUEUE.md\n",
+      "stderr": "",
+      "timed_out": false,
+      "name": "target_queue"
+    },
+    {
+      "cmd": [
+        "python",
+        "$REPO_ROOT/scripts/build_public_failure_corpus.py",
+        "--repo-root",
+        "$REPO_ROOT"
+      ],
+      "returncode": 0,
+      "seconds": 0.083,
+      "stdout": "$REPO_ROOT/benchmarks/false_discovery_corpus/corpus.json\n$REPO_ROOT/benchmarks/false_discovery_corpus/INDEX.md\n",
+      "stderr": "",
+      "timed_out": false,
+      "name": "build_public_failure_corpus"
+    },
+    {
+      "cmd": [
+        "python",
+        "$REPO_ROOT/scripts/run_false_discovery_corpus_eval.py",
+        "--repo-root",
+        "$REPO_ROOT",
+        "--out",
+        "$REPO_ROOT/analysis/experiment_campaign_full_v2/public_failure_corpus_eval",
+        "--traces-per-task",
+        "12",
+        "--max-candidates",
+        "5",
+        "--seed",
+        "20260522"
+      ],
+      "returncode": 0,
+      "seconds": 0.169,
+      "stdout": "$REPO_ROOT/analysis/experiment_campaign_full_v2/public_failure_corpus_eval/public_failure_corpus_eval.json\n$REPO_ROOT/analysis/experiment_campaign_full_v2/public_failure_corpus_eval/PUBLIC_FAILURE_CORPUS_EVAL.md\n",
+      "stderr": "",
+      "timed_out": false,
+      "name": "public_failure_corpus_single_seed"
+    },
+    {
+      "cmd": [
+        "python",
+        "$REPO_ROOT/scripts/run_public_corpus_multiseed_eval.py",
+        "--repo-root",
+        "$REPO_ROOT",
+        "--out",
+        "$REPO_ROOT/analysis/experiment_campaign_full_v2/public_failure_corpus_multiseed_eval",
+        "--seeds",
+        "40",
+        "--seed-start",
+        "20260522",
+        "--traces-per-task",
+        "12",
+        "--max-candidates",
+        "5"
+      ],
+      "returncode": 0,
+      "seconds": 2.109,
+      "stdout": "$REPO_ROOT/analysis/experiment_campaign_full_v2/public_failure_corpus_multiseed_eval/public_failure_corpus_multiseed_eval.json\n$REPO_ROOT/analysis/experiment_campaign_full_v2/public_failure_corpus_multiseed_eval/PUBLIC_FAILURE_CORPUS_MULTISEED_EVAL.md\n",
+      "stderr": "",
+      "timed_out": false,
+      "name": "public_failure_corpus_multiseed"
+    },
+    {
+      "cmd": [
+        "python",
+        "$REPO_ROOT/scripts/run_same_agent_policy_eval.py",
+        "--repo-root",
+        "$REPO_ROOT",
+        "--out",
+        "$REPO_ROOT/analysis/experiment_campaign_full_v2/same_agent_policy_eval"
+      ],
+      "returncode": 0,
+      "seconds": 0.053,
+      "stdout": "$REPO_ROOT/analysis/experiment_campaign_full_v2/same_agent_policy_eval/same_agent_policy_eval.json\n$REPO_ROOT/analysis/experiment_campaign_full_v2/same_agent_policy_eval/SAME_AGENT_POLICY_EVAL.md\n",
+      "stderr": "",
+      "timed_out": false,
+      "name": "same_agent_policy_eval"
+    },
+    {
+      "cmd": [
+        "python",
+        "$REPO_ROOT/scripts/summarize_external_audits.py",
+        "--repo-root",
+        "$REPO_ROOT",
+        "--out",
+        "$REPO_ROOT/analysis/experiment_campaign_full_v2/external_audit_summary"
+      ],
+      "returncode": 0,
+      "seconds": 0.061,
+      "stdout": "$REPO_ROOT/analysis/experiment_campaign_full_v2/external_audit_summary/external_audit_summary.json\n$REPO_ROOT/analysis/experiment_campaign_full_v2/external_audit_summary/EXTERNAL_AUDIT_SUMMARY.md\n",
+      "stderr": "",
+      "timed_out": false,
+      "name": "external_audit_summary"
+    },
+    {
+      "cmd": [
+        "python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-p",
+        "test_*.py",
+        "-v"
+      ],
+      "returncode": 0,
+      "seconds": 0.124,
+      "stdout": "",
+      "stderr": "test_cifar10_audit_detects_test_label_leak (test_core.CoreBehaviorTests) ... ok\ntest_claim_gate_blocks_inconclusive_claim (test_core.CoreBehaviorTests) ... ok\ntest_evidence_board_policy_saves_seed_budget (test_core.CoreBehaviorTests) ... ok\ntest_filesystem_adapter_reads_extensionless_benchmark_logs (test_core.CoreBehaviorTests) ... ok\ntest_group_compare_marks_noise_inconclusive (test_core.CoreBehaviorTests) ... ok\ntest_hook_writer_creates_executable_script (test_core.CoreBehaviorTests) ... ok\ntest_imdb_audit_detects_test_label_leak (test_core.CoreBehaviorTests) ... ok\ntest_noisy_one_shot_blocks_claim (test_core.CoreBehaviorTests) ... ok\ntest_official_audit_target_queue_prioritizes_unfinished_eval_tasks (test_core.CoreBehaviorTests) ... ok\ntest_parse_metric_handles_benchmark_log_formats (test_core.CoreBehaviorTests) ... ok\ntest_plugin_assess_trace_returns_bundle (test_core.CoreBehaviorTests) ... ok\ntest_plugin_seed_group_gate_allows_clear_win (test_core.CoreBehaviorTests) ... ok\ntest_probe_priority_uses_group_candidate_as_baseline (test_core.CoreBehaviorTests) ... ok\ntest_public_failure_corpus_eval_is_not_single_task_toy (test_core.CoreBehaviorTests) ... ok\ntest_public_failure_corpus_multiseed_summarizes_variance (test_core.CoreBehaviorTests) ... ok\ntest_semantic_gate_blocks_visible_winner (test_core.CoreBehaviorTests) ... ok\ntest_validity_module_detects_dataset_leaks_and_checkpoints (test_core.CoreBehaviorTests) ... ok\n\n----------------------------------------------------------------------\nRan 17 tests in 0.029s\n\nOK\n",
+      "timed_out": false,
+      "name": "unit_tests"
+    },
+    {
+      "cmd": [
+        "python",
+        "$REPO_ROOT/scripts/run_mlagentbench_vectorization_candidates.py",
+        "--mlagentbench-root",
+        "$MLAGENTBENCH_ROOT",
+        "--out",
+        "$REPO_ROOT/analysis/experiment_campaign_full_v2/official_vectorization",
+        "--python",
+        "python",
+        "--repeats",
+        "3",
+        "--timeout",
+        "90"
+      ],
+      "returncode": 0,
+      "seconds": 17.165,
+      "stdout": "$REPO_ROOT/analysis/experiment_campaign_full_v2/official_vectorization/candidate_audit.json\n$REPO_ROOT/analysis/experiment_campaign_full_v2/official_vectorization/CANDIDATE_AUDIT.md\n",
+      "stderr": "",
+      "timed_out": false,
+      "name": "official_vectorization"
+    },
+    {
+      "cmd": [
+        "python",
+        "$REPO_ROOT/scripts/run_mlagentbench_cifar10_candidates.py",
+        "--mlagentbench-root",
+        "$MLAGENTBENCH_ROOT",
+        "--out",
+        "$REPO_ROOT/analysis/experiment_campaign_full_v2/official_cifar10",
+        "--python",
+        "python",
+        "--repeats",
+        "1",
+        "--timeout",
+        "240"
+      ],
+      "returncode": 0,
+      "seconds": 52.209,
+      "stdout": "$REPO_ROOT/analysis/experiment_campaign_full_v2/official_cifar10/candidate_audit.json\n$REPO_ROOT/analysis/experiment_campaign_full_v2/official_cifar10/CANDIDATE_AUDIT.md\n",
+      "stderr": "",
+      "timed_out": false,
+      "name": "official_cifar10"
+    },
+    {
+      "cmd": [
+        "python",
+        "$REPO_ROOT/scripts/run_mlagentbench_imdb_candidates.py",
+        "--mlagentbench-root",
+        "$MLAGENTBENCH_ROOT",
+        "--out",
+        "$REPO_ROOT/analysis/experiment_campaign_full_v2/official_imdb",
+        "--python",
+        "python",
+        "--repeats",
+        "1",
+        "--timeout",
+        "240",
+        "--hf-offline"
+      ],
+      "returncode": 0,
+      "seconds": 28.104,
+      "stdout": "$REPO_ROOT/analysis/experiment_campaign_full_v2/official_imdb/candidate_audit.json\n$REPO_ROOT/analysis/experiment_campaign_full_v2/official_imdb/CANDIDATE_AUDIT.md\n",
+      "stderr": "",
+      "timed_out": false,
+      "name": "official_imdb"
+    }
+  ],
+  "failed": []
+}
