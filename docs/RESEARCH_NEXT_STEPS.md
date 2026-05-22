@@ -105,6 +105,7 @@ SciTriage is promising but not yet a top-tier paper by itself. The current resul
 - it has useful ablations and baselines
 - it now has a full v2 campaign that reruns the lightweight evidence package end to end
 - it has a BabyLM compatibility audit that adds a language-model artifact/loadability failure surface
+- it has a closed-loop replay evaluation where the same agent observes candidates sequentially and makes a final-claim decision
 
 To become top-tier solid, it needs larger external coverage and real closed-loop agent runs where SciTriage changes the final research behavior of the agent.
 
@@ -125,6 +126,7 @@ Additional result:
 | Evidence piece | Status |
 |---|---|
 | BabyLM compatibility artifact audit | complete; useful, but not direct unmodified upstream `eval.py` execution |
+| closed-loop replay over 5 audits | complete; stronger than one-shot selection, still not fresh LLM candidate generation |
 
 This improves reproducibility and packaging. It does not yet solve the main scientific gap: we still need live agent loops where the candidates are generated naturally by the agent under equal budgets.
 

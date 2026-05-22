@@ -65,6 +65,8 @@ That broader claim needs live agent-loop experiments.
 
 We now have an intermediate same-agent policy evaluation: the same score-seeking policy sees the same candidate trajectories with and without SciTriage evidence. This closes part of the gap, but does not replace fully autonomous LLM loops.
 
+We also now have a stronger closed-loop replay: the same agent observes executed audit candidates sequentially and decides when to write a final claim. This reduces the gap between static selection and live agent behavior, but still does not replace a fresh LLM-generation loop.
+
 ## What A Top-Conference Version Needs
 
 Minimum strong version:
@@ -129,6 +131,7 @@ The project now has:
 - an aggregate audit summary over the four complete audits;
 - a public README that presents the problem and results for non-specialist readers.
 - a full v2 campaign report that reruns the lightweight official audits and stress evaluations without interactive prompting.
+- a closed-loop replay result over 5 executed/compatibility audits, with 1,500 loops per policy.
 
 The highest-leverage next experiment is now a fully autonomous same-LLM comparison: run the same LLM agent with and without SciTriage while it creates candidates from scratch, then measure invalid accept rate, final valid score, and extra cost.
 
@@ -140,6 +143,15 @@ Current same-agent policy result:
 | `static_artifact_rule` | 0.750 | 0.250 |
 | `judge_only_proxy` | 0.750 | 0.250 |
 | `scitriage_full` | 0.000 | 1.000 |
+
+Closed-loop replay result:
+
+| Policy | Invalid Final Claim Rate | Valid Final Claim Rate | Valid-Score Retention |
+|---|---:|---:|---:|
+| `official_score_only` | 0.600 | 0.400 | 0.400 |
+| `static_artifact_rule` | 0.600 | 0.400 | 0.399 |
+| `judge_only_proxy` | 0.600 | 0.400 | 0.399 |
+| `scitriage_full` | 0.000 | 1.000 | 0.960 |
 
 Additional scale result:
 

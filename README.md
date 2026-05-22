@@ -55,6 +55,8 @@ Aggregate external audit: 4 score-bearing MLAgentBench tasks, 20 candidates, 8 b
 
 Same-agent policy evaluation: the no-SciTriage score-seeking agent has `0.750` invalid accept rate and `0.250` mean valid-score retention; full SciTriage gets `0.000` invalid accept rate and `1.000` valid-score retention on the same candidate trajectories.
 
+Closed-loop replay evaluation: over 5 executed/compatibility audit tasks and 1,500 randomized same-agent loops per policy, score-only final claims are invalid in `0.600` of loops. Full SciTriage reduces invalid final claims to `0.000`, keeps `0.960` mean valid-score retention, and uses `5.112` mean cost units versus `2.825` for score-only. This is a replay over executed audits, not a fresh autonomous LLM generation experiment.
+
 We are now scaling beyond the four official-executed audits with a public false-discovery corpus built from all 15 MLAgentBench task surfaces. On 180 same-agent stress traces over 112 candidate records, score-only selection accepts invalid evidence in `0.744` of traces; full SciTriage reduces this to `0.000` while keeping `0.982` mean valid-score retention. This larger suite is clearly marked as a public-surface stress test, not as official benchmark execution.
 
 Across 40 deterministic trace seeds, this remains stable: score-only invalid accept rate is `0.770 +/- 0.008`, while full SciTriage stays at `0.000 +/- 0.000` and keeps `0.973 +/- 0.002` valid-score retention.
@@ -250,6 +252,8 @@ Public-surface multi-seed evaluation: [`analysis/public_failure_corpus_multiseed
 Full campaign v2: [`analysis/experiment_campaign_full_v2/CAMPAIGN_SUMMARY.md`](analysis/experiment_campaign_full_v2/CAMPAIGN_SUMMARY.md)
 
 BabyLM compatibility audit: [`analysis/external_mlagentbench_babylm_v1/CANDIDATE_AUDIT.md`](analysis/external_mlagentbench_babylm_v1/CANDIDATE_AUDIT.md)
+
+Closed-loop replay evaluation: [`analysis/closed_loop_replay_eval_v1/CLOSED_LOOP_REPLAY_EVAL.md`](analysis/closed_loop_replay_eval_v1/CLOSED_LOOP_REPLAY_EVAL.md)
 
 Official audit target queue: [`analysis/official_audit_target_queue_v1/OFFICIAL_AUDIT_TARGET_QUEUE.md`](analysis/official_audit_target_queue_v1/OFFICIAL_AUDIT_TARGET_QUEUE.md)
 

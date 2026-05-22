@@ -80,6 +80,25 @@ analysis/public_failure_corpus_multiseed_eval_v1/PUBLIC_FAILURE_CORPUS_MULTISEED
 | `judge_only_proxy` | 0.753 +/- 0.007 | 0.245 +/- 0.007 | 25.666 +/- 0.762 |
 | `scitriage_full` | 0.000 +/- 0.000 | 0.973 +/- 0.002 | 6.348 +/- 0.017 |
 
+## Closed-Loop Replay Results
+
+Artifact:
+
+```text
+analysis/closed_loop_replay_eval_v1/CLOSED_LOOP_REPLAY_EVAL.md
+```
+
+This evaluation uses executed/curated audit candidates from `vectorization`, `cifar10`, `imdb`, `CLRS`, and the `babylm` compatibility audit. The same agent observes candidates sequentially in randomized order and may stop early with a final claim. The only difference across policies is which evidence gates are available before claiming.
+
+| Policy | Invalid Final Claim Rate | Valid Final Claim Rate | Valid-Score Retention | Mean Cost |
+|---|---:|---:|---:|---:|
+| `official_score_only` | 0.600 | 0.400 | 0.400 | 2.825 |
+| `static_artifact_rule` | 0.600 | 0.400 | 0.399 | 3.400 |
+| `judge_only_proxy` | 0.600 | 0.400 | 0.399 | 3.400 |
+| `scitriage_full` | 0.000 | 1.000 | 0.960 | 5.112 |
+
+Interpretation: this is stronger than one-shot winner selection because the agent makes a sequential final-claim decision under equal candidate order. It is still not a fresh LLM-generation experiment; it is a replay over executed audit suites.
+
 ## Seed-Noise Policy Results
 
 Artifact:

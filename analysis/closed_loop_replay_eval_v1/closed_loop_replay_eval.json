@@ -1,0 +1,1680 @@
+{
+  "task_count": 5,
+  "tasks": [
+    "MLAgentBench/vectorization",
+    "MLAgentBench/cifar10",
+    "MLAgentBench/imdb",
+    "MLAgentBench/CLRS",
+    "MLAgentBench/babylm"
+  ],
+  "traces_per_task": 300,
+  "loops_per_policy": 1500,
+  "max_steps": 5,
+  "min_steps_before_claim": 2,
+  "claim_tolerance": 0.02,
+  "aggregate": [
+    {
+      "policy": "official_score_only",
+      "loops": 1500,
+      "invalid_final_claims": 900,
+      "invalid_final_claim_rate": 0.6,
+      "valid_final_claim_rate": 0.4,
+      "mean_valid_score_retention": 0.4,
+      "mean_cost_units": 2.824666666666667,
+      "mean_steps": 2.824666666666667
+    },
+    {
+      "policy": "static_artifact_rule",
+      "loops": 1500,
+      "invalid_final_claims": 900,
+      "invalid_final_claim_rate": 0.6,
+      "valid_final_claim_rate": 0.4,
+      "mean_valid_score_retention": 0.3992900862646706,
+      "mean_cost_units": 3.4001333333333332,
+      "mean_steps": 2.9873333333333334
+    },
+    {
+      "policy": "judge_only_proxy",
+      "loops": 1500,
+      "invalid_final_claims": 900,
+      "invalid_final_claim_rate": 0.6,
+      "valid_final_claim_rate": 0.4,
+      "mean_valid_score_retention": 0.3992900862646706,
+      "mean_cost_units": 3.4001333333333332,
+      "mean_steps": 2.9873333333333334
+    },
+    {
+      "policy": "scitriage_full",
+      "loops": 1500,
+      "invalid_final_claims": 0,
+      "invalid_final_claim_rate": 0.0,
+      "valid_final_claim_rate": 1.0,
+      "mean_valid_score_retention": 0.9595043774962331,
+      "mean_cost_units": 5.112253333333333,
+      "mean_steps": 4.027333333333333
+    },
+    {
+      "policy": "ablate_no_semantic_gate",
+      "loops": 1500,
+      "invalid_final_claims": 300,
+      "invalid_final_claim_rate": 0.2,
+      "valid_final_claim_rate": 0.8,
+      "mean_valid_score_retention": 0.7992900862646706,
+      "mean_cost_units": 4.6262533333333336,
+      "mean_steps": 3.7213333333333334
+    },
+    {
+      "policy": "ablate_no_leakage_gate",
+      "loops": 1500,
+      "invalid_final_claims": 600,
+      "invalid_final_claim_rate": 0.4,
+      "valid_final_claim_rate": 0.6,
+      "mean_valid_score_retention": 0.559504377496233,
+      "mean_cost_units": 3.8861333333333334,
+      "mean_steps": 3.2933333333333334
+    },
+    {
+      "policy": "ablate_no_checkpoint_gate",
+      "loops": 1500,
+      "invalid_final_claims": 0,
+      "invalid_final_claim_rate": 0.0,
+      "valid_final_claim_rate": 1.0,
+      "mean_valid_score_retention": 0.9595043774962331,
+      "mean_cost_units": 5.012053333333333,
+      "mean_steps": 4.027333333333333
+    },
+    {
+      "policy": "ablate_no_schema_gate",
+      "loops": 1500,
+      "invalid_final_claims": 0,
+      "invalid_final_claim_rate": 0.0,
+      "valid_final_claim_rate": 1.0,
+      "mean_valid_score_retention": 0.9595043774962331,
+      "mean_cost_units": 4.752253333333334,
+      "mean_steps": 4.027333333333333
+    }
+  ],
+  "sample_loops": [
+    {
+      "task": "MLAgentBench/vectorization",
+      "policy": "official_score_only",
+      "observed_candidates": [
+        "baseline",
+        "random_fast_invalid",
+        "im2col_einsum",
+        "zero_fast_invalid"
+      ],
+      "steps": 4,
+      "claimed": true,
+      "stop_reason": "claim_band_reached",
+      "selected": "zero_fast_invalid",
+      "official_score": 0.005080461502075195,
+      "full_valid": false,
+      "invalid_final_claim": true,
+      "valid_score_retention": 0.0,
+      "cost_units": 4.0,
+      "best_visible": "zero_fast_invalid",
+      "best_valid": "im2col_einsum",
+      "trace": [
+        {
+          "step": 1,
+          "observed": "baseline",
+          "observed_score": 3.523017326990763,
+          "observed_full_valid": true,
+          "selected": "baseline",
+          "selected_score": 3.523017326990763,
+          "selected_full_valid": true,
+          "can_claim": false
+        },
+        {
+          "step": 2,
+          "observed": "random_fast_invalid",
+          "observed_score": 0.013556559880574545,
+          "observed_full_valid": false,
+          "selected": "random_fast_invalid",
+          "selected_score": 0.013556559880574545,
+          "selected_full_valid": false,
+          "can_claim": false
+        },
+        {
+          "step": 3,
+          "observed": "im2col_einsum",
+          "observed_score": 0.016233523686726887,
+          "observed_full_valid": true,
+          "selected": "random_fast_invalid",
+          "selected_score": 0.013556559880574545,
+          "selected_full_valid": false,
+          "can_claim": false
+        },
+        {
+          "step": 4,
+          "observed": "zero_fast_invalid",
+          "observed_score": 0.005080461502075195,
+          "observed_full_valid": false,
+          "selected": "zero_fast_invalid",
+          "selected_score": 0.005080461502075195,
+          "selected_full_valid": false,
+          "can_claim": true
+        }
+      ],
+      "trace_id": 0
+    },
+    {
+      "task": "MLAgentBench/vectorization",
+      "policy": "static_artifact_rule",
+      "observed_candidates": [
+        "baseline",
+        "random_fast_invalid",
+        "im2col_einsum",
+        "zero_fast_invalid"
+      ],
+      "steps": 4,
+      "claimed": true,
+      "stop_reason": "claim_band_reached",
+      "selected": "zero_fast_invalid",
+      "official_score": 0.005080461502075195,
+      "full_valid": false,
+      "invalid_final_claim": true,
+      "valid_score_retention": 0.0,
+      "cost_units": 4.0,
+      "best_visible": "zero_fast_invalid",
+      "best_valid": "im2col_einsum",
+      "trace": [
+        {
+          "step": 1,
+          "observed": "baseline",
+          "observed_score": 3.523017326990763,
+          "observed_full_valid": true,
+          "selected": "baseline",
+          "selected_score": 3.523017326990763,
+          "selected_full_valid": true,
+          "can_claim": false
+        },
+        {
+          "step": 2,
+          "observed": "random_fast_invalid",
+          "observed_score": 0.013556559880574545,
+          "observed_full_valid": false,
+          "selected": "random_fast_invalid",
+          "selected_score": 0.013556559880574545,
+          "selected_full_valid": false,
+          "can_claim": false
+        },
+        {
+          "step": 3,
+          "observed": "im2col_einsum",
+          "observed_score": 0.016233523686726887,
+          "observed_full_valid": true,
+          "selected": "random_fast_invalid",
+          "selected_score": 0.013556559880574545,
+          "selected_full_valid": false,
+          "can_claim": false
+        },
+        {
+          "step": 4,
+          "observed": "zero_fast_invalid",
+          "observed_score": 0.005080461502075195,
+          "observed_full_valid": false,
+          "selected": "zero_fast_invalid",
+          "selected_score": 0.005080461502075195,
+          "selected_full_valid": false,
+          "can_claim": true
+        }
+      ],
+      "trace_id": 0
+    },
+    {
+      "task": "MLAgentBench/vectorization",
+      "policy": "judge_only_proxy",
+      "observed_candidates": [
+        "baseline",
+        "random_fast_invalid",
+        "im2col_einsum",
+        "zero_fast_invalid"
+      ],
+      "steps": 4,
+      "claimed": true,
+      "stop_reason": "claim_band_reached",
+      "selected": "zero_fast_invalid",
+      "official_score": 0.005080461502075195,
+      "full_valid": false,
+      "invalid_final_claim": true,
+      "valid_score_retention": 0.0,
+      "cost_units": 4.0,
+      "best_visible": "zero_fast_invalid",
+      "best_valid": "im2col_einsum",
+      "trace": [
+        {
+          "step": 1,
+          "observed": "baseline",
+          "observed_score": 3.523017326990763,
+          "observed_full_valid": true,
+          "selected": "baseline",
+          "selected_score": 3.523017326990763,
+          "selected_full_valid": true,
+          "can_claim": false
+        },
+        {
+          "step": 2,
+          "observed": "random_fast_invalid",
+          "observed_score": 0.013556559880574545,
+          "observed_full_valid": false,
+          "selected": "random_fast_invalid",
+          "selected_score": 0.013556559880574545,
+          "selected_full_valid": false,
+          "can_claim": false
+        },
+        {
+          "step": 3,
+          "observed": "im2col_einsum",
+          "observed_score": 0.016233523686726887,
+          "observed_full_valid": true,
+          "selected": "random_fast_invalid",
+          "selected_score": 0.013556559880574545,
+          "selected_full_valid": false,
+          "can_claim": false
+        },
+        {
+          "step": 4,
+          "observed": "zero_fast_invalid",
+          "observed_score": 0.005080461502075195,
+          "observed_full_valid": false,
+          "selected": "zero_fast_invalid",
+          "selected_score": 0.005080461502075195,
+          "selected_full_valid": false,
+          "can_claim": true
+        }
+      ],
+      "trace_id": 0
+    },
+    {
+      "task": "MLAgentBench/vectorization",
+      "policy": "scitriage_full",
+      "observed_candidates": [
+        "baseline",
+        "random_fast_invalid",
+        "im2col_einsum",
+        "zero_fast_invalid",
+        "bias_only_invalid"
+      ],
+      "steps": 5,
+      "claimed": true,
+      "stop_reason": "budget_exhausted",
+      "selected": "im2col_einsum",
+      "official_score": 0.016233523686726887,
+      "full_valid": true,
+      "invalid_final_claim": false,
+      "valid_score_retention": 1.0,
+      "cost_units": 5.9,
+      "best_visible": "zero_fast_invalid",
+      "best_valid": "im2col_einsum",
+      "trace": [
+        {
+          "step": 1,
+          "observed": "baseline",
+          "observed_score": 3.523017326990763,
+          "observed_full_valid": true,
+          "selected": "baseline",
+          "selected_score": 3.523017326990763,
+          "selected_full_valid": true,
+          "can_claim": false
+        },
+        {
+          "step": 2,
+          "observed": "random_fast_invalid",
+          "observed_score": 0.013556559880574545,
+          "observed_full_valid": false,
+          "selected": "baseline",
+          "selected_score": 3.523017326990763,
+          "selected_full_valid": true,
+          "can_claim": false
+        },
+        {
+          "step": 3,
+          "observed": "im2col_einsum",
+          "observed_score": 0.016233523686726887,
+          "observed_full_valid": true,
+          "selected": "im2col_einsum",
+          "selected_score": 0.016233523686726887,
+          "selected_full_valid": true,
+          "can_claim": false
+        },
+        {
+          "step": 4,
+          "observed": "zero_fast_invalid",
+          "observed_score": 0.005080461502075195,
+          "observed_full_valid": false,
+          "selected": "im2col_einsum",
+          "selected_score": 0.016233523686726887,
+          "selected_full_valid": true,
+          "can_claim": false
+        },
+        {
+          "step": 5,
+          "observed": "bias_only_invalid",
+          "observed_score": 0.006390810012817383,
+          "observed_full_valid": false,
+          "selected": "im2col_einsum",
+          "selected_score": 0.016233523686726887,
+          "selected_full_valid": true,
+          "can_claim": false
+        }
+      ],
+      "trace_id": 0
+    },
+    {
+      "task": "MLAgentBench/vectorization",
+      "policy": "ablate_no_semantic_gate",
+      "observed_candidates": [
+        "baseline",
+        "random_fast_invalid",
+        "im2col_einsum",
+        "zero_fast_invalid"
+      ],
+      "steps": 4,
+      "claimed": true,
+      "stop_reason": "claim_band_reached",
+      "selected": "zero_fast_invalid",
+      "official_score": 0.005080461502075195,
+      "full_valid": false,
+      "invalid_final_claim": true,
+      "valid_score_retention": 0.0,
+      "cost_units": 4.0,
+      "best_visible": "zero_fast_invalid",
+      "best_valid": "im2col_einsum",
+      "trace": [
+        {
+          "step": 1,
+          "observed": "baseline",
+          "observed_score": 3.523017326990763,
+          "observed_full_valid": true,
+          "selected": "baseline",
+          "selected_score": 3.523017326990763,
+          "selected_full_valid": true,
+          "can_claim": false
+        },
+        {
+          "step": 2,
+          "observed": "random_fast_invalid",
+          "observed_score": 0.013556559880574545,
+          "observed_full_valid": false,
+          "selected": "random_fast_invalid",
+          "selected_score": 0.013556559880574545,
+          "selected_full_valid": false,
+          "can_claim": false
+        },
+        {
+          "step": 3,
+          "observed": "im2col_einsum",
+          "observed_score": 0.016233523686726887,
+          "observed_full_valid": true,
+          "selected": "random_fast_invalid",
+          "selected_score": 0.013556559880574545,
+          "selected_full_valid": false,
+          "can_claim": false
+        },
+        {
+          "step": 4,
+          "observed": "zero_fast_invalid",
+          "observed_score": 0.005080461502075195,
+          "observed_full_valid": false,
+          "selected": "zero_fast_invalid",
+          "selected_score": 0.005080461502075195,
+          "selected_full_valid": false,
+          "can_claim": true
+        }
+      ],
+      "trace_id": 0
+    },
+    {
+      "task": "MLAgentBench/vectorization",
+      "policy": "ablate_no_leakage_gate",
+      "observed_candidates": [
+        "baseline",
+        "random_fast_invalid",
+        "im2col_einsum",
+        "zero_fast_invalid",
+        "bias_only_invalid"
+      ],
+      "steps": 5,
+      "claimed": true,
+      "stop_reason": "budget_exhausted",
+      "selected": "im2col_einsum",
+      "official_score": 0.016233523686726887,
+      "full_valid": true,
+      "invalid_final_claim": false,
+      "valid_score_retention": 1.0,
+      "cost_units": 5.9,
+      "best_visible": "zero_fast_invalid",
+      "best_valid": "im2col_einsum",
+      "trace": [
+        {
+          "step": 1,
+          "observed": "baseline",
+          "observed_score": 3.523017326990763,
+          "observed_full_valid": true,
+          "selected": "baseline",
+          "selected_score": 3.523017326990763,
+          "selected_full_valid": true,
+          "can_claim": false
+        },
+        {
+          "step": 2,
+          "observed": "random_fast_invalid",
+          "observed_score": 0.013556559880574545,
+          "observed_full_valid": false,
+          "selected": "baseline",
+          "selected_score": 3.523017326990763,
+          "selected_full_valid": true,
+          "can_claim": false
+        },
+        {
+          "step": 3,
+          "observed": "im2col_einsum",
+          "observed_score": 0.016233523686726887,
+          "observed_full_valid": true,
+          "selected": "im2col_einsum",
+          "selected_score": 0.016233523686726887,
+          "selected_full_valid": true,
+          "can_claim": false
+        },
+        {
+          "step": 4,
+          "observed": "zero_fast_invalid",
+          "observed_score": 0.005080461502075195,
+          "observed_full_valid": false,
+          "selected": "im2col_einsum",
+          "selected_score": 0.016233523686726887,
+          "selected_full_valid": true,
+          "can_claim": false
+        },
+        {
+          "step": 5,
+          "observed": "bias_only_invalid",
+          "observed_score": 0.006390810012817383,
+          "observed_full_valid": false,
+          "selected": "im2col_einsum",
+          "selected_score": 0.016233523686726887,
+          "selected_full_valid": true,
+          "can_claim": false
+        }
+      ],
+      "trace_id": 0
+    },
+    {
+      "task": "MLAgentBench/vectorization",
+      "policy": "ablate_no_checkpoint_gate",
+      "observed_candidates": [
+        "baseline",
+        "random_fast_invalid",
+        "im2col_einsum",
+        "zero_fast_invalid",
+        "bias_only_invalid"
+      ],
+      "steps": 5,
+      "claimed": true,
+      "stop_reason": "budget_exhausted",
+      "selected": "im2col_einsum",
+      "official_score": 0.016233523686726887,
+      "full_valid": true,
+      "invalid_final_claim": false,
+      "valid_score_retention": 1.0,
+      "cost_units": 5.9,
+      "best_visible": "zero_fast_invalid",
+      "best_valid": "im2col_einsum",
+      "trace": [
+        {
+          "step": 1,
+          "observed": "baseline",
+          "observed_score": 3.523017326990763,
+          "observed_full_valid": true,
+          "selected": "baseline",
+          "selected_score": 3.523017326990763,
+          "selected_full_valid": true,
+          "can_claim": false
+        },
+        {
+          "step": 2,
+          "observed": "random_fast_invalid",
+          "observed_score": 0.013556559880574545,
+          "observed_full_valid": false,
+          "selected": "baseline",
+          "selected_score": 3.523017326990763,
+          "selected_full_valid": true,
+          "can_claim": false
+        },
+        {
+          "step": 3,
+          "observed": "im2col_einsum",
+          "observed_score": 0.016233523686726887,
+          "observed_full_valid": true,
+          "selected": "im2col_einsum",
+          "selected_score": 0.016233523686726887,
+          "selected_full_valid": true,
+          "can_claim": false
+        },
+        {
+          "step": 4,
+          "observed": "zero_fast_invalid",
+          "observed_score": 0.005080461502075195,
+          "observed_full_valid": false,
+          "selected": "im2col_einsum",
+          "selected_score": 0.016233523686726887,
+          "selected_full_valid": true,
+          "can_claim": false
+        },
+        {
+          "step": 5,
+          "observed": "bias_only_invalid",
+          "observed_score": 0.006390810012817383,
+          "observed_full_valid": false,
+          "selected": "im2col_einsum",
+          "selected_score": 0.016233523686726887,
+          "selected_full_valid": true,
+          "can_claim": false
+        }
+      ],
+      "trace_id": 0
+    },
+    {
+      "task": "MLAgentBench/vectorization",
+      "policy": "ablate_no_schema_gate",
+      "observed_candidates": [
+        "baseline",
+        "random_fast_invalid",
+        "im2col_einsum",
+        "zero_fast_invalid",
+        "bias_only_invalid"
+      ],
+      "steps": 5,
+      "claimed": true,
+      "stop_reason": "budget_exhausted",
+      "selected": "im2col_einsum",
+      "official_score": 0.016233523686726887,
+      "full_valid": true,
+      "invalid_final_claim": false,
+      "valid_score_retention": 1.0,
+      "cost_units": 5.9,
+      "best_visible": "zero_fast_invalid",
+      "best_valid": "im2col_einsum",
+      "trace": [
+        {
+          "step": 1,
+          "observed": "baseline",
+          "observed_score": 3.523017326990763,
+          "observed_full_valid": true,
+          "selected": "baseline",
+          "selected_score": 3.523017326990763,
+          "selected_full_valid": true,
+          "can_claim": false
+        },
+        {
+          "step": 2,
+          "observed": "random_fast_invalid",
+          "observed_score": 0.013556559880574545,
+          "observed_full_valid": false,
+          "selected": "baseline",
+          "selected_score": 3.523017326990763,
+          "selected_full_valid": true,
+          "can_claim": false
+        },
+        {
+          "step": 3,
+          "observed": "im2col_einsum",
+          "observed_score": 0.016233523686726887,
+          "observed_full_valid": true,
+          "selected": "im2col_einsum",
+          "selected_score": 0.016233523686726887,
+          "selected_full_valid": true,
+          "can_claim": false
+        },
+        {
+          "step": 4,
+          "observed": "zero_fast_invalid",
+          "observed_score": 0.005080461502075195,
+          "observed_full_valid": false,
+          "selected": "im2col_einsum",
+          "selected_score": 0.016233523686726887,
+          "selected_full_valid": true,
+          "can_claim": false
+        },
+        {
+          "step": 5,
+          "observed": "bias_only_invalid",
+          "observed_score": 0.006390810012817383,
+          "observed_full_valid": false,
+          "selected": "im2col_einsum",
+          "selected_score": 0.016233523686726887,
+          "selected_full_valid": true,
+          "can_claim": false
+        }
+      ],
+      "trace_id": 0
+    },
+    {
+      "task": "MLAgentBench/vectorization",
+      "policy": "official_score_only",
+      "observed_candidates": [
+        "filter_vectorized",
+        "bias_only_invalid",
+        "baseline",
+        "zero_fast_invalid"
+      ],
+      "steps": 4,
+      "claimed": true,
+      "stop_reason": "claim_band_reached",
+      "selected": "zero_fast_invalid",
+      "official_score": 0.005080461502075195,
+      "full_valid": false,
+      "invalid_final_claim": true,
+      "valid_score_retention": 0.0,
+      "cost_units": 4.0,
+      "best_visible": "zero_fast_invalid",
+      "best_valid": "im2col_einsum",
+      "trace": [
+        {
+          "step": 1,
+          "observed": "filter_vectorized",
+          "observed_score": 0.7493698596954346,
+          "observed_full_valid": true,
+          "selected": "filter_vectorized",
+          "selected_score": 0.7493698596954346,
+          "selected_full_valid": true,
+          "can_claim": false
+        },
+        {
+          "step": 2,
+          "observed": "bias_only_invalid",
+          "observed_score": 0.006390810012817383,
+          "observed_full_valid": false,
+          "selected": "bias_only_invalid",
+          "selected_score": 0.006390810012817383,
+          "selected_full_valid": false,
+          "can_claim": false
+        },
+        {
+          "step": 3,
+          "observed": "baseline",
+          "observed_score": 3.523017326990763,
+          "observed_full_valid": true,
+          "selected": "bias_only_invalid",
+          "selected_score": 0.006390810012817383,
+          "selected_full_valid": false,
+          "can_claim": false
+        },
+        {
+          "step": 4,
+          "observed": "zero_fast_invalid",
+          "observed_score": 0.005080461502075195,
+          "observed_full_valid": false,
+          "selected": "zero_fast_invalid",
+          "selected_score": 0.005080461502075195,
+          "selected_full_valid": false,
+          "can_claim": true
+        }
+      ],
+      "trace_id": 1
+    },
+    {
+      "task": "MLAgentBench/vectorization",
+      "policy": "static_artifact_rule",
+      "observed_candidates": [
+        "filter_vectorized",
+        "bias_only_invalid",
+        "baseline",
+        "zero_fast_invalid"
+      ],
+      "steps": 4,
+      "claimed": true,
+      "stop_reason": "claim_band_reached",
+      "selected": "zero_fast_invalid",
+      "official_score": 0.005080461502075195,
+      "full_valid": false,
+      "invalid_final_claim": true,
+      "valid_score_retention": 0.0,
+      "cost_units": 4.0,
+      "best_visible": "zero_fast_invalid",
+      "best_valid": "im2col_einsum",
+      "trace": [
+        {
+          "step": 1,
+          "observed": "filter_vectorized",
+          "observed_score": 0.7493698596954346,
+          "observed_full_valid": true,
+          "selected": "filter_vectorized",
+          "selected_score": 0.7493698596954346,
+          "selected_full_valid": true,
+          "can_claim": false
+        },
+        {
+          "step": 2,
+          "observed": "bias_only_invalid",
+          "observed_score": 0.006390810012817383,
+          "observed_full_valid": false,
+          "selected": "bias_only_invalid",
+          "selected_score": 0.006390810012817383,
+          "selected_full_valid": false,
+          "can_claim": false
+        },
+        {
+          "step": 3,
+          "observed": "baseline",
+          "observed_score": 3.523017326990763,
+          "observed_full_valid": true,
+          "selected": "bias_only_invalid",
+          "selected_score": 0.006390810012817383,
+          "selected_full_valid": false,
+          "can_claim": false
+        },
+        {
+          "step": 4,
+          "observed": "zero_fast_invalid",
+          "observed_score": 0.005080461502075195,
+          "observed_full_valid": false,
+          "selected": "zero_fast_invalid",
+          "selected_score": 0.005080461502075195,
+          "selected_full_valid": false,
+          "can_claim": true
+        }
+      ],
+      "trace_id": 1
+    },
+    {
+      "task": "MLAgentBench/vectorization",
+      "policy": "judge_only_proxy",
+      "observed_candidates": [
+        "filter_vectorized",
+        "bias_only_invalid",
+        "baseline",
+        "zero_fast_invalid"
+      ],
+      "steps": 4,
+      "claimed": true,
+      "stop_reason": "claim_band_reached",
+      "selected": "zero_fast_invalid",
+      "official_score": 0.005080461502075195,
+      "full_valid": false,
+      "invalid_final_claim": true,
+      "valid_score_retention": 0.0,
+      "cost_units": 4.0,
+      "best_visible": "zero_fast_invalid",
+      "best_valid": "im2col_einsum",
+      "trace": [
+        {
+          "step": 1,
+          "observed": "filter_vectorized",
+          "observed_score": 0.7493698596954346,
+          "observed_full_valid": true,
+          "selected": "filter_vectorized",
+          "selected_score": 0.7493698596954346,
+          "selected_full_valid": true,
+          "can_claim": false
+        },
+        {
+          "step": 2,
+          "observed": "bias_only_invalid",
+          "observed_score": 0.006390810012817383,
+          "observed_full_valid": false,
+          "selected": "bias_only_invalid",
+          "selected_score": 0.006390810012817383,
+          "selected_full_valid": false,
+          "can_claim": false
+        },
+        {
+          "step": 3,
+          "observed": "baseline",
+          "observed_score": 3.523017326990763,
+          "observed_full_valid": true,
+          "selected": "bias_only_invalid",
+          "selected_score": 0.006390810012817383,
+          "selected_full_valid": false,
+          "can_claim": false
+        },
+        {
+          "step": 4,
+          "observed": "zero_fast_invalid",
+          "observed_score": 0.005080461502075195,
+          "observed_full_valid": false,
+          "selected": "zero_fast_invalid",
+          "selected_score": 0.005080461502075195,
+          "selected_full_valid": false,
+          "can_claim": true
+        }
+      ],
+      "trace_id": 1
+    },
+    {
+      "task": "MLAgentBench/vectorization",
+      "policy": "scitriage_full",
+      "observed_candidates": [
+        "filter_vectorized",
+        "bias_only_invalid",
+        "baseline",
+        "zero_fast_invalid",
+        "im2col_einsum"
+      ],
+      "steps": 5,
+      "claimed": true,
+      "stop_reason": "budget_exhausted",
+      "selected": "im2col_einsum",
+      "official_score": 0.016233523686726887,
+      "full_valid": true,
+      "invalid_final_claim": false,
+      "valid_score_retention": 1.0,
+      "cost_units": 5.9,
+      "best_visible": "zero_fast_invalid",
+      "best_valid": "im2col_einsum",
+      "trace": [
+        {
+          "step": 1,
+          "observed": "filter_vectorized",
+          "observed_score": 0.7493698596954346,
+          "observed_full_valid": true,
+          "selected": "filter_vectorized",
+          "selected_score": 0.7493698596954346,
+          "selected_full_valid": true,
+          "can_claim": false
+        },
+        {
+          "step": 2,
+          "observed": "bias_only_invalid",
+          "observed_score": 0.006390810012817383,
+          "observed_full_valid": false,
+          "selected": "filter_vectorized",
+          "selected_score": 0.7493698596954346,
+          "selected_full_valid": true,
+          "can_claim": false
+        },
+        {
+          "step": 3,
+          "observed": "baseline",
+          "observed_score": 3.523017326990763,
+          "observed_full_valid": true,
+          "selected": "filter_vectorized",
+          "selected_score": 0.7493698596954346,
+          "selected_full_valid": true,
+          "can_claim": false
+        },
+        {
+          "step": 4,
+          "observed": "zero_fast_invalid",
+          "observed_score": 0.005080461502075195,
+          "observed_full_valid": false,
+          "selected": "filter_vectorized",
+          "selected_score": 0.7493698596954346,
+          "selected_full_valid": true,
+          "can_claim": false
+        },
+        {
+          "step": 5,
+          "observed": "im2col_einsum",
+          "observed_score": 0.016233523686726887,
+          "observed_full_valid": true,
+          "selected": "im2col_einsum",
+          "selected_score": 0.016233523686726887,
+          "selected_full_valid": true,
+          "can_claim": false
+        }
+      ],
+      "trace_id": 1
+    },
+    {
+      "task": "MLAgentBench/vectorization",
+      "policy": "ablate_no_semantic_gate",
+      "observed_candidates": [
+        "filter_vectorized",
+        "bias_only_invalid",
+        "baseline",
+        "zero_fast_invalid"
+      ],
+      "steps": 4,
+      "claimed": true,
+      "stop_reason": "claim_band_reached",
+      "selected": "zero_fast_invalid",
+      "official_score": 0.005080461502075195,
+      "full_valid": false,
+      "invalid_final_claim": true,
+      "valid_score_retention": 0.0,
+      "cost_units": 4.0,
+      "best_visible": "zero_fast_invalid",
+      "best_valid": "im2col_einsum",
+      "trace": [
+        {
+          "step": 1,
+          "observed": "filter_vectorized",
+          "observed_score": 0.7493698596954346,
+          "observed_full_valid": true,
+          "selected": "filter_vectorized",
+          "selected_score": 0.7493698596954346,
+          "selected_full_valid": true,
+          "can_claim": false
+        },
+        {
+          "step": 2,
+          "observed": "bias_only_invalid",
+          "observed_score": 0.006390810012817383,
+          "observed_full_valid": false,
+          "selected": "bias_only_invalid",
+          "selected_score": 0.006390810012817383,
+          "selected_full_valid": false,
+          "can_claim": false
+        },
+        {
+          "step": 3,
+          "observed": "baseline",
+          "observed_score": 3.523017326990763,
+          "observed_full_valid": true,
+          "selected": "bias_only_invalid",
+          "selected_score": 0.006390810012817383,
+          "selected_full_valid": false,
+          "can_claim": false
+        },
+        {
+          "step": 4,
+          "observed": "zero_fast_invalid",
+          "observed_score": 0.005080461502075195,
+          "observed_full_valid": false,
+          "selected": "zero_fast_invalid",
+          "selected_score": 0.005080461502075195,
+          "selected_full_valid": false,
+          "can_claim": true
+        }
+      ],
+      "trace_id": 1
+    },
+    {
+      "task": "MLAgentBench/vectorization",
+      "policy": "ablate_no_leakage_gate",
+      "observed_candidates": [
+        "filter_vectorized",
+        "bias_only_invalid",
+        "baseline",
+        "zero_fast_invalid",
+        "im2col_einsum"
+      ],
+      "steps": 5,
+      "claimed": true,
+      "stop_reason": "budget_exhausted",
+      "selected": "im2col_einsum",
+      "official_score": 0.016233523686726887,
+      "full_valid": true,
+      "invalid_final_claim": false,
+      "valid_score_retention": 1.0,
+      "cost_units": 5.9,
+      "best_visible": "zero_fast_invalid",
+      "best_valid": "im2col_einsum",
+      "trace": [
+        {
+          "step": 1,
+          "observed": "filter_vectorized",
+          "observed_score": 0.7493698596954346,
+          "observed_full_valid": true,
+          "selected": "filter_vectorized",
+          "selected_score": 0.7493698596954346,
+          "selected_full_valid": true,
+          "can_claim": false
+        },
+        {
+          "step": 2,
+          "observed": "bias_only_invalid",
+          "observed_score": 0.006390810012817383,
+          "observed_full_valid": false,
+          "selected": "filter_vectorized",
+          "selected_score": 0.7493698596954346,
+          "selected_full_valid": true,
+          "can_claim": false
+        },
+        {
+          "step": 3,
+          "observed": "baseline",
+          "observed_score": 3.523017326990763,
+          "observed_full_valid": true,
+          "selected": "filter_vectorized",
+          "selected_score": 0.7493698596954346,
+          "selected_full_valid": true,
+          "can_claim": false
+        },
+        {
+          "step": 4,
+          "observed": "zero_fast_invalid",
+          "observed_score": 0.005080461502075195,
+          "observed_full_valid": false,
+          "selected": "filter_vectorized",
+          "selected_score": 0.7493698596954346,
+          "selected_full_valid": true,
+          "can_claim": false
+        },
+        {
+          "step": 5,
+          "observed": "im2col_einsum",
+          "observed_score": 0.016233523686726887,
+          "observed_full_valid": true,
+          "selected": "im2col_einsum",
+          "selected_score": 0.016233523686726887,
+          "selected_full_valid": true,
+          "can_claim": false
+        }
+      ],
+      "trace_id": 1
+    },
+    {
+      "task": "MLAgentBench/vectorization",
+      "policy": "ablate_no_checkpoint_gate",
+      "observed_candidates": [
+        "filter_vectorized",
+        "bias_only_invalid",
+        "baseline",
+        "zero_fast_invalid",
+        "im2col_einsum"
+      ],
+      "steps": 5,
+      "claimed": true,
+      "stop_reason": "budget_exhausted",
+      "selected": "im2col_einsum",
+      "official_score": 0.016233523686726887,
+      "full_valid": true,
+      "invalid_final_claim": false,
+      "valid_score_retention": 1.0,
+      "cost_units": 5.9,
+      "best_visible": "zero_fast_invalid",
+      "best_valid": "im2col_einsum",
+      "trace": [
+        {
+          "step": 1,
+          "observed": "filter_vectorized",
+          "observed_score": 0.7493698596954346,
+          "observed_full_valid": true,
+          "selected": "filter_vectorized",
+          "selected_score": 0.7493698596954346,
+          "selected_full_valid": true,
+          "can_claim": false
+        },
+        {
+          "step": 2,
+          "observed": "bias_only_invalid",
+          "observed_score": 0.006390810012817383,
+          "observed_full_valid": false,
+          "selected": "filter_vectorized",
+          "selected_score": 0.7493698596954346,
+          "selected_full_valid": true,
+          "can_claim": false
+        },
+        {
+          "step": 3,
+          "observed": "baseline",
+          "observed_score": 3.523017326990763,
+          "observed_full_valid": true,
+          "selected": "filter_vectorized",
+          "selected_score": 0.7493698596954346,
+          "selected_full_valid": true,
+          "can_claim": false
+        },
+        {
+          "step": 4,
+          "observed": "zero_fast_invalid",
+          "observed_score": 0.005080461502075195,
+          "observed_full_valid": false,
+          "selected": "filter_vectorized",
+          "selected_score": 0.7493698596954346,
+          "selected_full_valid": true,
+          "can_claim": false
+        },
+        {
+          "step": 5,
+          "observed": "im2col_einsum",
+          "observed_score": 0.016233523686726887,
+          "observed_full_valid": true,
+          "selected": "im2col_einsum",
+          "selected_score": 0.016233523686726887,
+          "selected_full_valid": true,
+          "can_claim": false
+        }
+      ],
+      "trace_id": 1
+    },
+    {
+      "task": "MLAgentBench/vectorization",
+      "policy": "ablate_no_schema_gate",
+      "observed_candidates": [
+        "filter_vectorized",
+        "bias_only_invalid",
+        "baseline",
+        "zero_fast_invalid",
+        "im2col_einsum"
+      ],
+      "steps": 5,
+      "claimed": true,
+      "stop_reason": "budget_exhausted",
+      "selected": "im2col_einsum",
+      "official_score": 0.016233523686726887,
+      "full_valid": true,
+      "invalid_final_claim": false,
+      "valid_score_retention": 1.0,
+      "cost_units": 5.9,
+      "best_visible": "zero_fast_invalid",
+      "best_valid": "im2col_einsum",
+      "trace": [
+        {
+          "step": 1,
+          "observed": "filter_vectorized",
+          "observed_score": 0.7493698596954346,
+          "observed_full_valid": true,
+          "selected": "filter_vectorized",
+          "selected_score": 0.7493698596954346,
+          "selected_full_valid": true,
+          "can_claim": false
+        },
+        {
+          "step": 2,
+          "observed": "bias_only_invalid",
+          "observed_score": 0.006390810012817383,
+          "observed_full_valid": false,
+          "selected": "filter_vectorized",
+          "selected_score": 0.7493698596954346,
+          "selected_full_valid": true,
+          "can_claim": false
+        },
+        {
+          "step": 3,
+          "observed": "baseline",
+          "observed_score": 3.523017326990763,
+          "observed_full_valid": true,
+          "selected": "filter_vectorized",
+          "selected_score": 0.7493698596954346,
+          "selected_full_valid": true,
+          "can_claim": false
+        },
+        {
+          "step": 4,
+          "observed": "zero_fast_invalid",
+          "observed_score": 0.005080461502075195,
+          "observed_full_valid": false,
+          "selected": "filter_vectorized",
+          "selected_score": 0.7493698596954346,
+          "selected_full_valid": true,
+          "can_claim": false
+        },
+        {
+          "step": 5,
+          "observed": "im2col_einsum",
+          "observed_score": 0.016233523686726887,
+          "observed_full_valid": true,
+          "selected": "im2col_einsum",
+          "selected_score": 0.016233523686726887,
+          "selected_full_valid": true,
+          "can_claim": false
+        }
+      ],
+      "trace_id": 1
+    },
+    {
+      "task": "MLAgentBench/vectorization",
+      "policy": "official_score_only",
+      "observed_candidates": [
+        "zero_fast_invalid",
+        "baseline"
+      ],
+      "steps": 2,
+      "claimed": true,
+      "stop_reason": "claim_band_reached",
+      "selected": "zero_fast_invalid",
+      "official_score": 0.005080461502075195,
+      "full_valid": false,
+      "invalid_final_claim": true,
+      "valid_score_retention": 0.0,
+      "cost_units": 2.0,
+      "best_visible": "zero_fast_invalid",
+      "best_valid": "im2col_einsum",
+      "trace": [
+        {
+          "step": 1,
+          "observed": "zero_fast_invalid",
+          "observed_score": 0.005080461502075195,
+          "observed_full_valid": false,
+          "selected": "zero_fast_invalid",
+          "selected_score": 0.005080461502075195,
+          "selected_full_valid": false,
+          "can_claim": false
+        },
+        {
+          "step": 2,
+          "observed": "baseline",
+          "observed_score": 3.523017326990763,
+          "observed_full_valid": true,
+          "selected": "zero_fast_invalid",
+          "selected_score": 0.005080461502075195,
+          "selected_full_valid": false,
+          "can_claim": true
+        }
+      ],
+      "trace_id": 2
+    },
+    {
+      "task": "MLAgentBench/vectorization",
+      "policy": "static_artifact_rule",
+      "observed_candidates": [
+        "zero_fast_invalid",
+        "baseline"
+      ],
+      "steps": 2,
+      "claimed": true,
+      "stop_reason": "claim_band_reached",
+      "selected": "zero_fast_invalid",
+      "official_score": 0.005080461502075195,
+      "full_valid": false,
+      "invalid_final_claim": true,
+      "valid_score_retention": 0.0,
+      "cost_units": 2.0,
+      "best_visible": "zero_fast_invalid",
+      "best_valid": "im2col_einsum",
+      "trace": [
+        {
+          "step": 1,
+          "observed": "zero_fast_invalid",
+          "observed_score": 0.005080461502075195,
+          "observed_full_valid": false,
+          "selected": "zero_fast_invalid",
+          "selected_score": 0.005080461502075195,
+          "selected_full_valid": false,
+          "can_claim": false
+        },
+        {
+          "step": 2,
+          "observed": "baseline",
+          "observed_score": 3.523017326990763,
+          "observed_full_valid": true,
+          "selected": "zero_fast_invalid",
+          "selected_score": 0.005080461502075195,
+          "selected_full_valid": false,
+          "can_claim": true
+        }
+      ],
+      "trace_id": 2
+    },
+    {
+      "task": "MLAgentBench/vectorization",
+      "policy": "judge_only_proxy",
+      "observed_candidates": [
+        "zero_fast_invalid",
+        "baseline"
+      ],
+      "steps": 2,
+      "claimed": true,
+      "stop_reason": "claim_band_reached",
+      "selected": "zero_fast_invalid",
+      "official_score": 0.005080461502075195,
+      "full_valid": false,
+      "invalid_final_claim": true,
+      "valid_score_retention": 0.0,
+      "cost_units": 2.0,
+      "best_visible": "zero_fast_invalid",
+      "best_valid": "im2col_einsum",
+      "trace": [
+        {
+          "step": 1,
+          "observed": "zero_fast_invalid",
+          "observed_score": 0.005080461502075195,
+          "observed_full_valid": false,
+          "selected": "zero_fast_invalid",
+          "selected_score": 0.005080461502075195,
+          "selected_full_valid": false,
+          "can_claim": false
+        },
+        {
+          "step": 2,
+          "observed": "baseline",
+          "observed_score": 3.523017326990763,
+          "observed_full_valid": true,
+          "selected": "zero_fast_invalid",
+          "selected_score": 0.005080461502075195,
+          "selected_full_valid": false,
+          "can_claim": true
+        }
+      ],
+      "trace_id": 2
+    },
+    {
+      "task": "MLAgentBench/vectorization",
+      "policy": "scitriage_full",
+      "observed_candidates": [
+        "zero_fast_invalid",
+        "baseline",
+        "random_fast_invalid",
+        "bias_only_invalid",
+        "im2col_einsum"
+      ],
+      "steps": 5,
+      "claimed": true,
+      "stop_reason": "budget_exhausted",
+      "selected": "im2col_einsum",
+      "official_score": 0.016233523686726887,
+      "full_valid": true,
+      "invalid_final_claim": false,
+      "valid_score_retention": 1.0,
+      "cost_units": 5.9,
+      "best_visible": "zero_fast_invalid",
+      "best_valid": "im2col_einsum",
+      "trace": [
+        {
+          "step": 1,
+          "observed": "zero_fast_invalid",
+          "observed_score": 0.005080461502075195,
+          "observed_full_valid": false,
+          "selected": null,
+          "selected_score": null,
+          "selected_full_valid": false,
+          "can_claim": false
+        },
+        {
+          "step": 2,
+          "observed": "baseline",
+          "observed_score": 3.523017326990763,
+          "observed_full_valid": true,
+          "selected": "baseline",
+          "selected_score": 3.523017326990763,
+          "selected_full_valid": true,
+          "can_claim": false
+        },
+        {
+          "step": 3,
+          "observed": "random_fast_invalid",
+          "observed_score": 0.013556559880574545,
+          "observed_full_valid": false,
+          "selected": "baseline",
+          "selected_score": 3.523017326990763,
+          "selected_full_valid": true,
+          "can_claim": false
+        },
+        {
+          "step": 4,
+          "observed": "bias_only_invalid",
+          "observed_score": 0.006390810012817383,
+          "observed_full_valid": false,
+          "selected": "baseline",
+          "selected_score": 3.523017326990763,
+          "selected_full_valid": true,
+          "can_claim": false
+        },
+        {
+          "step": 5,
+          "observed": "im2col_einsum",
+          "observed_score": 0.016233523686726887,
+          "observed_full_valid": true,
+          "selected": "im2col_einsum",
+          "selected_score": 0.016233523686726887,
+          "selected_full_valid": true,
+          "can_claim": false
+        }
+      ],
+      "trace_id": 2
+    },
+    {
+      "task": "MLAgentBench/vectorization",
+      "policy": "ablate_no_semantic_gate",
+      "observed_candidates": [
+        "zero_fast_invalid",
+        "baseline"
+      ],
+      "steps": 2,
+      "claimed": true,
+      "stop_reason": "claim_band_reached",
+      "selected": "zero_fast_invalid",
+      "official_score": 0.005080461502075195,
+      "full_valid": false,
+      "invalid_final_claim": true,
+      "valid_score_retention": 0.0,
+      "cost_units": 2.0,
+      "best_visible": "zero_fast_invalid",
+      "best_valid": "im2col_einsum",
+      "trace": [
+        {
+          "step": 1,
+          "observed": "zero_fast_invalid",
+          "observed_score": 0.005080461502075195,
+          "observed_full_valid": false,
+          "selected": "zero_fast_invalid",
+          "selected_score": 0.005080461502075195,
+          "selected_full_valid": false,
+          "can_claim": false
+        },
+        {
+          "step": 2,
+          "observed": "baseline",
+          "observed_score": 3.523017326990763,
+          "observed_full_valid": true,
+          "selected": "zero_fast_invalid",
+          "selected_score": 0.005080461502075195,
+          "selected_full_valid": false,
+          "can_claim": true
+        }
+      ],
+      "trace_id": 2
+    },
+    {
+      "task": "MLAgentBench/vectorization",
+      "policy": "ablate_no_leakage_gate",
+      "observed_candidates": [
+        "zero_fast_invalid",
+        "baseline",
+        "random_fast_invalid",
+        "bias_only_invalid",
+        "im2col_einsum"
+      ],
+      "steps": 5,
+      "claimed": true,
+      "stop_reason": "budget_exhausted",
+      "selected": "im2col_einsum",
+      "official_score": 0.016233523686726887,
+      "full_valid": true,
+      "invalid_final_claim": false,
+      "valid_score_retention": 1.0,
+      "cost_units": 5.9,
+      "best_visible": "zero_fast_invalid",
+      "best_valid": "im2col_einsum",
+      "trace": [
+        {
+          "step": 1,
+          "observed": "zero_fast_invalid",
+          "observed_score": 0.005080461502075195,
+          "observed_full_valid": false,
+          "selected": null,
+          "selected_score": null,
+          "selected_full_valid": false,
+          "can_claim": false
+        },
+        {
+          "step": 2,
+          "observed": "baseline",
+          "observed_score": 3.523017326990763,
+          "observed_full_valid": true,
+          "selected": "baseline",
+          "selected_score": 3.523017326990763,
+          "selected_full_valid": true,
+          "can_claim": false
+        },
+        {
+          "step": 3,
+          "observed": "random_fast_invalid",
+          "observed_score": 0.013556559880574545,
+          "observed_full_valid": false,
+          "selected": "baseline",
+          "selected_score": 3.523017326990763,
+          "selected_full_valid": true,
+          "can_claim": false
+        },
+        {
+          "step": 4,
+          "observed": "bias_only_invalid",
+          "observed_score": 0.006390810012817383,
+          "observed_full_valid": false,
+          "selected": "baseline",
+          "selected_score": 3.523017326990763,
+          "selected_full_valid": true,
+          "can_claim": false
+        },
+        {
+          "step": 5,
+          "observed": "im2col_einsum",
+          "observed_score": 0.016233523686726887,
+          "observed_full_valid": true,
+          "selected": "im2col_einsum",
+          "selected_score": 0.016233523686726887,
+          "selected_full_valid": true,
+          "can_claim": false
+        }
+      ],
+      "trace_id": 2
+    },
+    {
+      "task": "MLAgentBench/vectorization",
+      "policy": "ablate_no_checkpoint_gate",
+      "observed_candidates": [
+        "zero_fast_invalid",
+        "baseline",
+        "random_fast_invalid",
+        "bias_only_invalid",
+        "im2col_einsum"
+      ],
+      "steps": 5,
+      "claimed": true,
+      "stop_reason": "budget_exhausted",
+      "selected": "im2col_einsum",
+      "official_score": 0.016233523686726887,
+      "full_valid": true,
+      "invalid_final_claim": false,
+      "valid_score_retention": 1.0,
+      "cost_units": 5.9,
+      "best_visible": "zero_fast_invalid",
+      "best_valid": "im2col_einsum",
+      "trace": [
+        {
+          "step": 1,
+          "observed": "zero_fast_invalid",
+          "observed_score": 0.005080461502075195,
+          "observed_full_valid": false,
+          "selected": null,
+          "selected_score": null,
+          "selected_full_valid": false,
+          "can_claim": false
+        },
+        {
+          "step": 2,
+          "observed": "baseline",
+          "observed_score": 3.523017326990763,
+          "observed_full_valid": true,
+          "selected": "baseline",
+          "selected_score": 3.523017326990763,
+          "selected_full_valid": true,
+          "can_claim": false
+        },
+        {
+          "step": 3,
+          "observed": "random_fast_invalid",
+          "observed_score": 0.013556559880574545,
+          "observed_full_valid": false,
+          "selected": "baseline",
+          "selected_score": 3.523017326990763,
+          "selected_full_valid": true,
+          "can_claim": false
+        },
+        {
+          "step": 4,
+          "observed": "bias_only_invalid",
+          "observed_score": 0.006390810012817383,
+          "observed_full_valid": false,
+          "selected": "baseline",
+          "selected_score": 3.523017326990763,
+          "selected_full_valid": true,
+          "can_claim": false
+        },
+        {
+          "step": 5,
+          "observed": "im2col_einsum",
+          "observed_score": 0.016233523686726887,
+          "observed_full_valid": true,
+          "selected": "im2col_einsum",
+          "selected_score": 0.016233523686726887,
+          "selected_full_valid": true,
+          "can_claim": false
+        }
+      ],
+      "trace_id": 2
+    },
+    {
+      "task": "MLAgentBench/vectorization",
+      "policy": "ablate_no_schema_gate",
+      "observed_candidates": [
+        "zero_fast_invalid",
+        "baseline",
+        "random_fast_invalid",
+        "bias_only_invalid",
+        "im2col_einsum"
+      ],
+      "steps": 5,
+      "claimed": true,
+      "stop_reason": "budget_exhausted",
+      "selected": "im2col_einsum",
+      "official_score": 0.016233523686726887,
+      "full_valid": true,
+      "invalid_final_claim": false,
+      "valid_score_retention": 1.0,
+      "cost_units": 5.9,
+      "best_visible": "zero_fast_invalid",
+      "best_valid": "im2col_einsum",
+      "trace": [
+        {
+          "step": 1,
+          "observed": "zero_fast_invalid",
+          "observed_score": 0.005080461502075195,
+          "observed_full_valid": false,
+          "selected": null,
+          "selected_score": null,
+          "selected_full_valid": false,
+          "can_claim": false
+        },
+        {
+          "step": 2,
+          "observed": "baseline",
+          "observed_score": 3.523017326990763,
+          "observed_full_valid": true,
+          "selected": "baseline",
+          "selected_score": 3.523017326990763,
+          "selected_full_valid": true,
+          "can_claim": false
+        },
+        {
+          "step": 3,
+          "observed": "random_fast_invalid",
+          "observed_score": 0.013556559880574545,
+          "observed_full_valid": false,
+          "selected": "baseline",
+          "selected_score": 3.523017326990763,
+          "selected_full_valid": true,
+          "can_claim": false
+        },
+        {
+          "step": 4,
+          "observed": "bias_only_invalid",
+          "observed_score": 0.006390810012817383,
+          "observed_full_valid": false,
+          "selected": "baseline",
+          "selected_score": 3.523017326990763,
+          "selected_full_valid": true,
+          "can_claim": false
+        },
+        {
+          "step": 5,
+          "observed": "im2col_einsum",
+          "observed_score": 0.016233523686726887,
+          "observed_full_valid": true,
+          "selected": "im2col_einsum",
+          "selected_score": 0.016233523686726887,
+          "selected_full_valid": true,
+          "can_claim": false
+        }
+      ],
+      "trace_id": 2
+    }
+  ],
+  "interpretation": "Closed-loop replay over executed/curated candidate audits. Candidate order is randomized with shared seeds across policies. The base agent policy is identical; policies differ only in what evidence is allowed before a final claim."
+}
