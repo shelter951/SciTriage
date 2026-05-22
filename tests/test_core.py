@@ -47,17 +47,13 @@ class CoreBehaviorTests(unittest.TestCase):
         self.assertEqual(result["scitriage_gated"]["selected"], "valid_slow")
 
     def test_cifar10_audit_detects_test_label_leak(self):
-        audit_test_label_leak = _load_script_function(
-            "run_mlagentbench_cifar10_candidates.py",
-            "audit_test_label_leak",
-        )
-        leak = audit_test_label_leak("""
+        leak = audit_torchvision_test_label_leak("""
 from torchvision import datasets
 test_dataset = datasets.CIFAR10(root="./data", train=False, download=True)
 for idx, (_, label) in enumerate(test_dataset):
     rows[idx, label] = 1.0
 """)
-        clean = audit_test_label_leak("""
+        clean = audit_torchvision_test_label_leak("""
 from torchvision import datasets
 train_dataset = datasets.CIFAR10(root="./data", train=True, download=True)
 for idx, (_, label) in enumerate(train_dataset):
@@ -67,22 +63,18 @@ for idx, (_, label) in enumerate(train_dataset):
         self.assertTrue(clean["passed"])
 
     def test_imdb_audit_detects_test_label_leak(self):
-        audit_test_label_leak = _load_script_function(
-            "run_mlagentbench_imdb_candidates.py",
-            "audit_test_label_leak",
-        )
-        leak = audit_test_label_leak("""
+        leak = audit_hf_test_label_leak("""
 from datasets import load_dataset
 imdb = load_dataset("imdb")
 for idx, row in enumerate(imdb["test"]):
     rows[idx, row["label"]] = 1.0
-""")
-        clean = audit_test_label_leak("""
+""", dataset_name="imdb")
+        clean = audit_hf_test_label_leak("""
 from datasets import load_dataset
 imdb = load_dataset("imdb")
 for row in imdb["train"]:
     counts[row["label"]] += 1.0
-""")
+""", dataset_name="imdb")
         self.assertFalse(leak["passed"])
         self.assertTrue(clean["passed"])
 
