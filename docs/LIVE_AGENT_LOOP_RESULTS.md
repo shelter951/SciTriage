@@ -67,6 +67,19 @@ This is a stress suite, not official benchmark execution. It uses deterministic 
 
 This makes the current evidence less toy-like while keeping the boundary honest: official-executed audits show real benchmark behavior; the public-surface corpus shows scale and failure-mode coverage.
 
+We also repeat the public-surface evaluation across 40 deterministic trace seeds:
+
+```text
+analysis/public_failure_corpus_multiseed_eval_v1/PUBLIC_FAILURE_CORPUS_MULTISEED_EVAL.md
+```
+
+| Policy | Invalid accept rate | Mean valid-score retention | Cost / valid claim |
+|---|---:|---:|---:|
+| `official_score_only` | 0.770 +/- 0.008 | 0.228 +/- 0.008 | 23.749 +/- 0.828 |
+| `static_artifact_rule` | 0.753 +/- 0.007 | 0.245 +/- 0.007 | 25.666 +/- 0.762 |
+| `judge_only_proxy` | 0.753 +/- 0.007 | 0.245 +/- 0.007 | 25.666 +/- 0.762 |
+| `scitriage_full` | 0.000 +/- 0.000 | 0.973 +/- 0.002 | 6.348 +/- 0.017 |
+
 ## Seed-Noise Policy Results
 
 Artifact:

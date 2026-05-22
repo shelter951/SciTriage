@@ -57,6 +57,8 @@ Same-agent policy evaluation：没有 SciTriage 的 score-seeking agent invalid 
 
 现在我们也把规模从 4 个官方执行审计扩展到了一个 public false-discovery corpus：它覆盖全部 15 个 MLAgentBench 公开任务表面。基于 112 个候选记录和 180 条 same-agent stress traces，只看分数的策略 invalid accept rate 是 `0.744`；完整 SciTriage 降到 `0.000`，同时保持 `0.982` mean valid-score retention。这个结果会明确标注为 public-surface stress test，不伪装成官方 benchmark 执行。
 
+跨 40 个 deterministic trace seeds 后结果仍然稳定：score-only invalid accept rate 是 `0.770 +/- 0.008`，完整 SciTriage 是 `0.000 +/- 0.000`，并保持 `0.973 +/- 0.002` valid-score retention。
+
 ## 它具体做什么
 
 SciTriage 回答三个实用问题。
@@ -182,6 +184,7 @@ CLRS 是 checkpoint-style 任务。候选必须训练模型、保存 `checkpoint
 - Research next steps：[docs/RESEARCH_NEXT_STEPS.md](docs/RESEARCH_NEXT_STEPS.md)
 - Public failure corpus：[benchmarks/false_discovery_corpus/INDEX.md](benchmarks/false_discovery_corpus/INDEX.md)
 - Public-surface same-agent evaluation：[analysis/public_failure_corpus_eval_v1/PUBLIC_FAILURE_CORPUS_EVAL.md](analysis/public_failure_corpus_eval_v1/PUBLIC_FAILURE_CORPUS_EVAL.md)
+- Public-surface multi-seed evaluation：[analysis/public_failure_corpus_multiseed_eval_v1/PUBLIC_FAILURE_CORPUS_MULTISEED_EVAL.md](analysis/public_failure_corpus_multiseed_eval_v1/PUBLIC_FAILURE_CORPUS_MULTISEED_EVAL.md)
 - Official audit target queue：[analysis/official_audit_target_queue_v1/OFFICIAL_AUDIT_TARGET_QUEUE.md](analysis/official_audit_target_queue_v1/OFFICIAL_AUDIT_TARGET_QUEUE.md)
 
 可选 LLM judge baseline：

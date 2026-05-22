@@ -57,6 +57,8 @@ Same-agent policy evaluation: the no-SciTriage score-seeking agent has `0.750` i
 
 We are now scaling beyond the four official-executed audits with a public false-discovery corpus built from all 15 MLAgentBench task surfaces. On 180 same-agent stress traces over 112 candidate records, score-only selection accepts invalid evidence in `0.744` of traces; full SciTriage reduces this to `0.000` while keeping `0.982` mean valid-score retention. This larger suite is clearly marked as a public-surface stress test, not as official benchmark execution.
 
+Across 40 deterministic trace seeds, this remains stable: score-only invalid accept rate is `0.770 +/- 0.008`, while full SciTriage stays at `0.000 +/- 0.000` and keeps `0.973 +/- 0.002` valid-score retention.
+
 ## What It Does
 
 SciTriage answers three practical questions.
@@ -190,6 +192,8 @@ Research next steps: [`docs/RESEARCH_NEXT_STEPS.md`](docs/RESEARCH_NEXT_STEPS.md
 Public failure corpus: [`benchmarks/false_discovery_corpus/INDEX.md`](benchmarks/false_discovery_corpus/INDEX.md)
 
 Public-surface same-agent evaluation: [`analysis/public_failure_corpus_eval_v1/PUBLIC_FAILURE_CORPUS_EVAL.md`](analysis/public_failure_corpus_eval_v1/PUBLIC_FAILURE_CORPUS_EVAL.md)
+
+Public-surface multi-seed evaluation: [`analysis/public_failure_corpus_multiseed_eval_v1/PUBLIC_FAILURE_CORPUS_MULTISEED_EVAL.md`](analysis/public_failure_corpus_multiseed_eval_v1/PUBLIC_FAILURE_CORPUS_MULTISEED_EVAL.md)
 
 Official audit target queue: [`analysis/official_audit_target_queue_v1/OFFICIAL_AUDIT_TARGET_QUEUE.md`](analysis/official_audit_target_queue_v1/OFFICIAL_AUDIT_TARGET_QUEUE.md)
 

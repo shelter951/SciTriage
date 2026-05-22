@@ -291,6 +291,30 @@ for idx, row in enumerate(imdb["test"]):
         self.assertLess(full["invalid_accept_rate"], score_only["invalid_accept_rate"])
         self.assertLessEqual(full["mean_valid_score_retention"], 1.0)
 
+    def test_public_failure_corpus_multiseed_summarizes_variance(self):
+        build_corpus = _load_script_function("build_public_failure_corpus.py", "build_corpus")
+        run_multiseed = _load_script_function("run_public_corpus_multiseed_eval.py", "run_multiseed")
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            corpus_path = root / "corpus.json"
+            corpus = build_corpus([
+                {
+                    "task": "cifar10",
+                    "has_env_train": True,
+                    "eval_uses_labels": True,
+                    "agent_visible_test_labels": True,
+                    "needs_external_download": True,
+                    "needs_kaggle": False,
+                }
+            ])
+            corpus_path.write_text(json.dumps({"tasks": corpus}))
+            result = run_multiseed(corpus_path, seeds=[1, 2, 3], traces_per_task=2, max_candidates=5)
+            self.assertEqual(result["num_seeds"], 3)
+            full = next(row for row in result["aggregate"] if row["policy"] == "scitriage_full")
+            score_only = next(row for row in result["aggregate"] if row["policy"] == "official_score_only")
+            self.assertLess(full["invalid_accept_rate"]["mean"], score_only["invalid_accept_rate"]["mean"])
+            self.assertIn("ci95", full["mean_valid_score_retention"])
+
     def test_official_audit_target_queue_prioritizes_unfinished_eval_tasks(self):
         plan = _load_script_function("plan_official_audit_targets.py", "plan")
         surface = {
