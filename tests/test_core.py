@@ -1,5 +1,6 @@
 import json
 import importlib.util
+import sys
 import tempfile
 import unittest
 from pathlib import Path
@@ -24,6 +25,7 @@ def _load_script_function(script_name, function_name):
     script = Path(__file__).resolve().parents[1] / "scripts" / script_name
     spec = importlib.util.spec_from_file_location(script.stem, script)
     module = importlib.util.module_from_spec(spec)
+    sys.modules[script.stem] = module
     spec.loader.exec_module(module)
     return getattr(module, function_name)
 
@@ -266,6 +268,36 @@ for idx, row in enumerate(imdb["test"]):
             self.assertGreater(board["policy_eval"]["cost_savings_vs_verify_all_positives"], 0)
             self.assertEqual(board["policy_eval"]["scitriage_family_landmarks"]["true_family_accepts"], 1)
             self.assertEqual(board["policy_eval"]["scitriage_family_landmarks"]["family_recall"], 1.0)
+
+    def test_public_failure_corpus_eval_is_not_single_task_toy(self):
+        build_corpus = _load_script_function("build_public_failure_corpus.py", "build_corpus")
+        evaluate = _load_script_function("run_false_discovery_corpus_eval.py", "evaluate")
+        surfaces = [
+            {
+                "task": "cifar10",
+                "has_env_train": True,
+                "eval_uses_labels": True,
+                "agent_visible_test_labels": True,
+                "needs_external_download": True,
+                "needs_kaggle": False,
+            },
+            {
+                "task": "vectorization",
+                "has_env_train": True,
+                "eval_uses_labels": False,
+                "agent_visible_test_labels": False,
+                "needs_external_download": False,
+                "needs_kaggle": False,
+            },
+        ]
+        corpus = build_corpus(surfaces)
+        result = evaluate(corpus, traces_per_task=3, max_candidates=5, global_seed=7)
+        full = next(row for row in result["aggregate"] if row["policy"] == "scitriage_full")
+        score_only = next(row for row in result["aggregate"] if row["policy"] == "official_score_only")
+        self.assertEqual(result["task_count"], 2)
+        self.assertGreater(result["candidate_count"], 10)
+        self.assertLess(full["invalid_accept_rate"], score_only["invalid_accept_rate"])
+        self.assertLessEqual(full["mean_valid_score_retention"], 1.0)
 
 
 if __name__ == "__main__":

@@ -45,6 +45,28 @@ Interpretation:
 - Removing the leakage gate reintroduces CIFAR-10 and IMDB label-oracle failures.
 - Removing checkpoint/schema gates has no effect on current winners, but CLRS shows those gates block missing-checkpoint candidates.
 
+## Public-Surface Stress Results
+
+The official-executed set above is intentionally conservative and still small. To test broader failure coverage, the repository now also includes a public false-discovery corpus built from all 15 MLAgentBench task surfaces.
+
+Artifacts:
+
+```text
+benchmarks/false_discovery_corpus/INDEX.md
+analysis/public_failure_corpus_eval_v1/PUBLIC_FAILURE_CORPUS_EVAL.md
+```
+
+This is a stress suite, not official benchmark execution. It uses deterministic candidate traces derived from public task metadata and failure modes, then evaluates the same candidate trajectories with and without SciTriage.
+
+| Policy | Traces | Invalid accept rate | Mean valid-score retention | Mean cost |
+|---|---:|---:|---:|---:|
+| `official_score_only` | 180 | 0.744 | 0.254 | 5.468 |
+| `static_artifact_rule` | 180 | 0.739 | 0.260 | 6.368 |
+| `judge_only_proxy` | 180 | 0.739 | 0.260 | 6.368 |
+| `scitriage_full` | 180 | 0.000 | 0.982 | 6.368 |
+
+This makes the current evidence less toy-like while keeping the boundary honest: official-executed audits show real benchmark behavior; the public-surface corpus shows scale and failure-mode coverage.
+
 ## Seed-Noise Policy Results
 
 Artifact:

@@ -55,6 +55,8 @@ Aggregate external audit: 4 score-bearing MLAgentBench tasks, 20 candidates, 8 b
 
 Same-agent policy evaluation: the no-SciTriage score-seeking agent has `0.750` invalid accept rate and `0.250` mean valid-score retention; full SciTriage gets `0.000` invalid accept rate and `1.000` valid-score retention on the same candidate trajectories.
 
+We are now scaling beyond the four official-executed audits with a public false-discovery corpus built from all 15 MLAgentBench task surfaces. On 180 same-agent stress traces over 112 candidate records, score-only selection accepts invalid evidence in `0.744` of traces; full SciTriage reduces this to `0.000` while keeping `0.982` mean valid-score retention. This larger suite is clearly marked as a public-surface stress test, not as official benchmark execution.
+
 ## What It Does
 
 SciTriage answers three practical questions.
@@ -184,6 +186,10 @@ Paper readiness: [`docs/PAPER_READINESS.md`](docs/PAPER_READINESS.md)
 Live-loop policy results: [`docs/LIVE_AGENT_LOOP_RESULTS.md`](docs/LIVE_AGENT_LOOP_RESULTS.md)
 
 Research next steps: [`docs/RESEARCH_NEXT_STEPS.md`](docs/RESEARCH_NEXT_STEPS.md)
+
+Public failure corpus: [`benchmarks/false_discovery_corpus/INDEX.md`](benchmarks/false_discovery_corpus/INDEX.md)
+
+Public-surface same-agent evaluation: [`analysis/public_failure_corpus_eval_v1/PUBLIC_FAILURE_CORPUS_EVAL.md`](analysis/public_failure_corpus_eval_v1/PUBLIC_FAILURE_CORPUS_EVAL.md)
 
 Optional LLM judge baseline:
 

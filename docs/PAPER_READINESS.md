@@ -124,6 +124,19 @@ Current same-agent policy result:
 | `judge_only_proxy` | 0.750 | 0.250 |
 | `scitriage_full` | 0.000 | 1.000 |
 
+Additional scale result:
+
+We added a public false-discovery corpus over all 15 MLAgentBench task surfaces. This is not official benchmark execution; it is a deterministic public-surface stress suite designed to test broad failure-mode coverage and same-agent policy behavior.
+
+| Policy | Traces | Invalid accept rate | Mean valid-score retention |
+|---|---:|---:|---:|
+| `official_score_only` | 180 | 0.744 | 0.254 |
+| `static_artifact_rule` | 180 | 0.739 | 0.260 |
+| `judge_only_proxy` | 180 | 0.739 | 0.260 |
+| `scitriage_full` | 180 | 0.000 | 0.982 |
+
+Paper implication: this helps with scale and failure taxonomy, but the strongest next result is still fully autonomous live LLM loops over a larger official-executed subset.
+
 See:
 
 ```text
