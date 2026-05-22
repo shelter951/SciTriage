@@ -67,6 +67,8 @@ We now have an intermediate same-agent policy evaluation: the same score-seeking
 
 We also now have a stronger closed-loop replay: the same agent observes executed audit candidates sequentially and decides when to write a final claim. This reduces the gap between static selection and live agent behavior, but still does not replace a fresh LLM-generation loop.
 
+We now have a first fresh LLM-generation pilot on `MLAgentBench/vectorization`. It is not large enough to claim broad live-agent improvement, but it is scientifically useful: prompt-level awareness of SciTriage did not prevent invalid high-speed shortcuts, while the executable semantic gate did.
+
 ## What A Top-Conference Version Needs
 
 Minimum strong version:
@@ -132,6 +134,7 @@ The project now has:
 - a public README that presents the problem and results for non-specialist readers.
 - a full v2 campaign report that reruns the lightweight official audits and stress evaluations without interactive prompting.
 - a closed-loop replay result over 5 executed/compatibility audits, with 1,500 loops per policy.
+- a first MiMo live-agent vectorization pilot with fresh generated candidate code.
 
 The highest-leverage next experiment is now a fully autonomous same-LLM comparison: run the same LLM agent with and without SciTriage while it creates candidates from scratch, then measure invalid accept rate, final valid score, and extra cost.
 

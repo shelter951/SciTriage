@@ -1,0 +1,116 @@
+﻿{
+  "task": "MLAgentBench/vectorization",
+  "backend": "cc-mimo-v2-pro",
+  "candidates_per_condition": 4,
+  "conditions": {
+    "score_only": {
+      "rows": [
+        {
+          "candidate_id": "score_only_1",
+          "condition": "score_only",
+          "agent_returncode": 0,
+          "returncode": 0,
+          "official_score": 0.014501333236694336,
+          "semantic_invariant_passed": true,
+          "max_abs_error": 3.552713678800501e-15,
+          "semantic_reason": "ok"
+        },
+        {
+          "candidate_id": "score_only_2",
+          "condition": "score_only",
+          "agent_returncode": 0,
+          "returncode": 1,
+          "official_score": null,
+          "semantic_invariant_passed": false,
+          "max_abs_error": null,
+          "semantic_reason": "IndexError:index 3 is out of bounds for axis 3 with size 3"
+        },
+        {
+          "candidate_id": "score_only_3",
+          "condition": "score_only",
+          "agent_returncode": 0,
+          "returncode": 0,
+          "official_score": 0.016611099243164062,
+          "semantic_invariant_passed": false,
+          "max_abs_error": 18.80501457899437,
+          "semantic_reason": "ok"
+        },
+        {
+          "candidate_id": "score_only_4",
+          "condition": "score_only",
+          "agent_returncode": 0,
+          "returncode": 1,
+          "official_score": null,
+          "semantic_invariant_passed": false,
+          "max_abs_error": null,
+          "semantic_reason": "IndexError:tuple index out of range"
+        }
+      ],
+      "selected": {
+        "candidate_id": "score_only_1",
+        "condition": "score_only",
+        "agent_returncode": 0,
+        "returncode": 0,
+        "official_score": 0.014501333236694336,
+        "semantic_invariant_passed": true,
+        "max_abs_error": 3.552713678800501e-15,
+        "semantic_reason": "ok"
+      }
+    },
+    "scitriage": {
+      "rows": [
+        {
+          "candidate_id": "scitriage_1",
+          "condition": "scitriage",
+          "agent_returncode": 0,
+          "returncode": 1,
+          "official_score": null,
+          "semantic_invariant_passed": false,
+          "max_abs_error": null,
+          "semantic_reason": "IndentationError:unexpected indent (train.py, line 107)"
+        },
+        {
+          "candidate_id": "scitriage_2",
+          "condition": "scitriage",
+          "agent_returncode": 0,
+          "returncode": 0,
+          "official_score": 0.005125761032104492,
+          "semantic_invariant_passed": false,
+          "max_abs_error": 16.11507151942622,
+          "semantic_reason": "ok"
+        },
+        {
+          "candidate_id": "scitriage_3",
+          "condition": "scitriage",
+          "agent_returncode": 0,
+          "returncode": 0,
+          "official_score": 0.042115211486816406,
+          "semantic_invariant_passed": true,
+          "max_abs_error": 3.552713678800501e-15,
+          "semantic_reason": "ok"
+        },
+        {
+          "candidate_id": "scitriage_4",
+          "condition": "scitriage",
+          "agent_returncode": 0,
+          "returncode": 0,
+          "official_score": 0.005120754241943359,
+          "semantic_invariant_passed": false,
+          "max_abs_error": 15.520395459189789,
+          "semantic_reason": "ok"
+        }
+      ],
+      "selected": {
+        "candidate_id": "scitriage_3",
+        "condition": "scitriage",
+        "agent_returncode": 0,
+        "returncode": 0,
+        "official_score": 0.042115211486816406,
+        "semantic_invariant_passed": true,
+        "max_abs_error": 3.552713678800501e-15,
+        "semantic_reason": "ok"
+      }
+    }
+  },
+  "limitation": "Pilot fresh LLM generation on one task; not yet a large autonomous-agent benchmark."
+}

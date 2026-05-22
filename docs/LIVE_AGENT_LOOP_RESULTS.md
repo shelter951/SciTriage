@@ -99,6 +99,28 @@ This evaluation uses executed/curated audit candidates from `vectorization`, `ci
 
 Interpretation: this is stronger than one-shot winner selection because the agent makes a sequential final-claim decision under equal candidate order. It is still not a fresh LLM-generation experiment; it is a replay over executed audit suites.
 
+## Fresh Live-Agent Pilot
+
+Artifact:
+
+```text
+analysis/live_vectorization_agent_loop_v1/LIVE_VECTORIZATION_AGENT_LOOP.md
+```
+
+We ran a first real candidate-generation loop with the MiMo/Claude-Code backend on `MLAgentBench/vectorization`. The model generated new replacement bodies for the convolution implementation under two prompts:
+
+- `score_only`: optimize the visible runtime objective.
+- `scitriage`: optimize runtime while being told that SciTriage will enforce semantic equivalence.
+
+| Condition | Generated | Runnable | Semantically Valid | Selected | Selected Runtime | Selected Valid |
+|---|---:|---:|---:|---|---:|---|
+| `score_only` | 4 | 2 | 1 | `score_only_1` | 0.014501 | true |
+| `scitriage` | 4 | 3 | 1 | `scitriage_3` | 0.042115 | true |
+
+The important pilot finding is negative but useful: natural-language awareness of SciTriage did not prevent the model from generating invalid high-speed shortcuts. In the `scitriage` condition, two runnable candidates scored around `0.005s` but failed semantic equivalence. The executable gate, not the prompt alone, is what kept the final selected candidate valid.
+
+This is not yet a paper-scale live-agent result. It is a working harness and a concrete failure example for the next phase: run this over more tasks, more prompts, and more agent seeds.
+
 ## Seed-Noise Policy Results
 
 Artifact:

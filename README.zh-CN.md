@@ -57,6 +57,8 @@ Same-agent policy evaluation：没有 SciTriage 的 score-seeking agent invalid 
 
 Closed-loop replay evaluation：在 5 个已执行/兼容审计任务上，每个 policy 跑 1,500 条随机顺序 same-agent loop。只看分数的 agent 有 `0.600` 的最终 claim 是无效的；完整 SciTriage 把无效最终 claim 降到 `0.000`，保持 `0.960` mean valid-score retention，平均成本是 `5.112`，而 score-only 是 `2.825`。这个结果是基于已执行审计的 replay，不是 fresh autonomous LLM generation。
 
+Fresh live-agent pilot：MiMo 在 `MLAgentBench/vectorization` 上真实生成了新候选。这个结果还不是大规模 benchmark，但暴露了一个关键点：即使 prompt 里告诉模型 SciTriage 会检查语义等价，模型仍会生成很快但无效的 shortcut（约 `0.005s`）；真正起作用的是可执行 gate，它会把最终选择切到最快的有效候选。
+
 现在我们也把规模从 4 个官方执行审计扩展到了一个 public false-discovery corpus：它覆盖全部 15 个 MLAgentBench 公开任务表面。基于 112 个候选记录和 180 条 same-agent stress traces，只看分数的策略 invalid accept rate 是 `0.744`；完整 SciTriage 降到 `0.000`，同时保持 `0.982` mean valid-score retention。这个结果会明确标注为 public-surface stress test，不伪装成官方 benchmark 执行。
 
 跨 40 个 deterministic trace seeds 后结果仍然稳定：score-only invalid accept rate 是 `0.770 +/- 0.008`，完整 SciTriage 是 `0.000 +/- 0.000`，并保持 `0.973 +/- 0.002` valid-score retention。
@@ -242,6 +244,7 @@ CLRS 是 checkpoint-style 任务。候选必须训练模型、保存 `checkpoint
 - Full campaign v2：[analysis/experiment_campaign_full_v2/CAMPAIGN_SUMMARY.md](analysis/experiment_campaign_full_v2/CAMPAIGN_SUMMARY.md)
 - BabyLM compatibility audit：[analysis/external_mlagentbench_babylm_v1/CANDIDATE_AUDIT.md](analysis/external_mlagentbench_babylm_v1/CANDIDATE_AUDIT.md)
 - Closed-loop replay evaluation：[analysis/closed_loop_replay_eval_v1/CLOSED_LOOP_REPLAY_EVAL.md](analysis/closed_loop_replay_eval_v1/CLOSED_LOOP_REPLAY_EVAL.md)
+- Fresh live-agent vectorization pilot：[analysis/live_vectorization_agent_loop_v1/LIVE_VECTORIZATION_AGENT_LOOP.md](analysis/live_vectorization_agent_loop_v1/LIVE_VECTORIZATION_AGENT_LOOP.md)
 - Official audit target queue：[analysis/official_audit_target_queue_v1/OFFICIAL_AUDIT_TARGET_QUEUE.md](analysis/official_audit_target_queue_v1/OFFICIAL_AUDIT_TARGET_QUEUE.md)
 
 可选 LLM judge baseline：
