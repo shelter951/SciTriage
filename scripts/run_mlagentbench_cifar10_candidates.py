@@ -115,10 +115,12 @@ def _run_candidate(python: str, work_dir: Path, timeout: int) -> Dict[str, objec
             timeout=timeout,
         )
     except subprocess.TimeoutExpired as exc:
+        stdout = exc.stdout.decode(errors="replace") if isinstance(exc.stdout, bytes) else (exc.stdout or "")
+        stderr = exc.stderr.decode(errors="replace") if isinstance(exc.stderr, bytes) else (exc.stderr or "")
         return {
             "returncode": 124,
-            "stdout": exc.stdout or "",
-            "stderr": (exc.stderr or "") + f"\ntimeout_after_seconds: {timeout}",
+            "stdout": stdout,
+            "stderr": stderr + f"\ntimeout_after_seconds: {timeout}",
             "submission_exists": submission.exists(),
         }
     return {

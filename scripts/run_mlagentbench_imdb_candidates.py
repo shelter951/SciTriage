@@ -111,10 +111,12 @@ def _run_candidate(python: str, work_dir: Path, timeout: int, env: Dict[str, str
             env=env,
         )
     except subprocess.TimeoutExpired as exc:
+        stdout = exc.stdout.decode(errors="replace") if isinstance(exc.stdout, bytes) else (exc.stdout or "")
+        stderr = exc.stderr.decode(errors="replace") if isinstance(exc.stderr, bytes) else (exc.stderr or "")
         return {
             "returncode": 124,
-            "stdout": exc.stdout or "",
-            "stderr": (exc.stderr or "") + f"\ntimeout_after_seconds: {timeout}",
+            "stdout": stdout,
+            "stderr": stderr + f"\ntimeout_after_seconds: {timeout}",
             "submission_exists": submission.exists(),
         }
     return {
@@ -266,6 +268,8 @@ def main() -> int:
     parser.add_argument("--timeout", type=int, default=240)
     parser.add_argument("--repeats", type=int, default=3)
     parser.add_argument("--hf-endpoint", default=None)
+    parser.add_argument("--hf-offline", action="store_true")
+    parser.add_argument("--variants", default=None, help="Comma-separated candidate variants to run.")
     args = parser.parse_args()
 
     root = Path(args.mlagentbench_root).expanduser().resolve()
@@ -276,6 +280,8 @@ def main() -> int:
     env = os.environ.copy()
     if args.hf_endpoint:
         env["HF_ENDPOINT"] = args.hf_endpoint
+    if args.hf_offline:
+        env["HF_DATASETS_OFFLINE"] = "1"
 
     variants = [
         "uniform_valid",
@@ -284,6 +290,8 @@ def main() -> int:
         "test_label_flipped_invalid",
         "test_label_oracle_invalid",
     ]
+    if args.variants:
+        variants = [item.strip() for item in args.variants.split(",") if item.strip()]
     rows = []
     for variant in variants:
         work = out / "workspaces" / variant

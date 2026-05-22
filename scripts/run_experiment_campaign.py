@@ -112,7 +112,7 @@ def build_commands(args: argparse.Namespace, repo: Path, out: Path) -> List[Dict
         official = [
             ("official_vectorization", "run_mlagentbench_vectorization_candidates.py", ["--repeats", "3", "--timeout", "90"]),
             ("official_cifar10", "run_mlagentbench_cifar10_candidates.py", ["--repeats", "1", "--timeout", "240"]),
-            ("official_imdb", "run_mlagentbench_imdb_candidates.py", ["--repeats", "1", "--timeout", "240"]),
+            ("official_imdb", "run_mlagentbench_imdb_candidates.py", ["--repeats", "1", "--timeout", "240", "--hf-offline"]),
         ]
         if args.include_heavy:
             official.append(("official_clrs", "run_mlagentbench_clrs_candidates.py", ["--timeout", "900"]))
