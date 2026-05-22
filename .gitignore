@@ -28,6 +28,8 @@ analysis/*
 !analysis/external_mlagentbench_task_surface_v1/**
 !analysis/external_mlagentbench_imdb_v1/
 !analysis/external_mlagentbench_imdb_v1/**
+!analysis/external_mlagentbench_babylm_v1/
+!analysis/external_mlagentbench_babylm_v1/**
 !analysis/external_audit_summary_v1/
 !analysis/external_audit_summary_v1/**
 !analysis/external_mlagentbench_clrs_smoke_v1/

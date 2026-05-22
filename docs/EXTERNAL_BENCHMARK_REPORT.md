@@ -15,6 +15,10 @@ Stronger answer: yes, on four external MLAgentBench tasks it catches multiple be
 
 This is not yet a full 10+ task benchmark paper, but it is now a four-task, multi-failure-mode external result rather than an internal metric.
 
+We also added a fifth external task as a compatibility audit:
+
+- `babylm`: the upstream MLAgentBench `eval.py` is not directly runnable under the current server dependency stack, so SciTriage uses the same BabyLM task data and perplexity target through a compatibility evaluator. This audit tests model artifact/loadability rather than score leakage.
+
 Aggregate summary:
 
 | Metric | Value |
@@ -211,6 +215,53 @@ Artifact:
 
 ```text
 analysis/experiment_campaign_full_v2/official_imdb/CANDIDATE_AUDIT.md
+```
+
+## MLAgentBench BabyLM Compatibility Audit
+
+External task:
+
+```text
+MLAgentBench/benchmarks/babylm
+```
+
+Score:
+
+```text
+compatible causal-LM perplexity on BabyLM test text, lower is better
+```
+
+Compatibility limitation:
+
+The upstream BabyLM `eval.py` imports APIs removed from the installed `transformers` 5.x and uses a dataset-script loading path disabled by the installed `datasets` 4.x. The audit therefore keeps the BabyLM task data and perplexity objective but uses a local compatibility evaluator. It should be cited as a compatibility audit, not as unmodified upstream `eval.py` execution.
+
+Result:
+
+| Policy | Selected | Perplexity | Artifact Gate |
+|---|---|---:|---|
+| visible-score-only | `tiny_random_valid` | 512.7338 | true |
+| SciTriage-gated | `tiny_random_valid` | 512.7338 | true |
+
+Candidate table:
+
+| Candidate | Perplexity | Artifact Gate | Triage |
+|---|---:|---|---|
+| `tiny_random_valid` | 512.7338 | passes | allowed |
+| `tiny_wider_valid` | 517.6116 | passes | allowed |
+| `invalid_missing_output` | - | fails | blocked |
+| `invalid_config_only` | - | fails | blocked |
+| `invalid_tokenizer_only` | - | fails | blocked |
+
+Main takeaway:
+
+```text
+SciTriage blocks missing or partial language-model artifacts before an AutoResearch agent can turn an unloadable run into a claim.
+```
+
+Artifact:
+
+```text
+analysis/external_mlagentbench_babylm_v1/CANDIDATE_AUDIT.md
 ```
 
 ## MLAgentBench Task Surface Audit

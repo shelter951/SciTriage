@@ -11,6 +11,7 @@ The current result is strong enough for a serious paper direction because it has
 - a clear problem: AutoResearch agents can convert misleading visible scores into false research claims;
 - a simple reusable method: gate claims and candidate selection with task-validity evidence;
 - external benchmark evidence: four score-bearing MLAgentBench audits;
+- one additional BabyLM compatibility audit for language-model artifact validity;
 - a practical open-source artifact: command-line tools, plugin APIs, reports, and public artifacts.
 
 It is not yet enough for AAAI/ICLR/NeurIPS main-conference strength because it still needs:
@@ -22,6 +23,8 @@ It is not yet enough for AAAI/ICLR/NeurIPS main-conference strength because it s
 - automatic invariant generation or at least a reusable invariant template library.
 
 The latest improvement is operational: `analysis/experiment_campaign_full_v2` now reruns the main evidence package end to end, including unit tests, the 40-seed public-surface stress suite, same-agent policy evaluation, and three official MLAgentBench audits (`vectorization`, `cifar10`, `imdb`). This makes the current evidence easier to reproduce, but it does not remove the need for larger live-loop experiments.
+
+After that, we added `analysis/external_mlagentbench_babylm_v1` as a compatibility audit. It expands the task family to language-model artifacts, but because the upstream BabyLM `eval.py` is dependency-incompatible on the current server, it should be presented separately from the four direct score-bearing audits.
 
 ## Current Main Result
 
@@ -121,6 +124,7 @@ This is a good story because it is humble, concrete, and experimentally checkabl
 The project now has:
 
 - 4 complete score-bearing candidate audits;
+- 1 BabyLM compatibility audit for loadable model/tokenizer artifacts;
 - 1 checkpoint-style MLAgentBench task (`CLRS`);
 - an aggregate audit summary over the four complete audits;
 - a public README that presents the problem and results for non-specialist readers.

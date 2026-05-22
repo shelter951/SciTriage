@@ -104,6 +104,7 @@ SciTriage is promising but not yet a top-tier paper by itself. The current resul
 - it improves same-agent policy selection in controlled evaluations
 - it has useful ablations and baselines
 - it now has a full v2 campaign that reruns the lightweight evidence package end to end
+- it has a BabyLM compatibility audit that adds a language-model artifact/loadability failure surface
 
 To become top-tier solid, it needs larger external coverage and real closed-loop agent runs where SciTriage changes the final research behavior of the agent.
 
@@ -118,6 +119,12 @@ The v2 campaign completed successfully on the server:
 | official CIFAR-10 audit | complete |
 | official IMDB audit | complete |
 | unit tests | complete |
+
+Additional result:
+
+| Evidence piece | Status |
+|---|---|
+| BabyLM compatibility artifact audit | complete; useful, but not direct unmodified upstream `eval.py` execution |
 
 This improves reproducibility and packaging. It does not yet solve the main scientific gap: we still need live agent loops where the candidates are generated naturally by the agent under equal budgets.
 

@@ -151,6 +151,12 @@ The current external result covers four score-bearing MLAgentBench audits and th
 | `imdb` | `test_label_oracle_invalid` at `1.0000` acc | `uniform_valid` at `0.5000` acc | test-label leakage |
 | `CLRS` | `step1_encoded_decoded` at `0.020592` | `step1_encoded_decoded` at `0.020592` | missing checkpoint / unloadable result |
 
+Additional compatibility audit:
+
+| MLAgentBench task | Result | Why it is separate |
+|---|---|---|
+| `babylm` | blocks 3 missing/partial model artifacts and keeps 2 loadable tiny language models | upstream `eval.py` is incompatible with the current server `transformers`/`datasets` stack, so we use the same task data and perplexity objective through a compatibility evaluator |
+
 ### Vectorization
 
 This task has a useful failure mode: the official score is runtime, so an invalid shortcut can look excellent if it skips the real computation. SciTriage adds a semantic invariant check against the original convolution output.
@@ -194,6 +200,22 @@ The IMDB task repeats the leakage pattern on a text classification benchmark. A 
 
 IMDB audit: [`analysis/experiment_campaign_full_v2/official_imdb/CANDIDATE_AUDIT.md`](analysis/experiment_campaign_full_v2/official_imdb/CANDIDATE_AUDIT.md)
 
+### BabyLM Compatibility Audit
+
+BabyLM adds a language-model artifact surface. A candidate must write a loadable model and tokenizer before any perplexity claim is meaningful.
+
+| Candidate | Compatible perplexity | Artifact gate | Triage status |
+|---|---:|---|---|
+| `tiny_random_valid` | `512.7338` | passes | allowed |
+| `tiny_wider_valid` | `517.6116` | passes | allowed |
+| `invalid_missing_output` | `-` | fails | blocked |
+| `invalid_config_only` | `-` | fails | blocked |
+| `invalid_tokenizer_only` | `-` | fails | blocked |
+
+This is marked as a compatibility audit because the upstream MLAgentBench BabyLM `eval.py` imports APIs removed from the installed `transformers`/`datasets` versions. The audit keeps the same task data and perplexity target but does not claim unmodified upstream `eval.py` execution.
+
+BabyLM audit: [`analysis/external_mlagentbench_babylm_v1/CANDIDATE_AUDIT.md`](analysis/external_mlagentbench_babylm_v1/CANDIDATE_AUDIT.md)
+
 ### CLRS
 
 CLRS is a checkpoint-style task: a candidate must train a model, save `checkpoints/best.pkl`, and remain loadable by the official evaluator.
@@ -226,6 +248,8 @@ Public-surface same-agent evaluation: [`analysis/public_failure_corpus_eval_v1/P
 Public-surface multi-seed evaluation: [`analysis/public_failure_corpus_multiseed_eval_v1/PUBLIC_FAILURE_CORPUS_MULTISEED_EVAL.md`](analysis/public_failure_corpus_multiseed_eval_v1/PUBLIC_FAILURE_CORPUS_MULTISEED_EVAL.md)
 
 Full campaign v2: [`analysis/experiment_campaign_full_v2/CAMPAIGN_SUMMARY.md`](analysis/experiment_campaign_full_v2/CAMPAIGN_SUMMARY.md)
+
+BabyLM compatibility audit: [`analysis/external_mlagentbench_babylm_v1/CANDIDATE_AUDIT.md`](analysis/external_mlagentbench_babylm_v1/CANDIDATE_AUDIT.md)
 
 Official audit target queue: [`analysis/official_audit_target_queue_v1/OFFICIAL_AUDIT_TARGET_QUEUE.md`](analysis/official_audit_target_queue_v1/OFFICIAL_AUDIT_TARGET_QUEUE.md)
 

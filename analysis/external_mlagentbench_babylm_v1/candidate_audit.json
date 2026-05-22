@@ -1,0 +1,159 @@
+﻿{
+  "task": "MLAgentBench/babylm",
+  "metric": "compatible_perplexity",
+  "lower_is_better": true,
+  "repeats": 1,
+  "max_eval_texts": 200,
+  "rows": [
+    {
+      "variant": "tiny_random_valid",
+      "runs": [
+        {
+          "returncode": 0,
+          "stdout": "\n\n\n",
+          "stderr": "\nWriting model shards:   0%|          | 0/1 [00:00<?, ?it/s]\nWriting model shards: 100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 1/1 [00:00<00:00, 649.88it/s]\n",
+          "output_exists": true,
+          "artifact_gate": {
+            "passed": true,
+            "reason": "loadable_model_and_tokenizer"
+          },
+          "official_compatible_score": 512.7338104992008
+        }
+      ],
+      "official_score": 512.7338104992008,
+      "official_score_std": 0.0,
+      "official_score_min": 512.7338104992008,
+      "official_score_max": 512.7338104992008,
+      "returncode": 0,
+      "stdout": "\n\n\n",
+      "stderr": "\nWriting model shards:   0%|          | 0/1 [00:00<?, ?it/s]\nWriting model shards: 100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 1/1 [00:00<00:00, 649.88it/s]\n",
+      "artifact_gate_passed": true,
+      "artifact_gate_reasons": [
+        "loadable_model_and_tokenizer"
+      ]
+    },
+    {
+      "variant": "tiny_wider_valid",
+      "runs": [
+        {
+          "returncode": 0,
+          "stdout": "\n\n\n",
+          "stderr": "\nWriting model shards:   0%|          | 0/1 [00:00<?, ?it/s]\nWriting model shards: 100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 1/1 [00:00<00:00, 590.66it/s]\n",
+          "output_exists": true,
+          "artifact_gate": {
+            "passed": true,
+            "reason": "loadable_model_and_tokenizer"
+          },
+          "official_compatible_score": 517.6115925226193
+        }
+      ],
+      "official_score": 517.6115925226193,
+      "official_score_std": 0.0,
+      "official_score_min": 517.6115925226193,
+      "official_score_max": 517.6115925226193,
+      "returncode": 0,
+      "stdout": "\n\n\n",
+      "stderr": "\nWriting model shards:   0%|          | 0/1 [00:00<?, ?it/s]\nWriting model shards: 100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 1/1 [00:00<00:00, 590.66it/s]\n",
+      "artifact_gate_passed": true,
+      "artifact_gate_reasons": [
+        "loadable_model_and_tokenizer"
+      ]
+    },
+    {
+      "variant": "invalid_missing_output",
+      "runs": [
+        {
+          "returncode": 0,
+          "stdout": "no output artifact written\n",
+          "stderr": "",
+          "output_exists": false,
+          "artifact_gate": {
+            "passed": false,
+            "reason": "missing_output_dir"
+          },
+          "official_compatible_score": null
+        }
+      ],
+      "official_score": null,
+      "official_score_std": 0.0,
+      "official_score_min": null,
+      "official_score_max": null,
+      "returncode": 1,
+      "stdout": "no output artifact written\n",
+      "stderr": "",
+      "artifact_gate_passed": false,
+      "artifact_gate_reasons": [
+        "missing_output_dir"
+      ]
+    },
+    {
+      "variant": "invalid_config_only",
+      "runs": [
+        {
+          "returncode": 0,
+          "stdout": "",
+          "stderr": "",
+          "output_exists": true,
+          "artifact_gate": {
+            "passed": false,
+            "reason": "unloadable_output:OSError:Error no file named model.safetensors, or pytorch_model.bin, found in directory $REPO_ROOT/analysis/external_mlagentbench_babylm_v1/workspaces/invalid_config_only/output."
+          },
+          "official_compatible_score": null
+        }
+      ],
+      "official_score": null,
+      "official_score_std": 0.0,
+      "official_score_min": null,
+      "official_score_max": null,
+      "returncode": 1,
+      "stdout": "",
+      "stderr": "",
+      "artifact_gate_passed": false,
+      "artifact_gate_reasons": [
+        "unloadable_output:OSError:Error no file named model.safetensors, or pytorch_model.bin, found in directory $REPO_ROOT/analysis/external_mlagentbench_babylm_v1/workspaces/invalid_config_only/output."
+      ]
+    },
+    {
+      "variant": "invalid_tokenizer_only",
+      "runs": [
+        {
+          "returncode": 0,
+          "stdout": "\n\n\n",
+          "stderr": "",
+          "output_exists": true,
+          "artifact_gate": {
+            "passed": false,
+            "reason": "unloadable_output:ValueError:Unrecognized model in $REPO_ROOT/analysis/external_mlagentbench_babylm_v1/workspaces/invalid_tokenizer_only/output. Should have a `model_type` key in its config.json."
+          },
+          "official_compatible_score": null
+        }
+      ],
+      "official_score": null,
+      "official_score_std": 0.0,
+      "official_score_min": null,
+      "official_score_max": null,
+      "returncode": 1,
+      "stdout": "\n\n\n",
+      "stderr": "",
+      "artifact_gate_passed": false,
+      "artifact_gate_reasons": [
+        "unloadable_output:ValueError:Unrecognized model in $REPO_ROOT/analysis/external_mlagentbench_babylm_v1/workspaces/invalid_tokenizer_only/output. Should have a `model_type` key in its config.json."
+      ]
+    }
+  ],
+  "policy_comparison": {
+    "visible_score_only": {
+      "selected": "tiny_random_valid",
+      "official_score": 512.7338104992008,
+      "artifact_gate_passed": true
+    },
+    "scitriage_gated": {
+      "selected": "tiny_random_valid",
+      "official_score": 512.7338104992008,
+      "artifact_gate_passed": true
+    },
+    "visible_winner_blocked": false,
+    "blocked_candidates": []
+  },
+  "compatibility_note": "Upstream BabyLM eval.py imports removed transformers APIs and uses a dataset script loading path disabled by the installed datasets version. This script keeps the task data and perplexity objective but uses a local compatibility evaluator."
+}
