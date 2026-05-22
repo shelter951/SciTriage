@@ -203,18 +203,22 @@ def evaluate(tasks: List[Dict[str, Any]], traces_per_task: int, max_candidates: 
     for policy in POLICIES:
         rows = [row for row in trace_rows if row["policy"] == policy]
         valid_rows = [row for row in rows if not row["invalid_accept"] and row["selected"] is not None]
+        invalid_accept_rate = sum(1 for row in rows if row["invalid_accept"]) / len(rows) if rows else 0.0
+        mean_retention = sum(row["valid_score_retention"] for row in rows) / len(rows) if rows else 0.0
+        mean_cost = sum(row["cost_units"] for row in rows) / len(rows) if rows else 0.0
+        cost_per_valid = (
+            sum(row["cost_units"] for row in rows) / len(valid_rows)
+            if valid_rows else None
+        )
         aggregate.append({
             "policy": policy,
             "traces": len(rows),
             "tasks": len({row["task"] for row in rows}),
             "invalid_accepts": sum(1 for row in rows if row["invalid_accept"]),
-            "invalid_accept_rate": sum(1 for row in rows if row["invalid_accept"]) / len(rows) if rows else 0.0,
-            "mean_valid_score_retention": sum(row["valid_score_retention"] for row in rows) / len(rows) if rows else 0.0,
-            "mean_cost_units": sum(row["cost_units"] for row in rows) / len(rows) if rows else 0.0,
-            "cost_per_valid_claim": (
-                sum(row["cost_units"] for row in rows) / len(valid_rows)
-                if valid_rows else None
-            ),
+            "invalid_accept_rate": round(invalid_accept_rate, 6),
+            "mean_valid_score_retention": round(mean_retention, 6),
+            "mean_cost_units": round(mean_cost, 6),
+            "cost_per_valid_claim": round(cost_per_valid, 6) if cost_per_valid is not None else None,
         })
     failure_modes: Dict[str, int] = {}
     for task in tasks:

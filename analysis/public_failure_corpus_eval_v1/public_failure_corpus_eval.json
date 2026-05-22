@@ -21,30 +21,30 @@
       "traces": 180,
       "tasks": 15,
       "invalid_accepts": 134,
-      "invalid_accept_rate": 0.7444444444444445,
-      "mean_valid_score_retention": 0.2543918326151065,
-      "mean_cost_units": 5.467755555555556,
-      "cost_per_valid_claim": 21.395565217391304
+      "invalid_accept_rate": 0.744444,
+      "mean_valid_score_retention": 0.254392,
+      "mean_cost_units": 5.467756,
+      "cost_per_valid_claim": 21.395565
     },
     {
       "policy": "static_artifact_rule",
       "traces": 180,
       "tasks": 15,
       "invalid_accepts": 133,
-      "invalid_accept_rate": 0.7388888888888889,
-      "mean_valid_score_retention": 0.2598538304544151,
-      "mean_cost_units": 6.367755555555555,
-      "cost_per_valid_claim": 24.38714893617021
+      "invalid_accept_rate": 0.738889,
+      "mean_valid_score_retention": 0.259854,
+      "mean_cost_units": 6.367756,
+      "cost_per_valid_claim": 24.387149
     },
     {
       "policy": "judge_only_proxy",
       "traces": 180,
       "tasks": 15,
       "invalid_accepts": 133,
-      "invalid_accept_rate": 0.7388888888888889,
-      "mean_valid_score_retention": 0.2598538304544151,
-      "mean_cost_units": 6.367755555555555,
-      "cost_per_valid_claim": 24.38714893617021
+      "invalid_accept_rate": 0.738889,
+      "mean_valid_score_retention": 0.259854,
+      "mean_cost_units": 6.367756,
+      "cost_per_valid_claim": 24.387149
     },
     {
       "policy": "scitriage_full",
@@ -52,38 +52,38 @@
       "tasks": 15,
       "invalid_accepts": 0,
       "invalid_accept_rate": 0.0,
-      "mean_valid_score_retention": 0.9823987131798568,
-      "mean_cost_units": 6.367755555555555,
-      "cost_per_valid_claim": 6.367755555555555
+      "mean_valid_score_retention": 0.982399,
+      "mean_cost_units": 6.367756,
+      "cost_per_valid_claim": 6.367756
     },
     {
       "policy": "ablate_no_semantic_gate",
       "traces": 180,
       "tasks": 15,
       "invalid_accepts": 46,
-      "invalid_accept_rate": 0.25555555555555554,
-      "mean_valid_score_retention": 0.7325038563545129,
-      "mean_cost_units": 6.367755555555555,
-      "cost_per_valid_claim": 8.553701492537312
+      "invalid_accept_rate": 0.255556,
+      "mean_valid_score_retention": 0.732504,
+      "mean_cost_units": 6.367756,
+      "cost_per_valid_claim": 8.553701
     },
     {
       "policy": "ablate_no_leakage_gate",
       "traces": 180,
       "tasks": 15,
       "invalid_accepts": 24,
-      "invalid_accept_rate": 0.13333333333333333,
-      "mean_valid_score_retention": 0.8516330568521754,
-      "mean_cost_units": 6.367755555555555,
-      "cost_per_valid_claim": 7.347410256410256
+      "invalid_accept_rate": 0.133333,
+      "mean_valid_score_retention": 0.851633,
+      "mean_cost_units": 6.367756,
+      "cost_per_valid_claim": 7.34741
     },
     {
       "policy": "ablate_no_checkpoint_gate",
       "traces": 180,
       "tasks": 15,
       "invalid_accepts": 16,
-      "invalid_accept_rate": 0.08888888888888889,
-      "mean_valid_score_retention": 0.8990384781619123,
-      "mean_cost_units": 6.367755555555555,
+      "invalid_accept_rate": 0.088889,
+      "mean_valid_score_retention": 0.899038,
+      "mean_cost_units": 6.367756,
       "cost_per_valid_claim": 6.989
     },
     {
@@ -91,20 +91,20 @@
       "traces": 180,
       "tasks": 15,
       "invalid_accepts": 89,
-      "invalid_accept_rate": 0.49444444444444446,
-      "mean_valid_score_retention": 0.5003720179970994,
-      "mean_cost_units": 6.367755555555555,
-      "cost_per_valid_claim": 12.595560439560439
+      "invalid_accept_rate": 0.494444,
+      "mean_valid_score_retention": 0.500372,
+      "mean_cost_units": 6.367756,
+      "cost_per_valid_claim": 12.59556
     },
     {
       "policy": "ablate_no_schema_gate",
       "traces": 180,
       "tasks": 15,
       "invalid_accepts": 2,
-      "invalid_accept_rate": 0.011111111111111112,
-      "mean_valid_score_retention": 0.9724760469892262,
-      "mean_cost_units": 6.367755555555555,
-      "cost_per_valid_claim": 6.439303370786516
+      "invalid_accept_rate": 0.011111,
+      "mean_valid_score_retention": 0.972476,
+      "mean_cost_units": 6.367756,
+      "cost_per_valid_claim": 6.439303
     }
   ],
   "traces": [
