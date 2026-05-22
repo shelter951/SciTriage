@@ -49,6 +49,16 @@ analysis/*
 !analysis/public_failure_corpus_multiseed_eval_v1/**
 !analysis/experiment_campaign_full_v2/
 !analysis/experiment_campaign_full_v2/**
+analysis/experiment_campaign_full_v2/*.json
+!analysis/experiment_campaign_full_v2/campaign_summary.json
+analysis/experiment_campaign_full_v2/public_failure_corpus_eval/
+analysis/experiment_campaign_full_v2/official_vectorization/*.log
+analysis/experiment_campaign_full_v2/official_cifar10/*.json
+!analysis/experiment_campaign_full_v2/official_cifar10/candidate_audit.json
+analysis/experiment_campaign_full_v2/official_imdb/*.json
+!analysis/experiment_campaign_full_v2/official_imdb/candidate_audit.json
+analysis/experiment_campaign_full_v2/external_audit_summary/*.json
+analysis/experiment_campaign_full_v2/official_audit_target_queue/*.json
 analysis/**/workspaces/
 
 # Local secrets and environment files.
